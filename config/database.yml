@@ -28,7 +28,7 @@ production:
   #encoding: unicode
   #encoding: SQL_ASCII
   encoding: unicode
-  database: c1
-  username: c1
+  database: r1
+  username: r1
   password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
     ### H.saito Add <<<<<<<<<<<<<<<<<<<<<<<<<<<<
