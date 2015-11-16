@@ -21,5 +21,14 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+### H.saito Add >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  ##<<: *default
+  ##database: db/production.sqlite3
+  adapter: postgresql
+  #encoding: unicode
+  #encoding: SQL_ASCII
+  encoding: unicode
+  database: c1
+  username: c1
+  password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
+    ### H.saito Add <<<<<<<<<<<<<<<<<<<<<<<<<<<<
