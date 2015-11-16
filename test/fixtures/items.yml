@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  reps: 1
+  part_id: 
+  mode_id: 
+  equipment_id: 
+
+two:
+  name: MyString
+  reps: 1
+  part_id: 
+  mode_id: 
+  equipment_id: 

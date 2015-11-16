@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @training.item %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @training.weight %>
+</p>
+
+<p>
+  <strong>Reps:</strong>
+  <%= @training.reps %>
+</p>
+
+<p>
+  <strong>Set:</strong>
+  <%= @training.set %>
+</p>
+
+<p>
+  <strong>Mode:</strong>
+  <%= @training.mode %>
+</p>
+
+<%= link_to 'Edit', edit_training_path(@training) %> |
+<%= link_to 'Back', trainings_path %>

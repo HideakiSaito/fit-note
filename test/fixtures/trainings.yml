@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 
+  weight: 1
+  reps: 1
+  set: 1
+  mode_id: 
+
+two:
+  item_id: 
+  weight: 1
+  reps: 1
+  set: 1
+  mode_id: 
