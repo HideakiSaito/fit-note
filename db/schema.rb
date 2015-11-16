@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151005115846) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20151005115846) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
@@ -44,9 +47,9 @@ ActiveRecord::Schema.define(version: 20151005115846) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "items", ["equipment_id"], name: "index_items_on_equipment_id"
-  add_index "items", ["mode_id"], name: "index_items_on_mode_id"
-  add_index "items", ["part_id"], name: "index_items_on_part_id"
+  add_index "items", ["equipment_id"], name: "index_items_on_equipment_id", using: :btree
+  add_index "items", ["mode_id"], name: "index_items_on_mode_id", using: :btree
+  add_index "items", ["part_id"], name: "index_items_on_part_id", using: :btree
 
   create_table "modes", force: :cascade do |t|
     t.string   "name"
@@ -71,7 +74,12 @@ ActiveRecord::Schema.define(version: 20151005115846) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "trainings", ["item_id"], name: "index_trainings_on_item_id"
-  add_index "trainings", ["mode_id"], name: "index_trainings_on_mode_id"
+  add_index "trainings", ["item_id"], name: "index_trainings_on_item_id", using: :btree
+  add_index "trainings", ["mode_id"], name: "index_trainings_on_mode_id", using: :btree
 
+  add_foreign_key "items", "equipment"
+  add_foreign_key "items", "modes"
+  add_foreign_key "items", "parts"
+  add_foreign_key "trainings", "items"
+  add_foreign_key "trainings", "modes"
 end

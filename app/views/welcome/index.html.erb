@@ -1,13 +1,20 @@
-hello !
-<div id="tbl">
-    <table>
-        <tr>
-          <%=@item%>
-        </tr>
-    </table>
+<div style="text-align: center">
+  <h2 style="font-weight: normal">トレーニングノート</h2>
+  <img src="/images/bodyicongreen.png" width="25%" height="25%">
+
 </div>
-<%for i in 1..10 do %>
-  i<br>
-<%end%>
+<div class="alert alert-success" style="padding-left: 3em;">
+  <strong>Success!</strong> 今日もがんばりました.
+</div>
+
+<div class="alert alert-info">
+  <strong>Info!</strong> 明日は下半身のトレーニングの日です。.
+</div>
+
+<div class="alert alert-warning">
+  <strong>Warning!</strong> 背中のトレーニングから１日経過してます。背中を休ませまSHOW.
+</div>
 
 
+    <input type="button" value="記録する" class="btn btn-primary" onclick="location.href='/trainings'" />    
+    <input type="button" value="マスタ管理" class="btn btn-warning"  onclick="location.href='/items'" /> 
