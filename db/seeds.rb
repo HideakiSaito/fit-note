@@ -25,4 +25,12 @@ Part.create([
     {name: "腹筋（横）"}
 ])
 
+Equipment.create([
+  {name: "バーベル"},
+  {name: "ダンベル"},
+  {name: "ケーブル"},
+  {name: "トレーニングマシン"},
+  {name: "自重"}
+])
+
 
