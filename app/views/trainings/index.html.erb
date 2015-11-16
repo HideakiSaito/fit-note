@@ -12,22 +12,17 @@
       <th>Weight</th>
       <th>Reps</th>
       <th>Set</th>
-      <th>Mode</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @trainings.each do |training| %>
       <tr>
-        <td><%= training.item.index_name %></td>
-        <td><%= training.weight %></td>
-        <td><%= training.reps %></td>
-        <td><%= training.set %></td>
-        <td><%= training.mode %></td>
-        <td><%= link_to 'Show', training %></td>
-        <td><%= link_to 'Edit', edit_training_path(training) %></td>
-        <td><%= link_to 'Destroy', training, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to training.item.index_name, training %>
+      </td>
+      <td><%= training.weight %></td>
+      <td><%= training.reps %></td>
+      <td><%= training.set %></td>
       </tr>
     <% end %>
   </tbody>

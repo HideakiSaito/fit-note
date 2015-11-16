@@ -2,7 +2,7 @@
 
 <p>
   <strong>Item:</strong>
-  <%= @training.item %>
+  <%= @training.item.index_name %>
 </p>
 
 <p>
@@ -22,8 +22,9 @@
 
 <p>
   <strong>Mode:</strong>
-  <%= @training.mode %>
+  <%= @training.mode.name %>
 </p>
 
 <%= link_to 'Edit', edit_training_path(@training) %> |
-<%= link_to 'Back', trainings_path %>
+<%= link_to 'Back', trainings_path %> |
+<%= link_to 'Destroy', @training, method: :delete, data: { confirm: 'Are you sure?' } %>
