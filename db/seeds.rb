@@ -33,4 +33,10 @@ Equipment.create([
   {name: "自重"}
 ])
 
-
+Mode.create ([
+  {name: "トラディショナル", detail: "10reps x 3Set"},
+  {name: "ドロップセット", detail: "すぐに１５％ウェイトを落として続ける。３ドロップまで"},
+  {name: "パーシャルセット", detail: "次のレップスで限界な時に、できる可動域で行う"},
+  {name: "5 by 5", detail: "5reps x 5Set"},
+  {NAMEe: "ジャーマン風セット", detail: "8reps x 6set..."}
+])
