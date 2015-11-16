@@ -38,5 +38,18 @@ Mode.create ([
   {name: "ドロップセット", detail: "すぐに１５％ウェイトを落として続ける。３ドロップまで"},
   {name: "パーシャルセット", detail: "次のレップスで限界な時に、できる可動域で行う"},
   {name: "5 by 5", detail: "5reps x 5Set"},
-  {NAMEe: "ジャーマン風セット", detail: "8reps x 6set..."}
+  {name: "ジャーマン風セット", detail: "8reps x 6set..."}
+])
+
+Item.create ([
+  {name: "ベンチプレス", reps: 8, part_id: 1 , mode_id: 1, equipment_id: 1},
+  {name: "インクラインダンベルベンチプレス", reps: 8, part_id: 1 , mode_id: 1, equipment_id: 2},
+  {name: "ケーブルクロスオーバー", reps: 12, part_id: 1 , mode_id: 2, equipment_id: 3},
+  {name: "ハーフデッドリフト", reps: 8, part_id: 3 , mode_id: 1, equipment_id: 1},
+  {name: "プルアップ", reps: 8, part_id: 2 , mode_id: 1, equipment_id: 4},
+  {name: "チンアップ", reps: 8, part_id: 2 , mode_id: 1, equipment_id: 4},
+  {name: "ケーブルローイング", reps: 8, part_id: 3 , mode_id: 1, equipment_id: 3},
+  {name: "ワンハンドローイング", reps: 8, part_id: 2 , mode_id: 1, equipment_id: 2},
+  {name: "バーベルスクワット", reps: 8, part_id: 4 , mode_id: 1, equipment_id: 1},
+  {name: "自重スクワット", reps: 8, part_id: 4 , mode_id: 1, equipment_id: 5}
 ])
