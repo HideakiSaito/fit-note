@@ -8,6 +8,8 @@
        style="text-align: right; width: 100%;">
   <thead>
     <tr>
+      <th>id</th>
+      <th>Day</th>
       <th>Item</th>
       <th>Weight</th>
       <th>Reps</th>
@@ -18,6 +20,8 @@
   <tbody>
     <% @trainings.each do |training| %>
       <tr>
+      <td><%= training.id %></td>
+        <td><%= training.day %> . <%=  training.num  %></td>
         <td><%= link_to training.item.index_name, training %>
       </td>
       <td><%= training.weight %></td>

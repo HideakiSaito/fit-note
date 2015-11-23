@@ -4,7 +4,7 @@ class TrainingsController < ApplicationController
   # GET /trainings
   # GET /trainings.json
   def index
-    @trainings = Training.all
+    @trainings = Training.default_order
   end
 
   # GET /trainings/1
@@ -69,6 +69,6 @@ class TrainingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_params
-      params.require(:training).permit(:item_id, :weight, :reps, :set, :mode_id)
+      params.require(:training).permit(:item_id, :weight, :reps, :set, :mode_id, :day, :num)
     end
 end

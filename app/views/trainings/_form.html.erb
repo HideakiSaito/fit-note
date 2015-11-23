@@ -2,7 +2,6 @@
   <% if @training.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@training.errors.count, "error") %> prohibited this training from being saved:</h2>
-
       <ul>
       <% @training.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,6 +9,18 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="day-buhin"  style="display:flex;justify-content:flex-start;" >
+  <div class="field" style="padding-right:1em;">
+    <%= f.label :day %><br>
+    <%= f.date_select :day ,
+      use_month_numbers: true %>
+  </div>
+  <div class="field" style="padding-right:1em;">
+    <%= f.label :num %><br>
+    <%= f.number_field :num ,style: "width:3em;" %>
+  </div>
+</div>
 
   <div class="field">
     <%= f.label :item_id %><br>

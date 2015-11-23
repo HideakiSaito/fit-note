@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  id: 1
+  name: "MyString"
   reps: 1
-  part_id: 
-  mode_id: 
-  equipment_id: 
+  part_id: 1 
+  mode_id:  1
+  equipment_id: 1 
 
 two:
-  name: MyString
+  id: 2
+  name: "MyString"
   reps: 1
-  part_id: 
-  mode_id: 
-  equipment_id: 
+  part_id: 2
+  mode_id: 2
+  equipment_id: 2 
