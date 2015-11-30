@@ -14,7 +14,7 @@ class TrainingsController < ApplicationController
 
   # GET /trainings/new
   def new
-    @training = Training.new
+      @training = Training.new :num => Training.get_now_num
   end
 
   # GET /trainings/1/edit

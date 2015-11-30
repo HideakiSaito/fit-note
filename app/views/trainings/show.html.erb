@@ -22,8 +22,10 @@
 </p>
 
 <p>
-  <strong>Mode:</strong>
-  <%= @training.mode.name %>
+<strong>Mode:</strong>
+<% if @training.mode_id != nil %>
+  <%= @training.mode.name  %>
+<%end%>
 </p>
 
 <%= link_to 'Edit', edit_training_path(@training) %> |

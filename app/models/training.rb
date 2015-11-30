@@ -7,5 +7,12 @@ class Training < ActiveRecord::Base
     order("day desc , num asc")
   end
 
+   def self.get_now_num 
+     t = Training.where "day=?",Date.today
+     t = Training.order :num
+     return 1 if t.size == 0
+     t.last.num + 1 #あれば＋１
+   end
+
 end
 
