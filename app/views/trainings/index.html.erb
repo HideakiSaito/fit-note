@@ -8,7 +8,8 @@
        style="text-align: right; width: 100%;">
   <thead>
     <tr>
-      <th>Day
+      <th>Day</th>
+      <th>
         Item
         Weight
         Reps
@@ -20,12 +21,12 @@
   <tbody>
     <% @trainings.each do |training| %>
       <tr>
-        <td><%= training.day %> . <%=  training.num  %> ->
+        <td><%= training.day %> . <%=  training.num  %></td>
+        <td>
           <%= link_to training.item.index_name, training %>
-
-          <%= training.weight %>
-          <%= training.reps %>
-          <%= training.set %>
+          <%= training.weight %> kg /   
+          <%= training.reps %>  
+          [<%= training.set %>]  
         </td>
       </tr>
     <% end %>
