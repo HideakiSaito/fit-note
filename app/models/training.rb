@@ -4,7 +4,8 @@ class Training < ActiveRecord::Base
 
   #スコープ
   scope :default_order , -> do
-    order(:day , :num)
+    order("day desc , num asc")
   end
 
 end
+

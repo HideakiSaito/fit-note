@@ -8,25 +8,25 @@
        style="text-align: right; width: 100%;">
   <thead>
     <tr>
-      <th>id</th>
-      <th>Day</th>
-      <th>Item</th>
-      <th>Weight</th>
-      <th>Reps</th>
-      <th>Set</th>
+      <th>Day
+        Item
+        Weight
+        Reps
+        Set
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @trainings.each do |training| %>
       <tr>
-      <td><%= training.id %></td>
-        <td><%= training.day %> . <%=  training.num  %></td>
-        <td><%= link_to training.item.index_name, training %>
-      </td>
-      <td><%= training.weight %></td>
-      <td><%= training.reps %></td>
-      <td><%= training.set %></td>
+        <td><%= training.day %> . <%=  training.num  %> ->
+          <%= link_to training.item.index_name, training %>
+
+          <%= training.weight %>
+          <%= training.reps %>
+          <%= training.set %>
+        </td>
       </tr>
     <% end %>
   </tbody>

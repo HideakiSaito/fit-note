@@ -21,4 +21,12 @@ class Item < ActiveRecord::Base
          )
   end
 
+  scope :on_chest, ->do
+    where(part_id: 1)
+  end
+
+  scope :on_backs, ->do
+    where(part_id: 2)
+  end
+
 end
