@@ -60,3 +60,6 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-sass'
 
+ ## Add H.saito spaql###
+gem "linkeddata"
+gem "sparql"

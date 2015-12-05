@@ -1,20 +1,17 @@
 <div style="text-align: center">
   <h2 style="font-weight: normal">トレーニングノート</h2>
-  <img src="/images/bodyicongreen.png" width="25%" height="25%">
+  <img src="/images/bodyicongreen.png" width="15%" height="15%">
 
 </div>
 <div class="alert alert-success" style="padding-left: 3em;">
-  <strong>Success!</strong> 今日もがんばりました.
+  <strong>Info!</strong> Wikipedeaからリアルタイムに取得したトレニーング方法をご紹介します。
 </div>
-
-<div class="alert alert-info">
-  <strong>Info!</strong> 明日は下半身のトレーニングの日ですね。
-</div>
-
-<div class="alert alert-warning">
-  <strong>Warning!</strong> 背中のトレーニングから１日経過してます。背中を休ませまSHOW.
-</div>
-
-
     <input type="button" value="記録する" class="btn btn-primary" onclick="location.href='/trainings'" />    
-    <input type="button" value="マスタ管理" class="btn btn-warning"  onclick="location.href='/items'" /> 
+    <input type="button" value="マスタ管理" class="btn btn-warning"  onclick="location.href='/items'" />
+    <a href="http://ja.dbpedia.org/">wikipediaからのデータ取得の詳細はこちら</a>
+
+    <% @item.each do |solution| %>
+      <h2><%= solution[:label] %></h2>
+      <p><%=solution[:comment] %></p>
+      <%  end  %>
+        
