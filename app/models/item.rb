@@ -26,7 +26,11 @@ class Item < ActiveRecord::Base
   end
 
   scope :on_backs, ->do
-    where(part_id: 2)
+    where(part_id: [2,3]) 
+  end
+ 
+  scope :on_legs, ->do
+    where(part_id: 4)
   end
 
 end

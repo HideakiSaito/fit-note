@@ -5,7 +5,13 @@ class TrainingsController < ApplicationController
   # GET /trainings.json
   def index
     @trainings = Training.default_order
-    @items = Item.all.sample 3  # yuta teacher
+    #@items = Item.all.sample 3  # yuta teacher
+    ##全身バランスよく鍛えるように！これならいいね
+    @items = [] #初期化はいるな。nil << はできないから。
+    @items << Item.on_chest.sample
+    @items << Item.on_backs.sample
+    @items << Item.on_legs.sample
+
   end
 
   # GET /trainings/1
