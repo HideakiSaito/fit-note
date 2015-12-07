@@ -5,6 +5,7 @@ class TrainingsController < ApplicationController
   # GET /trainings.json
   def index
     @trainings = Training.default_order
+    @items = Item.all.sample 3  # yuta teacher
   end
 
   # GET /trainings/1

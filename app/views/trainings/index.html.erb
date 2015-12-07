@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
-<p id="notice"><%= notice %></p>
-<p id="notice"><%= notice %></p>
+
+<h3>今日のおすすめメニュー</h3> 
+  <% @items.each do |item| %>
+    <li>
+    <%= item.name %> . <%=  item.part.name  %> -> <%=  item.reps %>回
+    </li>
+  <% end %>
 
 <h1>トレーニング記録一覧</h1>
-
 <table class="table table-striped"
        style="text-align: right; width: 100%;">
   <thead>
