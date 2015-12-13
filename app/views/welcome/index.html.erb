@@ -1,17 +1,32 @@
 <div style="text-align: center">
-  <h2 style="font-weight: normal">トレーニングノート</h2>
+  <h1 style="font-weight: normal">トレーニングノート</h1>
   <img src="/images/bodyicongreen.png" width="15%" height="15%">
 
 </div>
+<h2>News</h2>
+<p>
+ 2015/12/13 views/trainings/index にアドバイスメモを追加。メモの機能を検討する。
+ </p>
+ <p>
+ 2015/12/07 controlles/trainings... にユータ先生に教えてもらった配列のサンプルメソッドちょっと追加した。 
+ </p>
+ <p>
+ 2015/12/05 controlles/welcome... にwikipediaにアクセスするコードを追加。Sparqlちょっと書いた。
+</p>
+
+<h2>Note</h2>
+<p>
+<input type="button" value="記録する" class="btn btn-primary" onclick="location.href='/trainings'" />    
+<input type="button" value="マスタ管理" class="btn btn-warning"  onclick="location.href='/items'" />
+</p>
+<h2>Infomaiton</h2>
 <div class="alert alert-success" style="padding-left: 3em;">
   <strong>Info!</strong> Wikipedeaからリアルタイムに取得したトレニーング方法をご紹介します。
 </div>
-    <input type="button" value="記録する" class="btn btn-primary" onclick="location.href='/trainings'" />    
-    <input type="button" value="マスタ管理" class="btn btn-warning"  onclick="location.href='/items'" />
-    <a href="http://ja.dbpedia.org/">wikipediaからのデータ取得の詳細はこちら</a>
 
-    <% @item.each do |solution| %>
-      <h2><%= solution[:label] %></h2>
-      <p><%=solution[:comment] %></p>
-      <%  end  %>
-        
+<a href="http://ja.dbpedia.org/">wikipediaからRuby on Railsでデータ取得する方法はこちら</a>
+<% @item.each do |solution| %>
+  <h2><%= solution[:label] %></h2>
+  <p><%=solution[:comment] %></p>
+<%  end  %>
+
