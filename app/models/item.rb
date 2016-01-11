@@ -11,6 +11,16 @@ class Item < ActiveRecord::Base
   #バリデーション
   validates :name ,presence: true
 
+  class << self
+    def search(query)
+      rel = order("part_id")
+      if query.present?
+        rel = rel.where("name LIKE ? ", "%#{query}%")
+      end
+      rel
+    end
+  end
+  
   #スコープ
   scope :inTheHome , ->  do
     where(equipment_id: [2,5] )

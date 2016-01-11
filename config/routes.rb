@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
     root :to => 'welcome#index', :as => 'home'
   resources :trainings
-  resources :items
+  resources :items do
+    collection { get "search"}
+  end
   resources :equipment
   resources :parts
   resources :modes

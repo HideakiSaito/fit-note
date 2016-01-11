@@ -2,6 +2,13 @@
 
 <h1>トレーニング種目一覧</h1>
 
+<%= form_tag :search_items, method: :get do %>
+  <p>
+    <%= text_field_tag "q", params[:q] %>
+    <%= submit_tag "検索" %>
+  </p>
+<% end %>
+
 <table class="table table-striped"
        style="text-align: right; width: 100%;">
   <thead>
