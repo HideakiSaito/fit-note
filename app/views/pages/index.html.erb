@@ -30,8 +30,8 @@
         <td><%= link_to 'Edit', edit_page_path(page) %></td>
         <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% #TODO ここはtableかなんか。スマホでいい感じになるように %>
-      <% page.lines.each do |line| %>
+      <% #TODO ここはtableかなんか。スマホでいい感じになるように has_many に対してもオーダー効く %>
+      <% page.lines.order(:id).each do |line| %>
         <tr>
           <td>
           </td>
