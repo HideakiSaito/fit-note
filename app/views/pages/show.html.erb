@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @page.date %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @page.place %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @page.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @page.end_time %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @page.memo %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @page.image %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>

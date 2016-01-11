@@ -1,0 +1,73 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  page_id: 
+  'no': 1
+  item_id: 
+  mode_id: 
+  weight_1: 9.99
+  reps_1: 9.99
+  memo_1: MyString
+  weight_2: 9.99
+  reps_2: 9.99
+  memo_2: MyString
+  weight_3: 9.99
+  reps_3: 9.99
+  memo_3: MyString
+  weight_4: 9.99
+  reps_4: 9.99
+  memo_4: MyString
+  weight_5: 9.99
+  reps_5: 9.99
+  memo_5: MyString
+  weight_6: 9.99
+  reps_6: 9.99
+  memo_6: MyString
+  weight_7: 9.99
+  reps_7: 9.99
+  memo_7: MyString
+  weight_8: 9.99
+  reps_8: 9.99
+  memo_8: MyString
+  weight_9: 9.99
+  reps_9: 9.99
+  memo_9: MyString
+  weight_0: 9.99
+  reps_0: 9.99
+  memo_0: MyString
+
+two:
+  page_id: 
+  'no': 1
+  item_id: 
+  mode_id: 
+  weight_1: 9.99
+  reps_1: 9.99
+  memo_1: MyString
+  weight_2: 9.99
+  reps_2: 9.99
+  memo_2: MyString
+  weight_3: 9.99
+  reps_3: 9.99
+  memo_3: MyString
+  weight_4: 9.99
+  reps_4: 9.99
+  memo_4: MyString
+  weight_5: 9.99
+  reps_5: 9.99
+  memo_5: MyString
+  weight_6: 9.99
+  reps_6: 9.99
+  memo_6: MyString
+  weight_7: 9.99
+  reps_7: 9.99
+  memo_7: MyString
+  weight_8: 9.99
+  reps_8: 9.99
+  memo_8: MyString
+  weight_9: 9.99
+  reps_9: 9.99
+  memo_9: MyString
+  weight_0: 9.99
+  reps_0: 9.99
+  memo_0: MyString

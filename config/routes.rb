@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :lines
+  resources :pages
   ActiveAdmin.routes(self)
     root :to => 'welcome#index', :as => 'home'
   resources :trainings

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123105517) do
+ActiveRecord::Schema.define(version: 20160111102816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,63 @@ ActiveRecord::Schema.define(version: 20151123105517) do
   add_index "items", ["mode_id"], name: "index_items_on_mode_id", using: :btree
   add_index "items", ["part_id"], name: "index_items_on_part_id", using: :btree
 
+  create_table "lines", force: :cascade do |t|
+    t.integer  "page_id"
+    t.integer  "no"
+    t.integer  "item_id"
+    t.integer  "mode_id"
+    t.decimal  "weight_1"
+    t.decimal  "reps_1"
+    t.string   "memo_1"
+    t.decimal  "weight_2"
+    t.decimal  "reps_2"
+    t.string   "memo_2"
+    t.decimal  "weight_3"
+    t.decimal  "reps_3"
+    t.string   "memo_3"
+    t.decimal  "weight_4"
+    t.decimal  "reps_4"
+    t.string   "memo_4"
+    t.decimal  "weight_5"
+    t.decimal  "reps_5"
+    t.string   "memo_5"
+    t.decimal  "weight_6"
+    t.decimal  "reps_6"
+    t.string   "memo_6"
+    t.decimal  "weight_7"
+    t.decimal  "reps_7"
+    t.string   "memo_7"
+    t.decimal  "weight_8"
+    t.decimal  "reps_8"
+    t.string   "memo_8"
+    t.decimal  "weight_9"
+    t.decimal  "reps_9"
+    t.string   "memo_9"
+    t.decimal  "weight_0"
+    t.decimal  "reps_0"
+    t.string   "memo_0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lines", ["item_id"], name: "index_lines_on_item_id", using: :btree
+  add_index "lines", ["mode_id"], name: "index_lines_on_mode_id", using: :btree
+  add_index "lines", ["page_id"], name: "index_lines_on_page_id", using: :btree
+
   create_table "modes", force: :cascade do |t|
     t.string   "name"
     t.string   "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.date     "date"
+    t.string   "place"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.text     "memo"
+    t.binary   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,6 +136,9 @@ ActiveRecord::Schema.define(version: 20151123105517) do
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "modes"
   add_foreign_key "items", "parts"
+  add_foreign_key "lines", "items"
+  add_foreign_key "lines", "modes"
+  add_foreign_key "lines", "pages"
   add_foreign_key "trainings", "items"
   add_foreign_key "trainings", "modes"
 end
