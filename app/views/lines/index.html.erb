@@ -2,43 +2,19 @@
 
 <h1>Listing Lines</h1>
 
-<table>
+<table class="table table-striped"
+       style="text-align: right; width: 100%;">
   <thead>
     <tr>
       <th>Page</th>
       <th>No</th>
       <th>Item</th>
       <th>Mode</th>
-      <th>Weight 1</th>
-      <th>Reps 1</th>
-      <th>Memo 1</th>
-      <th>Weight 2</th>
-      <th>Reps 2</th>
-      <th>Memo 2</th>
-      <th>Weight 3</th>
-      <th>Reps 3</th>
-      <th>Memo 3</th>
-      <th>Weight 4</th>
-      <th>Reps 4</th>
-      <th>Memo 4</th>
-      <th>Weight 5</th>
-      <th>Reps 5</th>
-      <th>Memo 5</th>
-      <th>Weight 6</th>
-      <th>Reps 6</th>
-      <th>Memo 6</th>
-      <th>Weight 7</th>
-      <th>Reps 7</th>
-      <th>Memo 7</th>
-      <th>Weight 8</th>
-      <th>Reps 8</th>
-      <th>Memo 8</th>
-      <th>Weight 9</th>
-      <th>Reps 9</th>
-      <th>Memo 9</th>
-      <th>Weight 0</th>
-      <th>Reps 0</th>
-      <th>Memo 0</th>
+      <th>set 1</th>
+      <th>set 2</th>
+      <th>set 3</th>
+      <th>set 4</th>
+      <th>set 5</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -46,40 +22,18 @@
   <tbody>
     <% @lines.each do |line| %>
       <tr>
-        <td><%= line.page %></td>
+        <td>
+        <%= line.page.date %><%= line.page.place %>
+        </td>
         <td><%= line.no %></td>
-        <td><%= line.item %></td>
-        <td><%= line.mode %></td>
-        <td><%= line.weight_1 %></td>
-        <td><%= line.reps_1 %></td>
-        <td><%= line.memo_1 %></td>
-        <td><%= line.weight_2 %></td>
-        <td><%= line.reps_2 %></td>
-        <td><%= line.memo_2 %></td>
-        <td><%= line.weight_3 %></td>
-        <td><%= line.reps_3 %></td>
-        <td><%= line.memo_3 %></td>
-        <td><%= line.weight_4 %></td>
-        <td><%= line.reps_4 %></td>
-        <td><%= line.memo_4 %></td>
-        <td><%= line.weight_5 %></td>
-        <td><%= line.reps_5 %></td>
-        <td><%= line.memo_5 %></td>
-        <td><%= line.weight_6 %></td>
-        <td><%= line.reps_6 %></td>
-        <td><%= line.memo_6 %></td>
-        <td><%= line.weight_7 %></td>
-        <td><%= line.reps_7 %></td>
-        <td><%= line.memo_7 %></td>
-        <td><%= line.weight_8 %></td>
-        <td><%= line.reps_8 %></td>
-        <td><%= line.memo_8 %></td>
-        <td><%= line.weight_9 %></td>
-        <td><%= line.reps_9 %></td>
-        <td><%= line.memo_9 %></td>
-        <td><%= line.weight_0 %></td>
-        <td><%= line.reps_0 %></td>
-        <td><%= line.memo_0 %></td>
+        <td><%= line.item.name %>
+        </td>
+        <td><%= line.mode.name %></td>
+        <td><%= line.weight_1 %>kg/<%= line.reps_1 %></td>
+        <td><%= line.weight_2 %>kg/<%= line.reps_2 %></td>
+        <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
+        <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
+        <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
         <td><%= link_to 'Show', line %></td>
         <td><%= link_to 'Edit', edit_line_path(line) %></td>
         <td><%= link_to 'Destroy', line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -90,4 +44,5 @@
 
 <br>
 
-<%= link_to 'New Line', new_line_path %>
+<%= link_to 'New Line', new_line_path %>||
+<%= link_to 'New Page', new_page_path %>

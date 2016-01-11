@@ -19,7 +19,8 @@
   <tbody>
     <% @pages.each do |page| %>
       <tr>
-        <td><%= page.date %></td>
+        <td><%= page.id %>:<%= page.lines.count %>:
+        <%= page.date %></td>
         <td><%= page.place %></td>
         <td><%= page.start_time %></td>
         <td><%= page.end_time %></td>
@@ -28,6 +29,32 @@
         <td><%= link_to 'Show', page %></td>
         <td><%= link_to 'Edit', edit_page_path(page) %></td>
         <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% #TODO ここはtableかなんか。スマホでいい感じになるように %>
+      <% page.lines.each do |line| %>
+        <tr>
+          <td>
+          </td>
+          <td><%= line.no %></td>
+          <td><%= line.item.name %>
+        </td>
+        <td><%= line.mode.name %></td>
+        <td><%= line.weight_1 %>kg/<%= line.reps_1 %></td>
+        <td><%= line.weight_2 %>kg/<%= line.reps_2 %></td>
+        <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
+        <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
+        <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
+        <td><%= link_to 'Show', line %></td>
+        <td><%= link_to 'Edit', edit_line_path(line) %></td>
+        <td><%= link_to 'Destroy', line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      <tr>
+          <td>
+          </td>
+        <td>
+          <%= link_to 'New Line', new_line_path %>||
+        </td>
       </tr>
     <% end %>
   </tbody>
