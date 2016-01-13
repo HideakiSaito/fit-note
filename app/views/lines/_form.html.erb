@@ -13,7 +13,9 @@
 
   <div class="field">
     <%= f.label :page_id %><br>
-    <%= f.text_field :page_id %>
+    <%= f.collection_select :page_id ,
+      Page.all, :id ,:page_label ,
+        :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :no %><br>
@@ -21,7 +23,9 @@
   </div>
   <div class="field">
     <%= f.label :item_id %><br>
-    <%= f.text_field :item_id %>
+    <%= f.collection_select :item_id ,
+    Item.all, :id , :name ,
+      :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :mode_id %><br>

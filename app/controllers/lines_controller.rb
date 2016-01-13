@@ -1,5 +1,11 @@
 class LinesController < InheritedResources::Base
-
+  
+def new
+  @line = Line.new :no => 1
+  if params[:page_id]
+   @line.page_id = params[:page_id]  
+  end
+end
   private
 
     def line_params
