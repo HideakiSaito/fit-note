@@ -1,7 +1,10 @@
 class PagesController < InheritedResources::Base
 
-  private
+def index
+  @pages = Page.all.order("id desc")
+end
 
+  private
     def page_params
       params.require(:page).permit(:date, :place, :start_time, :end_time, :memo, :image)
     end

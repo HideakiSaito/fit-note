@@ -2,26 +2,27 @@
 
 <h1>ノート</h1>
 
+<%= link_to 'New Page', new_page_path %>
 <% @pages.each do |page| %>
   <table style="vertical-align:baseline">
     <tr>
       <td><h3><%= page.date.strftime("%Y/%m/%d(%a)") %></h3></td>
       <td> <h4>&nbsp;<%= page.start_time.strftime("%H:%S") %> ~ 
-         <%= page.end_time.strftime("%H:%S") %></h4></td>
+          <%= page.end_time.strftime("%H:%S") %></h4></td>
       <td> <h4>&nbsp;=><%= page.place %></h4></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
+      <td><%= link_to 'Edit', edit_page_path(page) %></td>
     </tr></table>
     <table class="table table-striped"
            style="text-align: right; width: 100%;">
       <thead>
         <tr>
           <th>
-          no.training</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
+            no.training</th>
+          <th>1set</th>
+          <th>2set</th>
+          <th>3set</th>
+          <th>4set</th>
+          <th>5set</th>
         </tr>
       </thead>
 
@@ -29,20 +30,19 @@
         <% page.lines.order(:id).each do |line| %>
           <tr>
             <td><%= line.no %>.
-            <%= line.item.name %>
-          </td>
-          <td><%= line.weight_1 %>kg/<%= line.reps_1 %></td>
-          <td><%= line.weight_2 %>kg/<%= line.reps_2 %></td>
-          <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
-          <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
-          <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
-          <td><%= link_to 'Edit', edit_line_path(line) %></td>
+              <%= line.item.name %>
+            </td>
+            <td><%= line.weight_1 %>kg/<%= line.reps_1 %></td>
+            <td><%= line.weight_2 %>kg/<%= line.reps_2 %></td>
+            <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
+            <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
+            <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
+            <td><%= link_to 'Edit', edit_line_path(line) %></td>
           </tr>
         <% end %>
         <tr>
-          <td>
-          </td>
-          <td>
+          <td colspan="7" 
+           style="text-align: left; width: 100%;">
             <%= link_to 'New Line', new_page_line_path(page) %>||
           </td>
         </tr>
@@ -51,8 +51,3 @@
 
   <% end %>
   <br>
-
-  <%= link_to 'New Page', new_page_path %>
-  <br/><br/>
-  <%= link_to 'New Line', new_line_path %>||
-
