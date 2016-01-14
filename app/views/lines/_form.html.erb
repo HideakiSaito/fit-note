@@ -29,15 +29,14 @@
   </div>
   <div class="field">
     <%= f.label :mode_id %><br>
-    <%= f.text_field :mode_id %>
+    <%= f.collection_select :mode_id ,
+    Mode.all, :id , :name ,
+      :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :weight_1 %><br>
-    <%= f.text_field :weight_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_1 %><br>
-    <%= f.text_field :reps_1 %>
+    1セット目 kg / 回数
+    <%= f.number_field :weight_1 %>
+    /<%= f.number_field :reps_1 %>
   </div>
   <div class="field">
     <%= f.label :memo_1 %><br>

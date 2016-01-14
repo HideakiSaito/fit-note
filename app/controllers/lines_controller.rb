@@ -1,7 +1,7 @@
 class LinesController < InheritedResources::Base
   
 def new
-  @line = Line.new :no => 1
+  @line = Line.new :no => 1 , :mode_id => 1
   if params[:page_id]
    @line.page_id = params[:page_id]  
   end
