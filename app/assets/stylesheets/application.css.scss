@@ -3,8 +3,50 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 body{
-background: #ffc url("logo.png") no-repeat right bottom;
+  background: #fff url("logo.png") no-repeat right bottom;
 }
 #error_explanation{
- color:red;
+  color:red;
 }
+
+h1{
+  color:red;
+  transition-duration: 2s;
+  transition-delay: 0.5s;
+}
+
+h1:hover {
+  color:green;
+
+}
+
+.delay1 {
+  position: relative;
+  transition-property: font-size;
+  transition-duration: 2s;
+  transition-delay: 0.5s;
+  font-size: 14px;
+}
+
+.delay1:hover {
+  transition-property: font-size;
+  transition-duration: 2s;
+  transition-delay: 0.5s;
+  font-size: 36px;
+}
+
+p {
+  position: relative;
+  transition-property: font-size;
+  transition-duration: 2s;
+  transition-delay: 0.5s;
+  font-size: 14px;
+}
+
+p:hover {
+  transition-property: font-size;
+  transition-duration: 2s;
+  transition-delay: 0.5s;
+  font-size: 36px;
+}
+
