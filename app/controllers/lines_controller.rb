@@ -6,6 +6,23 @@ def new
    @line.page_id = params[:page_id]  
   end
 end
+
+
+  # PATCH/PUT /items/1
+  # PATCH/PUT /items/1.json
+  def update
+    respond_to do |format|
+      @line = Line.find(params[:id])
+      if @line.update(line_params)
+        format.html { redirect_to :pages, notice: 'Item was successfully updated.' }
+        format.json { render :show, status: :ok, location: @line }
+      else
+        format.html { render :edit }
+        format.json { render json: @line.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
     def line_params

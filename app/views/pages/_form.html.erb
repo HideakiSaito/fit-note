@@ -5,7 +5,9 @@
 
       <ul>
       <% @page.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="alert alert-success" style="padding-left: 3em;">
+       <%= message %>
+</div>
       <% end %>
       </ul>
     </div>
