@@ -85,3 +85,14 @@
        サブ種目などは多少バリエーション加える。けど取り敢えず上記7つをきっちり、トラディショナルなやり方で、ストリクトにオーバロードの原則でやる。基本の基本。
 </p>
 
+<h2>Infomaiton</h2>
+<div class="alert alert-success" style="padding-left: 3em;">
+  <strong>Info!</strong> Wikipedeaからリアルタイムに取得したトレニーング方法をご紹介します。
+</div>
+
+<a href="http://ja.dbpedia.org/">wikipediaからRuby on Railsでデータ取得する方法はこちら</a>
+<% @sparql_data.each do |solution| %>
+  <h2><%= solution[:label] %></h2>
+  <p><%=solution[:comment] %></p>
+<%  end  %>
+

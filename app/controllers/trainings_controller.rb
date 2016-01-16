@@ -12,6 +12,18 @@ class TrainingsController < ApplicationController
     @items << Item.on_backs.sample
     @items << Item.on_legs.sample
 
+    require "sparql/client"
+    client = SPARQL::Client.new("http://ja.dbpedia.org/sparql")
+    results = client.query("
+      SELECT DISTINCT ?label ?comment 
+      WHERE {
+      ?s dcterms:subject  <http://ja.dbpedia.org/resource/Category:トレーニング法>; 
+      rdfs:label ?label .
+      ?s rdfs:comment ?comment .
+             }
+       ")
+    @sparql_data = results 
+
   end
 
   # GET /trainings/1
