@@ -63,3 +63,6 @@ gem 'font-awesome-sass'
  ## Add H.saito spaql###
 gem "linkeddata"
 gem "sparql"
+
+## Add H.saito チャート###
+gem 'lazy_high_charts'
