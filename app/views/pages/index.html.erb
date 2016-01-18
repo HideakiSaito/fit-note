@@ -2,15 +2,16 @@
 
 <h1>ノート</h1>
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'コピーまたは、新規で新しいページを作る。', new_page_path %>
+
 <% @pages.each do |page| %>
   <table style="vertical-align:baseline">
     <tr>
-      <td><h3><%= page.date.strftime("%Y/%m/%d(%a)") %></h3></td>
-      <td> <h4>&nbsp;<%= page.start_time.strftime("%H:%S") %> ~ 
-          <%= page.end_time.strftime("%H:%S") %></h4></td>
-      <td> <h4>&nbsp;=><%= page.place %></h4></td>
-      <td><%= link_to 'Edit', edit_page_path(page) %></td>
+      <td style="font-weight:bold;font-size:1.5em;"><%= page.date.strftime("%Y/%m/%d(%a)") %></td>
+      <td>&nbsp;<%= page.start_time.strftime("%H:%S") %> ~ 
+          <%= page.end_time.strftime("%H:%S") %></td>
+      <td style="font-weight:bold;">&nbsp;&nbsp;&nbsp;<%= page.place %></td>
+      <td>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_page_path(page) %></td>
     </tr></table>
     <table class="table table-striped"
            style="text-align: right; width: 100%;">
@@ -37,13 +38,13 @@
             <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
             <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
             <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
-            <td><%= link_to 'Edit', edit_line_path(line) %></td>
+            <td><%= link_to '編集', edit_line_path(line) %></td>
           </tr>
         <% end %>
         <tr>
           <td colspan="7" 
            style="text-align: left; width: 100%;">
-            <%= link_to 'New Line', new_page_line_path(page) %>||
+            <%= link_to '行を追加する。', new_page_line_path(page) %>||
           </td>
         </tr>
       </tbody>
