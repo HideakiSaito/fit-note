@@ -13,8 +13,8 @@
     </div>
   <% end %>
 
-  <%= check_box_tag :page_copy %>コピーする<br>
-  <div class="field">
+  <%= check_box_tag :page_copy %>トレーニング記録をコピーする（種目と重量）<br>
+  <div class="field" id="copy_page_id">
     <%= collection_select :page ,:id ,
       Page.all, :id ,:page_label %>
   </div>
