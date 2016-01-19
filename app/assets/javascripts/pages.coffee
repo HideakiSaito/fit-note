@@ -8,7 +8,8 @@ $(document).on "ready page:load",->
       $("#copy_page_id").show()
     else
       $("#copy_page_id").hide()
-      
   $("#page_copy").bind("click",change_page_copy_at)
 
   change_page_copy_at()
+
+ (
