@@ -12,4 +12,4 @@ $(document).on "ready page:load",->
 
   change_page_copy_at()
 
- (
+
