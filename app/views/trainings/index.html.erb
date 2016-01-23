@@ -1,5 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+ 2015/12/13 views/trainings/index にアドバイスメモを追加。メモの機能を検討する。
+ </p>
+ <p>
+ 2015/12/07 controlles/trainings... にユータ先生に教えてもらった配列のサンプルメソッドちょっと追加した。 
+ </p>
+ <p>
+ 2015/12/05 controlles/welcome... にwikipediaにアクセスするコードを追加。Sparqlちょっと書いた。
+</p>
+
+<h2>Note</h2>
+<p>
+<input type="button" value="記録する" class="btn btn-primary" onclick="location.href='/pages'" />    
+<input type="button" value="分析する" class="btn btn-primary" onclick="location.href='/analysis'" />    
+<input type="button" value="マスタ管理" class="btn btn-warning"  onclick="location.href='/items'" />
+</p>
+
 <h1>今日のおすすめメニュー</h1> 
   <% @items.each do |item| %>
     <li>
