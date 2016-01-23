@@ -15,10 +15,7 @@
     <%= f.collection_select :page_id ,
       Page.all, :id ,:page_label ,
         :prompt => true %>
-  </div>
-  <div class="field">
-    <%= f.label :no %><br>
-    <%= f.number_field :no %>
+    <%= f.number_field :no , class: :num %>
   </div>
   <div class="field">
     <%= f.label :item_id %><br>
@@ -33,121 +30,34 @@
       :prompt => true %>
   </div>
   <div class="field">
-    1セット目 kg / 回数
-    <%= f.number_field :weight_1 %>
-    /<%= f.number_field :reps_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_1 %><br>
+    <%= label_tag "1セット kg / 回数:メモ" %><br>
+    <%= f.number_field :weight_1, class: :num  %>
+    /<%= f.number_field :reps_1 ,:class => :num %>
     <%= f.text_field :memo_1 %>
   </div>
   <div class="field">
-    <%= f.label :weight_2 %><br>
-    <%= f.text_field :weight_2 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_2 %><br>
-    <%= f.text_field :reps_2 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_2 %><br>
+    <%= label_tag "2セット kg / 回数:メモ" %><br>
+    <%= f.number_field :weight_2, class: :num  %>
+    /<%= f.number_field :reps_2 ,:class => :num %>
     <%= f.text_field :memo_2 %>
   </div>
   <div class="field">
-    <%= f.label :weight_3 %><br>
-    <%= f.text_field :weight_3 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_3 %><br>
-    <%= f.text_field :reps_3 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_3 %><br>
+    <%= label_tag "3セット kg / 回数:メモ" %><br>
+    <%= f.number_field :weight_3, class: :num  %>
+    /<%= f.number_field :reps_3 ,:class => :num %>
     <%= f.text_field :memo_3 %>
   </div>
   <div class="field">
-    <%= f.label :weight_4 %><br>
-    <%= f.text_field :weight_4 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_4 %><br>
-    <%= f.text_field :reps_4 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_4 %><br>
+    <%= label_tag "4セット kg / 回数:メモ" %><br>
+    <%= f.number_field :weight_4, class: :num  %>
+    /<%= f.number_field :reps_4 ,:class => :num %>
     <%= f.text_field :memo_4 %>
   </div>
   <div class="field">
-    <%= f.label :weight_5 %><br>
-    <%= f.text_field :weight_5 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_5 %><br>
-    <%= f.text_field :reps_5 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_5 %><br>
+    <%= label_tag "5セット kg / 回数:メモ" %><br>
+    <%= f.number_field :weight_5, class: :num  %>
+    /<%= f.number_field :reps_5 ,:class => :num %>
     <%= f.text_field :memo_5 %>
-  </div>
-  <div class="field">
-    <%= f.label :weight_6 %><br>
-    <%= f.text_field :weight_6 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_6 %><br>
-    <%= f.text_field :reps_6 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_6 %><br>
-    <%= f.text_field :memo_6 %>
-  </div>
-  <div class="field">
-    <%= f.label :weight_7 %><br>
-    <%= f.text_field :weight_7 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_7 %><br>
-    <%= f.text_field :reps_7 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_7 %><br>
-    <%= f.text_field :memo_7 %>
-  </div>
-  <div class="field">
-    <%= f.label :weight_8 %><br>
-    <%= f.text_field :weight_8 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_8 %><br>
-    <%= f.text_field :reps_8 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_8 %><br>
-    <%= f.text_field :memo_8 %>
-  </div>
-  <div class="field">
-    <%= f.label :weight_9 %><br>
-    <%= f.text_field :weight_9 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_9 %><br>
-    <%= f.text_field :reps_9 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_9 %><br>
-    <%= f.text_field :memo_9 %>
-  </div>
-  <div class="field">
-    <%= f.label :weight_0 %><br>
-    <%= f.text_field :weight_0 %>
-  </div>
-  <div class="field">
-    <%= f.label :reps_0 %><br>
-    <%= f.text_field :reps_0 %>
-  </div>
-  <div class="field">
-    <%= f.label :memo_0 %><br>
-    <%= f.text_field :memo_0 %>
   </div>
   <div class="actions">
     <%= f.submit %>
