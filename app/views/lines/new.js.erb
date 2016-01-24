@@ -1,0 +1,6 @@
+# bodyの一番下にusers/_form.html.erbをレンダリングする
+# # jはescape_javascriptのアライアスで、改行などをエスケープする
+$("#ajax_new_line").append("<%= j(render("form"))%>");
+alert('OK');
+
+ 

@@ -16,9 +16,14 @@ end
       @line = Line.find(params[:id])
       if @line.update(line_params)
         format.html { redirect_to :pages, notice: 'Item was successfully updated.' }
+        format.js{}
+
         format.json { render :show, status: :ok, location: @line }
       else
         format.html { render :edit }
+        
+        format.js{}
+
         format.json { render json: @line.errors, status: :unprocessable_entity }
       end
     end
