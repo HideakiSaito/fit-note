@@ -5,4 +5,7 @@ class Line < ActiveRecord::Base
 
   validates :page, :item, :mode , presence: true
 
+  def print_label
+    page.page_label + '_' + item.name + '_' + no.to_s
+  end
 end
