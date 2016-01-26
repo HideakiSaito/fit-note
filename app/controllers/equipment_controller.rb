@@ -40,15 +40,25 @@ class EquipmentController < ApplicationController
   # PATCH/PUT /equipment/1
   # PATCH/PUT /equipment/1.json
   def update
-    respond_to do |format|
-      if @equipment.update(equipment_params)
-        format.html { redirect_to @equipment, notice: 'Equipment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @equipment }
-      else
-        format.html { render :edit }
-        format.json { render json: @equipment.errors, status: :unprocessable_entity }
-      end
+
+    @equipment = Equipment.find(params[:id])
+    if @equipment.update(equipment_params)
+      status = 'success'
+    else
+      status = 'error'
     end
+
+    render json: {status: status ,data: @equipment }
+
+    #  respond_to do |format|
+    #     if @equipment.update(equipment_params)
+    #       format.html { redirect_to @equipment, notice: 'Equipment was successfully updated.' }
+    #       format.json { render :show, status: :ok, location: @equipment }
+    #     else
+    #       format.html { render :edit }
+    #       format.json { render json: @equipment.errors, status: :unprocessable_entity }
+    #     end
+    #   end
   end
 
   # DELETE /equipment/1
@@ -62,13 +72,13 @@ class EquipmentController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_equipment
-      @equipment = Equipment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_equipment
+    @equipment = Equipment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def equipment_params
-      params.require(:equipment).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def equipment_params
+    params.require(:equipment).permit(:name)
+  end
 end

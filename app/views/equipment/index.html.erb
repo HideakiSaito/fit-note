@@ -1,28 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>トレーニング器具一覧</h1>
-
-<table class="table table-striped"
-       style="text-align: right; width: 100%;">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @equipment.each do |equipment| %>
-      <tr>
-        <td><%= equipment.name %></td>
-        <td><%= link_to 'Show', equipment %></td>
-        <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
-        <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<div id="equipments">
+  <% @equipment.each do |equipment| %>
+    <div class="equipment" >
+      <div class="viewr" >
+          <%= equipment.id %>.
+        <span class="body"><%= equipment.name %></span>
+        <%= button_tag '編集' ,class: 'edit' ,type: :button %>
+      </div>
+      <div class="editor">
+        <div>
+          <%= button_tag 'キャンセル',class: 'cancel' , type: :button %>
+        </div>
+        <%= render 'form2' , equipment: equipment %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <%= link_to 'New Equipment', new_equipment_path %>

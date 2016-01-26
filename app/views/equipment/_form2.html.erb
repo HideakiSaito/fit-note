@@ -1,0 +1,9 @@
+<%= form_for(equipment , remote: true) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name ,id: nil,class: 'body' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
