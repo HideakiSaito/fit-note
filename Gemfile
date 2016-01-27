@@ -66,3 +66,6 @@ gem "sparql"
 
 ## Add H.saito チャート###
 gem 'lazy_high_charts'
+## ページネーション
+gem 'will_paginate'
+
