@@ -19,6 +19,7 @@ $ ->
       toggleEditor $container
 
     .on 'ajax:complete', '.delete_equipment', (event,ajax,status) ->
+      alert(status)
       #項目削除
       $(this).closest('.equipment').remove()
 
