@@ -2,5 +2,9 @@
 
 <%= render 'form' %>
 
+<%= form_for @page, method: :delete  do |f| %>
+  <%= f.submit '削除', data:{ confirm: '削除していいですか？'} %>
+<% end %>
+
 <%= link_to 'Show', @page %> |
 <%= link_to 'Back', pages_path %>

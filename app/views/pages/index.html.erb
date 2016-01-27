@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>ノート</h1>
-
+<div class="pagination">
 <%= link_to 'コピーまたは、新規で新しいページを作る。', new_page_path %>
-
+</div>
 <% @pages.each do |page| %>
   <table style="vertical-align:baseline">
     <tr>
@@ -11,7 +11,7 @@
       <td>&nbsp;<%= page.start_time.strftime("%H:%S") %> ~ 
           <%= page.end_time.strftime("%H:%S") %></td>
       <td style="font-weight:bold;">&nbsp;&nbsp;&nbsp;<%= page.place %></td>
-      <td>&nbsp;&nbsp;&nbsp;<%= link_to 'Edit', edit_page_path(page) %></td>
+      <td>&nbsp;&nbsp;&nbsp;<%= link_to '編集', edit_page_path(page) %></td>
     </tr></table>
     <table class="table table-striped"
            style="text-align: right; width: 100%;">
@@ -19,25 +19,21 @@
         <tr>
           <th>
             no.training</th>
-          <th>1set</th>
-          <th>2set</th>
-          <th>3set</th>
-          <th>4set</th>
-          <th>5set</th>
+          <th style="text-align: right;">1set</th>
+          <th style="text-align: right;">2set</th>
+          <th style="text-align: right;">3set</th>
         </tr>
       </thead>
 
       <tbody>
         <% page.lines.order(:id).each do |line| %>
           <tr>
-            <td><%= line.no %>.
+            <td style="text-align: left;"><%= line.no %>.
               <%= line.item.name %>
             </td>
-            <td><%= line.weight_1 %>kg/<%= line.reps_1 %></td>
-            <td><%= line.weight_2 %>kg/<%= line.reps_2 %></td>
-            <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
-            <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
-            <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
+            <td><%= line.weight_1 %>/<%= line.reps_1 %></td>
+            <td><%= line.weight_2 %>/<%= line.reps_2 %></td>
+            <td><%= line.weight_3 %>/<%= line.reps_3 %></td>
             <td><%= link_to '編集', edit_line_path(line) %></td>
           </tr>
         <% end %>
