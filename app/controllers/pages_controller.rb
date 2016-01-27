@@ -1,7 +1,7 @@
 class PagesController < InheritedResources::Base
 
   def index
-    @pages = Page.order("id desc")
+    @pages = Page.order("date desc")
     .paginate(page: params[:page], per_page: 3)
   end
 
