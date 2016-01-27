@@ -5,6 +5,12 @@ class EquipmentController < ApplicationController
   # GET /equipment.json
   def index
     @equipment = Equipment.all
+    @new_equipment = Equipment.new
+
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json { render json: @equipment }
+    end
   end
 
   # GET /equipment/1
@@ -26,15 +32,25 @@ class EquipmentController < ApplicationController
   def create
     @equipment = Equipment.new(equipment_params)
 
-    respond_to do |format|
-      if @equipment.save
-        format.html { redirect_to @equipment, notice: 'Equipment was successfully created.' }
-        format.json { render :show, status: :created, location: @equipment }
-      else
-        format.html { render :new }
-        format.json { render json: @equipment.errors, status: :unprocessable_entity }
-      end
+    if @equipment.save
+      status = 'success'
+      html = render_to_string partial: 'show',
+        locals: { equipment: @equipment }
+    else
+      status = 'error'
     end
+
+    render json: { status: status, data: @equipment, html:html }
+
+ #   respond_to do |format|
+ #     if @equipment.save
+ #       format.html { redirect_to @equipment, notice: 'Equipment was successfully created.' }
+ #       format.json { render :show, status: :created, location: @equipment }
+ #     else
+ #       format.html { render :new }
+ #       format.json { render json: @equipment.errors, status: :unprocessable_entity }
+ #     end
+      #   end
   end
 
   # PATCH/PUT /equipment/1
@@ -65,10 +81,12 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1.json
   def destroy
     @equipment.destroy
-    respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: 'Equipment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render json: {status: 'success' ,data: @equipment }
+
+  #  respond_to do |format|
+  #    format.html { redirect_to equipment_index_url, notice: 'Equipment was successfully destroyed.' }
+  #    format.json { head :no_content }
+  #  end
   end
 
   private

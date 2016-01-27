@@ -18,6 +18,20 @@ $ ->
       #トグル切り替え
       toggleEditor $container
 
+    .on 'ajax:complete', '.delete_equipment', (event,ajax,status) ->
+      #項目削除
+      $(this).closest('.equipment').remove()
+
+  $('#new_equipment')
+    .on 'ajax:complete', (event,ajax,status) ->
+      alert(status)
+      response = $.parseJSON(ajax.responseText)
+      html = response.html
+      #がめんに追加
+      $('#equipments').append html
+      #初期化
+      $(this)[0].reset()
+
 #切り替え関数
 toggleEditor = ($container) ->
   $container.find('.viewr, .editor').toggle()

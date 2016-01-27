@@ -1,0 +1,17 @@
+<div class="equipment" >
+  <div class="viewr" >
+    <%= equipment.id %>.
+    <span class="body"><%= equipment.name %></span>
+    <%= button_tag '編集' ,class: 'edit' ,type: :button %>
+  </div>
+  <div class="editor">
+    <div>
+      <%= button_tag 'キャンセル',class: 'cancel' , type: :button %>
+    </div>
+    <%= render 'form2' , equipment: equipment %>
+    <%= form_for equipment, method: :delete, remorte: true,
+      html:{ id: nil,class: 'delete_equipment' } do |f| %>
+      <%= f.submit '削除' %>
+    <% end %>
+  </div>
+</div>
