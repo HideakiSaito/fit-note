@@ -4,7 +4,9 @@ class ModesController < ApplicationController
   # GET /modes
   # GET /modes.json
   def index
+    @search_form = SearchForm.new params[:search_form]
     @modes = Mode.all
+    @modes = @modes.search @search_form.q if @search_form.q.present?
   end
 
   # GET /modes/1

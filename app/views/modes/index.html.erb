@@ -2,6 +2,11 @@
 
 <h1>トレーニング方式一覧</h1>
 
+<%= form_for @search_form , :url => modes_path, :remote => true, :html => {:method => :get} do |f| %>
+  <%= f.search_field :q %>
+  <%= f.submit '検索' %>
+<% end %>
+
 <table class="table table-striped"
        style="text-align: right; width: 100%;">
   <thead>
@@ -11,17 +16,8 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
-  <tbody>
-    <% @modes.each do |mode| %>
-      <tr>
-        <td><%= mode.name %></td>
-        <td><%= mode.detail %></td>
-        <td><%= link_to 'Show', mode %></td>
-        <td><%= link_to 'Edit', edit_mode_path(mode) %></td>
-        <td><%= link_to 'Destroy', mode, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody id = "modes">
+    <%= render @modes %>
   </tbody>
 </table>
 
