@@ -1,0 +1,3 @@
+alert(' <%= @equipment.size %>');
+
+$('#equipments').html('<% @equipment.each do |equipment| %><%= render 'show' ,equipment: equipment  %><% end %>');

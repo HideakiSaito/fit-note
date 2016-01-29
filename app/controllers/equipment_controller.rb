@@ -6,11 +6,14 @@ class EquipmentController < ApplicationController
   def index
     @equipment = Equipment.all
     @new_equipment = Equipment.new
+    @search_form = SearchForm.new(params[:search_form]) 
+@equipment = @equipment.search(@search_form.q) if  @search_form.q.present?
 
-    respond_to do |format|
-      format.html #index.html.erb
-      format.json { render json: @equipment }
-    end
+
+ #   respond_to do |format|
+ #     format.html #index.html.erb
+ #     format.json { render :index }
+ #   end
   end
 
   # GET /equipment/1
