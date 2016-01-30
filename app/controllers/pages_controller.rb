@@ -5,12 +5,16 @@ class PagesController < InheritedResources::Base
     .paginate(page: params[:page], per_page: 3)
   end
 
+  # GET /items/new
+  def new
+#    @page = Page.new(:start_time Time.now , :end_time Time.now )
+    @page = Page.new
+    @page.end_time = Time.now + 2.5 * 60 * 60
+  end
+
   def create
-
     @page = Page.new(page_params)
-
     copy_line
-
     respond_to do |format|
       if @page.save
         message = 'Page was successfully updated.'
@@ -29,12 +33,9 @@ class PagesController < InheritedResources::Base
   end
 
   def update
-
     @page = Page.find(params[:id])
     @page.assign_attributes(page_params)
-
     copy_line
-
     respond_to do |format|
       if @page.save
         message = 'Page was successfully updated.'

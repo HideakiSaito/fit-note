@@ -8,8 +8,8 @@
   <table style="vertical-align:baseline">
     <tr>
       <td style="font-weight:bold;font-size:1.5em;"><%= page.date.strftime("%Y/%m/%d(%a)") %></td>
-      <td>&nbsp;<%= page.start_time.strftime("%H:%S") %> ~ 
-          <%= page.end_time.strftime("%H:%S") %></td>
+      <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
+          <%= page.end_time.strftime("%H:%M") %></td>
       <td style="font-weight:bold;">&nbsp;&nbsp;&nbsp;<%= page.place %></td>
       <td>&nbsp;&nbsp;&nbsp;<%= link_to '編集', edit_page_path(page) %></td>
     </tr></table>
