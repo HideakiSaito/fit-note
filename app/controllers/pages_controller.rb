@@ -17,7 +17,7 @@ class PagesController < InheritedResources::Base
         unless @new_lines.empty?
           message += 'Copy Lines!!!'
         end
-        format.html { redirect_to page_index_path,
+        format.html { redirect_to pages_path,
                       notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
@@ -58,7 +58,8 @@ class PagesController < InheritedResources::Base
     if  params[:page_copy] = 1
       @copy_lines = Page.find(params[:copy_page][:id]).lines
       @new_lines = @copy_lines.map do |copy_line| 
-        new_line = Line.new(item_id: copy_line.item_id,
+        new_line = Line.new(no: copy_line.no,
+                            item_id: copy_line.item_id,
                             mode_id: copy_line.mode_id,
                             weight_1: copy_line.weight_1,
                             weight_2: copy_line.weight_2,
