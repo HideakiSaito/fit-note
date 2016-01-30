@@ -40,7 +40,7 @@ class PagesController < InheritedResources::Base
     respond_to do |format|
       if @page.save
         message = 'Page was successfully updated.'
-        unless @new_lines.empty?
+        unless @new_lines.nil?
           message += 'Copy Lines!!!'
         end
         format.html { redirect_to @page,
@@ -57,7 +57,7 @@ class PagesController < InheritedResources::Base
   private
   def copy_line
     #ここで、コピーするなら過去の、トレーニングを取得する
-    if  params[:page_copy] = 1
+    if  params[:page_copy] = 1 &&  @page.lines.empty?
       @copy_lines = Page.find(params[:copy_page][:id]).lines
       @new_lines = @copy_lines.map do |copy_line| 
         new_line = Line.new(no: copy_line.no,

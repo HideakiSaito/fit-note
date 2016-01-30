@@ -1,5 +1,9 @@
 class LinesController < InheritedResources::Base
 
+  def index
+    @lines = Line.all.order("page_id desc,no asc")
+  end
+
   def new
     # @training = Training.new :num => Training.get_now_num
     @line = Line.new :no => 1 , :mode_id => 1

@@ -18,7 +18,7 @@
   <div class="field">
     <%= f.label :page_id %><br>
     <%= f.collection_select :page_id ,
-      Page.all, :id ,:page_label ,
+      Page.all.order("date desc") , :id ,:page_label ,
         :prompt => true %>
     <%= f.number_field :no , class: :num %>
   </div>
