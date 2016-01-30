@@ -31,6 +31,17 @@ class LinesController < InheritedResources::Base
     end
   end
 
+  # DELETE /items/1
+  # DELETE /items/1.json
+  def destroy
+    @line = Line.find(params[:id])
+    @line.destroy
+    respond_to do |format|
+      format.html { redirect_to pages_url, notice: 'Item was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def line_params

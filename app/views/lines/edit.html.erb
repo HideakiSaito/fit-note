@@ -5,6 +5,9 @@
 
 <%= render 'form' %>
 
+<%= form_for @line, method: :delete  do |f| %>
+  <%= f.submit '削除', data:{ confirm: '削除していいですか？'} %>
+<% end %>
 
 <%= link_to 'Show', @line %> |
 <%= link_to 'Back', lines_path %>

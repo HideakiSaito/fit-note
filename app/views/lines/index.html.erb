@@ -16,8 +16,6 @@
       <th>set 1</th>
       <th>set 2</th>
       <th>set 3</th>
-      <th>set 4</th>
-      <th>set 5</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,14 +27,11 @@
         <%= line.page.date %><%= line.page.place %>
         </td>
         <td><%= line.no %></td>
-        <td><%= line.item %>
-        </td>
-        <td><%= line.mode %></td>
+        <td><%= line.item.name %></td>
+        <td><%= line.mode.name %></td>
         <td><%= line.weight_1 %>kg/<%= line.reps_1 %></td>
         <td><%= line.weight_2 %>kg/<%= line.reps_2 %></td>
         <td><%= line.weight_3 %>kg/<%= line.reps_3 %></td>
-        <td><%= line.weight_4 %>kg/<%= line.reps_4 %></td>
-        <td><%= line.weight_5 %>kg/<%= line.reps_5 %></td>
         <td><%= link_to 'Show', line %></td>
         <td><%= link_to 'Edit', edit_line_path(line) %></td>
         <td><%= link_to 'Destroy', line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
