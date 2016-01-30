@@ -1,3 +1,8 @@
+
+<div class="pagination">
+<%= link_to 'ノートに戻る',pages_path  %> 
+</div>
+
 <%= form_for(@line , :remote=>true) do |f| %>
   <% if @line.errors.any? %>
     <div id="error_explanation">
