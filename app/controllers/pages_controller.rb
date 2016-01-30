@@ -14,11 +14,12 @@ class PagesController < InheritedResources::Base
 
   def create
     @page = Page.new(page_params)
-    copy_line
+    @new_lines = nil
+  #  copy_line
     respond_to do |format|
       if @page.save
         message = 'Page was successfully updated.'
-        unless @new_lines.empty?
+        unless @new_lines.nil?
           message += 'Copy Lines!!!'
         end
         format.html { redirect_to pages_path,
