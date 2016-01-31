@@ -1,0 +1,9 @@
+<% if @status == "success" %>
+    // trを呼び出す
+$('#result').html(" 更新しました。 line: <%= @line.print_label %>");
+alert(" 更新しました。 line: <%= @line.print_label %>");
+<% elsif @status == "fail" %>
+    // バリデーションに失敗したときの処理
+  alert("error!");
+<% end %>
+

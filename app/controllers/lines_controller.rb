@@ -6,12 +6,26 @@ class LinesController < InheritedResources::Base
 
   def new
     # @training = Training.new :num => Training.get_now_num
-    @line = Line.new :no => 1 , :mode_id => 1
+    now_no = Line.get_now_no(params[:page_id])
+    @line = Line.new :no => now_no , :mode_id => 1
     if params[:page_id]
       @line.page_id = params[:page_id]  
     end
   end
 
+  # POST /items
+  # POST /items.json
+  def create
+    @line = Line.new(line_params)
+
+    respond_to do |format|
+      if @line.save
+        format.js { @status = 'success' }
+      else
+        format.js { @status = 'fail' }
+      end
+    end
+  end
 
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
@@ -26,7 +40,6 @@ class LinesController < InheritedResources::Base
         format.json { render :show, status: :ok, location: @line }
       else
         format.html { render :edit }
-
         # フォーマットがjsの時の処理
         #       # @statusに”fail”を代入してjsファイルに渡している。
         format.js { @status = 'fail' }

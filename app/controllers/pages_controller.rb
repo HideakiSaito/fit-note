@@ -22,13 +22,10 @@ class PagesController < InheritedResources::Base
         unless @new_lines.nil?
           message += 'Copy Lines!!!'
         end
-        format.html { redirect_to pages_path,
-                      notice: 'Page was successfully created.' }
-        format.json { render :show, status: :created, location: @page }
+        format.html { redirect_to pages_path, method: :get,
+                      notice: message }
       else
         format.html { render :new }
-        format.json { render json: @page.errors, 
-                      status: :unprocessable_entity }
       end
     end
   end
@@ -45,11 +42,8 @@ class PagesController < InheritedResources::Base
         end
         format.html { redirect_to @page,
                       notice: message }
-        format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
-        format.json { render json: @page.errors, 
-                      status: :unprocessable_entity }
       end
     end
   end
