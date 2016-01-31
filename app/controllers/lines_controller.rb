@@ -2,6 +2,8 @@ class LinesController < InheritedResources::Base
 
   def index
     @lines = Line.all.order("page_id desc,no asc")
+    @next_line = nil
+    @prev_line = nil
   end
 
   def new
