@@ -13,6 +13,19 @@ class LinesController < InheritedResources::Base
     if params[:page_id]
       @line.page_id = params[:page_id]  
     end
+    @next_line = nil
+    @prev_line = nil
+  end
+
+  def edit
+    @line = Line.find(params[:id])
+    if @line.no != nil
+      @next_line = Line.where("page_id = '#{@line.page_id}' and no = #{@line.no + 1}").first
+      @prev_line = Line.where("page_id = '#{@line.page_id}' and no = #{@line.no - 1}").first
+    else
+      @next_line = nil
+      @prev_line = nil
+    end
   end
 
   # POST /items

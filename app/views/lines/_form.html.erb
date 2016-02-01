@@ -1,74 +1,72 @@
-
 <div class="pagination">
-<%= link_to 'ノートに戻る',pages_path  %> 
+  <%= link_to 'ノートに戻る',pages_path  %> 
 </div>
 <div class="pagination">
-<%= link_to '前へ', @prev_line %> 
-</div>
-<div class="pagination">
-<%= link_to '次へ', @next_line%> 
-</div>
-
-<%= form_for(@line , :remote=>true) do |f| %>
-  <% if @line.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@line.errors.count, "error") %> prohibited this line from being saved:</h2>
-      <ul>
-      <% @line.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <% if @prev_line %>
+    <%= link_to '前へ[' + @prev_line.item.part.name + ']' , [:edit, @prev_line] %> 
+  <% else %>
+    <a>先頭です。</a>
   <% end %>
-
+</div>
+<div class="pagination">
+  <% if @next_line %>
+    <%= link_to '次へ[' + @next_line.item.part.name + ']', [:edit, @next_line] %> 
+  <% else %>
+    <a>最後です。</a>
+  <% end %>
+</div>
+<%= form_for(@line , :remote=>true) do |f| %>
+  <span id="err_span">
+    <%= render "shared/errors" ,obj: @line %>
+  </span>
   <div class="field">
     <%= f.label :page_id %><br>
     <%= f.collection_select :page_id ,
       Page.all.order("date desc") , :id ,:page_label ,
-        :prompt => true %>
+      :prompt => true %>
     <%= f.number_field :no , class: :num %>
   </div>
   <div class="field">
     <%= f.label :item_id %><br>
     <%= f.collection_select :item_id ,
-    Item.all, :id , :name ,
+      Item.all, :id , :name ,
       :prompt => true %>
-  </div>
-  <div class="field">
-    <%= f.label :mode_id %><br>
-    <%= f.collection_select :mode_id ,
+</div>
+<div class="field">
+  <%= f.label :mode_id %><br>
+  <%= f.collection_select :mode_id ,
     Mode.all, :id , :name ,
-      :prompt => true %>
+    :prompt => true %>
   </div>
   <div class="field">
     <%= label_tag "1セット kg / 回数:メモ" %><br>
     <%= f.number_field :weight_1, class: :num  %>
     /<%= f.number_field :reps_1 ,:class => :num %>
-    <%= f.text_field :memo_1 %>
+  <%= f.text_field :memo_1 %>
   </div>
   <div class="field">
     <%= label_tag "2セット kg / 回数:メモ" %><br>
     <%= f.number_field :weight_2, class: :num  %>
     /<%= f.number_field :reps_2 ,:class => :num %>
-    <%= f.text_field :memo_2 %>
+  <%= f.text_field :memo_2 %>
   </div>
   <div class="field">
     <%= label_tag "3セット kg / 回数:メモ" %><br>
     <%= f.number_field :weight_3, class: :num  %>
     /<%= f.number_field :reps_3 ,:class => :num %>
-    <%= f.text_field :memo_3 %>
+  <%= f.text_field :memo_3 %>
   </div>
   <div class="field">
     <%= label_tag "4セット kg / 回数:メモ" %><br>
     <%= f.number_field :weight_4, class: :num  %>
     /<%= f.number_field :reps_4 ,:class => :num %>
-    <%= f.text_field :memo_4 %>
+  <%= f.text_field :memo_4 %>
   </div>
   <div class="field">
     <%= label_tag "5セット kg / 回数:メモ" %><br>
     <%= f.number_field :weight_5, class: :num  %>
     /<%= f.number_field :reps_5 ,:class => :num %>
-    <%= f.text_field :memo_5 %>
+  <%= f.text_field :memo_5 %>
   </div>
   <div class="actions">
     <%= f.submit %>

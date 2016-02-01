@@ -3,7 +3,7 @@ class Line < ActiveRecord::Base
   belongs_to :item
   belongs_to :mode
 
-  validates :page, :item, :mode , presence: true
+  validates :page, :no, :item, :mode , presence: true
 
   #スコープ
   scope :default_order , -> do

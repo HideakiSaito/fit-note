@@ -3,7 +3,8 @@
 $('#result').html(" 追加しました。 line: <%= @line.print_label %>");
 alert(" 追加しました。 line: <%= @line.print_label %>");
 <% elsif @status == "fail" %>
+alert("<%= @line.errors %>");
     // バリデーションに失敗したときの処理
-  alert("error!");
+$('#err_span').html("<%= render "shared/errors" ,obj: @line %>");
 <% end %>
 
