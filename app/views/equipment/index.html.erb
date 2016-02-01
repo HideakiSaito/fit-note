@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_for @search_form , :url => equipment_index_url , :remote => true, :html => {:method => :get} do |f| %>
-  <%= f.search_field :q %>
-  <%= f.submit '検索' %>
-<% end %>
-
 <h1>トレーニング器具一覧</h1>
+<a href="http://ginpen.com/2011/11/28/ajax-on-rails/">ajaxのCRUD参考サイト</a>
 <div id="equipments">
   <% @equipment.each do |equipment| %>
     <%= render 'show' , equipment: equipment %>

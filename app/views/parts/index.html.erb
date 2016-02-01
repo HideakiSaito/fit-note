@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>トレーニング部位一覧</h1>
-
+<input type="search" placeholder="change on search" id="search" />
+<a href="http://www.upty.jp/railsandajax-2-create-sample-ajax/">ajax参考サイト</a>
 <table class="table table-striped"
        style="text-align: right; width: 100%;">
   <thead>
@@ -13,12 +14,7 @@
 
   <tbody>
     <% @parts.each do |part| %>
-      <tr>
-        <td><%= part.name %></td>
-        <td><%= link_to 'Show', part %></td>
-        <td><%= link_to 'Edit', edit_part_path(part) %></td>
-        <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= render("tr", part: part) %>
     <% end %>
   </tbody>
 </table>

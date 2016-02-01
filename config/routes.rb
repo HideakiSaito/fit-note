@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     collection { get "search"}
   end
   resources :equipment
-  resources :parts
+  resources :parts do
+    get "search", to: "parts#search", on: :collection
+  end
   resources :modes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

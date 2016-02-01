@@ -5,6 +5,7 @@
 <%= form_for @search_form , :url => modes_path, :remote => true, :html => {:method => :get} do |f| %>
   <%= f.search_field :q %>
   <%= f.submit '検索' %>
+  <a href="http://d.hatena.ne.jp/kitokitoki/20120808/p1">ajax参考サイト</a>
 <% end %>
 
 <table class="table table-striped"

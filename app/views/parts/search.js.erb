@@ -1,0 +1,5 @@
+$("tbody").children().remove();
+alert("remove()");
+<% @parts.each do |part| %>
+  $("tbody").append("<%= j(render("tr", part: part)) %>");
+<% end %>
