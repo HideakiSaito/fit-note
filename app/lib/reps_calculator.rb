@@ -33,6 +33,7 @@ module RepsCalculator
   end
 
   def line_max_reps(line)
+    max = 0
     max = max_reps(line.weight_1,line.reps_1)
     #2回目をチェック
     temp = max_reps(line.weight_2,line.reps_2)
@@ -41,11 +42,11 @@ module RepsCalculator
     temp = max_reps(line.weight_3,line.reps_3)
     max = temp if temp > max
     #4回目をチェック
-    temp = max_reps(line.weight_4,line.reps_4)
-    max = temp if temp > max
+   # temp = max_reps(line.weight_4,line.reps_4)
+   # max = temp if temp > max
     #5回目をチェック
-    temp = max_reps(line.weight_5,line.reps_5)
-    max = temp if temp > max
+   # temp = max_reps(line.weight_5,line.reps_5)
+   # max = temp if temp > max
     return max
   end
 end
