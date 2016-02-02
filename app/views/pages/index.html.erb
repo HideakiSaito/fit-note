@@ -22,6 +22,7 @@
           <th style="text-align: right;">1set</th>
           <th style="text-align: right;">2set</th>
           <th style="text-align: right;">3set</th>
+          <th style="text-align: right;">MaxPower</th>
         </tr>
       </thead>
 
@@ -34,6 +35,7 @@
             <td><%= line.weight_1 %>/<%= line.reps_1 %></td>
             <td><%= line.weight_2 %>/<%= line.reps_2 %></td>
             <td><%= line.weight_3 %>/<%= line.reps_3 %></td>
+            <td><%= line.this_max_reps %></td>
             <td><%= link_to '編集', edit_line_path(line) %></td>
           </tr>
         <% end %>

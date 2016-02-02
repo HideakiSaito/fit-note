@@ -1,4 +1,9 @@
 class Line < ActiveRecord::Base
+
+include RepsCalculator
+include EmailAddressChecker
+include Com
+
   belongs_to :page
   belongs_to :item
   belongs_to :mode
@@ -18,5 +23,9 @@ class Line < ActiveRecord::Base
 
   def print_label
     page.page_label + '_' + item.name + '_' + no.to_s
+  end
+  
+  def this_max_reps
+    line_max_reps(self)
   end
 end
