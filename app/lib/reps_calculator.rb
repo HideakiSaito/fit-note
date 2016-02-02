@@ -11,6 +11,7 @@ module RepsCalculator
        weight = 65.0 +  weight
      end
      ### 係数の計算
+     coefficient = 0.25
      #1回はMAX
      coefficient = 1.0 if count == 1
      #2-5回は2.5％づつ下がる。 
@@ -22,6 +23,10 @@ module RepsCalculator
      if count >= 6 
        temp = count -5
        coefficient = 0.9 - (0.02 * temp)
+     end
+     ### 変なあたいがあると０除算とかするので
+     if coefficient < 0.25
+      coefficient = 0.25
      end
      ###MAX挙上重量を計算する
      return weight * (1.0 / coefficient )
