@@ -29,7 +29,7 @@ module RepsCalculator
       coefficient = 0.25
      end
      ###MAX挙上重量を計算する
-     return weight * (1.0 / coefficient )
+     return (weight * (1.0 / coefficient )).round(2)
   end
 
   def line_max_reps(line)
