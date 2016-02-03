@@ -15,13 +15,13 @@ module RepsCalculator
      #1回はMAX
      coefficient = 1.0 if count == 1
      #2-5回は2.5％づつ下がる。 
-     if count >= 2 and count <= 5
-       temp = count -1
+     if count >1.0 and count <= 5.0
+       temp = count - 1.0
        coefficient = 1.0 - (0.025 * temp)
      end
      #6回以上は90%から2%づつ下がる。
-     if count >= 6 
-       temp = count -5
+     if count > 5.0
+       temp = count - 5.0
        coefficient = 0.9 - (0.02 * temp)
      end
      ### 変なあたいがあると０除算とかするので
