@@ -2,8 +2,8 @@ class AnalysisController < ApplicationController
   def index
     #Big3 items id
     push_id = [1,2]
-    pull_id = [4,5,6]
-    leg_id = [9,18,10]
+    pull_id = [4,18,5,6]
+    leg_id = [9,10]
     #get data
 ##    dates = Page.order(:date).map(&:date)
     dates = Page.order(:date).map do |page|
