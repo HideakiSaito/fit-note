@@ -1,15 +1,38 @@
 class AnalysisController < ApplicationController
   def index
-
-   #get data
-   dates = Page.order(:date).map(&:date)
-
-
-    #ここにグラフ
-    date = ['01/10','10/13','01/17','01/20']
-    data_push = [80,80,85,87.5]
-    data_pull = [100,100,95,100]
-    data_leg = [85,90,85,90]
+    #Big3 items id
+    push_id = 1
+    pull_id = 4
+    leg_id = 9
+    #get data
+    dates = Page.order(:date).map(&:date)
+    #グラフdata push
+    data_push = Page.order(:date).map do |page|
+      push_line = page.lines.where("item_id = ?", push_id).first
+      if push_line != nil
+        push_line.this_max_reps.to_i
+      else
+        0
+      end
+    end
+    #グラフdata pull
+    data_pull = Page.order(:date).map do |page|
+      pull_line = page.lines.where("item_id = ?", pull_id).first
+      if pull_line != nil
+        pull_line.this_max_reps.to_i
+      else
+        0
+      end
+    end
+    #グラフdata leg 
+    data_leg = Page.order(:date).map do |page|
+      leg_line = page.lines.where("item_id = ?", leg_id).first
+      if leg_line != nil
+        leg_line.this_max_reps.to_i
+      else
+        0
+      end
+    end
 
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'H.Saitoさんのトレーニング推移')
