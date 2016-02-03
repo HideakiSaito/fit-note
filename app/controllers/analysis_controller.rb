@@ -1,14 +1,14 @@
 class AnalysisController < ApplicationController
   def index
     #Big3 items id
-    push_id = 1
-    pull_id = 4
-    leg_id = 9
+    push_id = [1,2]
+    pull_id = [4,5,6]
+    leg_id = [9,10,18]
     #get data
     dates = Page.order(:date).map(&:date)
     #グラフdata push
     data_push = Page.order(:date).map do |page|
-      push_line = page.lines.where("item_id = ?", push_id).first
+      push_line = page.lines.where(item_id: push_id).first
       if push_line != nil
         push_line.this_max_reps.to_i
       else
@@ -17,7 +17,7 @@ class AnalysisController < ApplicationController
     end
     #グラフdata pull
     data_pull = Page.order(:date).map do |page|
-      pull_line = page.lines.where("item_id = ?", pull_id).first
+      pull_line = page.lines.where(item_id: pull_id).first
       if pull_line != nil
         pull_line.this_max_reps.to_i
       else
@@ -26,7 +26,7 @@ class AnalysisController < ApplicationController
     end
     #グラフdata leg 
     data_leg = Page.order(:date).map do |page|
-      leg_line = page.lines.where("item_id = ?", leg_id).first
+      leg_line = page.lines.where(item_id: leg_id).first
       if leg_line != nil
         leg_line.this_max_reps.to_i
       else
