@@ -5,7 +5,10 @@ class AnalysisController < ApplicationController
     pull_id = [4,5,6]
     leg_id = [9,10,18]
     #get data
-    dates = Page.order(:date).map(&:date)
+##    dates = Page.order(:date).map(&:date)
+    dates = Page.order(:date).map do |page|
+      page.date.strftime("%y/%m/%d(%a)") + "[" + page.place + "]"
+    end
     #グラフdata push
     data_push = Page.order(:date).map do |page|
       push_line = page.lines.where(item_id: push_id).first
