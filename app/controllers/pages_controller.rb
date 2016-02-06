@@ -18,6 +18,8 @@ class PagesController < InheritedResources::Base
   #  copy_line
     respond_to do |format|
       if @page.save
+        copy_line
+        @page.save
         message = 'Page was successfully updated.'
         unless @new_lines.nil?
           message += 'Copy Lines!!!'
