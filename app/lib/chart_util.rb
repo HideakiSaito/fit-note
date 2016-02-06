@@ -5,8 +5,12 @@ module ChartUtil
    @@pages = analysis_pages(search_key)
   end
   def analysis_pages(search_key)
-    #ここは検索 条件つける
-    Page.order(:date) 
+    if search_key.presence
+      #場所ごとに見れればいいや
+      Page.where(place: search_key).order(:date) 
+    else
+      Page.order(:date) 
+    end
   end
   def chart_dates
     dates = @@pages.map do |page|

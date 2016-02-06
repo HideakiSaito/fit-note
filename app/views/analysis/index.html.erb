@@ -1,18 +1,11 @@
 <h1>トレーニング分析</h1>
-
-<p>
-ここにBIG3の推移のグラフ
-</p>
-
-<p>
-目標設定までの推移とか。バラんすの円グラフと、チャートとかとか
-</p>
-
-
-<div id="big3chart">
-<%= high_chart("bar_chart", @graph) %>
+<p> 目標設定までの推移とか。トレーニング部位のバランス </p>
+<div id="chart_in_gym">
+<%= high_chart("chart_in_gym", @graph_gym) %>
 </div>
-
+<div id="chart_in_home">
+<%= high_chart("chart_in_home", @graph_home) %>
+</div>
 <div id="big3">
   <%= high_chart("pie_chart", @graph_pie) %>
 </div>
