@@ -5,6 +5,11 @@ class PagesController < InheritedResources::Base
     @pages = Page.order("date desc")
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 3)
+    respond_to do |format|
+      format.html #default template
+      format.js   #default template
+      format.json { @pages = Page.order("date desc") } #jsonは全部
+    end
   end
 
   # GET /items/new

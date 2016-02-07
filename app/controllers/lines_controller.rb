@@ -2,8 +2,11 @@ class LinesController < InheritedResources::Base
 
   def index
     @lines = Line.all.order("page_id desc,no asc")
-    @next_line = nil
-    @prev_line = nil
+    respond_to do |format|
+      format.html #default template
+      format.js   #default template
+      format.json  #jsonは全部 とりあえずデフォルトでいい
+    end
   end
 
   def new
