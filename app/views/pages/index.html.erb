@@ -11,4 +11,12 @@
 <div id="pages"><%= render @pages %></div>
 <br>
 <%= will_paginate @pages %>
-
+<p>
+<%= link_to "Download CSV", pages_path(format: "csv") %>
+</p>
+<p>
+<%= link_to "Download JSON", pages_path(format: "json") %>
+</p>
+<p>
+<%= link_to "Download YAML", pages_path(format: "yaml") %>
+</p>
