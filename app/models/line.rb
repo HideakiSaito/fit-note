@@ -47,9 +47,9 @@ class Line < ActiveRecord::Base
       r = reps_3
       m = memo_3
     when 4 
-      w = weight_3 
-      r = reps_3
-      m = memo_3
+      w = weight_4 
+      r = reps_4
+      m = memo_4
     when 5 
       w = weight_5 
       r = reps_5
@@ -57,6 +57,7 @@ class Line < ActiveRecord::Base
     end
     w ||= ""
     r ||= ""
+    m ||= ""
     "前回＞" + w.to_s + "/" + r.to_s + " : " + m
   end
 
