@@ -1,8 +1,10 @@
 class PagesController < InheritedResources::Base
 
   def index
+    @search_form = SearchForm.new params[:search_form]
     @pages = Page.order("date desc")
-    .paginate(page: params[:page], per_page: 3)
+    @pages = @pages.search @search_form.q if @search_form.q.present?
+    @pages = @pages.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /items/new

@@ -1,0 +1,49 @@
+<table style="vertical-align:baseline">
+  <tr>
+    <td style="font-weight:bold;font-size:1.5em;">
+      <%= page.date.strftime("%Y/%m/%d(%a)") %>
+    </td>
+    <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
+      <%= page.end_time.strftime("%H:%M") %>
+    </td>
+    <td style="font-weight:bold;">
+      &nbsp;&nbsp;&nbsp;<%= page.place %>
+    </td>
+    <td>
+      &nbsp;&nbsp;&nbsp;<%= link_to '編集', edit_page_path(page) %>
+    </td>
+  </tr>
+</table>
+<table class="table table-striped"
+       style="text-align: right; width: 100%;">
+  <thead>
+    <tr>
+      <th>
+        no.training</th>
+      <th style="text-align: right;">1set</th>
+      <th style="text-align: right;">2set</th>
+      <th style="text-align: right;">3set</th>
+      <th style="text-align: right;">MaxPower</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% page.lines.order(:id).each do |line| %>
+      <tr>
+        <td style="text-align: left;"><%= line.no %>.
+          <%= line.item.name %>
+        </td>
+        <td><%= line.weight_1 %>/<%= line.reps_1 %></td>
+        <td><%= line.weight_2 %>/<%= line.reps_2 %></td>
+        <td><%= line.weight_3 %>/<%= line.reps_3 %></td>
+        <td><%= line.this_max_reps %></td>
+        <td><%= link_to '編集', edit_line_path(line) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="7" 
+          style="text-align: left; width: 100%;">
+        <%= link_to '行を追加する。', new_page_line_path(page) %>||
+      </td>
+    </tr>
+  </tbody>
+</table>
