@@ -63,12 +63,7 @@ class PagesController < InheritedResources::Base
                             weight_2: copy_line.weight_2,
                             weight_3: copy_line.weight_3,
                             weight_4: copy_line.weight_4,
-                            weight_5: copy_line.weight_5,
-                            memo_1: copy_line.reps_1,
-                            memo_2: copy_line.reps_2,
-                            memo_3: copy_line.reps_3,
-                            memo_4: copy_line.reps_4,
-                            memo_5: copy_line.reps_5
+                            weight_5: copy_line.weight_5
                            )
         new_line.save
         @page.lines << new_line

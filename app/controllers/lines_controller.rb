@@ -15,10 +15,12 @@ class LinesController < InheritedResources::Base
     end
     @next_line = nil
     @prev_line = nil
+    @last_line = nil
   end
 
   def edit
     @line = Line.find(params[:id])
+    #前後のlineへナビゲーション用
     if @line.no != nil
       @next_line = Line.where("page_id = '#{@line.page_id}' and no = #{@line.no + 1}").first
       @prev_line = Line.where("page_id = '#{@line.page_id}' and no = #{@line.no - 1}").first
@@ -26,6 +28,8 @@ class LinesController < InheritedResources::Base
       @next_line = nil
       @prev_line = nil
     end
+    #前回のトレーニング取得
+    @last_line = @line.get_last_line
   end
 
   # POST /items
