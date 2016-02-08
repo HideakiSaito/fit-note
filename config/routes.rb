@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   resources :analysis
-  resources :lines
+  resources :lines do
+    collection { post :import }
+  end
   resources :pages do
     resources :lines
+    collection { post :import }
   end
   ActiveAdmin.routes(self)
-    root :to => 'welcome#index', :as => 'home'
+  root :to => 'welcome#index', :as => 'home'
   resources :trainings
   resources :items do
     collection { get "search"}

@@ -9,11 +9,20 @@
   <%= link_to 'コピーまたは、新規で新しいページを作る。', new_page_path %>
 </div>
 <div id="pages"><%= render @pages %></div>
-<br>
 <%= will_paginate @pages %>
-<p>
-<%= link_to "Download Pages JSON", pages_path(format: "json") %>
-</p>
-<p>
-<%= link_to "Download Lines JSON", lines_path(format: "json") %>
-</p>
+<hr>  
+<%= form_tag import_pages_path, multipart: true do %>
+  <p>
+  <%= link_to "Download Pages JSON", pages_path(format: "json") %>
+  </p>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Pages JSON インポート" %>
+<% end %>
+<hr>
+<%= form_tag import_lines_path, multipart: true do %>
+  <p>
+  <%= link_to "Download Lines JSON", lines_path(format: "json") %>
+  </p>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Lines JSON インポート" %>
+<% end %>

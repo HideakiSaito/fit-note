@@ -81,6 +81,10 @@ class LinesController < InheritedResources::Base
     end
   end
 
+  def import
+    render text: params[:file] 
+  end
+
   private
 
   def line_params

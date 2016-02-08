@@ -57,6 +57,10 @@ class PagesController < InheritedResources::Base
     end
   end
 
+  def import
+    render text: params[:file] 
+  end
+
   private
   def copy_line
     #ここで、コピーするなら過去の、トレーニングを取得する
