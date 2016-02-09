@@ -20,6 +20,12 @@ class Line < ActiveRecord::Base
       return 1 if l.size == 0
       l.last.no + 1 #あれば＋１
     end
+
+    #JSONのインポート
+    def import(file)
+      s = File.read(file.path, :encoding => Encoding::UTF_8)
+      JSON.parse( s ).each { |elem| line = Line.new(elem); line.save }
+    end
   end
 
   def get_last_line

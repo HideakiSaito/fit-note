@@ -82,7 +82,9 @@ class LinesController < InheritedResources::Base
   end
 
   def import
-    render text: params[:file] 
+    # fileはtmpに自動で一時保存される
+     Line.import(params[:file])
+     redirect_to pages_url, notice: "Lineをインポートしました。"
   end
 
   private
