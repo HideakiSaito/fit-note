@@ -58,7 +58,9 @@ class PagesController < InheritedResources::Base
   end
 
   def import
-    render text: params[:file] 
+    # fileはtmpに自動で一時保存される
+     Page.import(params[:file])
+     redirect_to pages_url, notice: "Pageをインポートしました。"
   end
 
   private
