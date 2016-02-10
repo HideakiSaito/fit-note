@@ -24,7 +24,11 @@ class Line < ActiveRecord::Base
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
-      JSON.parse( s ).each { |elem| line = Line.new(elem); line.save }
+      JSON.parse( s ).each do |elem| 
+        line = find_by(id: elem[:id]) || new 
+        line.assign_attributes(elem)
+        line.save 
+      end
     end
   end
 
