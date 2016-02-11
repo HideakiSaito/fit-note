@@ -29,7 +29,7 @@ Equipment.create([
   {name: "バーベル"},
   {name: "ダンベル"},
   {name: "ケーブル"},
-  {name: "トレーニングマシン"},
+  {name: "マシン"},
   {name: "自重"}
 ])
 

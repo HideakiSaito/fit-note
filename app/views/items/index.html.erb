@@ -13,10 +13,8 @@
        style="text-align: right; width: 100%;">
   <thead>
     <tr>
-      <th>種目名称</th>
-      <th>レップス</th>
       <th>部位</th>
-      <th>方式</th>
+      <th>種目名称</th>
       <th>器具</th>
       <th colspan="3"></th>
     </tr>
@@ -25,10 +23,8 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item.reps %></td>
         <td><%= item.part.name %></td>
-        <td><%= item.mode.name %></td>
+        <td><%= item.name %></td>
         <td><%= item.equipment.name %></td>
         <td><%= link_to '詳細', item %></td>
         <td><%= link_to '編集', edit_item_path(item) %></td>
