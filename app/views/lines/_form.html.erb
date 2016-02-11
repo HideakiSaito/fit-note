@@ -3,14 +3,15 @@
 </div>
 <div class="pagination">
   <% if @prev_line %>
-    <%= link_to '前へ[' + @prev_line.item.part.name + ']' , [:edit, @prev_line] %> 
+    <%= link_to '前へ[' + @prev_line.no.to_s + '.' + @prev_line.item.part.name + ']' , [:edit, @prev_line] %> 
   <% else %>
     <a>先頭です。</a>
   <% end %>
 </div>
+<!--BUD DRY-->
 <div class="pagination">
   <% if @next_line %>
-    <%= link_to '次へ[' + @next_line.item.part.name + ']', [:edit, @next_line] %> 
+    <%= link_to '次へ[' + @next_line.no.to_s + '.' +  @next_line.item.part.name + ']', [:edit, @next_line] %> 
   <% else %>
     <a>最後です。</a>
   <% end %>
@@ -65,6 +66,14 @@
     /<%= f.number_field :reps_3 ,:class => :num %>
   <%= f.text_field :memo_3 %>
   </div>
+<!--BUD DRY-->
+<div class="pagination">
+  <% if @next_line %>
+    <%= link_to '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']' + @next_line.item.name , [:edit, @next_line] %> 
+  <% else %>
+    <a>最後です。</a>
+  <% end %>
+</div>
   <div class="field">
     <%= label_tag "4セット kg / 回数:メモ" %><br>
     <% if @last_line.present? %>
