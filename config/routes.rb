@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :trainings
   resources :items do
     collection { get "search"}
+    collection { post :import }
   end
   resources :equipment
   resources :parts do

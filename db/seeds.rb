@@ -34,11 +34,12 @@ Equipment.create([
 ])
 
 Mode.create ([
-  {name: "トラディショナル", detail: "10reps x 3Set"},
+  {name: "リバースピラミッド", detail: "6-8rep 10 12"},
   {name: "ドロップセット", detail: "すぐに１５％ウェイトを落として続ける。３ドロップまで"},
   {name: "パーシャルセット", detail: "次のレップスで限界な時に、できる可動域で行う"},
   {name: "5 by 5", detail: "5reps x 5Set"},
-  {name: "ジャーマン風セット", detail: "8reps x 6set..."}
+  {name: "ジャーマン風セット", detail: "8reps x 6set..."},
+  {name: "トラディショナル", detail: "10reps x 3Set"}
 ])
 
 Item.create ([

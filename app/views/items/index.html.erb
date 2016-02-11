@@ -41,3 +41,12 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+
+<hr>
+<%= form_tag import_items_path, multipart: true do %>
+  <p>
+  <%= link_to "Download Items JSON", items_path(format: "json") %>
+  </p>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Items JSON インポート" %>
+<% end %>

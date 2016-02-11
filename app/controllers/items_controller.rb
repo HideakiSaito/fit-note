@@ -67,6 +67,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def import
+    # fileはtmpに自動で一時保存される
+     Item.import(params[:file])
+     redirect_to items_url, notice: "Itemをインポートしました。"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
