@@ -5,12 +5,12 @@ module RepsCalculator
   	if weight == nil  or count == nil 
       return 0
     end
-     ### 重量の計算 
+   ### 重量の計算 
      #自重のサポート系（プルアップマシンとか）は引く。
      if weight <= 0.0 
        weight = 65.0 +  weight
      end
-     ### 係数の計算
+   ### 係数の計算
      coefficient = 0.25
      #1回はMAX
      coefficient = 1.0 if count == 1
@@ -33,20 +33,10 @@ module RepsCalculator
   end
 
   def line_max_reps(line)
-    max = 0
-    max = max_reps(line.weight_1,line.reps_1)
-    #2回目をチェック
-    temp = max_reps(line.weight_2,line.reps_2)
-    max = temp if temp > max
-    #3回目をチェック
-    temp = max_reps(line.weight_3,line.reps_3)
-    max = temp if temp > max
-    #4回目をチェック
-   # temp = max_reps(line.weight_4,line.reps_4)
-   # max = temp if temp > max
-    #5回目をチェック
-   # temp = max_reps(line.weight_5,line.reps_5)
-   # max = temp if temp > max
-    return max
+    line_reps=[]
+    line_reps <<  max_reps(line.weight_1,line.reps_1).to_i
+    line_reps <<  max_reps(line.weight_2,line.reps_2).to_i 
+    line_reps <<  max_reps(line.weight_3,line.reps_3).to_i 
+    return line_reps.max
   end
 end

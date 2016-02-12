@@ -2,7 +2,6 @@ class Line < ActiveRecord::Base
 
   include RepsCalculator
   include EmailAddressChecker
-  include Com
 
   belongs_to :page
   belongs_to :item
@@ -40,6 +39,10 @@ class Line < ActiveRecord::Base
 
     prev_line = Line.joins(:page).where(pages:{id: prev_page.id}, item_id: item.id).first
     prev_line
+  end
+
+  def get_sum_reps
+    reps_1.to_i + reps_2.to_i + reps_3.to_i + reps_4.to_i + reps_5.to_i #nil.to_i => 0 を利用
   end
 
   def get_set_label(set)
