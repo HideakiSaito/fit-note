@@ -68,9 +68,7 @@ class Line < ActiveRecord::Base
       r = reps_5
       m = memo_5
     end
-    w ||= ""
-    r ||= ""
-    m ||= ""
+    w ||= ""; r ||= "";  m ||= ""; #nil => ""
     "前回＞" + w.to_s + "/" + r.to_s + " : " + m
   end
 
