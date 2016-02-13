@@ -3,12 +3,14 @@
 <div id="chart_in_gym">
 <%= high_chart("chart_in_gym", @chart_gym) %>
 </div>
+<button id="home-toggle">家トレーニング推移：表示 / 非表示</button>
 <div id="chart_in_home">
 <%= high_chart("chart_in_home", @chart_home) %>
 </div>
 <div id="chart_pie_parts">
   <%= high_chart("pie_chart_parts", @chart_pie_parts) %>
 </div>
+<button id="place-toggle">場所別トレーニングのバランス：表示 / 非表示</button>
 <div id="chart_pie_place">
   <%= high_chart("pie_chart_place", @chart_pie_place) %>
 </div>
