@@ -11336,7 +11336,7 @@ h1:hover {
   transition-property: font-size;
   transition-duration: 2s;
   transition-delay: 0.5s;
-  font-size: 36px;
+  font-size: 16px;
 }
 
 /* line 59, /Users/macuser/ror/r1/app/assets/stylesheets/application.css.scss */
@@ -11345,15 +11345,14 @@ p {
   transition-property: font-size;
   transition-duration: 2s;
   transition-delay: 0.5s;
-  font-size: 14px;
 }
 
-/* line 67, /Users/macuser/ror/r1/app/assets/stylesheets/application.css.scss */
+/* line 66, /Users/macuser/ror/r1/app/assets/stylesheets/application.css.scss */
 p:hover {
+  color: green;
   transition-property: font-size;
   transition-duration: 2s;
   transition-delay: 0.5s;
-  font-size: 36px;
 }
 /* line 1, /Users/macuser/ror/r1/app/assets/stylesheets/scaffolds.scss */
 body {
