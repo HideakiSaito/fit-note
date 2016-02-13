@@ -54,8 +54,8 @@ group :development do
 end
 
   #### Add H.Saito ######
-  # for manage page
-gem 'activeadmin', github: 'activeadmin'
+  # for manage page 自前でやろう
+##gem 'activeadmin', github: 'activeadmin'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-sass'

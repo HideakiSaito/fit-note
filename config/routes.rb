@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root :to => 'welcome#index', :as => 'home'
+  get "about" => "welcome#about", as: "about"
+  get "developer" => "welcome#developer", as: "developer"
   resources :analysis
   resources :lines do
     collection { post :import }
@@ -7,8 +10,6 @@ Rails.application.routes.draw do
     resources :lines
     collection { post :import }
   end
-  ActiveAdmin.routes(self)
-  root :to => 'welcome#index', :as => 'home'
   resources :trainings
   resources :items do
     collection { get "search"}

@@ -10,8 +10,10 @@
       &nbsp;&nbsp;&nbsp;<%= page.place %>
     </td>
     <td>
-      &nbsp;&nbsp;&nbsp;<%= link_to '編集', edit_page_path(page) %>
-      &nbsp;&nbsp;&nbsp;<%= link_to '確認', page_path(page) %>
+      &nbsp;&nbsp;&nbsp;
+      <span><%= link_to '編集', edit_page_path(page) %></span>
+      &nbsp;&nbsp;&nbsp;
+      <span><%= link_to '確認', page_path(page) %></span>
     </td>
   </tr>
 </table>

@@ -52,7 +52,7 @@ h1:hover {
   transition-property: font-size;
   transition-duration: 2s;
   transition-delay: 0.5s;
-  font-size: 36px;
+  font-size: 16px;
 }
 
 p {
@@ -60,13 +60,12 @@ p {
   transition-property: font-size;
   transition-duration: 2s;
   transition-delay: 0.5s;
-  font-size: 14px;
 }
 
 p:hover {
+  color:green;
   transition-property: font-size;
   transition-duration: 2s;
   transition-delay: 0.5s;
-  font-size: 36px;
 }
 
