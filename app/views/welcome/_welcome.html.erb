@@ -1,6 +1,10 @@
 <div class="alert alert-success" >
-  <strong>Success!</strong> 2016/02/13 の トレーニングお疲れ様でした。 
+  <strong>Recommend!</strong><br> 
+  <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
+  の トレーニングお疲れ様でした。
+  <br><%= @recommend_1 %>
 </div>
 <div class="alert alert-info">
-  <strong>Info!</strong> こんばんわ！睡眠は大事ですよ。 
+  <strong>Greeting!</strong><br>
+  <%= @message %> 
 </div>

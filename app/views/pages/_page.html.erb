@@ -1,7 +1,7 @@
 <table style="vertical-align:baseline">
   <tr>
     <td style="font-weight:bold;font-size:1.5em;">
-      <%= page.date.strftime("%Y/%m/%d(%a)") %>
+      <%= link_to page.date.strftime("%Y/%m/%d(%a)") , page_path(page) %>
     </td>
     <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
       <%= page.end_time.strftime("%H:%M") %>
@@ -12,8 +12,6 @@
     <td>
       &nbsp;&nbsp;&nbsp;
       <span><%= link_to '編集', edit_page_path(page) %></span>
-      &nbsp;&nbsp;&nbsp;
-      <span><%= link_to '確認', page_path(page) %></span>
     </td>
   </tr>
 </table>
@@ -26,7 +24,7 @@
       <th style="text-align: right;">1set</th>
       <th style="text-align: right;">2set</th>
       <th style="text-align: right;">3set</th>
-      <th style="text-align: right;">MaxPower</th>
+      <th style="text-align: right;">Max</th>
     </tr>
   </thead>
   <tbody>
@@ -35,9 +33,9 @@
         <td style="text-align: left;"><%= line.no %>.
           <%= line.item.name %>
         </td>
-        <td><%= line.weight_1 %>/<%= line.reps_1 %></td>
-        <td><%= line.weight_2 %>/<%= line.reps_2 %></td>
-        <td><%= line.weight_3 %>/<%= line.reps_3 %></td>
+        <td><%= line.weight_1 %><br>/<%= line.reps_1 %></td>
+        <td><%= line.weight_2 %><br>/<%= line.reps_2 %></td>
+        <td><%= line.weight_3 %><br>/<%= line.reps_3 %></td>
         <td><%= line.this_max_reps %></td>
         <td><%= link_to '編集', edit_line_path(line) %></td>
       </tr>
