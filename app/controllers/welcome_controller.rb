@@ -1,10 +1,20 @@
 class WelcomeController < ApplicationController
-  # GET /trainings
-  # GET /trainings.json
+  include ChartUtil
   def index
     @latest_page = Page.find(Page.maximum(:id))
     @recommend_1 = "しっかり栄養をとって休息をとりましょう。"
-    @message = 
+    @recommend_2 = "焦らず重量は２kg刻みで６〜８repsで調整しましょう。フォームを大切に。１２週間に一回はレイオフを設けましょう。"
+    @greeting = get_greeting
+    @chart_gym = get_chart_gym
+  end
+
+  def about
+  end
+
+  def developer
+  end
+
+  def get_greeting
       case Time.current.hour #now だとUTC
       when 2..4 then "こんな時間に。。。早く寝なさい！"
       when 5..6 then "おはようございます!早起きですね"
@@ -18,10 +28,19 @@ class WelcomeController < ApplicationController
       end
   end
 
-  def about
-  end
-
-  def developer
+  def get_chart_gym
+    #Big3 items id
+    push_id = [1,2]
+    pull_id = [4,18,5,6]
+    leg_id = [9,10]
+    analysis_initialize("ジム")#ChartUtilを利用
+    LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: 'ジムでのトレーニング推移')
+      f.xAxis(categories: chart_dates)
+      f.series(name: 'Push', data: chart_data(push_id))
+      f.series(name: 'Pull', data: chart_data(pull_id))
+      f.series(name: 'Leg', data: chart_data(leg_id))
+    end
   end
 
 end

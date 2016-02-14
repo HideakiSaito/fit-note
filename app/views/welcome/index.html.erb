@@ -5,14 +5,22 @@
 <div> 直近のトレーニング：<%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>
 </div>
 <div class="pagination" style="text-align: left;">
-  <%= link_to '新しいページを作成' , new_page_path %> 
+  <%= link_to '新しいページ作成' , new_page_path %> 
 </div>
 <div class="pagination" style="text-align: left;">
-  <%= link_to '直近のページに記録' , edit_page_path(@latest_page.id) %> 
+  <%= link_to '直近のページに記録' , page_path(@latest_page.id) %> 
 </div>
 <div class="pagination" style="text-align: left;">
   <%= link_to 'ページの一覧' , pages_path %> 
 </div>
 <div class="pagination" style="text-align: left;">
-  <%= link_to 'トレーニングの分析' , analysis_index_path %> 
+  <%= link_to 'トレーニング分析' , analysis_index_path %> 
+</div>
+<!--toriaezu-->
+<div id="chart_in_gym">
+<%= high_chart("chart_in_gym", @chart_gym) %>
+</div>
+<div class="alert alert-warning">
+  <strong>Take Care!</strong><br>
+  <%= @recommend_2 %> 
 </div>
