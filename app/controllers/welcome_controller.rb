@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     @latest_page = Page.find(Page.maximum(:id))
     @recommend_1 = "しっかり栄養をとって休息をとりましょう。"
     @message = 
-      case Time.now.hour
+      case Time.current.hour #now だとUTC
       when 2..4 then "こんな時間に。。。早く寝なさい！"
       when 5..6 then "おはようございます!早起きですね"
       when 7..9 then "おはようございます"
