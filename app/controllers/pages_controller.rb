@@ -1,5 +1,5 @@
 class PagesController < InheritedResources::Base
-
+  include ChartUtil
   def index
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.order("date desc")
@@ -9,6 +9,15 @@ class PagesController < InheritedResources::Base
       format.html #default template
       format.js   #default template
       format.json { @pages = Page.order("date desc") } #jsonは全部
+    end
+  end
+
+  def show
+    @page = Page.find(params[:id])
+    @chart_pie_parts = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: 'トレーニング部位別バランス')
+      f.series(name: 'レップス',
+               data: pie_chart_data_parts(params[:id]) , type: 'pie')
     end
   end
 

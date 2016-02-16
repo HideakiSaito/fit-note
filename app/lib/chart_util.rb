@@ -28,13 +28,14 @@ module ChartUtil
     end
     data
   end
-  def pie_chart_data_parts
+  def pie_chart_data_parts( page_id = nil )
     data = []
     parts = Part.order(:id)
     parts.each do |part|
-      lines = Line.joins(:item).where(items: { part_id: part.id },)
+      lines = Line.joins(:item).where(items: { part_id: part.id })
+      lines = lines.where(page_id: page_id) if page_id.presence
       value = lines.collect do |i| i.get_sum_reps end.sum
-      data << [part.name,value.to_i]
+      data << [part.name,value.to_i] if value.to_i > 0
     end
     data
   end
