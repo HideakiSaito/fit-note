@@ -2,6 +2,8 @@
   <strong>Recommend!</strong><br> 
   <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
   の トレーニングお疲れ様でした。
+  <br>
+   => <%= (Date.current - @latest_page.date).to_i %>日間 経過しています。
   <br><%= @recommend_1 %>
 </div>
 <div class="alert alert-info">

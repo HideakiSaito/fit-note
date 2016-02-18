@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root :to => 'welcome#index', :as => 'home'
   get "about" => "welcome#about", as: "about"
   get "developer" => "welcome#developer", as: "developer"
-  resources :analysis
+  resources :analysis do
+    collection { get :gym,:home,:pie_parts,:pie_place }
+  end
   resources :lines do
     collection { post :import }
   end

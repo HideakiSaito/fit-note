@@ -1,16 +1,19 @@
 <h1>トレーニング分析</h1>
-<p> 目標設定までの推移とか。場所、部位等のトレーニング量のバランス </p>
-<div id="chart_in_gym">
-<%= high_chart("chart_in_gym", @chart_gym) %>
+<div class="pagination">
+  <%= link_to 'ジムでの記録推移', "/analysis/gym" %>
 </div>
-<button id="home-toggle">家トレーニング推移：表示 / 非表示</button>
-<div id="chart_in_home">
-<%= high_chart("chart_in_home", @chart_home) %>
+<div class="pagination">
+  <%= link_to '家での記録推移', "/analysis/home" %>
 </div>
-<div id="chart_pie_parts">
-  <%= high_chart("pie_chart_parts", @chart_pie_parts) %>
+<div class="pagination">
+  <%= link_to '部位ごとのバランス', "/analysis/pie_parts" %>
 </div>
-<button id="place-toggle">場所別トレーニングのバランス：表示 / 非表示</button>
-<div id="chart_pie_place">
-  <%= high_chart("pie_chart_place", @chart_pie_place) %>
+<div class="pagination" style="margin 0 ;padding 0;">
+  <%= link_to '場所ごとのバランス', "/analysis/pie_place" %>
+</div>
+<div class="" style="">
+  <%= link_to '種目ごとの記録推移', "/items/" %>
+</div>
+<div id="chart">
+<%= high_chart("chart", @chart) %>
 </div>
