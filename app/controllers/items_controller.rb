@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include ChartUtil
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -16,6 +17,12 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    analysis_initialize("ジム") #ChartUtil
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: @item.name + 'トレーニング推移')
+      f.xAxis(categories: chart_dates)
+      f.series(name: @item.name , data: chart_data(@item.id))
+    end
   end
 
   # GET /items/new
