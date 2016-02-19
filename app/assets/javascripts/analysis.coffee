@@ -1,4 +1,6 @@
 $(document).on "ready page:load",->
+  $('button').button()
+
   ##家トレーニング推移の制御
   home_btn = $('#home-toggle') #$はjQueryのエイリアス
   home_btn.button()

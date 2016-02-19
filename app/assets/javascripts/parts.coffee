@@ -1,5 +1,4 @@
 $ ->
-#  $('#search').keyup ->
   $('#search').change ->
     #ajax send
     $.ajax
