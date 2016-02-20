@@ -69,7 +69,8 @@ class Line < ActiveRecord::Base
       m = memo_5
     end
     w ||= ""; r ||= "";  m ||= ""; #nil => ""
-    "前回＞" + w.to_s + "/" + r.to_s + " : " + m
+    #"前回＞" + w.to_s + "/" + r.to_s + " : " + m
+    page.date.strftime("%m/%d(%a)") + "＞" + w.to_s + "/" + r.to_s + " : " + m
   end
 
   def print_label

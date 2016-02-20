@@ -41,6 +41,12 @@
   </div>
   <div class="field">
     <%= label_tag "1セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(1) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(1) %><br>
+    <% end %>
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(1) %><br>
     <% end %>
@@ -50,6 +56,12 @@
   </div>
   <div class="field">
     <%= label_tag "2セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(2) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(2) %><br>
+    <% end %>
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(2) %><br>
     <% end %>
@@ -59,6 +71,12 @@
   </div>
   <div class="field">
     <%= label_tag "3セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(3) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(3) %><br>
+    <% end %>
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(3) %><br>
     <% end %>
@@ -76,6 +94,12 @@
 </div>
   <div class="field">
     <%= label_tag "4セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(4) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(4) %><br>
+    <% end %>
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(4) %><br>
     <% end %>
@@ -85,6 +109,12 @@
   </div>
   <div class="field">
     <%= label_tag "5セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(5) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(5) %><br>
+    <% end %>
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(5) %><br>
     <% end %>

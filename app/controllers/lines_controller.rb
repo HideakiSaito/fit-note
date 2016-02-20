@@ -19,6 +19,8 @@ class LinesController < InheritedResources::Base
     @next_line = nil
     @prev_line = nil
     @last_line = nil
+    @last2_line = nil
+    @last3_line = nil
   end
 
   def edit
@@ -33,6 +35,10 @@ class LinesController < InheritedResources::Base
     end
     #前回のトレーニング取得
     @last_line = @line.get_last_line
+    #前々回のトレーニング取得
+    @last2_line = @last_line.get_last_line
+    #前々々回のトレーニング取得
+    @last3_line = @last2_line.get_last_line
   end
 
   # POST /items
