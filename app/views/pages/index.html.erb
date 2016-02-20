@@ -12,17 +12,15 @@
 <%= will_paginate @pages %>
 <hr>  
 <%= form_tag import_pages_path, multipart: true do %>
-  <p>
-  <%= link_to "Download Pages JSON", pages_path(format: "json") %>
-  </p>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Pages JSON インポート" %>
+<button type="button" class="btn btn-info hundred"
+        onClick="location.href='/pages.json'">ページデータ JOSN エクスポート</button>
+  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
+  <%= submit_tag "ページデータ JSON インポート", class: "btn btn-warning hundred" %>
 <% end %>
 <hr>
 <%= form_tag import_lines_path, multipart: true do %>
-  <p>
-  <%= link_to "Download Lines JSON", lines_path(format: "json") %>
-  </p>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Lines JSON インポート" %>
+<button type="button" class="btn btn-info hundred"
+        onClick="location.href='/lines.json'">行データ JOSN エクスポート</button>
+  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
+  <%= submit_tag "行データ JSON インポート", class: "btn btn-warning hundred" %>
 <% end %>
