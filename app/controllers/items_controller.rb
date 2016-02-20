@@ -17,10 +17,15 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    #TODO nil error
     analysis_initialize("ジム") #ChartUtil
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: @item.name + 'トレーニング推移')
+    @chart_gym = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: 'ジムでの' + @item.name + 'のトレーニング推移')
+      f.xAxis(categories: chart_dates)
+      f.series(name: @item.name , data: chart_data(@item.id))
+    end
+    analysis_initialize("家") #ChartUtil
+    @chart_home = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '家での' + @item.name + 'のトレーニング推移')
       f.xAxis(categories: chart_dates)
       f.series(name: @item.name , data: chart_data(@item.id))
     end
