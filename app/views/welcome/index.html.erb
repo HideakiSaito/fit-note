@@ -4,18 +4,16 @@
 <%= render "welcome" %>
 <div> 直近のトレーニング：<%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>
 </div>
-<div class="pagination" style="text-align: left;">
-  <%= link_to '新規作成' , new_page_path %> 
-</div>
-<div class="pagination" style="text-align: left;">
-  <%= link_to '記録' , page_path(@latest_page.id) %> 
-</div>
-<div class="pagination" style="text-align: left;">
-  <%= link_to '一覧' , pages_path %> 
-</div>
-<div class="pagination" style="text-align: left;">
-  <%= link_to '分析' , analysis_index_path %> 
-</div>
+<input type="button" value="新規作成" class="btn btn-primary"
+       onclick="location.href='<%= new_page_path  %>'" />
+<input type="button" value="記録" class="btn btn-success"
+       onclick="location.href='<%= page_path(@latest_page.id) %>'" />
+<input type="button" value="一覧" class="btn btn-default"
+       onclick="location.href='<%= pages_path %>'" />
+<input type="button" value="分析" class="btn btn-warning""
+       onclick="location.href='<%= analysis_index_path %>'" />
+<input type="button" value="種目管理" class="btn btn-default"
+       onclick="location.href='<%= items_path %>'" />
 <!--toriaezu-->
 <div id="chart_in_gym">
 <%= high_chart("chart_in_gym", @chart_gym) %>
