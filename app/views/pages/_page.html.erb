@@ -19,8 +19,7 @@
        style="text-align: right; width: 100%;">
   <thead>
     <tr>
-      <th>
-        no.training</th>
+      <th> no.training</th>
       <th style="text-align: right;">1set</th>
       <th style="text-align: right;">2set</th>
       <th style="text-align: right;">3set</th>
@@ -31,13 +30,12 @@
     <% page.lines.order(:id).each do |line| %>
       <tr>
         <td style="text-align: left;"><%= line.no %>.
-          <%= line.item.name %>
+          <%= link_to line.item.name , edit_line_path(line) %>
         </td>
         <td><%= line.weight_1 %><br>/<%= line.reps_1 %></td>
         <td><%= line.weight_2 %><br>/<%= line.reps_2 %></td>
         <td><%= line.weight_3 %><br>/<%= line.reps_3 %></td>
-        <td><%= line.this_max_reps %></td>
-        <td><%= link_to '編集', edit_line_path(line) %></td>
+        <td style="font-weight:bold;"><%= line.this_max_reps %></td>
       </tr>
     <% end %>
     <tr>
