@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    #TODO nil error
     analysis_initialize("ジム") #ChartUtil
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: @item.name + 'トレーニング推移')

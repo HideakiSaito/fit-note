@@ -15,7 +15,7 @@ module ChartUtil
   def chart_data(target_item)
      @@pages.map do |page|
       target = page.lines.where(item_id: target_item).first #dataは複数形、datumが単数形
-      target.this_max_reps.to_i #nil.to_i => 0 を利用 return省略がruby流 
+      target.presence ? target.this_max_reps.to_i : 0 #nil.to_i => 0 を利用 return省略がruby流 
     end
   end
   def pie_chart_data_place

@@ -25,7 +25,7 @@ class PagesController < InheritedResources::Base
   def new
 #    @page = Page.new(:start_time Time.now , :end_time Time.now )
     @page = Page.new
-    @page.end_time = Time.now + 2.5 * 60 * 60
+    @page.end_time = Time.current + 2.5 * 60 * 60
   end
 
   def create

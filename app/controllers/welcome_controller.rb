@@ -1,17 +1,26 @@
 class WelcomeController < ApplicationController
   include ChartUtil
   def index
-    @latest_page = Page.find(Page.maximum(:id))
+    latest_date = Page.maximum(:date) #最新日
+    @latest_page = Page.where(date: latest_date).first
     @recommend_1 = "しっかり栄養をとって休息をとりましょう。"
     @recommend_2 = "焦らず重量は２kg刻みで６〜８repsで調整しましょう。フォームを大切に。１２週間に一回はレイオフを設けましょう。"
     @greeting = get_greeting
     @chart_gym = get_chart_gym
+    @cheer = latest_page_finished ? "お疲れ様でした。" : "頑張りましょう"
   end
 
   def about
   end
 
   def developer
+  end
+
+  def latest_page_finished
+    reps_sum = @latest_page.lines.collect do 
+      |line| line.get_sum_reps 
+    end.sum
+    reps_sum != 0 #最新ページのトレーニング一回もやってなかったら 
   end
 
   def get_greeting
