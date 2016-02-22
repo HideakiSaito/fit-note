@@ -1,17 +1,19 @@
 <table style="vertical-align:baseline">
   <tr>
     <td style="font-weight:bold;font-size:1.5em;">
-      <%= link_to page.date.strftime("%Y/%m/%d(%a)") , page_path(page) %>
+<button type="button" class="btn btn-default "
+                      onClick="location.href='/pages/<%= page.id  %>'"><%= page.date.strftime("%Y/%m/%d(%a)") %></button>
     </td>
     <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
       <%= page.end_time.strftime("%H:%M") %>
     </td>
     <td style="font-weight:bold;">
-      &nbsp;&nbsp;&nbsp;<%= page.place %>
+      &nbsp;&nbsp;<%= page.place %>
   </td>
   <td>
-    &nbsp;&nbsp;&nbsp;
-    <span><%= link_to '編集', edit_page_path(page) %></span>
+    &nbsp;&nbsp;
+<button type="button" class="btn btn-default mini-size"
+         onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
   </td>
   </tr>
 </table>
