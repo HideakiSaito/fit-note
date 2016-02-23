@@ -16,16 +16,16 @@
     <a>最後です。</a>
   <% end %>
 </div>
-<%= form_for(@line , :remote=>true) do |f| %>
+<%= form_for(@line , remote: true,:html => {class: "form-inline"}) do |f| %>
   <span id="err_span">
     <%= render "shared/errors" ,obj: @line %>
   </span>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :page_id %><br>
     <%= f.collection_select :page_id ,
       Page.all.order("date desc") , :id ,:page_label ,
-      :prompt => true %>
-    <%= f.number_field :no , class: :num %>
+      {prompt: true} , { class: "form-control"} %>
+    <%= f.number_field :no , class: "num form-control"  %>
   </div>
   <div class="field">
     <%= f.label :item_id %><br>
@@ -39,7 +39,7 @@
     Mode.all, :id , :name ,
     :prompt => true %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= label_tag "1セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
       <%= @last3_line.get_set_label(1) %><br>
@@ -50,9 +50,9 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(1) %><br>
     <% end %>
-    <%= f.number_field :weight_1, class: :num  %>
-    /<%= f.number_field :reps_1 ,:class => :num %>
-  <%= f.text_field :memo_1 %>
+    <%= f.number_field :weight_1, class: "num form-control"  %>
+    /<%= f.number_field :reps_1 , class: "num form-control"  %>
+  <%= f.text_field :memo_1 ,class: "form-control"%>
   </div>
   <div class="field">
     <%= label_tag "2セット kg / 回数:メモ" %><br>
