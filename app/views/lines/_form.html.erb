@@ -50,8 +50,8 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(1) %><br>
     <% end %>
-    <%= f.number_field :weight_1, class: "num form-control"  %>
-    /<%= f.number_field :reps_1 , class: "num form-control"  %>
+    <%= f.number_field :weight_1, class: "num form-control" ,step: 0.5  %>
+    /<%= f.number_field :reps_1 , class: "num form-control"  ,step: 0.5%>
   <%= f.text_field :memo_1 ,class: "form-control"%>
   </div>
   <div class="field">
@@ -65,8 +65,8 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(2) %><br>
     <% end %>
-    <%= f.number_field :weight_2, class: :num  %>
-    /<%= f.number_field :reps_2 ,:class => :num %>
+    <%= f.number_field :weight_2, class: :num  ,step: 0.5%>
+    /<%= f.number_field :reps_2 ,:class => :num ,step: 0.5%>
   <%= f.text_field :memo_2 %>
   </div>
   <div class="field">
@@ -80,8 +80,8 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(3) %><br>
     <% end %>
-    <%= f.number_field :weight_3, class: :num  %>
-    /<%= f.number_field :reps_3 ,:class => :num %>
+    <%= f.number_field :weight_3, class: :num  ,step: 0.5%>
+    /<%= f.number_field :reps_3 ,:class => :num ,step: 0.5%>
   <%= f.text_field :memo_3 %>
   </div>
   <div class="actions">
@@ -106,8 +106,8 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(4) %><br>
     <% end %>
-    <%= f.number_field :weight_4, class: :num  %>
-    /<%= f.number_field :reps_4 ,:class => :num %>
+    <%= f.number_field :weight_4, class: :num  ,step: 0.5%>
+    /<%= f.number_field :reps_4 ,:class => :num ,step: 0.5%>
   <%= f.text_field :memo_4 %>
   </div>
   <div class="field">
@@ -121,8 +121,8 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(5) %><br>
     <% end %>
-    <%= f.number_field :weight_5, class: :num  %>
-    /<%= f.number_field :reps_5 ,:class => :num %>
+    <%= f.number_field :weight_5, class: :num  ,step: 0.5%>
+    /<%= f.number_field :reps_5 ,:class => :num ,step: 0.5%>
   <%= f.text_field :memo_5 %>
   </div>
   <div class="actions">
