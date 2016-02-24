@@ -1,21 +1,23 @@
-<div class="pagination">
-  <%= link_to 'ページに戻る',page_path(@line.page_id)  %> 
-</div>
-<div class="pagination">
+  <input type="button" class="btn btn-default"
+     value="ページに戻る" 
+     onclick="location.href='/pages/<%= @line.page_id %>' " /> 
+  <input type="button" class="btn btn-default"
   <% if @prev_line %>
-    <%= link_to '前へ[' + @prev_line.no.to_s + '.' + @prev_line.item.part.name + ']' , [:edit, @prev_line] %> 
+     value="<%= '前へ[' + @prev_line.no.to_s + '.' + @prev_line.item.part.name + ']' %>" 
+     onclick="location.href='/lines/<%= @prev_line.id %>/edit' " 
   <% else %>
-    <a>先頭です。</a>
+     value="先頭です。" 
   <% end %>
-</div>
+  />
 <!--BUD DRY-->
-<div class="pagination">
+  <input type="button" class="btn btn-info"
   <% if @next_line %>
-    <%= link_to '次へ[' + @next_line.no.to_s + '.' +  @next_line.item.part.name + ']', [:edit, @next_line] %> 
+     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']' %>" 
+     onclick="location.href='/lines/<%= @next_line.id %>/edit' " 
   <% else %>
-    <a>最後です。</a>
+     value="最後です。" 
   <% end %>
-</div>
+  />
 <%= form_for(@line , remote: true,:html => {class: "form-inline"}) do |f| %>
   <span id="err_span">
     <%= render "shared/errors" ,obj: @line %>
@@ -31,13 +33,13 @@
     <%= f.label :item_id %><br>
     <%= f.collection_select :item_id ,
       Item.all, :id , :name ,
-      :prompt => true %>
+      {prompt: true} , { class: "form-control"} %>
 </div>
 <div class="field">
   <%= f.label :mode_id %><br>
   <%= f.collection_select :mode_id ,
     Mode.all, :id , :name ,
-    :prompt => true %>
+      {prompt: true} , { class: "form-control"} %>
   </div>
   <div class="field form-group">
     <%= label_tag "1セット kg / 回数:メモ" %><br>
@@ -50,9 +52,12 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(1) %><br>
     <% end %>
-    <%= f.number_field :weight_1, class: "num form-control" ,step: 0.5  %>
-    /<%= f.number_field :reps_1 , class: "num form-control"  ,step: 0.5%>
-  <%= f.text_field :memo_1 ,class: "form-control"%>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_1, class: "form-control" ,step: 0.5  %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_1 , class: "form-control"  ,step: 0.5%>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_1 ,class: "form-control"%>
   </div>
   <div class="field">
     <%= label_tag "2セット kg / 回数:メモ" %><br>
@@ -65,9 +70,12 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(2) %><br>
     <% end %>
-    <%= f.number_field :weight_2, class: :num  ,step: 0.5%>
-    /<%= f.number_field :reps_2 ,:class => :num ,step: 0.5%>
-  <%= f.text_field :memo_2 %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_2, class: "form-control" ,step: 0.5  %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_2 , class: "form-control"  ,step: 0.5%>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_2 ,class: "form-control"%>
   </div>
   <div class="field">
     <%= label_tag "3セット kg / 回数:メモ" %><br>
@@ -80,21 +88,23 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(3) %><br>
     <% end %>
-    <%= f.number_field :weight_3, class: :num  ,step: 0.5%>
-    /<%= f.number_field :reps_3 ,:class => :num ,step: 0.5%>
-  <%= f.text_field :memo_3 %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_3, class: "form-control" ,step: 0.5  %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_3 , class: "form-control"  ,step: 0.5%>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_3 ,class: "form-control"%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit "更新する" , class: "btn btn-primary" %>
 <!--BUD DRY-->
-<div class="pagination">
+  <input type="button" class="btn btn-info"
   <% if @next_line %>
-    <%= link_to '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']' + @next_line.item.name , [:edit, @next_line] %> 
+     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']'+ @next_line.item.name  %>" 
+     onclick="location.href='/lines/<%= @next_line.id %>/edit' " 
   <% else %>
-    <a>最後です。</a>
+     value="最後です。" 
   <% end %>
-</div>
+  />
   <div class="field">
     <%= label_tag "4セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
@@ -106,9 +116,12 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(4) %><br>
     <% end %>
-    <%= f.number_field :weight_4, class: :num  ,step: 0.5%>
-    /<%= f.number_field :reps_4 ,:class => :num ,step: 0.5%>
-  <%= f.text_field :memo_4 %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_4, class: "form-control" ,step: 0.5  %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_4 , class: "form-control"  ,step: 0.5%>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_4 ,class: "form-control"%>
   </div>
   <div class="field">
     <%= label_tag "5セット kg / 回数:メモ" %><br>
@@ -121,11 +134,12 @@
     <% if @last_line.present? %>
       <%= @last_line.get_set_label(5) %><br>
     <% end %>
-    <%= f.number_field :weight_5, class: :num  ,step: 0.5%>
-    /<%= f.number_field :reps_5 ,:class => :num ,step: 0.5%>
-  <%= f.text_field :memo_5 %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_5, class: "form-control" ,step: 0.5  %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_5 , class: "form-control"  ,step: 0.5%>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_5 ,class: "form-control"%>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit "更新する" , class: "btn btn-primary" %>
 <% end %>
