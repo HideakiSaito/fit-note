@@ -1,5 +1,5 @@
   <input type="button" class="btn btn-default"
-     value="ページに戻る" 
+     value="ページへ" 
      onclick="location.href='/pages/<%= @line.page_id %>' " /> 
   <input type="button" class="btn btn-default"
   <% if @prev_line %>
@@ -95,7 +95,8 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_3 ,class: "form-control"%>
   </div>
-    <%= f.submit "更新する" , class: "btn btn-primary" %>
+    <%= f.submit "更新する" , class: "btn btn-primary btn-block" %>
+    <br/>
 <!--BUD DRY-->
   <input type="button" class="btn btn-info"
   <% if @next_line %>
@@ -141,5 +142,5 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_5 ,class: "form-control"%>
   </div>
-    <%= f.submit "更新する" , class: "btn btn-primary" %>
+    <%= f.submit "更新する" , class: "btn btn-primary btn-block" %>
 <% end %>
