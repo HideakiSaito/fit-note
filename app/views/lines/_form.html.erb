@@ -41,6 +41,7 @@
     Mode.all, :id , :name ,
       {prompt: true} , { class: "form-control"} %>
   </div>
+  <hr/>
   <div class="field form-group">
     <%= label_tag "1セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
@@ -59,8 +60,9 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_1 ,class: "form-control"%>
   </div>
+  <hr/>
   <div class="field">
-    <%= label_tag "2セット kg / 回数:メモ" %><br>
+    <h4> 2セット kg / 回数:メモ </h4> <br>
     <% if @last3_line.present? %>
       <%= @last3_line.get_set_label(2) %><br>
     <% end %>
@@ -77,6 +79,7 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_2 ,class: "form-control"%>
   </div>
+  <hr/>
   <div class="field">
     <%= label_tag "3セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
@@ -95,6 +98,7 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_3 ,class: "form-control"%>
   </div>
+  <hr/>
     <%= f.submit "更新する" , class: "btn btn-primary btn-block" %>
     <br/>
 <!--BUD DRY-->
@@ -106,6 +110,7 @@
      value="最後です。" 
   <% end %>
   />
+  <hr/>
   <div class="field">
     <%= label_tag "4セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
@@ -124,6 +129,7 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_4 ,class: "form-control"%>
   </div>
+  <hr/>
   <div class="field">
     <%= label_tag "5セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
@@ -142,5 +148,6 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_5 ,class: "form-control"%>
   </div>
+  <hr/>
     <%= f.submit "更新する" , class: "btn btn-primary btn-block" %>
 <% end %>

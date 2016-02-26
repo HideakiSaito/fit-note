@@ -1,15 +1,9 @@
 <h1>トレーニング分析</h1>
-<span class="mini-size" >推移：</span>
-<button type="button" class="btn btn-primary mini-size"
-        onClick="location.href='/analysis/gym'">[ジム]</button>
-<button type="button" class="btn btn-primary mini-size"
-        onClick="location.href='/analysis/home'">[家]</button>
-<button type="button" class="btn btn-primary mini-size"
-        onClick="location.href='/items/'">[部位ごと]</button>
-<span  class="mini-size">バランス：</span>
-<button type="button" class="btn btn-primary mini-size"
-        onClick="location.href='/analysis/pie_parts'">[部位]</button>
-<button type="button" class="btn btn-primary mini-size"
-        onclick="location.href='/analysis/pie_place'">[場所]</button>
+<ul class="nav nav-tabs">
+  <li><a href="/analysis/gym">ジム</a></li>
+  <li><a href="/analysis/home">家</a></li>
+  <li><a href="/analysis/pie_parts">部位</a></li>
+  <li><a href="/analysis/pie_place">場所</a></li>
+  <li><a href="/items/">部位ごと</a></li>
+</ul>
 <%= high_chart("chart", @chart) %>
-</div>
