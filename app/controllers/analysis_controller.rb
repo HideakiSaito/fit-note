@@ -18,7 +18,7 @@ class AnalysisController < ApplicationController
   def home
     #Big3 items id
     push_id = [1,2]
-    pull_id = [4,18,5,6]
+    pull_id = [8,5,6] #ワンハンドローイングで
     leg_id = [9,10]
     analysis_initialize("家") #ChartUtil
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
