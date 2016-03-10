@@ -1,9 +1,9 @@
 <% if @status == "success" %>
     // trを呼び出す
 $('#result').html(" 更新しました。 line: <%= @line.updated_at %>");
-alert(" 更新しました。 line: <%= @line.updated_at %>");
+//alert(" 更新しました。 line: <%= @line.updated_at %>");
+$.growl({ title: '更新しました', message: '<%= @line.updated_at %>' });
 <% elsif @status == "fail" %>
     // バリデーションに失敗したときの処理
   alert("error!");
 <% end %>
-

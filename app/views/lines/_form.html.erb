@@ -1,21 +1,21 @@
   <input type="button" class="btn btn-default"
-     value="ページへ" 
-     onclick="location.href='/pages/<%= @line.page_id %>' " /> 
+     value="ページへ"
+     onclick="location.href='/pages/<%= @line.page_id %>' " />
   <input type="button" class="btn btn-default"
   <% if @prev_line %>
-     value="<%= '前へ[' + @prev_line.no.to_s + '.' + @prev_line.item.part.name + ']' %>" 
-     onclick="location.href='/lines/<%= @prev_line.id %>/edit' " 
+     value="<%= '前へ[' + @prev_line.no.to_s + '.' + @prev_line.item.part.name + ']' %>"
+     onclick="location.href='/lines/<%= @prev_line.id %>/edit' "
   <% else %>
-     value="先頭です。" 
+     value="先頭です。"
   <% end %>
   />
 <!--BUD DRY-->
   <input type="button" class="btn btn-info"
   <% if @next_line %>
-     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']' %>" 
-     onclick="location.href='/lines/<%= @next_line.id %>/edit' " 
+     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']' %>"
+     onclick="location.href='/lines/<%= @next_line.id %>/edit' "
   <% else %>
-     value="最後です。" 
+     value="最後です。"
   <% end %>
   />
 <%= form_for(@line , remote: true,:html => {class: "form-inline"}) do |f| %>
@@ -104,10 +104,10 @@
 <!--BUD DRY-->
   <input type="button" class="btn btn-info"
   <% if @next_line %>
-     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']'+ @next_line.item.name  %>" 
-     onclick="location.href='/lines/<%= @next_line.id %>/edit' " 
+     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']'+ @next_line.item.name  %>"
+     onclick="location.href='/lines/<%= @next_line.id %>/edit' "
   <% else %>
-     value="最後です。" 
+     value="最後です。"
   <% end %>
   />
   <hr/>
@@ -149,5 +149,5 @@
     <%= f.text_field :memo_5 ,class: "form-control"%>
   </div>
   <hr/>
-    <%= f.submit "更新する" , class: "btn btn-primary btn-block" %>
+    <%= f.submit %>
 <% end %>
