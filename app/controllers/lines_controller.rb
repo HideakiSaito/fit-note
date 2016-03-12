@@ -34,11 +34,11 @@ class LinesController < InheritedResources::Base
       @prev_line = nil
     end
     #前回のトレーニング取得
-    @last_line = @line.get_last_line
+    @last_line = @line.get_last_line if @line
     #前々回のトレーニング取得
-    @last2_line = @last_line.get_last_line
+    @last2_line = @last_line.get_last_line if @last_line
     #前々々回のトレーニング取得
-    @last3_line = @last2_line.get_last_line
+    @last3_line = @last2_line.get_last_line if @last2_line
   end
 
   # POST /items
