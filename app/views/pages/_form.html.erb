@@ -12,7 +12,7 @@
       </ul>
     </div>
   <% end %>
-    <%= check_box_tag :page_copy %>トレーニング記録をコピーする（種目と重量）<br>
+    <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
   <div class="field" id="copy_page_id">
     <%= collection_select :copy_page,:id  ,
       Page.all.order("date desc") , :id ,:page_label, 

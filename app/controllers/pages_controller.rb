@@ -4,7 +4,7 @@ class PagesController < InheritedResources::Base
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.order("date desc")
     @pages = @pages.search @search_form.q if @search_form.q.present?
-    @pages = @pages.paginate(page: params[:page], per_page: 3)
+    @pages = @pages.paginate(page: params[:page], per_page: 9)
     respond_to do |format|
       format.html #default template
       format.js   #default template
@@ -75,7 +75,7 @@ class PagesController < InheritedResources::Base
   private
   def copy_line
     #ここで、コピーするなら過去の、トレーニングを取得する
-    if  params[:page_copy] = 1 &&  @page.lines.empty?
+    if  params[:copy_page][:id] != "" &&  @page.lines.empty?
       @copy_lines = Page.find(params[:copy_page][:id]).lines
       @new_lines = @copy_lines.map do |copy_line| 
         new_line = Line.new(no: copy_line.no,
