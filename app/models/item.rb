@@ -2,12 +2,10 @@ class Item < ActiveRecord::Base
   belongs_to :part
   belongs_to :mode
   belongs_to :equipment
-
   #カスタムプロパティ
   def index_name
     self.part.name + " : " + self.name
   end
-
   #バリデーション
   validates :name ,presence: true
 
@@ -19,7 +17,6 @@ class Item < ActiveRecord::Base
       end
       rel
     end
-
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
@@ -52,5 +49,4 @@ class Item < ActiveRecord::Base
   scope :on_legs, ->do
     where(part_id: 4)
   end
-
 end

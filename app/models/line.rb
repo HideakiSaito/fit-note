@@ -1,14 +1,10 @@
 class Line < ActiveRecord::Base
-
   include RepsCalculator
   include EmailAddressChecker
-
   belongs_to :page
   belongs_to :item
   belongs_to :mode
-
   validates :page, :no, :item, :mode , presence: true
-
   #スコープ
   scope :default_order , -> do
     order("page_id desc , no asc")
@@ -19,7 +15,6 @@ class Line < ActiveRecord::Base
       return 1 if l.size == 0
       l.last.no + 1 #あれば＋１
     end
-
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
@@ -36,7 +31,6 @@ class Line < ActiveRecord::Base
     this = page.place
     prev_page = Page.where("place = ? and date < ?",this,now).order("date desc").first
     return nil unless prev_page
-
     prev_line = Line.joins(:page).where(pages:{id: prev_page.id}, item_id: item.id).first
     prev_line
   end

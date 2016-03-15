@@ -1,5 +1,4 @@
 class Equipment < ActiveRecord::Base
-
   class << self
     def search(query)
       rel = order("id")

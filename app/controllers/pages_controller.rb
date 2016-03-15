@@ -21,25 +21,19 @@ class PagesController < InheritedResources::Base
     end
   end
 
-  # GET /items/new
   def new
-#    @page = Page.new(:start_time Time.now , :end_time Time.now )
-    @page = Page.new
-    @page.end_time = Time.current + 2.5 * 60 * 60
+    @page = Page.new(end_time: Time.current + (2.5 * 60 * 60) ) #だいたい２時間３０分
   end
 
   def create
     @page = Page.new(page_params)
     @new_lines = nil
-  #  copy_line
     respond_to do |format|
       if @page.save
-        copy_line
+        copy_page_lines
         @page.save
         message = 'Page was successfully updated.'
-        unless @new_lines.nil?
-          message += 'Copy Lines!!!'
-        end
+        message += 'Copy Lines!!!' if  @new_lines
         format.html { redirect_to pages_path, method: :get,
                       notice: message }
       else
@@ -51,13 +45,11 @@ class PagesController < InheritedResources::Base
   def update
     @page = Page.find(params[:id])
     @page.assign_attributes(page_params)
-    copy_line
+    copy_page_lines
     respond_to do |format|
       if @page.save
         message = 'Page was successfully updated.'
-        unless @new_lines.nil?
-          message += 'Copy Lines!!!'
-        end
+        message += 'Copy Lines!!!' if @new_lines
         format.html { redirect_to @page,
                       notice: message }
       else
@@ -67,18 +59,17 @@ class PagesController < InheritedResources::Base
   end
 
   def import
-    # fileはtmpに自動で一時保存される
-     Page.import(params[:file])
+     Page.import(params[:file]) # fileはtmpに自動で一時保存される
      redirect_to pages_url, notice: "Pageをインポートしました。"
   end
 
   private
-  def copy_line
+  def copy_page_lines
     #ここで、コピーするなら過去の、トレーニングを取得する
     if  params[:copy_page][:id] != "" &&  @page.lines.empty?
       @copy_lines = Page.find(params[:copy_page][:id]).lines
       @new_lines = @copy_lines.map do |copy_line| 
-        new_line = Line.new(no: copy_line.no,
+        @page.lines.create(no: copy_line.no,
                             item_id: copy_line.item_id,
                             mode_id: copy_line.mode_id,
                             weight_1: copy_line.weight_1,
@@ -87,8 +78,6 @@ class PagesController < InheritedResources::Base
                             weight_4: copy_line.weight_4,
                             weight_5: copy_line.weight_5
                            )
-        new_line.save
-        @page.lines << new_line
       end
     end
   end

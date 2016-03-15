@@ -8,7 +8,6 @@ class Mode < ActiveRecord::Base
       rel
     end
   end
-  
   #スコープ
   scope :inTheHome , ->  do
     where( )

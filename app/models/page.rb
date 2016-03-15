@@ -6,15 +6,12 @@ class Page < ActiveRecord::Base
   end
 
   class << self
-    #検索
-    def search(query)
-      rel = order("date desc")
-      if query.present?
-        rel = rel.where("place LIKE ? ", "%#{query}%")
+    def search(par_query)
+      query = order("date desc,id desc")
+      if par_query.present?
+        query = query.where("place LIKE ? ", "%#{par_query}%")
       end
-      rel
     end
-
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
