@@ -1,8 +1,14 @@
 <table style="vertical-align:baseline">
   <tr>
     <td style="font-weight:bold;font-size:1.5em;">
-<button type="button" class="btn btn-default "
-                      onClick="location.href='/pages/<%= page.id  %>'"><%= page.date.strftime("%Y/%m/%d(%a)") %></button>
+      <% if  page.date.strftime("%W").to_i.remainder(2) == 1 
+          week_class = 'success'
+          else
+          week_class = 'info'
+          end
+         %>
+       <button type="button" class="btn btn-<%= week_class %> "
+                      onClick="location.href='/pages/<%= page.id  %>'"><%= page.date.strftime("%Y/%m/%d(%a) week:%W") %></button>
     </td>
     <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
       <%= page.end_time.strftime("%H:%M") %>

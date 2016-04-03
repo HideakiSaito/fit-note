@@ -4,15 +4,18 @@ module ChartUtil
    @@pages = analysis_pages(target_place)
   end
   def analysis_pages(target_place)
+    #ここを１週間単位
     targets = Page.order(:date) 
     targets.where(place: target_place) if target_place.presence #場所条件を追加
   end
   def chart_dates
+    #ここを１週間単位
     @@pages.map do |page|
       page.date.strftime("%y/%m/%d(%a)") + "[" + page.place + "]" #チャートのX軸には、日付と場所
     end
   end
   def chart_data(target_item)
+    #ここを１週間単位
      @@pages.map do |page|
       target = page.lines.where(item_id: target_item).first #dataは複数形、datumが単数形
       target.presence ? target.this_max_reps.to_i : 0 #nil.to_i => 0 を利用 return省略がruby流 
