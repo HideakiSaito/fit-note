@@ -1,7 +1,7 @@
 module ChartUtil
   def analysis_initialize(target_place)
-   #必ずこのメソッドを呼んで初期化してから使い回す。
-   @@pages = analysis_pages(target_place)
+    #必ずこのメソッドを呼んで初期化してから使い回す。
+    @@pages = analysis_pages(target_place)
   end
   def analysis_pages(target_place)
     #ここを１週間単位
@@ -10,16 +10,41 @@ module ChartUtil
   end
   def chart_dates
     #ここを１週間単位
+    dates = []
+    last_week = ""
     @@pages.map do |page|
-      page.date.strftime("%y/%m/%d(%a)") + "[" + page.place + "]" #チャートのX軸には、日付と場所
+      #page.date.strftime("%y/%m/%d(%a)") + "[" + page.place + "]" #チャートのX軸には、日付と場所
+      this_week = page.date.strftime("%W")
+      disp_date = self.mweek(page.date)
+      dates << disp_date[:month].to_s + "月" + disp_date[:week].to_s + "週"  if this_week != last_week
+      last_week = this_week
     end
+    dates
   end
   def chart_data(target_item)
     #ここを１週間単位
-     @@pages.map do |page|
+    data = []
+    max_datum = 0
+    last_datum = 0
+    last_week = ""
+    @@pages.map do |page|
+      this_week = page.date.strftime("%W") 
       target = page.lines.where(item_id: target_item).first #dataは複数形、datumが単数形
-      target.presence ? target.this_max_reps.to_i : 0 #nil.to_i => 0 を利用 return省略がruby流 
+      this_datum = target.presence ? target.this_max_reps.to_i : last_datum  #nil.to_i => 0 を利用 return省略がruby流 
+      if this_datum >= max_datum 
+        max_datum = this_datum
+      end
+      if this_week != last_week
+        data << max_datum
+        last_datum = this_datum
+        max_datum = 0
+      else
+        max_datum = last_datum if max_datum = 0
+        data[data.size-1] = max_datum
+      end
+      last_week = this_week
     end
+    data
   end
   def pie_chart_data_place
     data = []
@@ -41,5 +66,18 @@ module ChartUtil
       data << [part.name,value.to_i] if value.to_i > 0
     end
     data
+  end
+  def mweek(date)
+    day = date - (date.cwday - 1)
+    base_month = day.month
+    week = 0
+    (1..5).each do |index|
+      day -= 7
+      if base_month != day.month
+        week = index
+        break
+      end
+    end
+    { :month => base_month, :week => week}
   end
 end
