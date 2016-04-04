@@ -2,14 +2,16 @@
   <h1 style="font-weight: normal" >We❤️ <br>Gym📖 </h1>
 </div>
 <%= render "welcome" %>
-<div> 直近のトレーニング：<%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>
+<div> 直近のトレーニング：<%= @latest_page.date.strftime("%Y/%m/%d(%a)") if @latest_page.id != nil %>
 </div>
 <input type="button" value="新規作成" 
        class="btn btn-primary btn-block"
        onclick="location.href='<%= new_page_path  %>'" />
-       <input type="button" value="記録" 
-       class="btn btn-success btn-block"
-       onclick="location.href='<%= page_path(@latest_page.id) %>'" />
+       <% if @latest_page.id != nil %>
+         <input type="button" value="記録" 
+         class="btn btn-success btn-block"
+         onclick="location.href='<%= page_path(@latest_page.id) %>'" />
+     <% end %>
        <input type="button" value="一覧"
        class="btn btn-info btn-block"
        onclick="location.href='<%= pages_path %>'" />

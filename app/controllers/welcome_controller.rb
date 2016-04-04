@@ -2,11 +2,14 @@ class WelcomeController < ApplicationController
   include ChartUtil
   def index
     latest_date = Page.maximum(:date) #最新日
-    @latest_page = Page.where(date: latest_date).first
+    if latest_date 
+    @latest_page = Page.where(date: latest_date).first 
+    else
+     @latest_page = Page.new(date: Time.current,place: "none")
+    end
     @recommend_1 = "しっかり栄養をとって休息をとりましょう。"
     @recommend_2 = "焦らず重量は２kg刻みで６〜８repsで調整しましょう。フォームを大切に。１２週間に一回はレイオフを設けましょう。"
     @greeting = get_greeting
-    @chart_gym = get_chart_gym
     @cheer = latest_page_finished ? "お疲れ様でした。" : "頑張りましょう"
   end
 
