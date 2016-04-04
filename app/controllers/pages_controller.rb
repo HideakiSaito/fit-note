@@ -1,10 +1,15 @@
 class PagesController < InheritedResources::Base
   include ChartUtil
   def index
+    @show = false 
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.order("date desc")
     @pages = @pages.search @search_form.q if @search_form.q.present?
-    @pages = @pages.paginate(page: params[:page], per_page: 9)
+    @pages = @pages.paginate(page: params[:page], per_page: 12)
+    @chart_pie_parts_index = {}
+    @pages.each do |page|
+      @chart_pie_parts_index[page.id] = self.day_chart(page.id)
+    end
     respond_to do |format|
       format.html #default template
       format.js   #default template
@@ -12,8 +17,19 @@ class PagesController < InheritedResources::Base
     end
   end
 
+  def day_chart(x_id)
+     LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: 'トレーニング部位別バランス')
+      f.series(name: 'レップス',
+               data: pie_chart_data_parts(x_id) , type: 'pie')
+    end
+  end
+
   def show
+    @show = true
     @page = Page.find(params[:id])
+    @chart_pie_parts_index = {}
+    @chart_pie_parts_index[@page.id] = self.day_chart(@page.id)
     @chart_pie_parts = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'トレーニング部位別バランス')
       f.series(name: 'レップス',
@@ -59,8 +75,8 @@ class PagesController < InheritedResources::Base
   end
 
   def import
-     Page.import(params[:file]) # fileはtmpに自動で一時保存される
-     redirect_to pages_url, notice: "Pageをインポートしました。"
+    Page.import(params[:file]) # fileはtmpに自動で一時保存される
+    redirect_to pages_url, notice: "Pageをインポートしました。"
   end
 
   private
@@ -70,14 +86,14 @@ class PagesController < InheritedResources::Base
       @copy_lines = Page.find(params[:copy_page][:id]).lines
       @new_lines = @copy_lines.map do |copy_line| 
         @page.lines.create(no: copy_line.no,
-                            item_id: copy_line.item_id,
-                            mode_id: copy_line.mode_id,
-                            weight_1: copy_line.weight_1,
-                            weight_2: copy_line.weight_2,
-                            weight_3: copy_line.weight_3,
-                            weight_4: copy_line.weight_4,
-                            weight_5: copy_line.weight_5
-                           )
+                           item_id: copy_line.item_id,
+                           mode_id: copy_line.mode_id,
+                           weight_1: copy_line.weight_1,
+                           weight_2: copy_line.weight_2,
+                           weight_3: copy_line.weight_3,
+                           weight_4: copy_line.weight_4,
+                           weight_5: copy_line.weight_5
+                          )
       end
     end
   end

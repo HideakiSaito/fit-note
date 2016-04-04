@@ -2,9 +2,5 @@
 
 <div id="pages"><%= render @page %></div>
 
-<div id="chart_pie_parts">
-  <%= high_chart("pie_chart_parts", @chart_pie_parts) %>
-</div>
-
 <%= link_to 'Edit', edit_page_path(@page) %> |
 <%= link_to 'Back', pages_path %>
