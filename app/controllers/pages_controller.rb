@@ -8,7 +8,7 @@ class PagesController < InheritedResources::Base
     @pages = @pages.paginate(page: params[:page], per_page: 12)
     @chart_pie_parts_index = {}
     @pages.each do |page|
-      @chart_pie_parts_index[page.id] = self.day_chart(page.id)
+      @chart_pie_parts_index[page.id] = self.day_chart(page)
     end
     respond_to do |format|
       format.html #default template
@@ -17,24 +17,19 @@ class PagesController < InheritedResources::Base
     end
   end
 
-  def day_chart(x_id)
+  def day_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: 'トレーニング部位別バランス')
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 部位別バランス')
       f.series(name: 'レップス',
-               data: pie_chart_data_parts(x_id) , type: 'pie')
-    end
+               data: pie_chart_data_parts(page.id) , type: 'pie')
+     end
   end
 
   def show
     @show = true
     @page = Page.find(params[:id])
     @chart_pie_parts_index = {}
-    @chart_pie_parts_index[@page.id] = self.day_chart(@page.id)
-    @chart_pie_parts = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: 'トレーニング部位別バランス')
-      f.series(name: 'レップス',
-               data: pie_chart_data_parts(params[:id]) , type: 'pie')
-    end
+    @chart_pie_parts_index[@page.id] = self.day_chart(@page)
   end
 
   def new
