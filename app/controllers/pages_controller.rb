@@ -1,7 +1,8 @@
 class PagesController < InheritedResources::Base
   include ChartUtil
   def index
-    @show = false 
+    @show = false
+    @page_class = "col-xs-12 col-sm-6 col-md-4 col-lg-4" 
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.order("date desc")
     @pages = @pages.search @search_form.q if @search_form.q.present?
@@ -27,6 +28,7 @@ class PagesController < InheritedResources::Base
 
   def show
     @show = true
+    @page_class = "" 
     @page = Page.find(params[:id])
     @chart_pie_parts_index = {}
     @chart_pie_parts_index[@page.id] = self.day_chart(@page)

@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<div id="pages"><%= render @page %></div>
-
-<%= link_to 'Edit', edit_page_path(@page) %> |
+<script>
+alert("#");
+</script>
+ <%= check_box_tag "page[hidden_lines]",true,true %> show lines
+ <%= check_box_tag "page[hidden_chart]" ,true ,true%> show chart 
+: <%= link_to 'Edit', edit_page_path(@page) %> |
 <%= link_to 'Back', pages_path %>
+<div id="pages"><%= render @page %></div>
