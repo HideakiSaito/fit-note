@@ -40,6 +40,37 @@
     <%= f.text_area :memo , { class: "form-control"} %>
   </div>
   <div class="field">
+    <%= f.label :diet_id %><br>
+    <%= f.collection_select :diet_id ,
+      Diet.all.order(:id), :id , :name ,
+      {prompt: true} , { class: "form-control"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :carbohydrate_1 %>[g]<br>
+    <%= f.number_field :carbohydrate_1 ,  class: "form-control" ,step: 0.5%>
+  </div>
+  <div class="field">
+    <%= f.label :fat_1 %>[g]<br>
+    <%= f.number_field :fat_1 ,  class: "form-control" ,step: 0.5%>
+  </div>
+  <div class="field">
+    <%= f.label :protein_1 %>[g]<br>
+    <%= f.number_field :protein_1 ,  class: "form-control" ,step: 0.5%>
+  </div>
+  <div class="field">
+    <%= f.label :diet_memo_1 %><br>
+    <%= f.text_field :diet_memo_1 , { class: "form-control"} %>
+  </div>
+  <div style="border-width:2px" > 基本食:<br/>
+    ご飯１６０g＝＞炭水化物６０g<br/>
+    とりmomo肉１００g＝＞たんぱく質１８g、脂質4g<br/>
+    とり胸肉１００g＝＞たんぱく質２０g、脂質１０g<br/>
+    とりササミ１００g＝＞たんぱく質２０g、脂質０g<br/>
+    ブロッコリー１００g＝＞ビタミンC、K、E、葉酸、B、カルシウム、マグネシウム、スルスラフォン、、、<br/>
+    アボカド１００g＝＞20%油だけど。オメガ9（オレイン酸）やリノール酸、リノレン酸<br/>
+  </div>
+  <div class="field">
     <%= f.label :image %><br>
     <%= f.text_field :image , { class: "form-control"} %>
   </div>

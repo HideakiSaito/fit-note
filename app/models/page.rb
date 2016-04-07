@@ -1,5 +1,16 @@
 class Page < ActiveRecord::Base
   has_many :lines,->{order("no ASC") } ,dependent: :destroy
+  belongs_to :diet
+ def diet_summaly
+   d = ""
+   d += diet.name if diet_id
+   d += " c:" + carbohydrate_1.to_s + "g, "
+   d += "f:" + fat_1.to_s + "g, "
+   d += "p:" + protein_1.to_s + "g, "
+   d += "v:" + vegetable_1.to_s + "g, "
+   d += diet_memo_1.to_s
+   d
+ end
 
   def page_label
     id.to_s + "." + date.to_s + "_" + place
