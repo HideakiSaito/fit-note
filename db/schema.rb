@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111102816) do
+ActiveRecord::Schema.define(version: 20160407131836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20160111102816) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "diets", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "equipment", force: :cascade do |t|
     t.string   "name"
@@ -108,9 +114,37 @@ ActiveRecord::Schema.define(version: 20160111102816) do
     t.time     "end_time"
     t.text     "memo"
     t.binary   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "diet_id"
+    t.float    "carbohydrate_1"
+    t.float    "fat_1"
+    t.float    "protein_1"
+    t.float    "vegetable_1"
+    t.string   "diet_memo_1"
+    t.float    "carbohydrate_2"
+    t.float    "fat_2"
+    t.float    "protein_2"
+    t.float    "vegetable_2"
+    t.string   "diet_memo_2"
+    t.float    "carbohydrate_3"
+    t.float    "fat_3"
+    t.float    "protein_3"
+    t.float    "vegetable_3"
+    t.string   "diet_memo_3"
+    t.float    "carbohydrate_4"
+    t.float    "fat_4"
+    t.float    "protein_4"
+    t.float    "vegetable_4"
+    t.string   "diet_memo_4"
+    t.float    "carbohydrate_5"
+    t.float    "fat_5"
+    t.float    "protein_5"
+    t.float    "vegetable_5"
+    t.string   "diet_memo_5"
   end
+
+  add_index "pages", ["diet_id"], name: "index_pages_on_diet_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
     t.string   "name"
@@ -139,6 +173,7 @@ ActiveRecord::Schema.define(version: 20160111102816) do
   add_foreign_key "lines", "items"
   add_foreign_key "lines", "modes"
   add_foreign_key "lines", "pages"
+  add_foreign_key "pages", "diets"
   add_foreign_key "trainings", "items"
   add_foreign_key "trainings", "modes"
 end
