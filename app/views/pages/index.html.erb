@@ -5,7 +5,7 @@
   <%= f.submit '検索' %>
 <% end %>
 <button type="button" class="btn btn-primary mini-size"
-        onClick="location.href='/pages/new'">コピーまたは、新規で新しいページを作る。</button>
+        onClick="location.href='/pages/new'">新しいページを作る。</button>
  <%= check_box_tag "page[hidden_lines]",true,true %> show lines
  <%= check_box_tag "page[hidden_chart]" ,true ,true%> show chart 
 <div id="pages" class="row" ><%= render @pages %></div>

@@ -1,69 +1,71 @@
 <div class= "<%= @page_class %> note-index" >
   <div class="note" >
-  <table style="vertical-align:baseline" >
-    <tr>
-      <td style="font-weight:bold;font-size:1.5em;">
-        <% if  page.date.strftime("%W").to_i.remainder(2) == 1 
-             week_class = 'success'
-        else
-          week_class = 'info'
-        end
-      %>
-<button type="button" class="btn btn-<%= week_class %> "
-                      onClick="location.href='/pages/<%= page.id  %>'">
-                      <%= page.date.strftime("%Y/%m/%d(%a) week:%W") %>
-</button>
-      </td>
-      <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
-        <%= page.end_time.strftime("%H:%M") %>
-      </td>
-      <td style="font-weight:bold;">
-        &nbsp;&nbsp;<%= page.place %>
-    </td>
-    <td>
-      &nbsp;&nbsp;
-      <button type="button" class="btn btn-default mini-size"
-                            onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
-    </td>
-    </tr>
-    <tr>
-      <td><%= page.memo %></td>
-    </tr>
-  </table>
-  <div><%= raw page.diet_summaly %> </div>
-  <table class="table table-striped table-hover"
-         style="text-align: right; width: 100%;">
-    <thead>
+    <table style="vertical-align:baseline" >
       <tr>
-        <th> No. トレーニング種目</th>
-        <th style="text-align: right;">1set</th>
-        <th style="text-align: right;">2set</th>
-        <th style="text-align: right;">3set</th>
-        <th style="text-align: right;">Max</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% page.lines.order(:id).each do |line| %>
-        <tr>
-          <td style="text-align: left;"><%= line.no %>.
-            <%= link_to line.item.name , edit_line_path(line) %>
-          </td>
-          <td><%= line.weight_1 %><br>/<%= line.reps_1 %></td>
-          <td><%= line.weight_2 %><br>/<%= line.reps_2 %></td>
-          <td><%= line.weight_3 %><br>/<%= line.reps_3 %></td>
-          <td style="font-weight:bold;"><%= line.this_max_reps %></td>
-        </tr>
-      <% end %>
-      <tr>
-        <td colspan="7" 
-            style="text-align: left; width: 100%;">
-          <%= link_to '行を追加する。', new_page_line_path(page) %>||
+        <td style="font-weight:bold;font-size:1.5em;">
+          <% if  page.date.strftime("%W").to_i.remainder(2) == 1 
+               week_class = 'success'
+          else
+            week_class = 'info'
+          end
+        %>
+    <button type="button" class="btn btn-<%= week_class %> "
+                          onClick="location.href='/pages/<%= page.id  %>'">
+                          <%= page.date.strftime("%Y/%m/%d(%a) week:%W") %>
+    </button>
         </td>
+        <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
+          <%= page.end_time.strftime("%H:%M") %>
+        </td>
+        <td style="font-weight:bold;">
+          &nbsp;&nbsp;<%= page.place %>
+      </td>
+      <td>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-default mini-size"
+                              onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
+      </td>
       </tr>
-    </tbody>
-  </table>
+      <tr>
+        <td><%= page.memo %></td>
+      </tr>
+    </table>
+    <div class="diet-line"><%= raw page.diet_summaly %> </div>
+    <div class="training-line">
+      <table class="table table-striped table-hover "
+             style="text-align: right; width: 100%;">
+        <thead>
+          <tr>
+            <th> No. トレーニング種目</th>
+            <th style="text-align: right;">1set</th>
+            <th style="text-align: right;">2set</th>
+            <th style="text-align: right;">3set</th>
+            <th style="text-align: right;">Max</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% page.lines.order(:id).each do |line| %>
+            <tr>
+              <td style="text-align: left;"><%= line.no %>.
+                <%= link_to line.item.name , edit_line_path(line) %>
+              </td>
+              <td><%= line.weight_1 %><br>/<%= line.reps_1 %></td>
+              <td><%= line.weight_2 %><br>/<%= line.reps_2 %></td>
+              <td><%= line.weight_3 %><br>/<%= line.reps_3 %></td>
+              <td style="font-weight:bold;"><%= line.this_max_reps %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td colspan="7" 
+                style="text-align: left; width: 100%;">
+              <%= link_to '行を追加する。', new_page_line_path(page) %>||
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="chart" >
     <%= high_chart( "chart"+page.id.to_s , @chart_pie_parts_index[page.id]) %>
-</div>
+  </div>
 </div>

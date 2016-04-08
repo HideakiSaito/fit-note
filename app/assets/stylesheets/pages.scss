@@ -20,3 +20,11 @@
     height:0;
   }
 }
+div.training-line {
+  overflow: scroll;   /* スクロール表示 */ 
+  height: 20em;
+}
+div.diet-line {
+  overflow: scroll;   /* スクロール表示 */ 
+  height: 10em;
+}

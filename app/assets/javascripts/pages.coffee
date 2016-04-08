@@ -11,13 +11,13 @@ $(document).on "ready page:load",->
     if $("#page_hidden_lines").prop("checked")
       $(".note").show()
       if ( $(window).width() > 768) 
-        $(".note-index").css('height','+=800' )
+        $(".note-index").css('height','+=450' )
       else
         $(".note-index").css('height','auto' )
     else
       $(".note").hide()
       if ( $(window).width() > 768) 
-        $(".note-index").css('height','-=800' )
+        $(".note-index").css('height','-=450' )
       else
         $(".note-index").css('height','auto' )
   $("#page_hidden_lines").bind("click",change_page_hidden_lines_at)
