@@ -23,7 +23,7 @@ class Page < ActiveRecord::Base
       d += "v:" + vegetable_2.to_s + "g, "
       d += "</br>"
     end
-    if diet_memo_3
+    if diet_memo_3 && diet_memo_3.size > 0
       d += diet_memo_3.to_s
       d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_3.to_s + "g, "
@@ -49,6 +49,7 @@ class Page < ActiveRecord::Base
       d += "p:" + protein_5.to_s + "g, "
       d += "v:" + vegetable_5.to_s + "g, "
     end
+    d #最後nilで終わると何も出ないので
   end
 
   def page_label
