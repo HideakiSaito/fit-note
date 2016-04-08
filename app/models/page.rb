@@ -4,12 +4,36 @@ class Page < ActiveRecord::Base
  def diet_summaly
    d = ""
    d += diet.name if diet_id
-   d += " c:" + carbohydrate_1.to_s + "g, "
+   d += "</br>"
+   d += "c:" + carbohydrate_1.to_s + "g, "
    d += "f:" + fat_1.to_s + "g, "
    d += "p:" + protein_1.to_s + "g, "
    d += "v:" + vegetable_1.to_s + "g, "
    d += diet_memo_1.to_s
-   d
+   d += "</br>"
+   d += "c:" + carbohydrate_2.to_s + "g, "
+   d += "f:" + fat_2.to_s + "g, "
+   d += "p:" + protein_2.to_s + "g, "
+   d += "v:" + vegetable_2.to_s + "g, "
+   d += diet_memo_2.to_s
+   d += "</br>"
+   d += "c:" + carbohydrate_3.to_s + "g, "
+   d += "f:" + fat_3.to_s + "g, "
+   d += "p:" + protein_3.to_s + "g, "
+   d += "v:" + vegetable_3.to_s + "g, "
+   d += diet_memo_3.to_s
+   d += "</br>"
+   d += "c:" + carbohydrate_4.to_s + "g, "
+   d += "f:" + fat_4.to_s + "g, "
+   d += "p:" + protein_4.to_s + "g, "
+   d += "v:" + vegetable_4.to_s + "g, "
+   d += diet_memo_4.to_s
+   d += "</br>"
+   d += "c:" + carbohydrate_5.to_s + "g, "
+   d += "f:" + fat_5.to_s + "g, "
+   d += "p:" + protein_5.to_s + "g, "
+   d += "v:" + vegetable_5.to_s + "g, "
+   d += diet_memo_5.to_s
  end
 
   def page_label
