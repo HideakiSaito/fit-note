@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
     d += "</br>"
     if diet_memo_1
       d += diet_memo_1.to_s
-      d += "</br>"
+      d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_1.to_s + "g, "
       d += "f:" + fat_1.to_s + "g, "
       d += "p:" + protein_1.to_s + "g, "
@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_2
       d += diet_memo_2.to_s
-      d += "</br>"
+      d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_2.to_s + "g, "
       d += "f:" + fat_2.to_s + "g, "
       d += "p:" + protein_2.to_s + "g, "
@@ -25,25 +25,25 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_3
       d += diet_memo_3.to_s
-      d += "</br>"
+      d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_3.to_s + "g, "
       d += "f:" + fat_3.to_s + "g, "
       d += "p:" + protein_3.to_s + "g, "
       d += "v:" + vegetable_3.to_s + "g, "
       d += "</br>"
     end
-    if diet_memo_4
+    if diet_memo_4 && diet_memo_4.size > 0
       d += diet_memo_4.to_s
-      d += "</br>"
+      d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_4.to_s + "g, "
       d += "f:" + fat_4.to_s + "g, "
       d += "p:" + protein_4.to_s + "g, "
       d += "v:" + vegetable_4.to_s + "g, "
       d += "</br>"
     end
-    if diet_memo_5
+    if diet_memo_5 && diet_memo_5.size > 0
       d += diet_memo_5.to_s
-      d += "</br>"
+      d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_5.to_s + "g, "
       d += "f:" + fat_5.to_s + "g, "
       d += "p:" + protein_5.to_s + "g, "
