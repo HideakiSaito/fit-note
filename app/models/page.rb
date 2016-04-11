@@ -52,6 +52,22 @@ class Page < ActiveRecord::Base
     d #最後nilで終わると何も出ないので
   end
 
+  def carbohydrate_sum
+    carbohydrate_1.to_i + carbohydrate_2.to_i + carbohydrate_3.to_i + carbohydrate_4.to_i + carbohydrate_5.to_i
+  end
+
+  def fat_sum
+    fat_1.to_i + fat_2.to_i + fat_3.to_i + fat_4.to_i + fat_5.to_i
+  end
+
+  def protein_sum
+    protein_1.to_i + protein_2.to_i + protein_3.to_i + protein_4.to_i + protein_5.to_i
+  end
+
+  def vegetable_sum
+    vegetable_1.to_i + vegetable_2.to_i + vegetable_3.to_i + vegetable_4.to_i + vegetable_5.to_i
+  end
+
   def page_label
     id.to_s + "." + date.to_s + "_" + place
   end
