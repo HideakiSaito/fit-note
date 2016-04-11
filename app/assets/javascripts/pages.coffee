@@ -27,13 +27,13 @@ $(document).on "ready page:load",->
     if $("#page_hidden_chart").prop("checked")
       $(".chart").show()
       if ( $(window).width() > 768) 
-        $(".note-index").css('height','+=400' )
+        $(".note-index").css('height','+=800' )
       else
         $(".note-index").css('height','auto' )
     else
       $(".chart").hide()
       if ( $(window).width() > 768) 
-        $(".note-index").css('height','-=400' )
+        $(".note-index").css('height','-=800' )
       else
         $(".note-index").css('height','auto' )
   $("#page_hidden_chart").bind("click",change_page_hidden_chart_at)

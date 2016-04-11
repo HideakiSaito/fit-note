@@ -46,6 +46,15 @@ module ChartUtil
     end
     data
   end
+
+  def pie_chart_data_diet( page_id = nil )
+    data = []
+    page = Page.find page_id
+    data << ["炭水化物",page.carbohydrate_sum]
+    data << ["脂肪",page.fat_sum]
+    data << ["たんぱく質",page.protein_sum]
+    data << ["野菜",page.vegetable_sum]
+  end
   def pie_chart_data_place
     data = []
     places = %W(ジム 家) # %Wで["hoge","fuga"]を省略

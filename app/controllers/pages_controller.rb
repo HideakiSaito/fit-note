@@ -8,8 +8,10 @@ class PagesController < InheritedResources::Base
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
     @chart_pie_parts_index = {}
+    @chart_pie_diets_index = {}
     @pages.each do |page|
       @chart_pie_parts_index[page.id] = self.day_chart(page)
+      @chart_pie_diets_index[page.id] = self.day_diet_chart(page)
     end
     respond_to do |format|
       format.html #default template
@@ -17,7 +19,6 @@ class PagesController < InheritedResources::Base
       format.json { @pages = Page.order("date desc") } #jsonは全部
     end
   end
-
   def day_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 部位別バランス')
@@ -25,13 +26,21 @@ class PagesController < InheritedResources::Base
                data: pie_chart_data_parts(page.id) , type: 'pie')
      end
   end
-
+  def day_diet_chart(page)
+     LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 食事バランス')
+      f.series(name: 'グラム',
+               data: pie_chart_data_diet(page.id) , type: 'pie')
+     end
+  end
   def show
     @show = true
     @page_class = "" 
     @page = Page.find(params[:id])
     @chart_pie_parts_index = {}
+    @chart_pie_diets_index = {}
     @chart_pie_parts_index[@page.id] = self.day_chart(@page)
+    @chart_pie_diets_index[@page.id] = self.day_diet_chart(@page)
   end
 
   def new
