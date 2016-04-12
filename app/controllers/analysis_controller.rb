@@ -9,9 +9,9 @@ class AnalysisController < ApplicationController
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでのトレーニング推移')
       f.xAxis(categories: chart_dates)
-      f.series(name: 'Push', data: chart_data(push_id))
-      f.series(name: 'Pull', data: chart_data(pull_id))
-      f.series(name: 'Leg', data: chart_data(leg_id))
+      f.series(name: 'Push:ベンチプレス[kg]', data: chart_data(push_id))
+      f.series(name: 'Pull:デッドリフト[kg]', data: chart_data(pull_id))
+      f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
     end
     render :index
   end
@@ -51,9 +51,9 @@ class AnalysisController < ApplicationController
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '家でのトレーニング推移')
       f.xAxis(categories: chart_dates)
-      f.series(name: 'Push', data: chart_data(push_id))
-      f.series(name: 'Pull', data: chart_data(pull_id))
-      f.series(name: 'Leg', data: chart_data(leg_id))
+      f.series(name: 'Push:ダンベルプレス[kg]', data: chart_data(push_id))
+      f.series(name: 'Pull:ワンハンドロー[kg]', data: chart_data(pull_id))
+      f.series(name: 'Leg:ダンベルスクワット[kg]', data: chart_data(leg_id))
     end
     render :index
   end
