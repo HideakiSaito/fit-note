@@ -15,6 +15,25 @@ class AnalysisController < ApplicationController
     end
     render :index
   end
+  def diet
+    #Big3 items id
+    push_id = [1,2]
+    pull_id = [4,18,5,6]
+    leg_id = [9] #19
+    analysis_initialize("ジム")#ChartUtilを利用
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: 'ジムでのトレーニング推移')
+      f.xAxis(categories: chart_dates)
+      f.series(name: 'Push', data: chart_data(push_id))
+      f.series(name: 'Pull', data: chart_data(pull_id))
+      f.series(name: 'Leg', data: chart_data(leg_id))
+      #f.chart(type: "column")
+      #f.chart(type: "bar")
+      f.chart(type: "area")
+      f.options[:plotOptions] = { area: { stacking: 'normal'} } 
+    end
+    render :index
+  end
   def home
     #Big3 items id
     push_id = [1,2]
