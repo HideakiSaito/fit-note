@@ -22,11 +22,11 @@ class AnalysisController < ApplicationController
     leg_id = [9] #19
     analysis_initialize("ジム")#ChartUtilを利用
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: 'ジムでのトレーニング推移')
+      f.title(text: '食事のバランス推移')
       f.xAxis(categories: chart_dates)
-      f.series(name: 'Push', data: chart_data(push_id))
-      f.series(name: 'Pull', data: chart_data(pull_id))
-      f.series(name: 'Leg', data: chart_data(leg_id))
+      f.series(name: '炭水化物', data: chart_data(push_id))
+      f.series(name: '脂肪', data: chart_data(pull_id))
+      f.series(name: 'たんぱく質', data: chart_data(leg_id))
       #f.chart(type: "column")
       #f.chart(type: "bar")
       f.chart(type: "area")
