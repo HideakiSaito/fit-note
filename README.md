@@ -7,15 +7,19 @@
 筋力の推移をチャートで確認することでオーバーロードの原則に沿ったトレーニングを可能にします。
 
 - その日の、食事とトレーニングのバランスを確認。
+
 ![img](https://farm2.staticflickr.com/1663/26409684915_040df45fbc_z.jpg)
 
 - 食事のバランス、カロリー摂取推移を確認。
+
 ![img](https://farm2.staticflickr.com/1584/26136846790_9b73ceee13_z.jpg)
 
 - BIG3などのトレーニング推移を確認。
+
 ![img](https://farm2.staticflickr.com/1478/26136846810_47069e0b84_z.jpg)
 
 - 種目ごとのトレーニング推移を確認。
+
 ![img](https://farm2.staticflickr.com/1497/26383768976_5e7109f141_z.jpg)
 
 ## Features
