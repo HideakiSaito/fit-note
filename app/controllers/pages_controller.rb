@@ -2,7 +2,8 @@ class PagesController < InheritedResources::Base
   include ChartUtil
   def index
     @show = false
-    @page_class = "col-xs-12 col-sm-6 col-md-4 col-lg-4" 
+    #@page_class = "col-xs-12 col-sm-6 col-md-4 col-lg-4" 
+    @page_class = "col-xs-12 col-sm-6 col-md-6 col-lg-6" 
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.order("date desc")
     @pages = @pages.search @search_form.q if @search_form.q.present?
