@@ -17,14 +17,15 @@
     border-collapse: collapse;
     border-style:dotted; 
     border-width: 1px;
-    height:0;
+    /* height:0; */
+    height:auto;
   }
 }
 div.training-line {
   overflow: scroll;   /* スクロール表示 */ 
-  height: 20em;
+  /*height: 20em;*/
 }
 div.diet-line {
   overflow: scroll;   /* スクロール表示 */ 
-  height: 10em;
+ /* height: 10em;*/
 }

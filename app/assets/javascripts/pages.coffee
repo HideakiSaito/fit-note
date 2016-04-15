@@ -20,8 +20,8 @@ $(document).on "ready page:load",->
         $(".note-index").css('height','-=450' )
       else
         $(".note-index").css('height','auto' )
-  $("#page_hidden_lines").bind("click",change_page_hidden_lines_at)
-  change_page_hidden_lines_at()
+  #$("#page_hidden_lines").bind("click",change_page_hidden_lines_at)
+  #change_page_hidden_lines_at()
   
   change_page_hidden_chart_at = ->
     if $("#page_hidden_chart").prop("checked")
@@ -36,5 +36,5 @@ $(document).on "ready page:load",->
         $(".note-index").css('height','-=800' )
       else
         $(".note-index").css('height','auto' )
-  $("#page_hidden_chart").bind("click",change_page_hidden_chart_at)
-  change_page_hidden_chart_at()
+  #$("#page_hidden_chart").bind("click",change_page_hidden_chart_at)
+  #change_page_hidden_chart_at()
