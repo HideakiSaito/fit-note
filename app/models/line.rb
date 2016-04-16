@@ -28,9 +28,17 @@ class Line < ActiveRecord::Base
   end
   #同一トレーニング場所で前回の同種目の記録を取得する
   def get_last_line
-    prev_page = Page.where("place = ? and date < ?",page.place ,page.date).order("date desc").first
-    return nil unless prev_page #前回のトレーニングなければnil
-    prev_line = Line.joins(:page).where(pages:{id: prev_page.id}, item_id: item.id).first
+    prev_page = get_prev_page page #最初に前回のページを見る
+    prev_line = nil
+    until prev_line
+      prev_line = Line.joins(:page).where(pages:{id: prev_page.id}, item_id: item.id).first
+      return prev_line if prev_line #前回のページに同じ種目があれば返す
+      prev_page = get_prev_page prev_page ##前々回のページを見る、繰り返す
+      return nil unless prev_page #前回のトレーニングなければnil
+    end
+  end
+  def get_prev_page(x_page)
+    prev_page = Page.where("place = ? and date < ?",x_page.place ,x_page.date).order("date desc").first
   end
   #統計データ用にレップス合計を取得
   def get_sum_reps
