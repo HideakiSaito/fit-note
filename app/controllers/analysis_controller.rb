@@ -1,21 +1,45 @@
 class AnalysisController < ApplicationController
   include ChartUtil
+  def dash_bord
+    #chart
+    @gym_chart = self.gym_chart
+    @diet_chart = self.diet_chart
+    #latest_page
+    @page_class = "" 
+    latest_date = Page.maximum(:date) #最新日
+    if latest_date 
+    @latest_page = Page.where(date: latest_date).first 
+    else
+     @latest_page = Page.new(date: Time.current,place: "none")
+    end
+    @chart_pie_parts_index = {}
+    @chart_pie_diets_index = {}
+    @chart_pie_parts_index[@latest_page.id] = day_training_chart(@latest_page)
+    @chart_pie_diets_index[@latest_page.id] = day_diet_chart(@latest_page)
+  end
   def gym
+    @chart = self.gym_chart
+    render :index
+  end
+  def diet
+    @chart = self.diet_chart
+    render :index
+  end
+  def gym_chart
     #Big3 items id
     push_id = [1,2]
     pull_id = [4,18,5,6]
     leg_id = [9] #19
     analysis_initialize("ジム")#ChartUtilを利用
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでのトレーニング推移')
       f.xAxis(categories: chart_dates)
       f.series(name: 'Push:ベンチプレス[kg]', data: chart_data(push_id))
       f.series(name: 'Pull:デッドリフト[kg]', data: chart_data(pull_id))
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
     end
-    render :index
   end
-  def diet
+  def diet_chart
     pages = Page.where("protein_1 > 0").order(:date)
     dates = []
     protein_data = []
@@ -30,7 +54,7 @@ class AnalysisController < ApplicationController
       carbohydrate_data << page.carbohydrate_sum * 4
       vegetable_data << page.vegetable_sum * 5 
     end
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '食事のバランス推移')
       f.xAxis(categories: dates)
       f.series(name: "野菜[/5g]" ,data: vegetable_data ,type: "column")
@@ -40,7 +64,6 @@ class AnalysisController < ApplicationController
       f.chart(type: "area")
       f.options[:plotOptions] = { area: { stacking: 'normal'} } 
     end
-    render :index
   end
   def home
     #Big3 items id

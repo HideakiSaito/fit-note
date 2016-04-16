@@ -46,7 +46,21 @@ module ChartUtil
     end
     data
   end
-
+#page_controller kara
+  def day_training_chart(page)
+     LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 部位別バランス')
+      f.series(name: 'レップス',
+               data: pie_chart_data_parts(page.id) , type: 'pie')
+     end
+  end
+  def day_diet_chart(page)
+     LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 食事バランス')
+      f.series(name: 'グラム',
+               data: pie_chart_data_diet(page.id) , type: 'pie')
+     end
+  end
   def pie_chart_data_diet( page_id = nil )
     data = []
     page = Page.find page_id

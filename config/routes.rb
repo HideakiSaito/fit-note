@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "about" => "welcome#about", as: "about"
   get "developer" => "welcome#developer", as: "developer"
   resources :analysis do
-    collection { get :diet,:gym,:home,:pie_parts,:pie_place }
+    collection { get :dash_bord,:diet,:gym,:home,:pie_parts,:pie_place }
   end
   resources :lines do
     collection { post :import }
