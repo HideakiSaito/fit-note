@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :analysis do
     collection { get :dash_bord,:diet,:gym,:home,:pie_parts,:pie_place }
   end
+  resources :maintenance do
+    collection {get :pages_delete_all,:items_delete_all}
+    collection { post :pages_import,:items_import}
+  end
   resources :lines do
     collection { post :import }
   end

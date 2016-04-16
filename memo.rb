@@ -13,6 +13,9 @@ rails destroy scaffold training
 rails g scaffold diet name
 #ok
 
+#2016/04/16
+rails g controller maintenance
+
 #2016/04/07
 #食事管理機能のために
 #page add
@@ -21,7 +24,9 @@ rails g migration AddColumnToPage diet:belongs_to carbohydrate_1:float fat_1:flo
 
 #2016/04/07
 #休息管理
-#page add 疲れ、気分、睡眠、水分
+#page add 疲れ、気分、睡眠、水分,体重
+#2016/04/16
+#page add アルコール量（ビール）、カフェイン量（コーヒー） 、仕事、勉強、テレビ、インター年と量など
 #　fatigue　feeling　sleep water
 # faigue model : name score
 # feeling model : name score

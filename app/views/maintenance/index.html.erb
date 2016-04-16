@@ -1,0 +1,36 @@
+<h1>メンテナンス</h1>
+
+<h2>
+  <%= @mes  %>
+</h2>
+
+<hr>  
+<h3>ページ&行データ：エクスポート</h3>
+[pages.json]
+<button type="button" class="btn btn-info hundred"
+        onClick="location.href='/pages.json'">ページデータ JOSN エクスポート</button>
+[lines.json]
+<button type="button" class="btn btn-info hundred"
+        onClick="location.href='/lines.json'">行データ JOSN エクスポート</button>
+<h3>ページ&行データ：インポート</h3>
+<button type="button" class="btn btn-danger hundred"
+        onClick="location.href='/maintenance/pages_delete_all'">ページ,行データ全削除</button>
+<%= form_tag "/maintenance/pages_import" , multipart: true do %>
+  [pages.json]<%= file_field_tag :pages_file ,class: "btn btn-default hundred" %>
+  [lines.json]<%= file_field_tag :lines_file ,class: "btn btn-default hundred" %>
+  <%= submit_tag "ページ&行データ JSON インポート", class: "btn btn-warning hundred" %>
+<% end %>
+<hr>
+<h3>種目データ：エクスポート</h3>
+[items.json]
+<button type="button" class="btn btn-info hundred"
+        onClick="location.href='/items.json'">種目データ JOSN エクスポート</button>
+<h3>種目データ：インポート</h3>
+<button type="button" class="btn btn-danger hundred"
+        onClick="location.href='/maintenance/items_delete_all'">種目データ全削除</button>
+[items.json]
+<%= form_tag "/maintenance/items_import", multipart: true do %>
+  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
+  <%= submit_tag "種目データ JSON インポート", class: "btn btn-warning hundred" %>
+<% end %>
+<hr>

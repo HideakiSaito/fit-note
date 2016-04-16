@@ -7,7 +7,6 @@
     <%= submit_tag "検索" %>
   </p>
 <% end %>
-
 <table class="table table-striped"
        style="text-align: left; width: 100%;">
   <thead>
@@ -29,10 +28,3 @@
 </table>
 <br>
 <%= link_to 'New Item', new_item_path %>
-<hr>
-<%= form_tag import_items_path, multipart: true do %>
-<button type="button" class="btn btn-info hundred"
-        onClick="location.href='/items.json'">種目データ JOSN エクスポート</button>
-  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
-  <%= submit_tag "種目データ JSON インポート", class: "btn btn-warning hundred" %>
-<% end %>

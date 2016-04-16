@@ -10,17 +10,3 @@
  <%= check_box_tag "page[hidden_chart]" ,true ,true%> show chart 
 <div id="pages" class="row" ><%= render @pages %></div>
 <%= will_paginate @pages %>
-<hr>  
-<%= form_tag import_pages_path, multipart: true do %>
-<button type="button" class="btn btn-info hundred"
-        onClick="location.href='/pages.json'">ページデータ JOSN エクスポート</button>
-  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
-  <%= submit_tag "ページデータ JSON インポート", class: "btn btn-warning hundred" %>
-<% end %>
-<hr>
-<%= form_tag import_lines_path, multipart: true do %>
-<button type="button" class="btn btn-info hundred"
-        onClick="location.href='/lines.json'">行データ JOSN エクスポート</button>
-  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
-  <%= submit_tag "行データ JSON インポート", class: "btn btn-warning hundred" %>
-<% end %>
