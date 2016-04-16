@@ -1,5 +1,5 @@
-<div class="alert alert-success" >
-  <strong>Recommend!</strong><br> 
+<div class="alert alert-info" >
+  <strong><%= @greeting %></strong><br> 
        <% if @latest_page.id != nil %>
   <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
   の トレーニング<%= @cheer  %>
@@ -9,8 +9,4 @@
   <br>
    => <%= (Date.current - @latest_page.date).to_i %>日間 経過しています。
   <br><%= @recommend_1 %>
-</div>
-<div class="alert alert-info">
-  <strong>Greeting!</strong><br>
-  <%= @greeting %> 
 </div>

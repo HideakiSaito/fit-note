@@ -68,7 +68,9 @@
   <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
     <%= high_chart( "chart_diet_"+page.id.to_s , @chart_pie_diets_index[page.id]) %>
   </div>
-  <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-    <%= high_chart( "chart_part_"+page.id.to_s , @chart_pie_parts_index[page.id]) %>
+<% if page.lines.size > 0 %>
+    <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+      <%= high_chart( "chart_part_"+page.id.to_s , @chart_pie_parts_index[page.id]) %>
   </div>
+ <% end %>
 </div>
