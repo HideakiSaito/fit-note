@@ -5,7 +5,7 @@ rails g scaffold item name reps:integer part:belongs_to mode:belongs_to equipmen
 rails destroy scaffold item
 rails destroy scaffold training
 
-#2016/04/07
+#2016/04/07 ok
 #食事管理機能のために
 # diet model
 # name    weight up ,weight down none
@@ -13,10 +13,10 @@ rails destroy scaffold training
 rails g scaffold diet name
 #ok
 
-#2016/04/16
+#2016/04/16 ok
 rails g controller maintenance
 
-#2016/04/07
+#2016/04/07 ok
 #食事管理機能のために
 #page add
 #carbohydrate fat protein vegetable diet_memo
@@ -35,3 +35,5 @@ rails g migration AddColumnToPage diet:belongs_to carbohydrate_1:float fat_1:flo
 #  controler security
 #  view => form _page
 
+#2016/04/17 
+#ストレッチ。トレーニングの一貫として入れる。、有酸素、ストレッチの分類があれば

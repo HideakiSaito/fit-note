@@ -22,7 +22,9 @@ Part.create([
     {name: "上腕三頭筋"},
     {name: "前腕"},
     {name: "腹筋（前）"},
-    {name: "腹筋（横）"}
+    {name: "腹筋（横）"},
+    {name: "有酸素運動"},
+    {name: "ストレッチ"}
 ])
 
 Equipment.create([
