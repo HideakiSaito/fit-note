@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :memo %><br>
-    <%= f.text_area :memo , { class: "form-control"} %>
+    <%= f.text_area :memo , { class: "form-control",cols: 5,style: "width:100%;"} %>
   </div>
   <div class="field">
     <%= f.label :diet_id %><br>
@@ -47,63 +47,63 @@
   </div>
   <div class="field btn-info" >
     <%= f.label :diet_memo_1 %>
-    <%= f.text_field :diet_memo_1 , { class: "form-control"} %>
+    <%= f.text_field :diet_memo_1 , { class: "form-control" ,style: "width:100%;"} %>
     <%= f.label :carbohydrate_1 %>[g]
-    <%= f.number_field :carbohydrate_1 , class: "form-control" ,step: 0.5%>
+    <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.5%>
     <%= f.label :fat_1 %>[g]
-    <%= f.number_field :fat_1 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
     <%= f.label :protein_1 %>[g]
-    <%= f.number_field :protein_1 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :protein_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
     <%= f.label :vegetable_1 %>[g]
-    <%= f.number_field :vegetable_1 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
   </div>
   <div class="field btn-success" >
     <%= f.label :diet_memo_2 %>
-    <%= f.text_field :diet_memo_2 , { class: "form-control"} %>
+    <%= f.text_field :diet_memo_2 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_2 %>[g]
-    <%= f.number_field :carbohydrate_2 , class: "form-control" ,step: 0.5%>
+    <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :fat_2 %>[g]
-    <%= f.number_field :fat_2 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :protein_2 %>[g]
-    <%= f.number_field :protein_2 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :protein_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :vegetable_2 %>[g]
-    <%= f.number_field :vegetable_2 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-info" >
     <%= f.label :diet_memo_3 %>
-    <%= f.text_field :diet_memo_3 , { class: "form-control"} %>
+    <%= f.text_field :diet_memo_3 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_3 %>[g]
-    <%= f.number_field :carbohydrate_3 , class: "form-control" ,step: 0.5%>
+    <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :fat_3 %>[g]
-    <%= f.number_field :fat_3 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :protein_3 %>[g]
-    <%= f.number_field :protein_3 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :protein_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :vegetable_3 %>[g]
-    <%= f.number_field :vegetable_3 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-success" >
     <%= f.label :diet_memo_4 %>
-    <%= f.text_field :diet_memo_4 , { class: "form-control"} %>
+    <%= f.text_field :diet_memo_4 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_4 %>[g]
-    <%= f.number_field :carbohydrate_4 , class: "form-control" ,step: 0.5%>
+    <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :fat_4 %>[g]
-    <%= f.number_field :fat_4 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :protein_4 %>[g]
-    <%= f.number_field :protein_4 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :protein_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :vegetable_4 %>[g]
-    <%= f.number_field :vegetable_4 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-info" >
     <%= f.label :diet_memo_5 %>
-    <%= f.text_field :diet_memo_5 , { class: "form-control"} %>
+    <%= f.text_field :diet_memo_5 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_5 %>[g]
-    <%= f.number_field :carbohydrate_5 , class: "form-control" ,step: 0.5%>
+    <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :fat_5 %>[g]
-    <%= f.number_field :fat_5 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :protein_5 %>[g]
-    <%= f.number_field :protein_5 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :vegetable_5 %>[g]
-    <%= f.number_field :vegetable_5 ,  class: "form-control" ,step: 0.5%>
+    <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div style="border-width:2px" > 基本食:<br/>
     ご飯１６０g＝＞炭水化物６０g<br/>

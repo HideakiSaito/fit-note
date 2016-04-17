@@ -209,4 +209,45 @@ ja:
         name: 名称
         reps: レップス
         part_id: 部位
-        
+    models:
+      page: ページ 
+    attributes:
+      page:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        date: 日付 
+        place: 場所 
+        start_time: 開始時刻
+        end_time: 終了時刻
+        memo: メモ 
+        diet_id: ダイエット
+        diet_memo_1: 食事メモ1
+        carbohydrate_1: 炭水化物1
+        fat_1: 脂肪1
+        protein_1: たんぱく質1
+        vegetable_1: 野菜1
+        diet_memo_2: 食事メモ2
+        carbohydrate_2: 炭水化物2
+        fat_2: 脂肪2
+        protein_2: たんぱく質2
+        vegetable_2: 野菜2
+
+        diet_memo_3: 食事メモ3
+        carbohydrate_3: 炭水化物3
+        fat_3: 脂肪3
+        protein_3: たんぱく質3
+        vegetable_3: 野菜3
+         
+        diet_memo_4: 食事メモ4
+        carbohydrate_4: 炭水化物4
+        fat_4: 脂肪4
+        protein_4: たんぱく質4
+        vegetable_4: 野菜4
+
+        diet_memo_5: 食事メモ5
+        carbohydrate_5: 炭水化物5
+        fat_5: 脂肪5
+        protein_5: たんぱく質5
+        vegetable_5: 野菜5
+         
