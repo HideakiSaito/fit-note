@@ -4,9 +4,13 @@ class Page < ActiveRecord::Base
   belongs_to :diet
   def diet_summaly
     d = ""
-    d += diet.name if diet_id
+    d += "<b>" + diet.name + "</b> " if diet_id
+    d += tortal_cal.to_s + "kcal"
+    d += "</br>"
+    d += " tortal => 炭水化物:" + carbohydrate_sum.to_s + "g , 脂肪:" + fat_sum.to_s + "g , たんぱく質:" + protein_sum.to_s + "g , 野菜:" + vegetable_sum.to_s + "g" 
     d += "</br>"
     if diet_memo_1
+      d += "<b>①</b>"
       d += diet_memo_1.to_s
       d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_1.to_s + "g, "
@@ -16,6 +20,7 @@ class Page < ActiveRecord::Base
       d += "</br>"
     end
     if diet_memo_2
+      d += "<b>②</b>"
       d += diet_memo_2.to_s
       d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_2.to_s + "g, "
@@ -25,6 +30,7 @@ class Page < ActiveRecord::Base
       d += "</br>"
     end
     if diet_memo_3 && diet_memo_3.size > 0
+      d += "<b>③</b>"
       d += diet_memo_3.to_s
       d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_3.to_s + "g, "
@@ -34,6 +40,7 @@ class Page < ActiveRecord::Base
       d += "</br>"
     end
     if diet_memo_4 && diet_memo_4.size > 0
+      d += "<b>④</b>"
       d += diet_memo_4.to_s
       d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_4.to_s + "g, "
@@ -43,6 +50,7 @@ class Page < ActiveRecord::Base
       d += "</br>"
     end
     if diet_memo_5 && diet_memo_5.size > 0
+      d += "<b>⑤</b>"
       d += diet_memo_5.to_s
       d += "</br>&nbsp;&nbsp;"
       d += "c:" + carbohydrate_5.to_s + "g, "
@@ -60,10 +68,12 @@ class Page < ActiveRecord::Base
   def mweek
     disp_mweek(date)
   end
+  def tortal_cal
+    carbohydrate_sum * 4 + fat_sum * 9 + protein_sum * 4
+  end
   def carbohydrate_sum
     carbohydrate_1.to_i + carbohydrate_2.to_i + carbohydrate_3.to_i + carbohydrate_4.to_i + carbohydrate_5.to_i
   end
-
   def fat_sum
     fat_1.to_i + fat_2.to_i + fat_3.to_i + fat_4.to_i + fat_5.to_i
   end
