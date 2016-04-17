@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+  include CalenderUtil
   has_many :lines,->{order("no ASC") } ,dependent: :destroy
   belongs_to :diet
   def diet_summaly
@@ -51,7 +52,14 @@ class Page < ActiveRecord::Base
     end
     d #最後nilで終わると何も出ないので
   end
-
+  #今年の週
+  def yweek
+   date.strftime("%W")
+  end
+  #xx月yy週
+  def mweek
+    disp_mweek(date)
+  end
   def carbohydrate_sum
     carbohydrate_1.to_i + carbohydrate_2.to_i + carbohydrate_3.to_i + carbohydrate_4.to_i + carbohydrate_5.to_i
   end

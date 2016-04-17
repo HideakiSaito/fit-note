@@ -13,38 +13,38 @@ module ChartUtil
     dates = []
     last_week = ""
     @@pages.map do |page|
-      #page.date.strftime("%y/%m/%d(%a)") + "[" + page.place + "]" #チャートのX軸には、日付と場所
-      this_week = page.date.strftime("%W")
-      disp_date = self.mweek(page.date)
-      dates << disp_date[:month].to_s + "月" + disp_date[:week].to_s + "週"  if this_week != last_week
+      this_week = page.yweek
+      dates << page.mweek  if this_week != last_week
       last_week = this_week
     end
     dates
   end
   def chart_data(target_item)
     #ここを１週間単位
-    data = []
-    max_datum = 0
-    last_datum = 0
+    powers = []
+    max_power , last_power = 0
     last_week = ""
     @@pages.map do |page|
-      this_week = page.date.strftime("%W") 
-      target = page.lines.where(item_id: target_item).first #dataは複数形、datumが単数形
-      this_datum = target.presence ? target.this_max_reps.to_i : last_datum  #nil.to_i => 0 を利用 return省略がruby流 
-      if this_datum >= max_datum 
-        max_datum = this_datum
+      this_week = page.yweek
+      target = page.lines.where(item_id: target_item).first 
+      this_power = target.presence ? target.this_max_reps.to_i : last_power 
+      if this_power >= max_power 
+        max_power = this_power
       end
+      #debug 
+#      p  page.yweek + ":this" + this_power.to_s + ":max" + max_power.to_s 
       if this_week != last_week
-        data << max_datum
-        last_datum = this_datum
-        max_datum = 0
+        powers << max_power
+        last_power = this_power
+        max_power = 0 #同一週で最大筋力を求めたいのでリセット
       else
-        max_datum = last_datum if max_datum = 0
-        data[data.size-1] = max_datum
+        #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
+        max_power = last_power if max_power == 0 
+        powers[-1] = max_power #-配列指定は最後から数える
       end
       last_week = this_week
     end
-    data
+    powers 
   end
 #page_controller kara
   def day_training_chart(page)
@@ -89,18 +89,5 @@ module ChartUtil
       data << [part.name,value.to_i] if value.to_i > 0
     end
     data
-  end
-  def mweek(date)
-    day = date - (date.cwday - 1)
-    base_month = day.month
-    week = 0
-    (1..5).each do |index|
-      day -= 7
-      if base_month != day.month
-        week = index
-        break
-      end
-    end
-    { :month => base_month, :week => week}
   end
 end
