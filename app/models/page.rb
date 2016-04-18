@@ -8,9 +8,17 @@ class Page < ActiveRecord::Base
     h = ""
     h += "体調：" + condition.name + "!? , " if condition
     h += "気分：" + feeling.name + "!? , " if feeling
+    h += "</br>"
+    h += "<b>"
     h += "睡眠時間：" + sleep_hour.to_s + "h , "
-    h += "水分：" + water.to_s + "mg , "
     h += "ベッドイン：" + sleep_time.strftime("%H:%M") + " , " if sleep_time
+    h += "</b>"
+    h += "</br>"
+    h += "水分：" + water.to_s + "mg , "
+    h += "カフェイン：" + caffeine.to_s + "mg , "
+    h += "アルコール：" + alcohol.to_s + "mg , "
+    h += "</br>"
+    h += "　TODO:この辺をいい感じにグラフで出す"
   end
   def diet_summaly
     d = ""

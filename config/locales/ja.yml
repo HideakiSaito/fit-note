@@ -255,9 +255,9 @@ ja:
         feeling: 気分
         sleep_hour: 睡眠時間
         sleep_time: ベッドイン時刻
-        water: 水分（コップ）
-        alcohol: アルコール（ビール）
-        caffeine: カフェイン（コーヒー）
+        water: 水分
+        alcohol: アルコール
+        caffeine: カフェイン
         wight: 体重
         work_hour: 仕事時間
         study_hour: 勉強時間
