@@ -114,6 +114,42 @@
     アボカド１００g＝＞20%油だけど。オメガ9（オレイン酸）やリノール酸、リノレン酸<br/>
   </div>
   <div class="field">
+    <%= f.label :condition %><br>
+    <%= f.collection_select :condition_id ,
+      Condition.all.order(:id), :id , :name ,
+      {prompt: true} , { class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :feeling %><br>
+    <%= f.collection_select :feeling_id ,
+      Feeling.all.order(:id), :id , :name ,
+      {prompt: true} , { class: "form-control"} %>
+  </div>
+  <div class="field btn-warning" >
+    <%= f.label :sleep_hour %>[h]
+    <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <%= f.label :sleep_time %>
+    <%= f.time_select :sleep_time , { class: "form-control"} %>
+    <br>
+    <%= f.label :water %>[g]
+    <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.5%>
+    <br>
+    <%= f.label :alcohol %>[g]
+    <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <%= f.label :caffeine %>[g]
+    <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <br>
+    <%= f.label :work_hour %>[h]
+    <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <%= f.label :study_hour %>[h]
+    <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <%= f.label :tv_hour %>[h]
+    <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <br>
+    <%= f.label :wight %>[kg]
+    <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  </div>
+  <div class="field">
     <%= f.label :image %><br>
     <%= f.text_field :image , { class: "form-control"} %>
   </div>

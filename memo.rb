@@ -28,12 +28,16 @@ rails g migration AddColumnToPage diet:belongs_to carbohydrate_1:float fat_1:flo
 #2016/04/16
 #page add アルコール量（ビール）、カフェイン量（コーヒー） 、仕事、勉強、テレビ、インター年と量など
 #　fatigue　feeling　sleep water
-# faigue model : name score
+# condition model : name score
 # feeling model : name score
 # sleep float
 # water float
 #  controler security
 #  view => form _page
+rails g scaffold condition name score:float memo
+rails g scaffold feeling name score:float memo
+rails g migration AddColumnToPage2 condition:belongs_to feeling:belongs_to sleep_hour:float sleep_time:time water:float alcohol:float caffeine:float wight:float work_hour:float study_hour:float tv_hour:float
 
-#2016/04/17 
+,:condition ,:feeling ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour
+#2016/04/17 ok
 #ストレッチ。トレーニングの一貫として入れる。、有酸素、ストレッチの分類があれば

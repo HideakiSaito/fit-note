@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :feelings
+  resources :conditions
   resources :diets
   root :to => 'welcome#index', :as => 'home'
   get "about" => "welcome#about", as: "about"

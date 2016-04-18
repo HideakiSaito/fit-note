@@ -6,6 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
+Condition.create([
+  {name:"絶好調",score:90,memo:""},
+  {name:"良好",score:90,memo:""},
+  {name:"ちょっと眠い",score:70,memo:""},
+  {name:"かなり眠い",score:60,memo:""},
+  {name:"筋肉痛ちょっと",score:70,memo:""},
+  {name:"筋肉痛ちょっと&少し眠い",score:60,memo:""},
+  {name:"筋肉痛ちょっと&かなり眠い",score:50,memo:""},
+  {name:"筋肉痛かなり",score:50,memo:""},
+  {name:"筋肉痛かなり&少し眠い",score:40,memo:""},
+  {name:"筋肉痛かなり&かなり眠い",score:30,memo:""},
+  {name:"風邪",score:20,memo:""},
+  {name:"倒れそう",score:10,memo:""},
+  {name:"etc",score:0,memo:""}
+])
+
+Feeling.create([
+  {name:"気分最高",score:100,memo:""},
+  {name:"良好",score:80,memo:""},
+  {name:"普通",score:60,memo:""},
+  {name:"よくない",score:40,memo:""},
+  {name:"最低",score:20,memo:""},
+  {name:"etc",score:0,memo:""}
+])
+
 Part.create([
     {name: "胸"},
     {name: "背中(上)"},

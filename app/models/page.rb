@@ -2,6 +2,16 @@ class Page < ActiveRecord::Base
   include CalenderUtil
   has_many :lines,->{order("no ASC") } ,dependent: :destroy
   belongs_to :diet
+  belongs_to :condition
+  belongs_to :feeling
+  def health_summaly
+    h = ""
+    h += "体調：" + condition.name + "!? , " if condition
+    h += "気分：" + feeling.name + "!? , " if feeling
+    h += "睡眠時間：" + sleep_hour.to_s + "h , "
+    h += "水分：" + water.to_s + "mg , "
+    h += "ベッドイン：" + sleep_time.strftime("%H:%M") + " , " if sleep_time
+  end
   def diet_summaly
     d = ""
     d += "<b>" + diet.name + "</b> " if diet_id
