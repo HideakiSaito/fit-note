@@ -4,6 +4,10 @@ class Page < ActiveRecord::Base
   belongs_to :diet
   belongs_to :condition
   belongs_to :feeling
+  def my_initialize
+    sleep_time = Time.local(2000, 1, 1, 22, 30, 00)
+    end_time = Time.current + (2.5 * 60 * 60) 
+  end
   def health_summaly
     h = ""
     h += "体調：" + condition.name + "!? , " if condition

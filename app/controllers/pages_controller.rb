@@ -31,7 +31,9 @@ class PagesController < InheritedResources::Base
   end
 
   def new
-    @page = Page.new(end_time: Time.current + (2.5 * 60 * 60) ) #だいたい２時間３０分
+    @page = Page.new(
+      end_time: Time.current + (2.5 * 60 * 60),
+      sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ) 
   end
 
   def create
