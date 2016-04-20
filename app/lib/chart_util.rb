@@ -56,7 +56,7 @@ module ChartUtil
   end
   def day_diet_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 食事バランス')
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 食事 ' + page.tortal_cal.to_s + "kcal")
       f.series(name: 'グラム',
                data: pie_chart_data_diet(page.id) , type: 'pie')
      end
