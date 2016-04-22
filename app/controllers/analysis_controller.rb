@@ -4,6 +4,9 @@ class AnalysisController < ApplicationController
     #chart
     @gym_chart = self.gym_chart
     @diet_chart = self.diet_chart
+    @health_hour_chart = self.health_hour_chart
+    @health_water_chart = self.health_water_chart
+    @health_feel_chart = self.health_feel_chart
     #latest_page
     @page_class = "" 
     latest_date = Page.maximum(:date) #最新日
