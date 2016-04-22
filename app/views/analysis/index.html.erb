@@ -1,5 +1,6 @@
 <h1>トレーニング分析</h1>
 <ul class="nav nav-tabs">
+  <li><a href="/analysis/health">健康</a></li>
   <li><a href="/analysis/diet">食事</a></li>
   <li><a href="/analysis/gym">ジム</a></li>
   <li><a href="/analysis/home">家</a></li>
@@ -8,3 +9,7 @@
   <li><a href="/items/">部位ごと</a></li>
 </ul>
 <%= high_chart("chart", @chart) %>
+<%= high_chart("chart2", @chart2)  if @chart2 %>
+<% if @chart3 %>
+  <%= high_chart("chart3", @chart3) %>
+<% end %>

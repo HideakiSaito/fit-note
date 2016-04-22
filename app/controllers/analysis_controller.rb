@@ -17,6 +17,12 @@ class AnalysisController < ApplicationController
     @chart_pie_parts_index[@latest_page.id] = day_training_chart(@latest_page)
     @chart_pie_diets_index[@latest_page.id] = day_diet_chart(@latest_page)
   end
+  def health
+    @chart = self.health_hour_chart
+    @chart2 = self.health_water_chart
+    @chart3 = self.health_feel_chart
+    render :index
+  end
   def gym
     @chart = self.gym_chart
     render :index
@@ -37,6 +43,77 @@ class AnalysisController < ApplicationController
       f.series(name: 'Push:ベンチプレス[kg]', data: chart_data(push_id))
       f.series(name: 'Pull:デッドリフト[kg]', data: chart_data(pull_id))
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
+    end
+  end
+
+  def health_feel_chart
+    pages = Page.where("condition_id is not null
+                        and feeling_id is not null").order(:date)
+    dates = []
+    condition_data = []
+    feeling_data = []
+    pages.each do |page|
+      dates << page.date.strftime("%y/%m/%d(%a)") + 
+               page.sleep_time.strftime("[%H:%M]")
+      condition_data << page.condition.score.to_f 
+      feeling_data << page.feeling.score.to_f
+    end
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '体調、気分の推移')
+      f.xAxis(categories: dates)
+      f.series(name: "体調[点]" ,data: condition_data )
+      f.series(name: "気分[点]" ,data: feeling_data)
+      f.chart(type: "area")
+      f.options[:plotOptions] = { area: { stacking: 'normal'} }
+    end
+  end
+  def health_hour_chart
+    pages = Page.where("sleep_hour > 0").order(:date)
+    dates = []
+    sleep_data = []
+    work_data = []
+    study_data = []
+    tv_data = []
+    pages.each do |page|
+      dates << page.date.strftime("%y/%m/%d(%a)") + 
+               page.sleep_time.strftime("[%H:%M]")
+      sleep_data << page.sleep_hour.to_f
+      work_data << page.work_hour.to_f
+      study_data << page.study_hour.to_f
+      tv_data << page.tv_hour.to_f
+    end
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '健康、休養 [時間]の推移')
+      f.xAxis(categories: dates)
+      f.series(name: "仕事[h]" ,data: work_data,type: "column" )
+      f.series(name: "勉強[h]" ,data: study_data )
+      f.series(name: "TV[h]" ,data: tv_data )
+      f.series(name: '睡眠[h]', data: sleep_data)
+      f.chart(type: "area")
+      f.options[:plotOptions] = { area: { stacking: 'normal'} }
+    end
+  end
+  def health_water_chart
+    pages = Page.where("sleep_hour > 0").order(:date)
+    dates = []
+    water_data = []
+    caffe_data = []
+    alcohol_data = []
+    pages.each do |page|
+      dates << page.date.strftime("%y/%m/%d(%a)") + 
+               page.sleep_time.strftime("[%H:%M]")
+      water_data << page.water.to_f
+      caffe_data << page.caffeine.to_f
+      alcohol_data << page.alcohol.to_f
+    end
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '健康、休養 [水分]の推移')
+      f.xAxis(categories: dates)
+      f.series(name: "アルコール[g]" ,data: alcohol_data)
+      f.series(name: "コーヒー[g]" ,data: caffe_data )
+      f.series(name: "水[g]" ,data: water_data )
+      f.chart(type: "column")
+      f.options[:plotOptions] = { column: {stacking: 'normal'} }
     end
   end
   def diet_chart
