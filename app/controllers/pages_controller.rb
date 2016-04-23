@@ -10,7 +10,7 @@ class PagesController < InheritedResources::Base
     self.index_logic "training_only"
   end
   def index
-    self.index_logic "index"
+    self.index_logic "all"
   end
   def index_logic disp_mode , disp_other = true
     @disp_mode = disp_mode
@@ -29,7 +29,7 @@ class PagesController < InheritedResources::Base
       @chart_pie_parts_index[page.id] = day_training_chart(page)
       @chart_pie_diets_index[page.id] = day_diet_chart(page)
     end
-    if disp_mode == "index"
+    if disp_mode == "all"
       respond_to do |format|
         format.html #default template
         format.js   #default template
@@ -41,6 +41,8 @@ class PagesController < InheritedResources::Base
   end
   def show
     @show = true
+    @disp_mode = "all"
+    @disp_other_is = true 
     @page_class = "" 
     @page = Page.find(params[:id])
     @chart_pie_parts_index = {}
