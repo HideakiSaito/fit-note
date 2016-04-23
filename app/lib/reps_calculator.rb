@@ -34,9 +34,9 @@ module RepsCalculator
 
   def line_max_reps(line)
     line_reps=[]
-    line_reps <<  max_reps(line.weight_1,line.reps_1).to_i
-    line_reps <<  max_reps(line.weight_2,line.reps_2).to_i 
-    line_reps <<  max_reps(line.weight_3,line.reps_3).to_i 
+    line_reps <<  max_reps(line.weight_1,line.reps_1).to_f
+    line_reps <<  max_reps(line.weight_2,line.reps_2).to_f 
+    line_reps <<  max_reps(line.weight_3,line.reps_3).to_f 
     return line_reps.max
   end
 end

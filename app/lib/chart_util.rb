@@ -22,24 +22,25 @@ module ChartUtil
   def chart_data(target_item)
     #ここを１週間単位
     powers = []
-    max_power , last_power = 0
+    max_power , last_power = 0.0
     last_week = ""
     @@pages.map do |page|
       this_week = page.yweek
       target = page.lines.where(item_id: target_item).first 
-      this_power = target.presence ? target.this_max_reps.to_i : last_power 
+      this_power = target.presence ? target.this_max_reps.to_f : last_power 
       if this_power >= max_power 
         max_power = this_power
       end
       #debug 
 #      p  page.yweek + ":this" + this_power.to_s + ":max" + max_power.to_s 
       if this_week != last_week
-        powers << max_power
+        #powers << max_power
+        powers << this_power 
         last_power = this_power
         max_power = 0 #同一週で最大筋力を求めたいのでリセット
       else
         #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
-        max_power = last_power if max_power == 0 
+        max_power = last_power if max_power == 0.0 
         powers[-1] = max_power #-配列指定は最後から数える
       end
       last_week = this_week
