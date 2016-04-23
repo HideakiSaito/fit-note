@@ -12,27 +12,36 @@ class PagesController < InheritedResources::Base
   def index
     self.index_logic "all"
   end
+  def show_index_init
+    @chart_pie_parts_index = {}
+    @chart_pie_diets_index = {}
+    @chart_healths_index = {}
+    @chart_waters_index = {}
+  end
+  def daily_chart page 
+    @chart_pie_parts_index[page.id] = day_training_chart(page)
+    @chart_pie_diets_index[page.id] = day_diet_chart(page)
+    @chart_healths_index[page.id] = day_health_chart(page)
+    @chart_waters_index[page.id] = day_water_chart(page)
+  end
   def index_logic disp_mode , disp_other = true
     @disp_mode = disp_mode
     @disp_other_is = disp_other
     @show = false
-    #@page_class = "col-xs-12 col-sm-6 col-md-4 col-lg-4" 
     @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" 
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.includes(:diet).includes(:lines).order("date desc")
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
-    @chart_pie_parts_index = {}
-    @chart_pie_diets_index = {}
+    self.show_index_init
     @pages.each do |page|
-      @chart_pie_parts_index[page.id] = day_training_chart(page)
-      @chart_pie_diets_index[page.id] = day_diet_chart(page)
+      self.daily_chart page
     end
     if disp_mode == "all"
       respond_to do |format|
-        format.html #default template
-        format.js   #default template
+        format.html #default template 
+        format.js   #default template ajax
         format.json { @pages = Page.order("date desc") } #jsonは全部
       end
     else
@@ -45,10 +54,8 @@ class PagesController < InheritedResources::Base
     @disp_other_is = true 
     @page_class = "" 
     @page = Page.find(params[:id])
-    @chart_pie_parts_index = {}
-    @chart_pie_diets_index = {}
-    @chart_pie_parts_index[@page.id] = day_training_chart(@page)
-    @chart_pie_diets_index[@page.id] = day_diet_chart(@page)
+    self.show_index_init
+    self.daily_chart @page
   end
 
   def new

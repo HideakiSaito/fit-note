@@ -62,6 +62,31 @@ module ChartUtil
                data: pie_chart_data_diet(page.id) , type: 'pie')
      end
   end
+  def day_health_chart(page)
+     LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 健康,休養 :睡眠 ' + page.sleep_hour.to_s + "[h]" )
+      f.xAxis(categories: ["睡眠","勉強","TV","仕事"])
+      f.series(name: '[h]',
+               data: [page.sleep_hour,
+                      page.study_hour,
+                      page.tv_hour,
+                      page.work_hour] )
+      f.chart(type: "bar")
+      f.options[:plotOptions] = {bar: {stacking: 'normal'} }
+     end
+  end
+  def day_water_chart(page)
+     LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 健康,水分、etc :水分 ' + page.water.to_s + "[ml]" )
+      f.xAxis(categories: ["水分","カフェイン","アルコール"])
+      f.series(name: '[ml]',
+               data: [page.water,
+                      page.caffeine,
+                      page.alcohol ] )
+      f.chart(type: "bar")
+      f.options[:plotOptions] = {bar: {stacking: 'normal'} }
+     end
+  end
   def pie_chart_data_diet( page_id = nil )
     data = []
     page = Page.find page_id
