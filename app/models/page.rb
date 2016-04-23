@@ -112,6 +112,12 @@ class Page < ActiveRecord::Base
     id.to_s + "." + date.to_s + "_" + place
   end
 
+  scope :training_only, ->do
+#      self.joins(:line).where(lines:{"count > 0"})
+#    find_by_sql "select distinct pages.* from pages inner join lines on pages.id = lines.page_id;"
+   joins(:lines) 
+    end
+
   class << self
     def search(par_query)
       query = order("date desc,id desc")

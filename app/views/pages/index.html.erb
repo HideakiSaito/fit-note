@@ -1,12 +1,20 @@
 <p id="notice"><%= notice %></p>
-<h1>ノート</h1>
+<h1>ノート <%= @disp_mode  %></h1>
+<ul class="nav nav-tabs">
+  <li><a href="/pages/hidden_training">トレーニングノートを非表示(健康、食事の確認）</a></li>
+  <li><a href="/pages">全て</a></li>
+</ul>
+<ul class="nav nav-tabs">
+  <li><a href="/pages/training_only_note">トレーニングノートだけ表示(計画や推移を確認）</a></li>
+  <li><a href="/pages">全て</a></li>
+</ul>
 <%= form_for @search_form , :url => pages_path, :remote => true, :html => {:method => :get} do |f| %>
   <%= f.search_field :q %>
   <%= f.submit '検索' %>
 <% end %>
 <button type="button" class="btn btn-primary mini-size"
         onClick="location.href='/pages/new'">新しいページを作る。</button>
- <%= check_box_tag "page[hidden_lines]",true,true %> show lines
- <%= check_box_tag "page[hidden_chart]" ,true ,true%> show chart 
+ <%= check_box_tag "page[hidden_lines]",true,true %> 日ごとの詳細表示 
+ <%= check_box_tag "page[hidden_chart]" ,true ,true%> グラフ表示
 <div id="pages" class="row" ><%= render @pages %></div>
 <%= will_paginate @pages %>

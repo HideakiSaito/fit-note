@@ -10,31 +10,15 @@ $(document).on "ready page:load",->
   change_page_hidden_lines_at = ->
     if $("#page_hidden_lines").prop("checked")
       $(".note").show()
-      if ( $(window).width() > 768) 
-        $(".note-index").css('height','+=450' )
-      else
-        $(".note-index").css('height','auto' )
     else
       $(".note").hide()
-      if ( $(window).width() > 768) 
-        $(".note-index").css('height','-=450' )
-      else
-        $(".note-index").css('height','auto' )
-  #$("#page_hidden_lines").bind("click",change_page_hidden_lines_at)
-  #change_page_hidden_lines_at()
+  $("#page_hidden_lines").bind("click",change_page_hidden_lines_at)
+  change_page_hidden_lines_at()
   
   change_page_hidden_chart_at = ->
     if $("#page_hidden_chart").prop("checked")
       $(".chart").show()
-      if ( $(window).width() > 768) 
-        $(".note-index").css('height','+=800' )
-      else
-        $(".note-index").css('height','auto' )
     else
       $(".chart").hide()
-      if ( $(window).width() > 768) 
-        $(".note-index").css('height','-=800' )
-      else
-        $(".note-index").css('height','auto' )
-  #$("#page_hidden_chart").bind("click",change_page_hidden_chart_at)
-  #change_page_hidden_chart_at()
+  $("#page_hidden_chart").bind("click",change_page_hidden_chart_at)
+  change_page_hidden_chart_at()

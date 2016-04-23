@@ -32,12 +32,15 @@
       </td>
       </tr>
     </table>
+    <% if @disp_other_is %>
     <div class="diet-line" style="color:darkblue;">
       <%= raw page.diet_summaly %>
     </div>
     <div class="health-line" style="color:green;">
       <%= raw page.health_summaly %>
     </div>
+    <% end #if disp_other_is %>
+    <% if @disp_mode != "hidden_training" %>
     <div class="training-line">
       <table class="table table-striped table-hover "
              style="text-align: right; width: 100%;">
@@ -71,6 +74,7 @@
         </tbody>
       </table>
     </div>
+    <% end #if hidden_training %>
   </div>
   <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
     <%= high_chart( "chart_diet_"+page.id.to_s , @chart_pie_diets_index[page.id]) %>

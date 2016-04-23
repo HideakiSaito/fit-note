@@ -1,11 +1,26 @@
 class PagesController < InheritedResources::Base
   include ChartUtil
+  def hidden_training
+    self.index_logic "hidden_training"
+  end
+  def training_only_note
+    self.index_logic "training_only" ,false
+  end
+  def training_only
+    self.index_logic "training_only"
+  end
   def index
+    self.index_logic "index"
+  end
+  def index_logic disp_mode , disp_other = true
+    @disp_mode = disp_mode
+    @disp_other_is = disp_other
     @show = false
     #@page_class = "col-xs-12 col-sm-6 col-md-4 col-lg-4" 
     @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" 
     @search_form = SearchForm.new params[:search_form]
-    @pages = Page.order("date desc")
+    @pages = Page.includes(:diet).includes(:lines).order("date desc")
+    @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
     @chart_pie_parts_index = {}
@@ -14,10 +29,14 @@ class PagesController < InheritedResources::Base
       @chart_pie_parts_index[page.id] = day_training_chart(page)
       @chart_pie_diets_index[page.id] = day_diet_chart(page)
     end
-    respond_to do |format|
-      format.html #default template
-      format.js   #default template
-      format.json { @pages = Page.order("date desc") } #jsonは全部
+    if disp_mode == "index"
+      respond_to do |format|
+        format.html #default template
+        format.js   #default template
+        format.json { @pages = Page.order("date desc") } #jsonは全部
+      end
+    else
+     render :index 
     end
   end
   def show
