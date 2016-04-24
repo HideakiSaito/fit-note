@@ -48,6 +48,7 @@ class LinesController < InheritedResources::Base
 
     respond_to do |format|
       if @line.save
+        #js de tobasu
         format.js { @status = 'success' }
       else
         format.js { @status = 'fail' }

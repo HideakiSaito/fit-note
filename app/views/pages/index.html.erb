@@ -1,11 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1>ノート <%= @disp_mode  %></h1>
 <ul class="nav nav-tabs">
-  <li><a href="/pages/hidden_training">トレーニングノートを非表示(健康、食事の確認）</a></li>
-  <li><a href="/pages">全て</a></li>
-</ul>
-<ul class="nav nav-tabs">
-  <li><a href="/pages/training_only_note">トレーニングノートだけ表示(計画や推移を確認）</a></li>
+  <li><a href="/pages/hidden_training">トレーニングを非表示</a></li>
+  <li><a href="/pages/training_only_note">トレーニングだけ表示</a></li>
   <li><a href="/pages">全て</a></li>
 </ul>
 <%= form_for @search_form , :url => pages_path, :remote => true, :html => {:method => :get} do |f| %>

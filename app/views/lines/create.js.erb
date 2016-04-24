@@ -1,10 +1,9 @@
 <% if @status == "success" %>
-    // trを呼び出す
 $('#result').html(" 追加しました。 line: <%= @line.print_label %>");
-//alert(" 追加しました。 line: <%= @line.print_label %>");
 $.growl({ title: '追加しました', message: '<%= @line.print_label %>' });
+window.location.href = "/lines/<%=@line.id%>/edit" //jump
 <% elsif @status == "fail" %>
 alert("<%= @line.errors %>");
-    // バリデーションに失敗したときの処理
+// バリデーションに失敗したときの処理
 $('#err_span').html("<%= render "shared/errors" ,obj: @line %>");
 <% end %>
