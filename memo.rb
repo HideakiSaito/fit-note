@@ -41,3 +41,9 @@ rails g migration AddColumnToPage2 condition:belongs_to feeling:belongs_to sleep
 ,:condition ,:feeling ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour
 #2016/04/17 ok
 #ストレッチ。トレーニングの一貫として入れる。、有酸素、ストレッチの分類があれば
+
+#2016/04/23
+#training_hour
+rails g migration AddCoulumn3ToPage training_hour:float
+rake db:migrate
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418124122) do
+ActiveRecord::Schema.define(version: 20160424131455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160418124122) do
     t.float    "work_hour"
     t.float    "study_hour"
     t.float    "tv_hour"
+    t.float    "training_hour"
   end
 
   add_index "pages", ["condition_id"], name: "index_pages_on_condition_id", using: :btree
