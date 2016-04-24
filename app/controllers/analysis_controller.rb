@@ -59,7 +59,7 @@ class AnalysisController < ApplicationController
     end
   end
   def health_hour_chart
-    pages = Page.where("sleep_hour > 0").order(:date)
+    pages = Page.where("water > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     sleep_data = []
     training_data = []
@@ -88,14 +88,13 @@ class AnalysisController < ApplicationController
     end
   end
   def health_water_chart
-    pages = Page.where("sleep_hour > 0").order(:date)
+    pages = Page.where("water > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     water_data = []
     caffe_data = []
     alcohol_data = []
     pages.each do |page|
-      dates << page.date.strftime("%y/%m/%d(%a)") + 
-               page.sleep_time.strftime("[%H:%M]")
+      dates << page.date.strftime("%y/%m/%d(%a)") 
       water_data << page.water.to_f
       caffe_data << page.caffeine.to_f
       alcohol_data << page.alcohol.to_f
