@@ -46,4 +46,5 @@ rails g migration AddColumnToPage2 condition:belongs_to feeling:belongs_to sleep
 #training_hour
 rails g migration AddCoulumn3ToPage training_hour:float
 rake db:migrate
+heroku run rake db:migrate
 

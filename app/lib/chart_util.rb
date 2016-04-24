@@ -65,9 +65,10 @@ module ChartUtil
   def day_health_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 健康,休養 :睡眠 ' + page.sleep_hour.to_s + "[h]" )
-      f.xAxis(categories: ["睡眠","勉強","TV","仕事"])
+      f.xAxis(categories: ["睡眠","トレ","勉強","TV","仕事"])
       f.series(name: '[h]',
                data: [page.sleep_hour,
+                      page.training_hour,
                       page.study_hour,
                       page.tv_hour,
                       page.work_hour] )

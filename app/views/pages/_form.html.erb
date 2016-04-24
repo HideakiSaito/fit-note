@@ -28,12 +28,13 @@
     <%= f.text_field :place , { class: "form-control"} %>
   </div>
   <div class="field">
-    <%= f.label :start_time %><br>
+    <%= f.label :start_time %>
     <%= f.time_select :start_time , { class: "form-control"} %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
+    &nbsp;=>&nbsp;
+    <%= f.label :end_time %>
     <%= f.time_select :end_time , { class: "form-control"} %>
+    <%= f.label :training_hour %>[h]
+    <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
   </div>
   <div class="field">
     <%= f.label :memo %><br>

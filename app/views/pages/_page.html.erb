@@ -13,15 +13,11 @@
                           onClick="location.href='/pages/<%= page.id  %>'">
                           <%= page.date.strftime("%y/%m/%d(%a) ") + page.mweek %>
     </button>
-        </td>
-        <td>&nbsp;<%= page.start_time.strftime("%H:%M") %> ~ 
-          <%= page.end_time.strftime("%H:%M") %>
-        </td>
-        <td style="font-weight:bold;">
-          &nbsp;&nbsp;<%= page.place %>
-      </td>
-      <td>
-        &nbsp;&nbsp;
+        &nbsp;&nbsp;<%= page.place %>
+      <% if page.training_hour.to_f > 0  %>
+        &nbsp;<%= page.start_time.strftime("%H:%M") %> ~ <%= page.end_time.strftime("%H:%M") %>
+      &nbsp;<%= page.training_hour.to_f %>[h]
+    <% end %>
         <button type="button" class="btn btn-default mini-size"
                               onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
       </td>

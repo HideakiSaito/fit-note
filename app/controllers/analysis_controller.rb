@@ -7,18 +7,6 @@ class AnalysisController < ApplicationController
     @health_hour_chart = self.health_hour_chart
     @health_water_chart = self.health_water_chart
     @health_feel_chart = self.health_feel_chart
-    #latest_page
-    @page_class = "" 
-    latest_date = Page.maximum(:date) #最新日
-    if latest_date 
-    @latest_page = Page.where(date: latest_date).first 
-    else
-     @latest_page = Page.new(date: Time.current,place: "none")
-    end
-    @chart_pie_parts_index = {}
-    @chart_pie_diets_index = {}
-    @chart_pie_parts_index[@latest_page.id] = day_training_chart(@latest_page)
-    @chart_pie_diets_index[@latest_page.id] = day_diet_chart(@latest_page)
   end
   def health
     @chart = self.health_hour_chart
@@ -74,6 +62,7 @@ class AnalysisController < ApplicationController
     pages = Page.where("sleep_hour > 0").order(:date)
     dates = []
     sleep_data = []
+    training_data = []
     work_data = []
     study_data = []
     tv_data = []
@@ -81,6 +70,7 @@ class AnalysisController < ApplicationController
       dates << page.date.strftime("%y/%m/%d(%a)") + 
                page.sleep_time.strftime("[%H:%M]")
       sleep_data << page.sleep_hour.to_f
+      training_data << page.training_hour.to_f
       work_data << page.work_hour.to_f
       study_data << page.study_hour.to_f
       tv_data << page.tv_hour.to_f
@@ -88,6 +78,7 @@ class AnalysisController < ApplicationController
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '健康、休養 [時間]の推移')
       f.xAxis(categories: dates)
+      f.series(name: "トレーニング[h]" ,data: training_data,type: "column" )
       f.series(name: "仕事[h]" ,data: work_data,type: "column" )
       f.series(name: "勉強[h]" ,data: study_data )
       f.series(name: "TV[h]" ,data: tv_data )
@@ -127,8 +118,11 @@ class AnalysisController < ApplicationController
     carbohydrate_data = []
     vegetable_data = []
     pages.each do |page|
-      dates << page.date.strftime("%y/%m/%d(%a)") 
-      #カロリー換算
+      label = page.date.strftime("%y/%m/%d(%a)") 
+      if page.training_hour.to_f > 0 
+        label = "*" + label + "*" #training day ** 
+      end
+      dates << label     #カロリー換算
       protein_data << page.protein_sum * 4
       fat_data  << page.fat_sum * 9
       carbohydrate_data << page.carbohydrate_sum * 4
