@@ -119,10 +119,11 @@ class Page < ActiveRecord::Base
    joins(:lines) 
    end
   class << self
-    def search(par_query)
+    def search(par_predicate)
       query = order("date desc,id desc")
-      if par_query.present?
-        query = query.where("place LIKE ? ", "%#{par_query}%")
+      if par_predicate.present?
+        predicate = "%#{par_predicate}%"
+        query = query.where("place LIKE ? or memo LIKE ? ", predicate , predicate)
       end
     end
     #JSONのインポート
