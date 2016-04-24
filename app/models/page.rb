@@ -8,6 +8,9 @@ class Page < ActiveRecord::Base
     sleep_time = Time.local(2000, 1, 1, 22, 30, 00)
     end_time = Time.current + (2.5 * 60 * 60) 
   end
+  #####################################
+  #decolater like
+  #
   def health_summaly
     h = ""
     h += "体調：" + condition.name + "!? , " if condition
@@ -99,25 +102,22 @@ class Page < ActiveRecord::Base
   def fat_sum
     fat_1.to_i + fat_2.to_i + fat_3.to_i + fat_4.to_i + fat_5.to_i
   end
-
   def protein_sum
     protein_1.to_i + protein_2.to_i + protein_3.to_i + protein_4.to_i + protein_5.to_i
   end
-
   def vegetable_sum
     vegetable_1.to_i + vegetable_2.to_i + vegetable_3.to_i + vegetable_4.to_i + vegetable_5.to_i
   end
-
   def page_label
     id.to_s + "." + date.to_s + "_" + place
   end
-
+  # 
+  #decolater like
+  ######################################
   scope :training_only, ->do
-#      self.joins(:line).where(lines:{"count > 0"})
-#    find_by_sql "select distinct pages.* from pages inner join lines on pages.id = lines.page_id;"
+   #trainig.size > 0
    joins(:lines) 
-    end
-
+   end
   class << self
     def search(par_query)
       query = order("date desc,id desc")
