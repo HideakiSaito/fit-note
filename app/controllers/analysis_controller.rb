@@ -44,7 +44,8 @@ class AnalysisController < ApplicationController
     condition_data = []
     feeling_data = []
     pages.each do |page|
-      dates << page.date.strftime("%y/%m/%d(%a)") + 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      dates << label + 
                page.sleep_time.strftime("[%H:%M]")
       condition_data << page.condition.score.to_f 
       feeling_data << page.feeling.score.to_f
@@ -67,7 +68,8 @@ class AnalysisController < ApplicationController
     study_data = []
     tv_data = []
     pages.each do |page|
-      dates << page.date.strftime("%y/%m/%d(%a)") + 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      dates << label + 
                page.sleep_time.strftime("[%H:%M]")
       sleep_data << page.sleep_hour.to_f
       training_data << page.training_hour.to_f
@@ -94,7 +96,8 @@ class AnalysisController < ApplicationController
     caffe_data = []
     alcohol_data = []
     pages.each do |page|
-      dates << page.date.strftime("%y/%m/%d(%a)") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      dates << label
       water_data << page.water.to_f
       caffe_data << page.caffeine.to_f
       alcohol_data << page.alcohol.to_f
@@ -117,7 +120,7 @@ class AnalysisController < ApplicationController
     carbohydrate_data = []
     vegetable_data = []
     pages.each do |page|
-      label = page.date.strftime("%y/%m/%d(%a)") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
       if page.wight.to_f > 0
         label += "[" + page.wight.to_s + "kg]"
       end

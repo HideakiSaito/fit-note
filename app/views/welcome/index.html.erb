@@ -4,7 +4,7 @@
 </h1>
 </div>
 <%= render "welcome" %>
-<div> 直近のページ：<%= @latest_page.date.strftime("%Y/%m/%d(%a)") if @latest_page.id != nil %>
+<div> 直近のページ：<%= l(@latest_page.date, format: :short_day) if @latest_page.id != nil %>
 </div>
 <% if @latest_page.id != nil %>
   <input type="button" value="直近のページ確認" 

@@ -50,21 +50,24 @@ module ChartUtil
 #page_controller kara
   def day_training_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 部位別バランス')
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      f.title(text: label + ' 部位別バランス')
       f.series(name: 'レップス',
                data: pie_chart_data_parts(page.id) , type: 'pie')
      end
   end
   def day_diet_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 食事 ' + page.tortal_cal.to_s + "kcal")
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      f.title(text: label + ' 食事 ' + page.tortal_cal.to_s + "kcal")
       f.series(name: 'グラム',
                data: pie_chart_data_diet(page.id) , type: 'pie')
      end
   end
   def day_health_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: page.date.strftime("%Y/%m/%d(%a)") + ' 健康,休養 :睡眠 ' + page.sleep_hour.to_s + "[h]" )
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      f.title(text: label + ' 健康,休養 :睡眠 ' + page.sleep_hour.to_s + "[h]" )
       f.xAxis(categories: ["睡眠","トレ","勉強","TV","仕事"])
       f.series(name: '[h]',
                data: [page.sleep_hour,
