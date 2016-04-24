@@ -119,6 +119,9 @@ class AnalysisController < ApplicationController
     vegetable_data = []
     pages.each do |page|
       label = page.date.strftime("%y/%m/%d(%a)") 
+      if page.wight.to_f > 0
+        label += "[" + page.wight.to_s + "kg]"
+      end
       if page.training_hour.to_f > 0 
         label = "*" + label + "*" #training day ** 
       end

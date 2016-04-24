@@ -30,9 +30,11 @@ class Page < ActiveRecord::Base
   end
   def diet_summaly
     d = ""
-    d += "<b>" + diet.name + "</b> " if diet_id
-    d += tortal_cal.to_s + "kcal"
-    d += "</br>"
+    d += "<b>"
+    d += diet.name  if diet_id
+    d += tortal_cal.to_s + "kcal  : "
+    d += wight.to_f.to_s + "kg"
+    d += "</b></br>"
     d += " tortal => 炭水化物:" + carbohydrate_sum.to_s + "g , 脂肪:" + fat_sum.to_s + "g , たんぱく質:" + protein_sum.to_s + "g , 野菜:" + vegetable_sum.to_s + "g" 
     d += "</br>"
     if diet_memo_1
