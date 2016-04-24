@@ -13,8 +13,10 @@ class Page < ActiveRecord::Base
   #
   def health_summaly
     h = ""
-    h += "体調：" + condition.name + "!? , " if condition
-    h += "気分：" + feeling.name + "!? , " if feeling
+    h += "<b>"
+    h += "体調：" + condition.name + "[" + condition.score.to_i.to_s + "] , " if condition
+    h += "気分：" + feeling.name + "[" + feeling.score.to_i.to_s + "] , " if feeling
+    h += "</b>"
     h += "</br>"
     h += "<b>"
     h += "睡眠時間：" + sleep_hour.to_s + "h , "
@@ -25,7 +27,6 @@ class Page < ActiveRecord::Base
     h += "カフェイン：" + caffeine.to_s + "mg , "
     h += "アルコール：" + alcohol.to_s + "mg , "
     h += "</br>"
-    h += "　TODO:この辺をいい感じにグラフで出す"
   end
   def diet_summaly
     d = ""

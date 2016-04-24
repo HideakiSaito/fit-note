@@ -34,7 +34,7 @@
     <%= f.label :end_time %>
     <%= f.time_select :end_time , { class: "form-control"} %>
     <%= f.label :training_hour %>[h]
-    <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+    <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.25%>
   </div>
   <div class="field">
     <%= f.label :memo %><br>
@@ -106,7 +106,7 @@
     <%= f.label :vegetable_5 %>[g]
     <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
-  <div style="border-width:2px" > 基本食:<br/>
+  <div style="border-width:2px;color:red;" > 基本食: ここはモデルを作って選択できるように<br/>
     ご飯１６０g＝＞炭水化物６０g<br/>
     とりmomo肉１００g＝＞たんぱく質１８g、脂質4g<br/>
     とり胸肉１００g＝＞たんぱく質２０g、脂質１０g<br/>
@@ -155,6 +155,6 @@
     <%= f.text_field :image , { class: "form-control"} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
