@@ -6,6 +6,39 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
+#
+Food.create([
+  {name:"いつもの。ご飯、チキントマト、ブロッコリー、アボカド",
+   diet_id: 1,
+   calorie: 0,
+   carbohydrate: 60,
+   fat: 20,
+   protein: 40,
+   vegetable: 100,
+   diet_memo: "これを基本的には食べる"
+  },
+  {name:"いつもの。ご飯少し、チキントマト、ブロッコリー、アボカド",
+   diet_id: 1,
+   calorie: 0,
+   carbohydrate: 40,
+   fat: 20,
+   protein: 40,
+   vegetable: 100,
+   diet_memo: "これを基本的には食べる"
+  },
+  {name:"コーヒー、ブロッコリー、アボカド",
+   diet_id: 1,
+   calorie: 0,
+   carbohydrate: 0,
+   fat: 0,
+   protein: 20,
+   vegetable: 100,
+   diet_memo: "減量時には朝これ。"
+  }
+  ])
+
+
+
 Condition.create([
   {name:"絶好調",score:90,memo:""},
   {name:"良好",score:90,memo:""},

@@ -22,3 +22,4 @@ $(document).on "ready page:load",->
       $(".chart").hide()
   $("#page_hidden_chart").bind("click",change_page_hidden_chart_at)
   change_page_hidden_chart_at()
+

@@ -2,7 +2,6 @@
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
-
       <ul>
       <% @page.errors.full_messages.each do |message| %>
 <div class="alert alert-success" style="padding-left: 3em;">
@@ -12,6 +11,84 @@
       </ul>
     </div>
   <% end %>
+
+  　<script type="text/javascript">
+  　var dispflag=0;
+    var disp_no = 1;
+    function food_add(p_no,p_name,p_carbohydrate,p_fat,p_protein,p_vegetable){
+      mes = "選択したID" + p_no + " 食事NO" + disp_no + ":" + p_name;
+      var memo = $("#page_diet_memo_" + disp_no );
+      var carbo = $("#page_carbohydrate_" + disp_no );
+      var fat = $("#page_fat_" + disp_no );
+      var protein = $("#page_protein_" + disp_no );
+      var vegetable = $("#page_vegetable_" + disp_no );
+      var temp;
+      memo.val(p_name);
+      carbo.val(p_carbohydrate);
+      fat.val(p_fat);
+      protein.val(p_protein);
+      vegetable.val(p_vegetable);
+      $.growl({ title: '追加しました', message: mes });
+      $('#dialog').dialog('close');
+    }
+  　$(function() {
+    　　$( "#dialog" ).dialog({
+      　　　autoOpen: false,
+      　　　modal: true,
+            width: 400,
+            height: 400,
+      　　　buttons: {
+        　　　　"OK": function(){
+          　　　　$(this).dialog('close');
+          　　　　}
+        　　　}
+      　　});
+        //
+        $( "#food1" ).click(function(){
+           disp_no = 1; $('#dialog').dialog('open'); });
+        $( "#food2" ).click(function(){
+           disp_no = 2; $('#dialog').dialog('open'); });
+        $( "#food3" ).click(function(){
+           disp_no = 3; $('#dialog').dialog('open'); });
+        $( "#food4" ).click(function(){
+           disp_no = 4; $('#dialog').dialog('open'); });
+        $( "#food5" ).click(function(){
+           disp_no = 5; $('#dialog').dialog('open'); });
+    });
+  　</script>
+  <div id="dialog" title="食事の一覧"> 
+    <div style="overflow:scroll;">
+      <table>
+        <thead>
+          <tr>
+            <th>食事と栄養素</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+              <td>
+                <p id="food_<%= food.id %>" 
+                   onClick="food_add(
+                   '<%= food.id %>','<%= food.name %>','<%= food.carbohydrate %>'
+                   ,'<%= food.fat %>','<%= food.protein %>',
+                   '<%= food.vegetable %>');" >
+                   <%= food.name %></br>
+                   炭水化物：<%= food.carbohydrate %>
+                  、脂肪：<%= food.fat %>
+                  、たんぱく質：<%= food.protein %>
+                  、野菜：<%= food.vegetable %>
+                  、メモ：<%= food.diet_memo %>
+              </p>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+  </div>
+  <!--  <button type="button" id="food1" > food1 </button>
+  -->
     <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
   <div class="field" id="copy_page_id">
     <%= collection_select :copy_page,:id  ,
@@ -47,6 +124,7 @@
       {prompt: true} , { class: "form-control"} %>
   </div>
   <div class="field btn-info" >
+  <button type="button" id="food1" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_1 %>
     <%= f.text_field :diet_memo_1 , { class: "form-control" ,style: "width:100%;"} %>
     <%= f.label :carbohydrate_1 %>[g]
@@ -59,6 +137,7 @@
     <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
   </div>
   <div class="field btn-success" >
+  <button type="button" id="food2" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_2 %>
     <%= f.text_field :diet_memo_2 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_2 %>[g]
@@ -71,6 +150,7 @@
     <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-info" >
+  <button type="button" id="food3" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_3 %>
     <%= f.text_field :diet_memo_3 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_3 %>[g]
@@ -83,6 +163,7 @@
     <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-success" >
+  <button type="button" id="food4" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_4 %>
     <%= f.text_field :diet_memo_4 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_4 %>[g]
@@ -95,6 +176,7 @@
     <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-info" >
+  <button type="button" id="food5" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_5 %>
     <%= f.text_field :diet_memo_5 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_5 %>[g]

@@ -1,4 +1,4 @@
 #$(document).on "ready page:load",->
-$ ->
-  $('input:submit').button()
+#$ ->
+#  $('input:submit').button()
 

@@ -64,6 +64,11 @@ class PagesController < InheritedResources::Base
       end_time: Time.current + (2.5 * 60 * 60),
       sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
       sleep_hour: 7.5) 
+    @foods = Food.all.order(:id)
+  end
+  def edit
+    @page = Page.find(params[:id])
+    @foods = Food.all.order(:id)
   end
 
   def create

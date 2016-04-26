@@ -201,9 +201,18 @@ ja:
 
   activerecord:
     models:
-      page: ページ 
-      food: 食事
       item: 種目
+    attributes:
+      item:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        name: 名称
+        reps: レップス
+        part_id: 部位
+
+    models:
+      page: ページ 
     attributes:
       page:
         id: ID
@@ -251,6 +260,11 @@ ja:
         study_hour: 勉強時間
         tv_hour: テレビ時間
         training_hour: トレーニング時間
+
+  activerecord:
+    models:
+      food: 食事
+    attributes:
       food:
         id: ID
         created_at: 登録日時
@@ -263,10 +277,4 @@ ja:
         protein: たんぱく質
         vegetable: 野菜
         calorie: カロリー
-      item:
-        id: ID
-        created_at: 登録日時
-        updated_at: 更新日時
-        name: 名称
-        reps: レップス
-        part_id: 部位
+
