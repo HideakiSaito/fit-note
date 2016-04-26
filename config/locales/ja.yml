@@ -265,3 +265,19 @@ ja:
         tv_hour: テレビ時間
           
         training_hour: トレーニング時間
+    models:
+      food: 食事
+    attributes:
+      food:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        name: 名前 
+        diet_id: ダイエット
+        diet_memo: 食事メモ
+        carbohydrate: 炭水化物
+        fat: 脂肪
+        protein: たんぱく質
+        vegetable: 野菜
+        calorie: カロリー
+

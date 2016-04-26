@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424131455) do
+ActiveRecord::Schema.define(version: 20160426101735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 20160424131455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "foods", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "diet_id"
+    t.float    "calorie"
+    t.float    "carbohydrate"
+    t.float    "fat"
+    t.float    "protein"
+    t.float    "vegetable"
+    t.string   "diet_memo"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "foods", ["diet_id"], name: "index_foods_on_diet_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -197,6 +212,7 @@ ActiveRecord::Schema.define(version: 20160424131455) do
   add_index "trainings", ["item_id"], name: "index_trainings_on_item_id", using: :btree
   add_index "trainings", ["mode_id"], name: "index_trainings_on_mode_id", using: :btree
 
+  add_foreign_key "foods", "diets"
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "modes"
   add_foreign_key "items", "parts"

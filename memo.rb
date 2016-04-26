@@ -48,3 +48,7 @@ rails g migration AddCoulumn3ToPage training_hour:float
 rake db:migrate
 heroku run rake db:migrate
 
+#2016/04/26 
+#food model
+rails g scaffold food name diet:belongs_to calorie:float carbohydrate:float fat:float protein:float vegetable:float diet_memo:string 
+

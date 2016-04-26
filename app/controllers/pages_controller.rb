@@ -59,9 +59,11 @@ class PagesController < InheritedResources::Base
   end
 
   def new
+    #トレーニンぐ時間、睡眠時間の初期値をセット
     @page = Page.new(
       end_time: Time.current + (2.5 * 60 * 60),
-      sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ) 
+      sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
+      sleep_hour: 7.5) 
   end
 
   def create
@@ -73,7 +75,7 @@ class PagesController < InheritedResources::Base
         @page.save
         message = 'Page was successfully updated.'
         message += 'Copy Lines!!!' if  @new_lines
-        format.html { redirect_to pages_path, method: :get,
+        format.html { redirect_to @page, method: :get,
                       notice: message }
       else
         format.html { render :new }
