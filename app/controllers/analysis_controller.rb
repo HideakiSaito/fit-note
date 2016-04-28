@@ -2,8 +2,10 @@ class AnalysisController < ApplicationController
   include ChartUtil
   def dash_bord
     #chart
+    @_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6" 
     @gym_chart = self.gym_chart
     @diet_chart = self.diet_chart
+    @weight_chart = self.weight_chart
     @health_hour_chart = self.health_hour_chart
     @health_water_chart = self.health_water_chart
     @health_feel_chart = self.health_feel_chart
@@ -16,10 +18,12 @@ class AnalysisController < ApplicationController
   end
   def gym
     @chart = self.gym_chart
+    @chart2 = self.weight_chart
     render :index
   end
   def diet
     @chart = self.diet_chart
+    @chart2 = self.weight_chart
     render :index
   end
   def gym_chart
@@ -142,6 +146,24 @@ class AnalysisController < ApplicationController
       f.series(name: 'たんぱく質[kcal]', data: protein_data)
       f.chart(type: "area")
       f.options[:plotOptions] = { area: { stacking: 'normal'} } 
+    end
+  end
+  def weight_chart
+    pages = Page.where("wight > 0").order(:date) #過去データ出したくないだけなので
+    dates = []
+    weight_data = []
+    pages.each do |page|
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label += "[" + page.tortal_cal.to_s + "kcal]"
+      dates << label
+      weight_data << page.wight.to_f
+    end
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '体重の推移')
+      f.xAxis(categories: dates)
+      f.series(name: "体重[kg]" ,data: weight_data)
+      f.chart(type: "line")
+      f.options[:plotOptions] = { column: {stacking: 'normal'} }
     end
   end
   def home

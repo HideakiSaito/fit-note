@@ -1,5 +1,4 @@
 <div class= "<%= @page_class %> note-index" >
-  <div class="note" >
     <table style="vertical-align:baseline" >
       <tr>
         <td style="font-weight:bold;font-size:1.5em;">
@@ -19,8 +18,8 @@
         &nbsp;<%= page.start_time.strftime("%H:%M") %> ~ <%= page.end_time.strftime("%H:%M") %>
       &nbsp;<%= page.training_hour.to_f %>[h]
     <% end %>
-        <button type="button" class="btn btn-default mini-size"
-                              onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
+    < <%= page.wight %> kg >
+     <button type="button" class="btn btn-default mini-size" onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
       </td>
       </tr>
       <tr>
@@ -29,6 +28,7 @@
       </td>
       </tr>
     </table>
+  <div class="note" >
     <% if @disp_other_is %>
     <div class="diet-line" style="color:darkblue;">
       <%= raw page.diet_summaly %>

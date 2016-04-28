@@ -72,7 +72,7 @@ $(function() {
     autoOpen: false,
     modal: true,
     width: 440,
-    height: 440,
+    height: 480,
     buttons: {
       "OK": function(){
         $(this).dialog('close');
@@ -145,7 +145,7 @@ $(function() {
 </div>
 <div class="field">
   <%= f.label :memo %><br>
-  <%= f.text_area :memo , { class: "form-control",cols: 5,style: "width:100%;"} %>
+  <%= f.text_area :memo , { class: "form-control",cols: 5,rows: 5,style: "width:100%;"} %>
 </div>
 <div class="field">
   <%= f.label :diet_id %><br>
@@ -222,14 +222,6 @@ $(function() {
     <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
     <%= f.label :vegetable_5 %>[g]
     <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
-  </div>
-  <div style="border-width:2px;color:red;" > 基本食: ここはモデルを作って選択できるように<br/>
-    ご飯１６０g＝＞炭水化物６０g<br/>
-    とりmomo肉１００g＝＞たんぱく質１８g、脂質4g<br/>
-    とり胸肉１００g＝＞たんぱく質２０g、脂質１０g<br/>
-    とりササミ１００g＝＞たんぱく質２０g、脂質０g<br/>
-    ブロッコリー１００g＝＞ビタミンC、K、E、葉酸、B、カルシウム、マグネシウム、スルスラフォン、、、<br/>
-    アボカド１００g＝＞20%油だけど。オメガ9（オレイン酸）やリノール酸、リノレン酸<br/>
   </div>
     <div class="field">
       <%= f.label :condition %><br>

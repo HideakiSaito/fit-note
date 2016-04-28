@@ -1,6 +1,19 @@
 <h1>Dash Bord</h1>
-<%= high_chart("diet_chart", @diet_chart) %>
-<%= high_chart("gym_chart", @gym_chart) %>
-<%= high_chart("health_hour_chart",@health_hour_chart ) %>
-<%= high_chart("health_water_chart", @health_water_chart) %>
-<%= high_chart("health_feel_chart",@health_feel_chart ) %>
+<div class= "<%= @_class %> " >
+  <%= high_chart("diet_chart", @diet_chart) %>
+</div>
+<div class= "<%= @_class %> " >
+  <%= high_chart("weight_chart", @weight_chart) %>
+</div>
+<div class= "<%= @_class %> " >
+  <%= high_chart("gym_chart", @gym_chart) %>
+</div>
+<div class= "<%= @_class %> " >
+  <%= high_chart("health_hour_chart",@health_hour_chart ) %>
+</div>
+<div class= "<%= @_class %> " >
+  <%= high_chart("health_water_chart", @health_water_chart) %>
+</div>
+<div class= "<%= @_class %> " >
+  <%= high_chart("health_feel_chart",@health_feel_chart ) %>
+</div>
