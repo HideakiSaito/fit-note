@@ -13,6 +13,11 @@ class MaintenanceController < ApplicationController
    @mes = "items => #{i} delete_all" 
    render :index
   end
+  def foods_delete_all
+   i = Food.delete_all
+   @mes = "foods => #{i} delete_all" 
+   render :index
+  end
   def pages_import
    @mes = "import1" 
    Page.import(params[:pages_file]) # fileはtmpに自動で一時保存される
@@ -26,6 +31,12 @@ class MaintenanceController < ApplicationController
    Item.import(params[:file])
    i = Item.all.size
    @mes = "items => #{i} import" 
+   render :index
+  end
+  def foods_import
+   Food.import(params[:file])
+   i = Food.all.size
+   @mes = "foods => #{i} import" 
    render :index
   end
 end

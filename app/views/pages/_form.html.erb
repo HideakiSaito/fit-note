@@ -3,62 +3,98 @@
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
       <ul>
-      <% @page.errors.full_messages.each do |message| %>
-<div class="alert alert-success" style="padding-left: 3em;">
-       <%= message %>
-</div>
-      <% end %>
+        <% @page.errors.full_messages.each do |message| %>
+          <div class="alert alert-success" style="padding-left: 3em;">
+            <%= message %>
+          </div>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-  　<script type="text/javascript">
-  　var dispflag=0;
-    var disp_no = 1;
-    function food_add(p_no,p_name,p_carbohydrate,p_fat,p_protein,p_vegetable){
-      mes = "選択したID" + p_no + " 食事NO" + disp_no + ":" + p_name;
-      var memo = $("#page_diet_memo_" + disp_no );
-      var carbo = $("#page_carbohydrate_" + disp_no );
-      var fat = $("#page_fat_" + disp_no );
-      var protein = $("#page_protein_" + disp_no );
-      var vegetable = $("#page_vegetable_" + disp_no );
-      var temp;
-      memo.val(p_name);
-      carbo.val(p_carbohydrate);
-      fat.val(p_fat);
-      protein.val(p_protein);
-      vegetable.val(p_vegetable);
-      $.growl({ title: '追加しました', message: mes });
-      $('#dialog').dialog('close');
+<script type="text/javascript">
+  var dispflag = 0;
+  var disp_no = 1;
+  var memo,carbo,fat,protein,vegetable;
+  //食事メニューのエレメントを取得
+  function get_food_element(p_no){
+    memo = $("#page_diet_memo_" + disp_no );
+    carbo = $("#page_carbohydrate_" + disp_no );
+    fat = $("#page_fat_" + disp_no );
+    protein = $("#page_protein_" + disp_no );
+    vegetable = $("#page_vegetable_" + disp_no );
+  }
+  //文字列を数値で扱うように初期化
+  function temp_reset(p_val){
+    var temp = p_val; 
+    if (temp.length > 0 ){ temp = Number(temp); }else{ temp = 0;}
+    return temp;
+  }
+  //食事メニューと栄養素を追加する
+  function food_add(p_no,p_name,p_carbohydrate,p_fat,p_protein,p_vegetable){
+    get_food_element(p_no);
+    var temp;
+    //食事メニュの追加
+    temp = memo.val(); if (temp.length > 0 ) { temp += "、"; }
+    memo.val(temp + p_name); 
+    //炭水化物の追加
+    temp = temp_reset(carbo.val());
+    carbo.val(temp + Number(p_carbohydrate) );
+    //脂肪の追加
+    temp = temp_reset(fat.val());
+    fat.val(temp + Number(p_fat));
+    //たんぱく質の追加
+    temp = temp_reset(protein.val());
+    protein.val(temp + Number(p_protein));
+    //野菜の追加
+    temp = temp_reset(vegetable.val());
+    vegetable.val(temp + Number(p_vegetable));
+    var mes = "選択したID" + p_no + " 食事NO" + disp_no + ":" + p_name;
+    $.growl({ title: '追加しました', message: mes });
+    $('#dialog').dialog('close');
+  }
+  //値のクリア
+  function clear_food(p_no){
+    get_food_element(p_no);
+    memo.val("");
+    carbo.val("");
+    fat.val("");
+    protein.val("");
+    vegetable.val("");
+  }
+  //食事メニューを開く
+  function select_food(p_no){
+    disp_no = p_no;
+    $('#dialog').dialog('open');
+  }
+//食事メニューのダイアログ定義
+$(function() {
+  $( "#dialog" ).dialog({
+    autoOpen: false,
+    modal: true,
+    width: 440,
+    height: 440,
+    buttons: {
+      "OK": function(){
+        $(this).dialog('close');
+      }
     }
-  　$(function() {
-    　　$( "#dialog" ).dialog({
-      　　　autoOpen: false,
-      　　　modal: true,
-            width: 400,
-            height: 400,
-      　　　buttons: {
-        　　　　"OK": function(){
-          　　　　$(this).dialog('close');
-          　　　　}
-        　　　}
-      　　});
-        //
-        $( "#food1" ).click(function(){
-           disp_no = 1; $('#dialog').dialog('open'); });
-        $( "#food2" ).click(function(){
-           disp_no = 2; $('#dialog').dialog('open'); });
-        $( "#food3" ).click(function(){
-           disp_no = 3; $('#dialog').dialog('open'); });
-        $( "#food4" ).click(function(){
-           disp_no = 4; $('#dialog').dialog('open'); });
-        $( "#food5" ).click(function(){
-           disp_no = 5; $('#dialog').dialog('open'); });
-    });
-  　</script>
+  });
+  //ボタンにイベントをバインドする
+  $( "#food1" ).click(function(){ select_food(1) });
+  $( "#food2" ).click(function(){ select_food(2) });
+  $( "#food3" ).click(function(){ select_food(3) });
+  $( "#food4" ).click(function(){ select_food(4) });
+  $( "#food5" ).click(function(){ select_food(5) });
+  $( "#food1_cl" ).click(function(){ clear_food(1) });
+  $( "#food2_cl" ).click(function(){ clear_food(2) });
+  $( "#food3_cl" ).click(function(){ clear_food(3) });
+  $( "#food4_cl" ).click(function(){ clear_food(4) });
+  $( "#food5_cl" ).click(function(){ clear_food(5) });
+});
+　</script>
   <div id="dialog" title="食事の一覧"> 
     <div style="overflow:scroll;">
-      <table>
+      <table class="table table-striped" >
         <thead>
           <tr>
             <th>食事と栄養素</th>
@@ -67,65 +103,60 @@
         <tbody>
           <% @foods.each do |food| %>
             <tr>
-              <td>
+              <td >
                 <p id="food_<%= food.id %>" 
                    onClick="food_add(
                    '<%= food.id %>','<%= food.name %>','<%= food.carbohydrate %>'
                    ,'<%= food.fat %>','<%= food.protein %>',
                    '<%= food.vegetable %>');" >
-                   <%= food.name %></br>
-                   炭水化物：<%= food.carbohydrate %>
-                  、脂肪：<%= food.fat %>
-                  、たんぱく質：<%= food.protein %>
-                  、野菜：<%= food.vegetable %>
-                  、メモ：<%= food.diet_memo %>
+                   <%= food.id  %>.<b><%= food.name %></b></br>
+                   炭水化物：<%= food.carbohydrate %> 、脂肪：<%= food.fat %> 、たんぱく質：<%= food.protein %> 、野菜：<%= food.vegetable %> 、メモ：<%= food.diet_memo %>
               </p>
-            </td>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      </div>
+    </div>
   </div>
-  <!--  <button type="button" id="food1" > food1 </button>
-  -->
-    <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
+  <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
   <div class="field" id="copy_page_id">
     <%= collection_select :copy_page,:id  ,
       Page.all.order("date desc") , :id ,:page_label, 
       {prompt: true} , { class: "form-control"} %>
-  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date , { class: "form-control"} %>
-  </div>
-  <div class="field">
-    <%= f.label :place %><br>
-    <%= f.text_field :place , { class: "form-control"} %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %>
-    <%= f.time_select :start_time , { class: "form-control"} %>
-    &nbsp;=>&nbsp;
-    <%= f.label :end_time %>
-    <%= f.time_select :end_time , { class: "form-control"} %>
-    <%= f.label :training_hour %>[h]
-    <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.25%>
-  </div>
-  <div class="field">
-    <%= f.label :memo %><br>
-    <%= f.text_area :memo , { class: "form-control",cols: 5,style: "width:100%;"} %>
-  </div>
-  <div class="field">
-    <%= f.label :diet_id %><br>
-    <%= f.collection_select :diet_id ,
-      Diet.all.order(:id), :id , :name ,
-      {prompt: true} , { class: "form-control"} %>
+<div class="field">
+  <%= f.label :date %><br>
+  <%= f.date_select :date , { class: "form-control"} %>
+</div>
+<div class="field">
+  <%= f.label :place %><br>
+  <%= f.text_field :place , { class: "form-control"} %>
+</div>
+<div class="field">
+  <%= f.label :start_time %>
+  <%= f.time_select :start_time , { class: "form-control"} %>
+  &nbsp;=>&nbsp;
+  <%= f.label :end_time %>
+  <%= f.time_select :end_time , { class: "form-control"} %>
+  <%= f.label :training_hour %>[h]
+  <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.25%>
+</div>
+<div class="field">
+  <%= f.label :memo %><br>
+  <%= f.text_area :memo , { class: "form-control",cols: 5,style: "width:100%;"} %>
+</div>
+<div class="field">
+  <%= f.label :diet_id %><br>
+  <%= f.collection_select :diet_id ,
+    Diet.all.order(:id), :id , :name ,
+    {prompt: true} , { class: "form-control"} %>
   </div>
   <div class="field btn-info" >
-  <button type="button" id="food1" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_1 %>
+    <button type="button" id="food1" class="field btn-danger" > 食事の選択 </button>
+    <button type="button" id="food1_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_1 , { class: "form-control" ,style: "width:100%;"} %>
     <%= f.label :carbohydrate_1 %>[g]
     <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.5%>
@@ -137,8 +168,9 @@
     <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
   </div>
   <div class="field btn-success" >
-  <button type="button" id="food2" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_2 %>
+    <button type="button" id="food2" class="field btn-danger" > 食事の選択 </button>
+    <button type="button" id="food2_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_2 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_2 %>[g]
     <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
@@ -150,8 +182,9 @@
     <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-info" >
-  <button type="button" id="food3" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_3 %>
+    <button type="button" id="food3" class="field btn-danger" > 食事の選択 </button>
+    <button type="button" id="food3_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_3 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_3 %>[g]
     <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
@@ -163,8 +196,9 @@
     <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-success" >
-  <button type="button" id="food4" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_4 %>
+    <button type="button" id="food4" class="field btn-danger" > 食事の選択 </button>
+    <button type="button" id="food4_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_4 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_4 %>[g]
     <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
@@ -176,8 +210,9 @@
     <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
   </div>
   <div class="field btn-info" >
-  <button type="button" id="food5" class="field btn-warning" > 食事の選択 </button>
     <%= f.label :diet_memo_5 %>
+    <button type="button" id="food5" class="field btn-danger" > 食事の選択 </button>
+    <button type="button" id="food5_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_5 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_5 %>[g]
     <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.5%>
@@ -196,47 +231,47 @@
     ブロッコリー１００g＝＞ビタミンC、K、E、葉酸、B、カルシウム、マグネシウム、スルスラフォン、、、<br/>
     アボカド１００g＝＞20%油だけど。オメガ9（オレイン酸）やリノール酸、リノレン酸<br/>
   </div>
-  <div class="field">
-    <%= f.label :condition %><br>
-    <%= f.collection_select :condition_id ,
-      Condition.all.order(:id), :id , :name ,
-      {prompt: true} , { class: "form-control"} %>
+    <div class="field">
+      <%= f.label :condition %><br>
+      <%= f.collection_select :condition_id ,
+        Condition.all.order(:id), :id , :name ,
+        {prompt: true} , { class: "form-control"} %>
   </div>
   <div class="field">
     <%= f.label :feeling %><br>
     <%= f.collection_select :feeling_id ,
       Feeling.all.order(:id), :id , :name ,
       {prompt: true} , { class: "form-control"} %>
-  </div>
-  <div class="field btn-warning" >
-    <%= f.label :sleep_hour %>[h]
-    <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-    <%= f.label :sleep_time %>
-    <%= f.time_select :sleep_time , { class: "form-control"} %>
-    <br>
-    <%= f.label :water %>[g]
-    <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.5%>
-    <br>
-    <%= f.label :alcohol %>[g]
-    <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-    <%= f.label :caffeine %>[g]
-    <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-    <br>
-    <%= f.label :work_hour %>[h]
-    <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-    <%= f.label :study_hour %>[h]
-    <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-    <%= f.label :tv_hour %>[h]
-    <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-    <br>
-    <%= f.label :wight %>[kg]
-    <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image , { class: "form-control"} %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary btn-block" %>
-  </div>
+</div>
+<div class="field btn-warning" >
+  <%= f.label :sleep_hour %>[h]
+  <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  <%= f.label :sleep_time %>
+  <%= f.time_select :sleep_time , { class: "form-control"} %>
+  <br>
+  <%= f.label :water %>[g]
+  <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.5%>
+  <br>
+  <%= f.label :alcohol %>[g]
+  <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  <%= f.label :caffeine %>[g]
+  <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  <br>
+  <%= f.label :work_hour %>[h]
+  <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  <%= f.label :study_hour %>[h]
+  <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  <%= f.label :tv_hour %>[h]
+  <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+  <br>
+  <%= f.label :wight %>[kg]
+  <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.5%>
+</div>
+<div class="field">
+  <%= f.label :image %><br>
+  <%= f.text_field :image , { class: "form-control"} %>
+</div>
+<div class="actions">
+  <%= f.submit class: "btn btn-primary btn-block" %>
+</div>
 <% end %>

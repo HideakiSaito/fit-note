@@ -240,6 +240,7 @@ ja:
         fat_5: 脂肪5
         protein_5: たんぱく質5
         vegetable_5: 野菜5
+        condition: 体調
         feeling: 気分
         sleep_hour: 睡眠時間
         sleep_time: ベッドイン時刻
