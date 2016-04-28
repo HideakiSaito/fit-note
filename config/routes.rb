@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   resources :pages do
     resources :lines
-    collection { get :training_only,:training_only_note ,:hidden_training}
+    collection { get :training_only,:training_only_note ,:hidden_training,:only_chart}
     collection { post :import }
   end
   resources :trainings

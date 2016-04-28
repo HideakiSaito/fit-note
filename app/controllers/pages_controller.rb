@@ -2,15 +2,37 @@ class PagesController < InheritedResources::Base
   include ChartUtil
   def hidden_training
     self.index_logic "hidden_training"
+    @show_detail = true 
+    @show_chart = false 
+    render :index 
   end
   def training_only_note
     self.index_logic "training_only" ,false
+    @show_detail = true 
+    @show_chart = false 
+    render :index 
   end
   def training_only
     self.index_logic "training_only"
+    @show_detail = true 
+    @show_chart = false 
+    render :index 
+  end
+  def only_chart
+    self.index_logic "all"
+    @show_detail = false
+    @show_chart = true 
+    render :index 
   end
   def index
     self.index_logic "all"
+    @show_detail = false
+    @show_chart = false 
+    respond_to do |format|
+      format.html #default template 
+      format.js   #default template ajax
+      format.json { @pages = Page.order("date desc") } #jsonは全部
+    end
   end
   def show_index_init
     @chart_pie_parts_index = {}
@@ -37,15 +59,6 @@ class PagesController < InheritedResources::Base
     self.show_index_init
     @pages.each do |page|
       self.daily_chart page
-    end
-    if disp_mode == "all"
-      respond_to do |format|
-        format.html #default template 
-        format.js   #default template ajax
-        format.json { @pages = Page.order("date desc") } #jsonは全部
-      end
-    else
-     render :index 
     end
   end
   def show
