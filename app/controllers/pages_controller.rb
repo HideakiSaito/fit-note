@@ -51,6 +51,7 @@ class PagesController < InheritedResources::Base
     @disp_other_is = disp_other
     @show = false
     @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6" 
+#    @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" 
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.includes(:diet).includes(:lines).order("date desc")
     @pages = @pages.training_only if disp_mode == "training_only"
