@@ -52,3 +52,7 @@ heroku run rake db:migrate
 #food model
 rails g scaffold food name diet:belongs_to calorie:float carbohydrate:float fat:float protein:float vegetable:float diet_memo:string 
 
+rails g migration AddCoulumn4ToPage body_fat_per:float body_size_neck:flaat  body_size_bust:float body_size_waist:float body_size_hip:float body_size_arm_right:float body_size_arm_left:float body_size_leg_right:float body_size_leg_left:float body_size_calf_right:float body_size_calf_left:float
+
+
+,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left

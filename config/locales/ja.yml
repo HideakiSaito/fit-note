@@ -252,6 +252,17 @@ ja:
         study_hour: 勉強時間
         tv_hour: テレビ時間
         training_hour: トレーニング時間
+        body_fat_per: 体脂肪
+        body_size_neck: サイズ_首回り 
+        body_size_bust: サイズ_バスト
+        body_size_waist: サイズ_ウェスト
+        body_size_hip: サイズ_ヒップ
+        body_size_arm_right: サイズ_右腕
+        body_size_arm_left: サイズ_左腕
+        body_size_leg_right: サイズ_右脚
+        body_size_leg_left: サイズ_左脚
+        body_size_calf_right: サイズ_右ふくらはぎ
+        body_size_calf_left: サイズ_左ふくらはぎ
       food:
         id: ID
         created_at: 登録日時

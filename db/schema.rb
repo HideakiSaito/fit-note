@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426101735) do
+ActiveRecord::Schema.define(version: 20160429143719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,8 +145,8 @@ ActiveRecord::Schema.define(version: 20160426101735) do
     t.time     "end_time"
     t.text     "memo"
     t.binary   "image"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "diet_id"
     t.float    "carbohydrate_1"
     t.float    "fat_1"
@@ -185,6 +185,17 @@ ActiveRecord::Schema.define(version: 20160426101735) do
     t.float    "study_hour"
     t.float    "tv_hour"
     t.float    "training_hour"
+    t.float    "body_fat_per"
+    t.float    "body_size_neck"
+    t.float    "body_size_bust"
+    t.float    "body_size_waist"
+    t.float    "body_size_hip"
+    t.float    "body_size_arm_right"
+    t.float    "body_size_arm_left"
+    t.float    "body_size_leg_right"
+    t.float    "body_size_leg_left"
+    t.float    "body_size_calf_right"
+    t.float    "body_size_calf_left"
   end
 
   add_index "pages", ["condition_id"], name: "index_pages_on_condition_id", using: :btree
