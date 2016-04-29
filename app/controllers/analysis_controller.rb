@@ -152,18 +152,21 @@ class AnalysisController < ApplicationController
     pages = Page.where("wight > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     weight_data = []
+    body_fat_per_data = []
     pages.each do |page|
       label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
-      label += "[" + page.tortal_cal.to_s + "kcal]"
+      label += "["+ page.body_fat_per.to_f.to_s + "% "+ page.tortal_cal.to_s + "kcal]"
       dates << label
       weight_data << page.wight.to_f
+      body_fat_per_data << page.body_fat_per.to_f
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '体重の推移')
       f.xAxis(categories: dates)
+#      f.series(name: "体脂肪[%]" ,data: body_fat_per_data)
       f.series(name: "体重[kg]" ,data: weight_data)
       f.chart(type: "line")
-      f.options[:plotOptions] = { column: {stacking: 'normal'} }
+      f.options[:plotOptions] = { area: {stacking: 'normal'} }
     end
   end
   def home
