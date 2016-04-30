@@ -43,6 +43,7 @@
              style="text-align: right; width: 100%;">
         <thead>
           <tr>
+            <th> No. 部位</th>
             <th> No. トレーニング種目</th>
             <th style="text-align: right;">1set</th>
             <th style="text-align: right;">2set</th>
@@ -53,6 +54,9 @@
         <tbody>
           <% page.lines.order(:id).each do |line| %>
             <tr>
+              <td style="text-align: left;"><%= line.no %>.
+                <%= link_to line.item.part.name , edit_line_path(line) %>
+              </td>
               <td style="text-align: left;"><%= line.no %>.
                 <%= link_to line.item.name , edit_line_path(line) %>
               </td>

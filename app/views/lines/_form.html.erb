@@ -18,7 +18,6 @@
      value="最後です。"
   <% end %>
   />
-     
         <%= link_to '行を追加する。', new_page_line_path(@line.page) %>
 <%= form_for(@line , remote: true,:html => {class: "form-inline"}) do |f| %>
   <span id="err_span">
@@ -34,7 +33,7 @@
   <div class="field">
     <%= f.label :item_id %><br>
     <%= f.collection_select :item_id ,
-      Item.order(:part_id, :equipment_id), :id , :name ,
+      Item.order(:part_id, :equipment_id), :id , :index_name ,
       {prompt: true} , { class: "form-control"} %>
 </div>
 <div class="field">
