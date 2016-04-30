@@ -9,6 +9,8 @@ class AnalysisController < ApplicationController
     @health_hour_chart = self.health_hour_chart
     @health_water_chart = self.health_water_chart
     @health_feel_chart = self.health_feel_chart
+    @size_chart = self.size_chart
+    @fat_chart = self.fat_chart
   end
   def health
     @chart = self.health_hour_chart
@@ -19,11 +21,19 @@ class AnalysisController < ApplicationController
   def gym
     @chart = self.gym_chart
     @chart2 = self.weight_chart
+    @chart3 = self.fat_chart
+    render :index
+  end
+  def size
+    @chart = self.size_chart
+    @chart2 = self.weight_chart
+    @chart3 = self.fat_chart
     render :index
   end
   def diet
     @chart = self.diet_chart
     @chart2 = self.weight_chart
+    @chart3 = self.fat_chart
     render :index
   end
   def gym_chart
@@ -40,7 +50,41 @@ class AnalysisController < ApplicationController
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
     end
   end
-
+  def size_chart
+    pages = Page.where("body_size_bust is not null" ).order(:date)
+    dates = []
+    bust_data=[]
+    waist_data=[]
+    hip_data = []
+    neck_data=[]
+    arm_data=[]
+    leg_data=[]
+    calf_data = []
+    pages.each do |page|
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      dates << label 
+      bust_data << page.body_size_bust.to_f
+      waist_data << page.body_size_waist.to_f
+      hip_data << page.body_size_hip.to_f
+      neck_data << page.body_size_neck.to_f
+      arm_data << (page.body_size_arm_left.to_f + page.body_size_arm_right.to_f)/2
+      leg_data << (page.body_size_leg_left.to_f + page.body_size_leg_right.to_f)/2
+      calf_data << (page.body_size_calf_left.to_f + page.body_size_calf_right.to_f)/2
+    end
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: 'サイズの推移')
+      f.xAxis(categories: dates)
+      f.series(name: "バスト[cm]" ,data: bust_data )
+      f.series(name: "ウェイスト[cm]" ,data: waist_data )
+      f.series(name: "ヒップ[cm]" ,data: hip_data )
+      f.series(name: "首[cm]" ,data: neck_data )
+      f.series(name: "腕[cm]" ,data: arm_data )
+      f.series(name: "脚[cm]" ,data: leg_data )
+      f.series(name: "ふくらはぎ[cm]" ,data: calf_data )
+      f.chart(type: "bar")
+      f.options[:plotOptions] = { area: { stacking: 'normal'} }
+    end
+  end
   def health_feel_chart
     pages = Page.where("condition_id is not null
                         and feeling_id is not null").order(:date)
@@ -166,6 +210,24 @@ class AnalysisController < ApplicationController
 #      f.series(name: "体脂肪[%]" ,data: body_fat_per_data)
       f.series(name: "体重[kg]" ,data: weight_data)
       f.chart(type: "line")
+      f.options[:plotOptions] = { area: {stacking: 'normal'} }
+    end
+  end
+  def fat_chart
+    pages = Page.where("body_fat_per > 0").order(:date) #過去データ出したくないだけなので
+    dates = []
+    body_fat_per_data = []
+    pages.each do |page|
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label += "["+ page.body_fat_per.to_f.to_s + "% "+ page.tortal_cal.to_s + "kcal]"
+      dates << label
+      body_fat_per_data << page.body_fat_per.to_f
+    end
+    chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '体脂肪の推移')
+      f.xAxis(categories: dates)
+      f.series(name: "体脂肪[%]" ,data: body_fat_per_data)
+      f.chart(type: "column")
       f.options[:plotOptions] = { area: {stacking: 'normal'} }
     end
   end
