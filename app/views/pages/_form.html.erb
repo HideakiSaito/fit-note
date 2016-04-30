@@ -132,7 +132,7 @@ $(function() {
 </div>
 <div class="field">
   <%= f.label :place %><br>
-  <%= f.text_field :place , { class: "form-control"} %>
+  %= f.text_field :place , { class: "form-control"} %>
 </div>
 <div class="field">
   <%= f.label :start_time %>
@@ -159,13 +159,13 @@ $(function() {
     <button type="button" id="food1_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_1 , { class: "form-control" ,style: "width:100%;"} %>
     <%= f.label :carbohydrate_1 %>[g]
-    <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :fat_1 %>[g]
-    <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :protein_1 %>[g]
-    <%= f.number_field :protein_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :protein_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :vegetable_1 %>[g]
-    <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field btn-success" >
     <%= f.label :diet_memo_2 %>
@@ -173,13 +173,13 @@ $(function() {
     <button type="button" id="food2_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_2 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_2 %>[g]
-    <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :fat_2 %>[g]
-    <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :protein_2 %>[g]
-    <%= f.number_field :protein_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :protein_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :vegetable_2 %>[g]
-    <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field btn-info" >
     <%= f.label :diet_memo_3 %>
@@ -187,13 +187,13 @@ $(function() {
     <button type="button" id="food3_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_3 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_3 %>[g]
-    <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :fat_3 %>[g]
-    <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :protein_3 %>[g]
-    <%= f.number_field :protein_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :protein_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :vegetable_3 %>[g]
-    <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field btn-success" >
     <%= f.label :diet_memo_4 %>
@@ -201,13 +201,13 @@ $(function() {
     <button type="button" id="food4_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_4 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_4 %>[g]
-    <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :fat_4 %>[g]
-    <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :protein_4 %>[g]
-    <%= f.number_field :protein_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :protein_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :vegetable_4 %>[g]
-    <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field btn-info" >
     <%= f.label :diet_memo_5 %>
@@ -215,13 +215,13 @@ $(function() {
     <button type="button" id="food5_cl" class="field btn-danger" > クリア </button>
     <%= f.text_field :diet_memo_5 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_5 %>[g]
-    <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :fat_5 %>[g]
-    <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :protein_5 %>[g]
-    <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
     <%= f.label :vegetable_5 %>[g]
-    <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, pattern: "\\d*" %>
+    <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
   </div>
     <div class="field">
       <%= f.label :condition %><br>
@@ -237,63 +237,63 @@ $(function() {
 </div>
 <div class="field btn-warning" >
   <%= f.label :sleep_hour %>[h]
-  <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <%= f.label :sleep_time %>
   <%= f.time_select :sleep_time , { class: "form-control"} %>
   <br>
   <%= f.label :water %>[g]
-  <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.5, no_pattern: "\\d*" %>
   <br>
   <%= f.label :alcohol %>[g]
-  <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <%= f.label :caffeine %>[g]
-  <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <br>
   <%= f.label :work_hour %>[h]
-  <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <%= f.label :study_hour %>[h]
-  <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <%= f.label :tv_hour %>[h]
-  <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <br>
   <%= f.label :wight %>[kg]
-  <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, pattern: "\\d*" %>
+  <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
   <%= f.label :body_fat_per %>[%]
-  <%= f.number_field :body_fat_per ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_fat_per ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_neck%>[cm]
-  <%= f.number_field :body_size_neck ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_neck ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_bust%>[cm]
-  <%= f.number_field :body_size_bust ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_bust ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_waist%>[cm]
-  <%= f.number_field :body_size_waist ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_waist ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_hip %>[cm]
-  <%= f.number_field :body_size_hip ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_hip ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_arm_right %>[cm]
-  <%= f.number_field :body_size_arm_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_arm_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
   <%= f.label :body_size_arm_left %>[cm]
-  <%= f.number_field :body_size_arm_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_arm_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_leg_right %>[cm]
-  <%= f.number_field :body_size_leg_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_leg_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
   <%= f.label :body_size_leg_left %>[cm]
-  <%= f.number_field :body_size_leg_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_leg_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :body_size_calf_right %>[cm]
-  <%= f.number_field :body_size_calf_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_calf_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
   <%= f.label :body_size_calf_left %>[cm]
-  <%= f.number_field :body_size_calf_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, pattern: "\\d*" %>
+  <%= f.number_field :body_size_calf_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
   <%= f.label :image %><br>
