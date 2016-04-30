@@ -34,7 +34,7 @@
   <div class="field">
     <%= f.label :item_id %><br>
     <%= f.collection_select :item_id ,
-      Item.all, :id , :name ,
+      Item.order(:part_id, :equipment_id), :id , :name ,
       {prompt: true} , { class: "form-control"} %>
 </div>
 <div class="field">
@@ -56,9 +56,9 @@
       <%= @last_line.get_set_label(1) %><br>
     <% end %>
     <%= label_tag "重量" %>
-    <%= f.number_field :weight_1, class: "form-control" ,step: 0.5, pattern: "\d*" %>
+    <%= f.number_field :weight_1, class: "form-control" ,step: 0.5, pattern: "\\d*" %>
     /<%= label_tag "回数" %>
-    <%= f.number_field :reps_1 , class: "form-control"  ,step: 0.5, pattern: "\d*" %>
+    <%= f.number_field :reps_1 , class: "form-control"  ,step: 0.5, pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_1 ,class: "form-control"%>
   </div>
@@ -75,9 +75,9 @@
       <%= @last_line.get_set_label(2) %><br>
     <% end %>
     <%= label_tag "重量" %>
-    <%= f.number_field :weight_2, class: "form-control" ,step: 0.5, pattern: "\d*"   %>
+    <%= f.number_field :weight_2, class: "form-control" ,step: 0.5, pattern: "\\d*"   %>
     /<%= label_tag "回数" %>
-    <%= f.number_field :reps_2 , class: "form-control"  ,step: 0.5, pattern: "\d*" %>
+    <%= f.number_field :reps_2 , class: "form-control"  ,step: 0.5, pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_2 ,class: "form-control"%>
   </div>
@@ -94,9 +94,9 @@
       <%= @last_line.get_set_label(3) %><br>
     <% end %>
     <%= label_tag "重量" %>
-    <%= f.number_field :weight_3, class: "form-control" ,step: 0.5, pattern: "\d*"   %>
+    <%= f.number_field :weight_3, class: "form-control" ,step: 0.5, pattern: "\\d*"   %>
     /<%= label_tag "回数" %>
-    <%= f.number_field :reps_3 , class: "form-control"  ,step: 0.5, pattern: "\d*" %>
+    <%= f.number_field :reps_3 , class: "form-control"  ,step: 0.5, pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_3 ,class: "form-control"%>
   </div>
@@ -125,9 +125,9 @@
       <%= @last_line.get_set_label(4) %><br>
     <% end %>
     <%= label_tag "重量" %>
-    <%= f.number_field :weight_4, class: "form-control" ,step: 0.5, pattern: "\d*"   %>
+    <%= f.number_field :weight_4, class: "form-control" ,step: 0.5, pattern: "\\d*"   %>
     /<%= label_tag "回数" %>
-    <%= f.number_field :reps_4 , class: "form-control"  ,step: 0.5, pattern: "\d*" %>
+    <%= f.number_field :reps_4 , class: "form-control"  ,step: 0.5, pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_4 ,class: "form-control"%>
   </div>
@@ -144,9 +144,9 @@
       <%= @last_line.get_set_label(5) %><br>
     <% end %>
     <%= label_tag "重量" %>
-    <%= f.number_field :weight_5, class: "form-control" ,step: 0.5, pattern: "\d*"   %>
+    <%= f.number_field :weight_5, class: "form-control" ,step: 0.5, pattern: "\\d*"   %>
     /<%= label_tag "回数" %>
-    <%= f.number_field :reps_5 , class: "form-control"  ,step: 0.5, pattern: "\d*" %>
+    <%= f.number_field :reps_5 , class: "form-control"  ,step: 0.5, pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_5 ,class: "form-control"%>
   </div>
