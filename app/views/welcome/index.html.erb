@@ -1,16 +1,41 @@
 <div style="text-align: left;">
-<h1 style="font-weight: normal" >
-  <a href="/analysis/dash_bord">GIVE UP OR GET UP</a>
-</h1>
+  <h1 style="font-weight: normal" >
+    <a href="/analysis/dash_bord">GIVE UP OR GET UP</a>
+  </h1>
 </div>
 <%= render "welcome" %>
 <div> 直近のページ：<%= l(@latest_page.date, format: :short_day) if @latest_page.id != nil %>
 </div>
 <% if @latest_page.id != nil %>
-  <input type="button" value="直近のページ確認" 
-                       class="btn btn-success btn-block"
-                       onclick="location.href='<%= page_path(@latest_page.id) %>'" />
+  <input type="button" value="直近のページ確認" class="btn btn-success btn-block" onclick="location.href='<%= page_path(@latest_page.id) %>'" />
 <% end %>
-   <input type="button" value="新規作成" 
-          class="btn btn-primary btn-block"
-          onclick="location.href='<%= new_page_path  %>'" />
+<input type="button" value="新規作成" class="btn btn-primary btn-block" onclick="location.href='<%= new_page_path  %>'" />
+<hr>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="直近のページ編集" class="btn btn-default btn-block" onclick="location.href='<%= edit_page_path(@latest_page.id)%>'" />
+</div>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="ページ一覧" class="btn btn-default btn-block" onclick="location.href='<%= pages_path%>'" />
+</div>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="ダッシュボード" class="btn btn-default btn-block" onclick="location.href='/analysis/dash_bord'" />
+</div>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="各チャート" class="btn btn-default btn-block" onclick="location.href='/analysis/'" />
+</div>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="トレーニング種目管理" class="btn btn-default btn-block" onclick="location.href='/items/'" />
+</div>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="食事メニュー管理" class="btn btn-default btn-block" onclick="location.href='/foods/'" />
+</div>
+<hr>
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >       
+  <input type="button" value="データメンテナンス" class="btn btn-default btn-block" onclick="location.href='/maintenance/'" />
+</div>
+<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" >       
+  <input type="button" value="github" class="btn btn-default btn-block " onclick="location.href='https://github.com/HideakiSaito/r1'" />
+</div>
+<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" >       
+  <input type="button" value="Redmine" class="btn btn-default btn-block " onclick="location.href='https://benkyoukai4app.herokuapp.com/projects/hide1app/agile/board'" />
+</div>

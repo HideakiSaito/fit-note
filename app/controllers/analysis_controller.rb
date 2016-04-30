@@ -18,22 +18,24 @@ class AnalysisController < ApplicationController
     @chart3 = self.health_feel_chart
     render :index
   end
+  def weight
+    @chart = self.weight_chart
+    render :index
+  end
+  def fat 
+    @chart = self.fat_chart
+    render :index
+  end
   def gym
     @chart = self.gym_chart
-    @chart2 = self.weight_chart
-    @chart3 = self.fat_chart
     render :index
   end
   def size
     @chart = self.size_chart
-    @chart2 = self.weight_chart
-    @chart3 = self.fat_chart
     render :index
   end
   def diet
     @chart = self.diet_chart
-    @chart2 = self.weight_chart
-    @chart3 = self.fat_chart
     render :index
   end
   def gym_chart

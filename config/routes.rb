@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "about" => "welcome#about", as: "about"
   get "developer" => "welcome#developer", as: "developer"
   resources :analysis do
-    collection { get :dash_bord,:health,:size,
+    collection { get :dash_bord,:health,:size,:weight,:fat,
                  :diet,:gym,:home,:pie_parts,:pie_place }
   end
   resources :maintenance do
