@@ -34,13 +34,12 @@ module ChartUtil
       #debug 
 #      p  page.yweek + ":this" + this_power.to_s + ":max" + max_power.to_s 
       if this_week != last_week
-        #powers << max_power
         powers << this_power 
         last_power = this_power
-        max_power = 0 #同一週で最大筋力を求めたいのでリセット
+        max_power = 0.0 #同一週で最大筋力を求めたいのでリセット
       else
-        #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
-        max_power = last_power if max_power == 0.0 
+        max_power = last_power if max_power == 0.0 #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
+        max_power = this_power if this_power #前回の記録よく下がることを考慮 
         powers[-1] = max_power #-配列指定は最後から数える
       end
       last_week = this_week
