@@ -13,35 +13,37 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name ,  class: "form-control" ,style: "width:20em;" %>
   </div>
-  <div class="field">
-    <%= f.label :diet_id %><br>
-    <%= f.text_field :diet_id %>
+<div class="field">
+  <%= f.label :diet_id %><br>
+  <%= f.collection_select :diet_id ,
+    Diet.all.order(:id), :id , :name ,
+    {prompt: true} , { class: "form-control"} %>
   </div>
   <div class="field">
     <%= f.label :calorie %><br>
-    <%= f.text_field :calorie %>
+    <%= f.number_field :calorie ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :carbohydrate %><br>
-    <%= f.text_field :carbohydrate %>
+    <%= f.number_field :carbohydrate ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :fat %><br>
-    <%= f.text_field :fat %>
+    <%= f.number_field :fat ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :protein %><br>
-    <%= f.text_field :protein %>
+    <%= f.number_field :protein ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :vegetable %><br>
-    <%= f.text_field :vegetable %>
+    <%= f.number_field :vegetable ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :diet_memo %><br>
-    <%= f.text_field :diet_memo %>
+    <%= f.text_field :diet_memo ,  class: "form-control" ,style: "width:20em;" %>
   </div>
   <div class="actions">
     <%= f.submit %>
