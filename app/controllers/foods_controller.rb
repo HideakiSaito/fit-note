@@ -1,6 +1,6 @@
 class FoodsController < InheritedResources::Base
   def index
-   @foods = Food.all
+   @foods = Food.order(:diet_memo,:id)
   end
   private
     def food_params
