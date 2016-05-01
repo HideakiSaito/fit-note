@@ -16,6 +16,12 @@
     <%= f.text_field :name ,  class: "form-control" ,style: "width:20em;" %>
   </div>
 <div class="field">
+  <%= f.label :food_category_id %><br>
+  <%= f.collection_select :food_category_id ,
+    FoodCategory.all.order(:id), :id , :name ,
+    {prompt: true} , { class: "form-control"} %>
+  </div>
+<div class="field">
   <%= f.label :diet_id %><br>
   <%= f.collection_select :diet_id ,
     Diet.all.order(:id), :id , :name ,

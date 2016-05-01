@@ -11,7 +11,7 @@
     <% @foods.each do |food| %>
       <tr>
         <td><%= link_to food.id.to_s + "." + food.name, edit_food_path(food) %>
-          <br><p style="color:green;">&nbsp;<%= food.diet_memo %></p>
+          <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
         </td>
         <td>
         <table border=1 style="text-align: right; width: 22em;">

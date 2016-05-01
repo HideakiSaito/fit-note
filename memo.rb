@@ -56,3 +56,8 @@ rails g migration AddCoulumn4ToPage body_fat_per:float body_size_neck:flaat  bod
 
 
 ,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left
+
+
+rails g scaffold food_category name no:integer order:integer
+
+rails g migration AddColumn1ToFood food_category:belongs_to

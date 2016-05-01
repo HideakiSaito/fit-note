@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :food_categories
   resources :foods
   resources :feelings
   resources :conditions

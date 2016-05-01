@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429143719) do
+ActiveRecord::Schema.define(version: 20160501113231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20160429143719) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "food_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "no"
+    t.integer  "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "foods", force: :cascade do |t|
     t.string   "name"
     t.integer  "diet_id"
@@ -68,11 +76,13 @@ ActiveRecord::Schema.define(version: 20160429143719) do
     t.float    "protein"
     t.float    "vegetable"
     t.string   "diet_memo"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "food_category_id"
   end
 
   add_index "foods", ["diet_id"], name: "index_foods_on_diet_id", using: :btree
+  add_index "foods", ["food_category_id"], name: "index_foods_on_food_category_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -224,6 +234,7 @@ ActiveRecord::Schema.define(version: 20160429143719) do
   add_index "trainings", ["mode_id"], name: "index_trainings_on_mode_id", using: :btree
 
   add_foreign_key "foods", "diets"
+  add_foreign_key "foods", "food_categories"
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "modes"
   add_foreign_key "items", "parts"

@@ -7,6 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 #
+FoodCategory.create([
+  {name:"定番、定食",no:1,order:1},
+  {name:"肉類",no:2,order:2},
+  {name:"卵",no:3,order:3},
+  {name:"乳製品",no:4,order:4},
+  {name:"穀物",no:5,order:5},
+  {name:"豆類",no:6,order:6},
+  {name:"野菜",no:7,order:7},
+  {name:"果物",no:8,order:8},
+  {name:"サプリメント",no:9,order:9},
+  {name:"その他",no:10,order:10},
+])
 Food.create([
   {name:"いつもの。ご飯、チキントマト、ブロッコリー、アボカド",
    diet_id: 1,
