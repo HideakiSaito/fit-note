@@ -3,7 +3,7 @@
      onclick="location.href='/pages/<%= @line.page_id %>' " />
   <input type="button" class="btn btn-default"
   <% if @prev_line %>
-     value="<%= '前へ[' + @prev_line.no.to_s + '.' + @prev_line.item.part.name + ']' %>"
+     value="<%= '前へ' +  @prev_line.short_label %>"
      onclick="location.href='/lines/<%= @prev_line.id %>/edit' "
   <% else %>
      value="先頭です。"
@@ -12,7 +12,7 @@
 <!--BUD DRY-->
   <input type="button" class="btn btn-info"
   <% if @next_line %>
-     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']' %>"
+     value="<%= '次へ' + @next_line.short_label %>"
      onclick="location.href='/lines/<%= @next_line.id %>/edit' "
   <% else %>
      value="最後です。"

@@ -29,6 +29,8 @@ class LinesController < InheritedResources::Base
     if @line.no != nil
       @next_line = Line.where("page_id = '#{@line.page_id}' and no = #{@line.no + 1}").first
       @prev_line = Line.where("page_id = '#{@line.page_id}' and no = #{@line.no - 1}").first
+      @next_line = @next_line.decorate if @next_line
+      @prev_line = @prev_line.decorate if @prev_line
     else
       @next_line = nil
       @prev_line = nil

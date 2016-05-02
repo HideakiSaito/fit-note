@@ -72,3 +72,7 @@ gem 'lazy_high_charts'
 ## ページネーション
 gem 'will_paginate'
 
+## Add H.saito 2016/05/01 decolatea
+gem 'draper'
+
+

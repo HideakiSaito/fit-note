@@ -61,6 +61,7 @@ class PagesController < InheritedResources::Base
     @pages.each do |page|
       self.daily_chart page
     end
+#    @pages = PageDecorator.decorate_collection(@pages)
   end
   def show
     @show = true
@@ -70,6 +71,7 @@ class PagesController < InheritedResources::Base
     @page = Page.find(params[:id])
     self.show_index_init
     self.daily_chart @page
+    @page = PageDecorator.decorate(@page)
   end
 
   def new
@@ -79,10 +81,12 @@ class PagesController < InheritedResources::Base
       sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
       sleep_hour: 7.5) 
     @foods = Food.order(:food_category_id,:id)
+    @page = PageDecorator.decorate(@page)
   end
   def edit
     @page = Page.find(params[:id])
     @foods = Food.order(:food_category_id,:id)
+    @page = PageDecorator.decorate(@page)
   end
 
   def create

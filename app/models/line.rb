@@ -32,6 +32,7 @@ class Line < ActiveRecord::Base
     prev_line = nil
     until prev_line
       prev_line = Line.joins(:page).where(pages:{id: prev_page.id}, item_id: item.id).first
+      prev_line = LineDecorator.decorate(prev_line) if prev_line
       return prev_line if prev_line #前回のページに同じ種目があれば返す
       prev_page = get_prev_page prev_page ##前々回のページを見る、繰り返す
       return nil unless prev_page #前回のトレーニングなければnil
