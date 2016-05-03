@@ -18,12 +18,14 @@
         &nbsp;<%= page.start_time.strftime("%H:%M") %> ~ <%= page.end_time.strftime("%H:%M") %>
       &nbsp;<%= page.training_hour.to_f %>[h]
     <% end %>
-    < <%= page.wight %> kg , <%= page.body_fat_per %> % >
      <button type="button" class="btn btn-default mini-size" onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
       </td>
       </tr>
       <tr>
         <td>
+          <p style="font-weight:bold;font-size:1.25em;">
+          < <%= page.wight %> kg , <%= page.body_fat_per %> % >
+          </p>
           <div style="color:crimson;"><%= page.memo %></div>
       </td>
       </tr>
