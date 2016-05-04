@@ -157,6 +157,7 @@ $(function() {
     <%= f.label :diet_memo_1 %>
     <button type="button" id="food1" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food1_cl" class="field btn-danger" > クリア </button>
+    <span><%= @page.meal1_cal %>kcal</span> 
     <%= f.text_field :diet_memo_1 , { class: "form-control" ,style: "width:100%;"} %>
     <%= f.label :carbohydrate_1 %>[g]
     <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.5, no_pattern: "\\d*" %>
@@ -171,6 +172,7 @@ $(function() {
     <%= f.label :diet_memo_2 %>
     <button type="button" id="food2" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food2_cl" class="field btn-danger" > クリア </button>
+    <span><%= @page.meal2_cal %>kcal</span> 
     <%= f.text_field :diet_memo_2 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_2 %>[g]
     <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
@@ -185,6 +187,7 @@ $(function() {
     <%= f.label :diet_memo_3 %>
     <button type="button" id="food3" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food3_cl" class="field btn-danger" > クリア </button>
+    <span><%= @page.meal3_cal %>kcal</span> 
     <%= f.text_field :diet_memo_3 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_3 %>[g]
     <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
@@ -199,6 +202,7 @@ $(function() {
     <%= f.label :diet_memo_4 %>
     <button type="button" id="food4" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food4_cl" class="field btn-danger" > クリア </button>
+    <span><%= @page.meal4_cal %>kcal</span> 
     <%= f.text_field :diet_memo_4 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_4 %>[g]
     <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>
@@ -213,6 +217,7 @@ $(function() {
     <%= f.label :diet_memo_5 %>
     <button type="button" id="food5" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food5_cl" class="field btn-danger" > クリア </button>
+    <span><%= @page.meal5_cal %>kcal</span> 
     <%= f.text_field :diet_memo_5 , { class: "form-control",style: "width:100%;"} %>
     <%= f.label :carbohydrate_5 %>[g]
     <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.5, no_pattern: "\\d*" %>

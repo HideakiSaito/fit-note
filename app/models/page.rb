@@ -32,59 +32,69 @@ class Page < ActiveRecord::Base
     d = ""
     d += "<b>"
     d += diet.name  if diet_id
-    d += tortal_cal.to_s + "kcal  : "
-    d += wight.to_f.to_s + "kg"
-    d += "</b></br>"
-    d += " tortal => 炭水化物:" + carbohydrate_sum.to_s + "g , 脂肪:" + fat_sum.to_s + "g , たんぱく質:" + protein_sum.to_s + "g , 野菜:" + vegetable_sum.to_s + "g" 
-    d += "</br>"
+    d += "</b>"
+    d += "&nbsp;<table border=1><tr>"
+    d += "<td> 熱量: " + tortal_cal.to_s + "kcal </td> "
+    d += "<td> 炭水化物: " + carbohydrate_sum.to_s + "g </td><td> 脂肪: " + fat_sum.to_s + "g</td><td> たんぱく質 :" + protein_sum.to_s + "g</td><td>野菜 :" + vegetable_sum.to_s + "g</td>" 
+    d += "</tr></table><br>"
     if diet_memo_1
       d += "<b>①</b>"
       d += diet_memo_1.to_s
-      d += "</br>&nbsp;&nbsp;"
-      d += "c:" + carbohydrate_1.to_s + "g, "
-      d += "f:" + fat_1.to_s + "g, "
-      d += "p:" + protein_1.to_s + "g, "
-      d += "v:" + vegetable_1.to_s + "g, "
+      d += "<table border=1><tr>"
+      d += "<td> 熱量: " + meal1_cal.to_s + "kcal </td> "
+      d += "<td>炭水化物 :" + carbohydrate_1.to_s + "g</td>"
+      d += "<td>脂肪 :" + fat_1.to_s + "g</td> "
+      d += "<td>たんぱく質 :" + protein_1.to_s + "g</td> "
+      d += "<td>野菜 :" + vegetable_1.to_s + "g</td> "
+      d += "</tr></table>"
       d += "</br>"
     end
     if diet_memo_2
       d += "<b>②</b>"
       d += diet_memo_2.to_s
-      d += "</br>&nbsp;&nbsp;"
-      d += "c:" + carbohydrate_2.to_s + "g, "
-      d += "f:" + fat_2.to_s + "g, "
-      d += "p:" + protein_2.to_s + "g, "
-      d += "v:" + vegetable_2.to_s + "g, "
+      d += "<table border=1><tr>"
+      d += "<td> 熱量: " + meal2_cal.to_s + "kcal </td> "
+      d += "<td>炭水化物 :" + carbohydrate_2.to_s + "g</td>"
+      d += "<td>脂肪 :" + fat_2.to_s + "g</td> "
+      d += "<td>たんぱく質 :" + protein_2.to_s + "g</td> "
+      d += "<td>野菜 :" + vegetable_2.to_s + "g</td> "
+      d += "</tr></table>"
       d += "</br>"
     end
     if diet_memo_3 && diet_memo_3.size > 0
       d += "<b>③</b>"
       d += diet_memo_3.to_s
-      d += "</br>&nbsp;&nbsp;"
-      d += "c:" + carbohydrate_3.to_s + "g, "
-      d += "f:" + fat_3.to_s + "g, "
-      d += "p:" + protein_3.to_s + "g, "
-      d += "v:" + vegetable_3.to_s + "g, "
+      d += "<table border=1><tr>"
+      d += "<td> 熱量: " + meal3_cal.to_s + "kcal </td> "
+      d += "<td>炭水化物 :" + carbohydrate_3.to_s + "g</td>"
+      d += "<td>脂肪 :" + fat_3.to_s + "g</td> "
+      d += "<td>たんぱく質 :" + protein_3.to_s + "g</td> "
+      d += "<td>野菜 :" + vegetable_3.to_s + "g</td> "
+      d += "</tr></table>"
       d += "</br>"
     end
     if diet_memo_4 && diet_memo_4.size > 0
       d += "<b>④</b>"
       d += diet_memo_4.to_s
-      d += "</br>&nbsp;&nbsp;"
-      d += "c:" + carbohydrate_4.to_s + "g, "
-      d += "f:" + fat_4.to_s + "g, "
-      d += "p:" + protein_4.to_s + "g, "
-      d += "v:" + vegetable_4.to_s + "g, "
+      d += "<table border=1><tr>"
+      d += "<td> 熱量: " + meal4_cal.to_s + "kcal </td> "
+      d += "<td>炭水化物 :" + carbohydrate_4.to_s + "g</td>"
+      d += "<td>脂肪 :" + fat_4.to_s + "g</td> "
+      d += "<td>たんぱく質 :" + protein_4.to_s + "g</td> "
+      d += "<td>野菜 :" + vegetable_4.to_s + "g</td> "
+      d += "</tr></table>"
       d += "</br>"
     end
     if diet_memo_5 && diet_memo_5.size > 0
       d += "<b>⑤</b>"
       d += diet_memo_5.to_s
-      d += "</br>&nbsp;&nbsp;"
-      d += "c:" + carbohydrate_5.to_s + "g, "
-      d += "f:" + fat_5.to_s + "g, "
-      d += "p:" + protein_5.to_s + "g, "
-      d += "v:" + vegetable_5.to_s + "g, "
+      d += "<table border=1><tr>"
+      d += "<td> 熱量: " + meal5_cal.to_s + "kcal </td> "
+      d += "<td>炭水化物 :" + carbohydrate_5.to_s + "g</td>"
+      d += "<td>脂肪 :" + fat_5.to_s + "g</td> "
+      d += "<td>たんぱく質 :" + protein_5.to_s + "g</td> "
+      d += "<td>野菜 :" + vegetable_5.to_s + "g</td> "
+      d += "</tr></table>"
     end
     d #最後nilで終わると何も出ないので
   end
@@ -98,6 +108,21 @@ class Page < ActiveRecord::Base
   end
   def tortal_cal
     carbohydrate_sum * 4 + fat_sum * 9 + protein_sum * 4
+  end
+  def meal1_cal
+    carbohydrate_1.to_f * 4 + fat_1.to_f * 9 + protein_1.to_f * 4
+  end
+  def meal2_cal
+    carbohydrate_2.to_f * 4 + fat_2.to_f * 9 + protein_2.to_f * 4
+  end
+  def meal3_cal
+    carbohydrate_3.to_f * 4 + fat_3.to_f * 9 + protein_3.to_f * 4
+  end
+  def meal4_cal
+    carbohydrate_4.to_f * 4 + fat_4.to_f * 9 + protein_4.to_f * 4
+  end
+  def meal5_cal
+    carbohydrate_5.to_f * 4 + fat_5.to_f * 9 + protein_5.to_f * 4
   end
   def carbohydrate_sum
     carbohydrate_1.to_i + carbohydrate_2.to_i + carbohydrate_3.to_i + carbohydrate_4.to_i + carbohydrate_5.to_i
