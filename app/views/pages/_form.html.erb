@@ -14,7 +14,11 @@
 <script type="text/javascript">
   var dispflag = 0;
   var disp_no = 1;
-  var memo,carbo,fat,protein,vegetable;
+  var memo;
+  var carbo;
+  var fat;
+  var protein;
+  var vegetable;
   //食事メニューのエレメントを取得
   function get_food_element(p_no){
     memo = $("#page_diet_memo_" + p_no );
@@ -23,7 +27,7 @@
     protein = $("#page_protein_" + p_no );
     vegetable = $("#page_vegetable_" + p_no );
   }
-  //文字列を数値で扱うように初期化
+  //文字列を数値で扱うように初期r
   function temp_reset(p_val){
     var temp = p_val; 
     if (temp.length > 0 ){ temp = Number(temp); }else{ temp = 0;}
@@ -31,7 +35,6 @@
   }
   //食事メニューと栄養素を追加する
   function food_add(p_no,p_name,p_carbohydrate,p_fat,p_protein,p_vegetable){
-    get_food_element(p_no);
     var temp;
     //食事メニュの追加
     temp = memo.val(); if (temp.length > 0 ) { temp += "、"; }
@@ -63,6 +66,7 @@
   }
   //食事メニューを開く
   function select_food(p_no){
+    get_food_element(p_no);
     disp_no = p_no;
     $('#dialog').dialog('open');
   }
