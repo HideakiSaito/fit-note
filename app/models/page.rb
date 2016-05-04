@@ -32,10 +32,12 @@ class Page < ActiveRecord::Base
     d = ""
     d += "<b>"
     d += diet.name  if diet_id
+    d += " _ 運動消費カロリー:" + burn_cal.to_s + "kcal"
+    d += " _ 基礎代謝カロリー:" + basic_burn_cal.to_s + "kcal ⬆︎これ以上は摂取する"
     d += "</b>"
     d += "&nbsp;<table border=1><tr>"
-    d += "<td> 熱量: " + tortal_cal.to_s + "kcal </td> "
-    d += "<td> 炭水化物: " + carbohydrate_sum.to_s + "g </td><td> 脂肪: " + fat_sum.to_s + "g</td><td> たんぱく質 :" + protein_sum.to_s + "g</td><td>野菜 :" + vegetable_sum.to_s + "g</td>" 
+    d += "<td><b> 熱量: " + tortal_cal.to_s + "kcal </b></td> "
+    d += "<td> 炭水化物: " + carbohydrate_sum.to_s + "g </td><td> 脂肪: " + fat_sum.to_s + "g</td><td><b> たんぱく質 :" + protein_sum.to_s + "g</b></td><td>野菜 :" + vegetable_sum.to_s + "g</td>" 
     d += "</tr></table><br>"
     if diet_memo_1
       d += "<b>①</b>"
@@ -105,6 +107,26 @@ class Page < ActiveRecord::Base
   #xx月yy週
   def mweek
     disp_mweek(date)
+  end
+  def basic_burn_cal
+    #ハリス・ベネディクト方程式(改良版)を使って基礎代謝量を計算しています。
+    #男性： 13.397×体重kg＋4.799×身長cm－5.677×年齢+88.362
+    #女性： 9.247×体重kg＋3.098×身長cm－4.33×年齢+447.593
+    hight = 170.0 #ここは後でユーザモデルから取得
+    old = 33.0 #ここは後でユーザモデルから取得
+    w = 74.0 #ここは後でユーザモデルから取得
+    w = wight.to_f if wight.to_f != 0.0  #最新でーたがあれば上書き
+    burn_cal = 13.397 * w + 4.799 * hight - 5.866 * old + 88.362
+    burn_cal.round 2
+  end
+  def burn_cal
+    mets = 6.0  # ウェイトトレーニング、ズンバを軽く見積もって。種目ごととかは難しいし、ズンバだけ分けるほどでもないので
+    w = 70.0 #ここは後でユーザモデルから取得
+    w = wight.to_f if wight.to_f != 0.0  #最新でーたがあれば上書き
+    ex = mets * training_hour.to_f  
+    ex = ex * 0.7  #休み時間を考慮 3割くらいは休んでいる感じ。
+    burn_cal = ex * w * 1.05
+    burn_cal.round 2
   end
   def tortal_cal
     cal = carbohydrate_sum * 4 + fat_sum * 9 + protein_sum * 4

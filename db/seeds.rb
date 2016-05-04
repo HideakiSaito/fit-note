@@ -7,6 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 #
+Diet.create([
+  {name: "増量_3000kcal↗︎"" },
+  {name: "減量_2000kcal↘︎"},
+  {name:"体重維持_2500kcal"}
+  ])
+
 FoodCategory.create([
   {name:"定番、定食",no:1,order:1},
   {name:"肉類",no:2,order:2},
