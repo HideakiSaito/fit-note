@@ -61,7 +61,7 @@ class Page < ActiveRecord::Base
       d += "</tr></table>"
       d += "</br>"
     end
-    if diet_memo_3 && diet_memo_3.size > 0
+    if diet_memo_3 && diet_memo_3.size > 0.0
       d += "<b>③</b>"
       d += diet_memo_3.to_s
       d += "<table border=1><tr>"
@@ -73,7 +73,7 @@ class Page < ActiveRecord::Base
       d += "</tr></table>"
       d += "</br>"
     end
-    if diet_memo_4 && diet_memo_4.size > 0
+    if diet_memo_4 && diet_memo_4.size > 0.0
       d += "<b>④</b>"
       d += diet_memo_4.to_s
       d += "<table border=1><tr>"
@@ -85,7 +85,7 @@ class Page < ActiveRecord::Base
       d += "</tr></table>"
       d += "</br>"
     end
-    if diet_memo_5 && diet_memo_5.size > 0
+    if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<b>⑤</b>"
       d += diet_memo_5.to_s
       d += "<table border=1><tr>"
@@ -131,16 +131,20 @@ class Page < ActiveRecord::Base
     cal.round 2
   end
   def carbohydrate_sum
-    carbohydrate_1.to_f + carbohydrate_2.to_f + carbohydrate_3.to_f + carbohydrate_4.to_f + carbohydrate_5.to_f
+    sum = carbohydrate_1.to_f + carbohydrate_2.to_f + carbohydrate_3.to_f + carbohydrate_4.to_f + carbohydrate_5.to_f
+    sum.round 2
   end
   def fat_sum
-    fat_1.to_f + fat_2.to_f + fat_3.to_f + fat_4.to_f + fat_5.to_f
+    sum = fat_1.to_f + fat_2.to_f + fat_3.to_f + fat_4.to_f + fat_5.to_f
+    sum.round 2
   end
   def protein_sum
-    protein_1.to_f + protein_2.to_f + protein_3.to_f + protein_4.to_f + protein_5.to_f
+    sum = protein_1.to_f + protein_2.to_f + protein_3.to_f + protein_4.to_f + protein_5.to_f
+    sum.round 2 
   end
   def vegetable_sum
-    vegetable_1.to_f + vegetable_2.to_f + vegetable_3.to_f + vegetable_4.to_f + vegetable_5.to_f
+    sum = vegetable_1.to_f + vegetable_2.to_f + vegetable_3.to_f + vegetable_4.to_f + vegetable_5.to_f
+    sum.round 2
   end
   def page_label
     id.to_s + "." + date.to_s + "_" + place
