@@ -107,34 +107,40 @@ class Page < ActiveRecord::Base
     disp_mweek(date)
   end
   def tortal_cal
-    carbohydrate_sum * 4 + fat_sum * 9 + protein_sum * 4
+    cal = carbohydrate_sum * 4 + fat_sum * 9 + protein_sum * 4
+    cal.round 2
   end
   def meal1_cal
-    carbohydrate_1.to_f * 4 + fat_1.to_f * 9 + protein_1.to_f * 4
+    cal = carbohydrate_1.to_f * 4 + fat_1.to_f * 9 + protein_1.to_f * 4
+    cal.round(2)
   end
   def meal2_cal
-    carbohydrate_2.to_f * 4 + fat_2.to_f * 9 + protein_2.to_f * 4
+    cal = carbohydrate_2.to_f * 4 + fat_2.to_f * 9 + protein_2.to_f * 4
+    cal.round 2
   end
   def meal3_cal
-    carbohydrate_3.to_f * 4 + fat_3.to_f * 9 + protein_3.to_f * 4
+    cal = carbohydrate_3.to_f * 4 + fat_3.to_f * 9 + protein_3.to_f * 4
+    cal.round 2
   end
   def meal4_cal
-    carbohydrate_4.to_f * 4 + fat_4.to_f * 9 + protein_4.to_f * 4
+    cal = carbohydrate_4.to_f * 4 + fat_4.to_f * 9 + protein_4.to_f * 4
+    cal.round 2
   end
   def meal5_cal
-    carbohydrate_5.to_f * 4 + fat_5.to_f * 9 + protein_5.to_f * 4
+    cal = carbohydrate_5.to_f * 4 + fat_5.to_f * 9 + protein_5.to_f * 4
+    cal.round 2
   end
   def carbohydrate_sum
-    carbohydrate_1.to_i + carbohydrate_2.to_i + carbohydrate_3.to_i + carbohydrate_4.to_i + carbohydrate_5.to_i
+    carbohydrate_1.to_f + carbohydrate_2.to_f + carbohydrate_3.to_f + carbohydrate_4.to_f + carbohydrate_5.to_f
   end
   def fat_sum
-    fat_1.to_i + fat_2.to_i + fat_3.to_i + fat_4.to_i + fat_5.to_i
+    fat_1.to_f + fat_2.to_f + fat_3.to_f + fat_4.to_f + fat_5.to_f
   end
   def protein_sum
-    protein_1.to_i + protein_2.to_i + protein_3.to_i + protein_4.to_i + protein_5.to_i
+    protein_1.to_f + protein_2.to_f + protein_3.to_f + protein_4.to_f + protein_5.to_f
   end
   def vegetable_sum
-    vegetable_1.to_i + vegetable_2.to_i + vegetable_3.to_i + vegetable_4.to_i + vegetable_5.to_i
+    vegetable_1.to_f + vegetable_2.to_f + vegetable_3.to_f + vegetable_4.to_f + vegetable_5.to_f
   end
   def page_label
     id.to_s + "." + date.to_s + "_" + place
