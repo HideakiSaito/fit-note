@@ -14,8 +14,14 @@ class AnalysisController < ApplicationController
   end
   def health
     @chart = self.health_hour_chart
-    @chart2 = self.health_water_chart
-    @chart3 = self.health_feel_chart
+    render :index
+  end
+  def water
+    @chart = self.health_water_chart
+    render :index
+  end
+  def feel
+    @chart = self.health_feel_chart
     render :index
   end
   def weight
