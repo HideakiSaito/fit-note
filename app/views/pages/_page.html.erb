@@ -54,7 +54,7 @@
           </tr>
         </thead>
         <tbody>
-          <% page.lines.order(:id).each do |line| %>
+          <% page.lines.default.order(:id).each do |line| %>
             <tr>
               <td style="text-align: left;"><%= line.no %>.
                 <%= link_to line.item.part.name , edit_line_path(line) %>

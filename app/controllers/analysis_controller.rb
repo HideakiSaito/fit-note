@@ -99,7 +99,7 @@ class AnalysisController < ApplicationController
     dates = []
     condition_data = []
     feeling_data = []
-    pages.each do |page|
+    pages.feel_include.each do |page|
       label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
       dates << label + 
                page.sleep_time.strftime("[%H:%M]")

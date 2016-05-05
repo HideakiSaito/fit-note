@@ -9,6 +9,18 @@ class Item < ActiveRecord::Base
   #バリデーション
   validates :name ,presence: true
 
+  scope :default, -> do
+    #includes(:part)
+  end
+
+  scope :equipment_include , -> do
+    includes(:equipment)
+  end
+  
+  default_scope  -> do
+    includes(:part)
+  end
+
   class << self
     def search(query)
       rel = order("part_id")

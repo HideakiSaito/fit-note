@@ -179,7 +179,10 @@ class Page < ActiveRecord::Base
    joins(:lines) 
    end
   scope :default, -> do
-    includes(:diet).includes(:lines).includes(:feeling).includes(:condition).order("date desc")
+    includes(:diet).includes(:feeling).includes(:condition).order("date desc")
+  end
+  scope :feel_include , -> do
+    includes(:feeling).includes(:condition)
   end
   class << self
     def search(par_predicate)

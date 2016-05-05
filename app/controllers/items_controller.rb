@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.order(:part_id, :equipment_id)
+    @items = Item.equipment_include.order(:part_id, :equipment_id)
   end
 
   def search
