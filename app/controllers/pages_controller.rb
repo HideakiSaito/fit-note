@@ -53,7 +53,7 @@ class PagesController < InheritedResources::Base
     @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6" 
 #    @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" 
     @search_form = SearchForm.new params[:search_form]
-    @pages = Page.includes(:diet).includes(:lines).order("date desc")
+    @pages = Page.default
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
@@ -80,12 +80,12 @@ class PagesController < InheritedResources::Base
       end_time: Time.current + (2.5 * 60 * 60),
       sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
       sleep_hour: 7.5) 
-    @foods = Food.order(:food_category_id,:id)
+    @foods = Food.all
     @page = PageDecorator.decorate(@page)
   end
   def edit
     @page = Page.find(params[:id])
-    @foods = Food.order(:food_category_id,:id)
+    @foods = Food.all
     @page = PageDecorator.decorate(@page)
   end
 

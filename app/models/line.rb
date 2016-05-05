@@ -9,6 +9,9 @@ class Line < ActiveRecord::Base
   scope :default_order , -> do
     order("page_id desc , no asc")
   end
+  default_scope  -> do
+    #includes(:item).includes(:mode).order("no")
+  end
   class <<self
     #行NOを採番する
     def get_now_no(page_id) 

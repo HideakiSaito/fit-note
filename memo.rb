@@ -61,3 +61,4 @@ rails g migration AddCoulumn4ToPage body_fat_per:float body_size_neck:flaat  bod
 rails g scaffold food_category name no:integer order:integer
 
 rails g migration AddColumn1ToFood food_category:belongs_to
+rails g migration AddColumn2ToFood sort_key 

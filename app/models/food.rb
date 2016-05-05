@@ -8,6 +8,11 @@ class Food < ActiveRecord::Base
       diet_memo
     end
   end
+  #スコープ
+  default_scope  -> do
+    #p "default_scope "
+    includes(:food_category).order("food_category_id , sort_key desc ,id")
+  end
   class << self
     def search(query)
       rel = order("id")

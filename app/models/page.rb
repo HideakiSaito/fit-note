@@ -178,6 +178,9 @@ class Page < ActiveRecord::Base
    #trainig.size > 0
    joins(:lines) 
    end
+  scope :default, -> do
+    includes(:diet).includes(:lines).includes(:feeling).includes(:condition).order("date desc")
+  end
   class << self
     def search(par_predicate)
       query = order("date desc,id desc")

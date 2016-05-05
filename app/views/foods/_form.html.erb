@@ -28,6 +28,10 @@
     {prompt: true} , { class: "form-control"} %>
   </div>
   <div class="field">
+    <%= f.label :sort_key %><br>
+    <%= f.text_field :sort_key ,  class: "form-control" ,style: "width:20em;" %>
+  </div>
+  <div class="field">
     <%= f.label :calorie %><br>
     <%= f.number_field :calorie ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
   </div>

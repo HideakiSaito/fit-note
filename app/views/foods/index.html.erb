@@ -5,6 +5,9 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
+      <th>名称、カテゴリ、メモ</th>
+      <th>sort_key</th>
+      <th>栄養素</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +16,7 @@
         <td><%= link_to food.id.to_s + "." + food.name, edit_food_path(food) %>
           <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
         </td>
+        <td><%= food.sort_key %></td>
         <td>
         <table border=1 style="text-align: right; width: 22em;">
           <thead><tr>
