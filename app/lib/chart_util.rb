@@ -22,7 +22,9 @@ module ChartUtil
   def chart_data(target_item)
     #ここを１週間単位
     powers = []
-    max_power , last_power = 0.0
+    max_power = 0.0 
+    this_power = 0.0
+    last_power = 0.0
     last_week = ""
     @@pages.map do |page|
       this_week = page.yweek
