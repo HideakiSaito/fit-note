@@ -176,7 +176,7 @@ class Page < ActiveRecord::Base
   ######################################
   scope :training_only, ->do
    #trainig.size > 0
-   joins(:lines) 
+   joins(:lines).distinct 
    end
   scope :default, -> do
     includes(:diet).includes(:feeling).includes(:condition).order("date desc")
