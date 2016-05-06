@@ -10,7 +10,6 @@ class AnalysisController < ApplicationController
     @health_water_chart = self.health_water_chart
     @health_feel_chart = self.health_feel_chart
     @size_chart = self.size_chart
-    @fat_chart = self.fat_chart
   end
   def health
     @chart = self.health_hour_chart
@@ -26,10 +25,6 @@ class AnalysisController < ApplicationController
   end
   def weight
     @chart = self.weight_chart
-    render :index
-  end
-  def fat 
-    @chart = self.fat_chart
     render :index
   end
   def gym
@@ -213,7 +208,7 @@ class AnalysisController < ApplicationController
       body_fat_per_data << page.body_fat_per.to_f
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: '体重の推移')
+      f.title(text: '体重,体脂肪の推移')
       f.xAxis(categories: dates,title:"日付")
       f.yAxis([ {title: "b" , opposite: true},{title: "a"} ] )
       f.series(name: "体脂肪[%]" ,data: body_fat_per_data,yAxis: 0)
