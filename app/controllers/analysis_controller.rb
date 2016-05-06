@@ -215,8 +215,9 @@ class AnalysisController < ApplicationController
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '体重の推移')
       f.xAxis(categories: dates,title:"日付")
-#      f.series(name: "体脂肪[%]" ,data: body_fat_per_data,yAxis:0)
-      f.series(name: "体重[kg]" ,data: weight_data)
+      f.yAxis([ {title: "b" , opposite: true},{title: "a"} ] )
+      f.series(name: "体脂肪[%]" ,data: body_fat_per_data,yAxis: 0)
+      f.series(name: "体重[kg]" ,data: weight_data,yAxis: 1)
       f.chart(type: "line")
 #      f.options[:plotOptions] = { area: {stacking: 'normal'}
     end
