@@ -27,16 +27,16 @@
           < <%= page.wight %> kg , <%= page.body_fat_per %> % >
           </p>
           <div><%= page_image_tag page, width: @show ? 320 : 128  %></div>
-          <div style="color:crimson;"><%= page.memo %></div>
+          <pre style="font-size:1.0em;color:black;"><%= page.memo %></pre>
       </td>
       </tr>
     </table>
   <div class="note" >
     <% if @disp_other_is %>
-    <div class="diet-line" style="color:darkblue;">
+    <div class="diet-line" style="color:black;">
       <%= raw page.diet_summaly %>
     </div>
-    <div class="health-line" style="color:green;">
+    <div class="health-line" style="color:black;">
       <%= raw page.health_summaly %>
     </div>
     <% end #if disp_other_is %>
