@@ -76,4 +76,7 @@ gem 'will_paginate'
 ## Add H.saito 2016/05/01 decolatea
 gem 'draper'
 
+## Add H.saito 2016/05/09 timer
+#gem 'clockwork'
+
 

@@ -124,6 +124,10 @@ ja:
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
       other_than: は%{count}以外の値にしてください
+      invalid_member_name: "は半角英数字で入力してください（_も使えます）。"
+      expired_at_too_old: は掲載開始日より新しい日時にしてください。
+      too_big_image: が大きすぎます（最大...）。
+      invalid_image: の形式が違います（JPEG、GIF、PNGのどれかにしてください）。
     template:
       body: 次の項目を確認してください
       header:
@@ -204,6 +208,7 @@ ja:
       page: ページ 
       food: 食事
       item: 種目
+      page_image: 画像
     attributes:
       page:
         id: ID
@@ -283,3 +288,8 @@ ja:
         name: 名称
         reps: レップス
         part_id: 部位
+      page_image:
+        uploaded_image: 画像
+        _destroy: 削除する
+      image:
+        uploaded_image: 画像

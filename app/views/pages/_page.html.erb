@@ -26,6 +26,7 @@
           <p style="font-weight:bold;font-size:1.25em;">
           < <%= page.wight %> kg , <%= page.body_fat_per %> % >
           </p>
+          <div><%= page_image_tag page, width: @show ? 320 : 128  %></div>
           <div style="color:crimson;"><%= page.memo %></div>
       </td>
       </tr>

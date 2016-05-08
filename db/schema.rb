@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505103132) do
+ActiveRecord::Schema.define(version: 20160508131416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,13 +149,22 @@ ActiveRecord::Schema.define(version: 20160505103132) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "page_images", force: :cascade do |t|
+    t.integer  "page_id"
+    t.binary   "data"
+    t.string   "content_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "page_images", ["page_id"], name: "index_page_images_on_page_id", using: :btree
+
   create_table "pages", force: :cascade do |t|
     t.date     "date"
     t.string   "place"
     t.time     "start_time"
     t.time     "end_time"
     t.text     "memo"
-    t.binary   "image"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "diet_id"
@@ -242,6 +251,7 @@ ActiveRecord::Schema.define(version: 20160505103132) do
   add_foreign_key "lines", "items"
   add_foreign_key "lines", "modes"
   add_foreign_key "lines", "pages"
+  add_foreign_key "page_images", "pages"
   add_foreign_key "pages", "conditions"
   add_foreign_key "pages", "diets"
   add_foreign_key "pages", "feelings"

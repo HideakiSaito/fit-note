@@ -72,6 +72,12 @@ class PagesController < InheritedResources::Base
     self.show_index_init
     self.daily_chart @page
     @page = PageDecorator.decorate(@page)
+    #画像対応
+    if params[:format].in?(["jpg", "png", "gif"])
+      send_image
+    else
+      render "show"
+    end
   end
 
   def new
@@ -82,11 +88,13 @@ class PagesController < InheritedResources::Base
       sleep_hour: 7.5) 
     @foods = Food.all
     @page = PageDecorator.decorate(@page)
+    @page.build_image unless @page.image
   end
   def edit
     @page = Page.find(params[:id])
     @foods = Food.all
     @page = PageDecorator.decorate(@page)
+    @page.build_image unless @page.image
   end
 
   def create
@@ -128,6 +136,15 @@ class PagesController < InheritedResources::Base
   end
 
   private
+  # 画像送信
+  def send_image
+    if @page.image.present?
+      send_data @page.image.data,
+        type: @page.image.content_type, disposition: "inline"
+    else
+      raise NotFound
+    end
+  end
   def copy_page_lines
     #ここで、コピーするなら過去の、トレーニングを取得する
     if  params[:copy_page][:id] != "" &&  @page.lines.empty?
@@ -147,7 +164,10 @@ class PagesController < InheritedResources::Base
   end
 
   def page_params
-    params.require(:page).permit(:date, :place, :start_time, :end_time, :memo, :image,:diet_id ,:carbohydrate_1,:fat_1,:protein_1, :vegetable_1, :diet_memo_1,:carbohydrate_2,:fat_2,:protein_2, :vegetable_2, :diet_memo_2,:carbohydrate_3,:fat_3,:protein_3, :vegetable_3, :diet_memo_3,:carbohydrate_4,:fat_4,:protein_4, :vegetable_4, :diet_memo_4,:carbohydrate_5,:fat_5,:protein_5, :vegetable_5, :diet_memo_5 ,:condition_id ,:feeling_id ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour,:training_hour ,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left)
+
+    attrs = [:date, :place, :start_time, :end_time, :memo, :diet_id ,:carbohydrate_1,:fat_1,:protein_1, :vegetable_1, :diet_memo_1,:carbohydrate_2,:fat_2,:protein_2, :vegetable_2, :diet_memo_2,:carbohydrate_3,:fat_3,:protein_3, :vegetable_3, :diet_memo_3,:carbohydrate_4,:fat_4,:protein_4, :vegetable_4, :diet_memo_4,:carbohydrate_5,:fat_5,:protein_5, :vegetable_5, :diet_memo_5 ,:condition_id ,:feeling_id ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour,:training_hour ,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left]
+    attrs << { image_attributes: [:_destroy, :id, :uploaded_image] }
+    params.require(:page).permit(attrs)
   end
 
   def copy_line_params copy_line

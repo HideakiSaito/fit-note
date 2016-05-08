@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @page_image.page %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @page_image.data %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @page_image.content_type %>
+</p>
+
+<%= link_to 'Edit', edit_page_image_path(@page_image) %> |
+<%= link_to 'Back', page_images_path %>

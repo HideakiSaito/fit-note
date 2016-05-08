@@ -1,4 +1,4 @@
-<%= form_for(@page,html:{class: "form-inline"}) do |f| %>
+<%= form_for(@page,html:{class: "form-inline",multipart: true }) do |f| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -305,8 +305,24 @@ $(function() {
   <%= f.number_field :body_size_calf_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
-  <%= f.label :image %><br>
-  <%= f.text_field :image , { class: "form-control"} %>
+  <%= f.fields_for :image do |imgf| %>
+<table border=1>
+  <tr>
+    <th><%= imgf.label :uploaded_image %></th>
+    <td>
+      <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
+      <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+      <div>
+        <%= page_image_tag @page, width: 96 %>
+        <%= imgf.check_box :_destroy %>
+        <%= imgf.label :_destroy %>
+        <%= imgf.hidden_field :id %>
+      </div>
+      <% end %>
+    </td>
+  </tr>
+</table>
+  <% end %>
 </div>
 <div class="actions">
   <%= f.submit class: "btn btn-primary btn-block" %>
