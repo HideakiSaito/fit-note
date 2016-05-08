@@ -152,6 +152,26 @@ $(function() {
   <%= f.text_area :memo , { class: "form-control",cols: 5,rows: 5,style: "width:100%;"} %>
 </div>
 <div class="field">
+  <%= f.fields_for :image do |imgf| %>
+    <table border=1>
+      <tr>
+        <th><%= imgf.label :uploaded_image %></th>
+        <td>
+          <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
+          <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+            <div>
+              <%= page_image_tag @page, width: 96 %>
+              <%= imgf.check_box :_destroy %>
+              <%= imgf.label :_destroy %>
+              <%= imgf.hidden_field :id %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<div class="field">
   <%= f.label :diet_id %><br>
   <%= f.collection_select :diet_id ,
     Diet.all.order(:id), :id , :name ,
@@ -303,26 +323,6 @@ $(function() {
   <%= f.number_field :body_size_calf_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
   <%= f.label :body_size_calf_left %>[cm]
   <%= f.number_field :body_size_calf_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.fields_for :image do |imgf| %>
-<table border=1>
-  <tr>
-    <th><%= imgf.label :uploaded_image %></th>
-    <td>
-      <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
-      <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
-      <div>
-        <%= page_image_tag @page, width: 96 %>
-        <%= imgf.check_box :_destroy %>
-        <%= imgf.label :_destroy %>
-        <%= imgf.hidden_field :id %>
-      </div>
-      <% end %>
-    </td>
-  </tr>
-</table>
-  <% end %>
 </div>
 <div class="actions">
   <%= f.submit class: "btn btn-primary btn-block" %>
