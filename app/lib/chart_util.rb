@@ -44,7 +44,7 @@ module ChartUtil
         max_power = this_power if this_power #前回の記録よく下がることを考慮 
         powers[-1] = max_power #-配列指定は最後から数える
       end
-      last_week = this_week
+        last_week = this_week
     end
     powers 
   end
