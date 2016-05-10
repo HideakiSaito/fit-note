@@ -40,10 +40,12 @@ module ChartUtil
         last_power = this_power
         max_power = 0.0 #同一週で最大筋力を求めたいのでリセット
       else
-        max_power = last_power if max_power == 0.0 #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
-        max_power = this_power if this_power #前回の記録よく下がることを考慮 
-        powers[-1] = max_power #-配列指定は最後から数える
+        this_week_power = max_power
+        this_week_power = last_power if max_power == 0.0 #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
+        this_week_power = this_power if this_power #前回の記録よく下がることを考慮 
+        powers[-1] = this_week_power #-配列指定は最後から数える
       end
+        last_power = this_power
         last_week = this_week
     end
     powers 

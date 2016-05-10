@@ -199,7 +199,6 @@ class Page < ActiveRecord::Base
       s = File.read(file.path, :encoding => Encoding::UTF_8)
       JSON.parse( s ).each do |elem| 
         page = find_by(id: elem[:id]) || new 
-        page.build_image unless page.image
         page.assign_attributes(elem)
         page.save 
       end

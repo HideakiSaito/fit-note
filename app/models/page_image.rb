@@ -1,7 +1,6 @@
 class PageImage < ActiveRecord::Base
   belongs_to :page
   attr_reader :uploaded_image
-
   validate :check_image
 
   IMAGE_TYPES =
