@@ -13,6 +13,9 @@ class Page < ActiveRecord::Base
   #####################################
   #decolater like
   #
+  def memo_br
+    memo.gsub(/\r\n|\r|\n/, "<br />")
+  end
   def health_summaly
     h = ""
     h += "<b>"
