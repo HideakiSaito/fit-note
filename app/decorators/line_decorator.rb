@@ -5,7 +5,8 @@ def self.collection_decorator_class
 end 
 def short_label
 #  '[' + no.to_s + '.' + part.name + ']'
-  '[' + no.to_s + '.' + item.part.name + ']'
+#  '[' + no.to_s + '.' + item.part.name + ']'
+  '[' + no.to_s + '.' + item.index_name + ']'
 end
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:
