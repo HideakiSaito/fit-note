@@ -77,3 +77,5 @@ rails g scaffold  page_image page:belongs_to data:binary content_type
 rails g model user provider uid name email icon oauth_token oauth_expires_at:datetime
 rails g scaffold user provider uid name email icon oauth_token oauth_expires_at:datetime
 rake db:migrate
+
+heroku config:set FACEBOOK_KEY=0123456789
