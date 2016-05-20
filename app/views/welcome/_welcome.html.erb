@@ -1,12 +1,16 @@
 <div class="alert alert-info" >
-  <strong><%= @greeting %></strong><br> 
-       <% if @latest_page.id != nil %>
-  <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
-  の トレーニング<%= @cheer  %>
-       <% else %>
-        まだトレーニングの記録がありません。
-     <% end %>
-  <br>
-   => <%= (Date.current - @latest_page.date).to_i %>日間 経過しています。
-  <br><%= @recommend_1 %>
+  <strong>
+    <% if current_user %>
+    <%= current_user.name %>さん!
+  <% end %>
+    <%= @greeting %></strong><br> 
+  <% if @latest_page.id != nil %>
+    <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
+    の トレーニング<%= @cheer  %>
+<% else %>
+  まだトレーニングの記録がありません。
+<% end %>
+<br>
+=> <%= (Date.current - @latest_page.date).to_i %>日間 経過しています。
+<br><%= @recommend_1 %>
 </div>
