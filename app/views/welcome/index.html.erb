@@ -38,7 +38,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
+<%= link_to 'facebook login', '/auth/facebook' %>
 
 <%= render "welcome" %>
 <div> 直近のページ：<%= l(@latest_page.date, format: :short_day) if @latest_page.id != nil %>

@@ -1,3 +1,6 @@
+#postgers start
+pg_ctl -D /usr/local/var/postgres start
+
 rails g scaffold mode name detail
 rails g scaffold part name
 rails g scaffold equipment name
@@ -68,3 +71,9 @@ rails g migration AddColumn2ToFood sort_key
 #2016/05/09 
 #page_image model
 rails g scaffold  page_image page:belongs_to data:binary content_type 
+
+
+#2016/05/19
+rails g model user provider uid name email icon oauth_token oauth_expires_at:datetime
+rails g scaffold user provider uid name email icon oauth_token oauth_expires_at:datetime
+rake db:migrate
