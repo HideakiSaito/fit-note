@@ -41,8 +41,8 @@ class AnalysisController < ApplicationController
   end
   def gym_chart
     #Big3 items id
-    push_id = [1,2]
-    pull_id = [4,18,5,6]
+    push_id = [1]
+    pull_id = [4,18]
     leg_id = [9] #19
     analysis_initialize("ジム")#ChartUtilを利用
     chart = LazyHighCharts::HighChart.new('graph') do |f|
