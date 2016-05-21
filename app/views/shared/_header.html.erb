@@ -8,12 +8,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><i class="fa fa-home">H.S.fit note</i></a>
+      <a class="navbar-brand" href="/"><i class="fa fa-home">Fit Nonte</i></a>
       <a class="navbar-brand" href="/pages/<%= Page.maximum(:id) %>/"><i class="fa fa-check-square-o"></i></a>
-      <a class="navbar-brand" href="/pages/new"><i class="fa fa-plus"></i></a>
       <a class="navbar-brand" href="/pages/<%= Page.maximum(:id) %>/edit"><i class="fa fa-edit"></i></a>
       <a class="navbar-brand" href="/pages"><i class="fa fa-calendar"></i></a>
-      <a class="navbar-brand" href="/analysis/dash_bord"><i class="fa fa-tachometer"></i></a>
       <a class="navbar-brand" href="/analysis"><i class="fa fa-bar-chart"></i></a>
       <a class="navbar-brand" href="/items"><i class="fa fa-gavel"></i></a>
       <a class="navbar-brand" href="/foods"><i class="fa fa-cutlery"></i></a>
@@ -45,10 +43,11 @@
                 <i class="fa fa-user"></i>
               <%= link_to "Sign out", signout_path, id: "sign_out" %>
             <% else %>
+              Sign in wtih 
                 <i class="fa fa-facebook-square"></i>
-              <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+              <%= link_to "Facebook", "/auth/facebook", id: "sign_in" %>
                 <i class="fa fa-user"></i>
-              <%= link_to "Sign in ID/PASSWORD", "/users", id: "sign_in_local" %>
+              <%= link_to "ID/PASSWORD", "/users", id: "sign_in_local" %>
             <% end %>
           </div>
         </td>
