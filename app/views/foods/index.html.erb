@@ -8,7 +8,6 @@
   <thead>
     <tr>
       <th>名称、カテゴリ、メモ</th>
-      <th>sort_key</th>
       <th>栄養素</th>
     </tr>
   </thead>
@@ -18,9 +17,8 @@
         <td><%= link_to food.id.to_s + "." + food.name, edit_food_path(food) %>
           <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
         </td>
-        <td><%= food.sort_key %></td>
-        <td>
-        <table border=1 style="text-align: right; width: 22em;">
+        <td>sort:<%= food.sort_key %>
+        <table border=1 >
           <thead><tr>
               <th>炭水化物:</th>
               <th>脂肪:</th>
