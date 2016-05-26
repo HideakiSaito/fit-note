@@ -24,7 +24,7 @@ module R1
     config.i18n.default_locale = :ja
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = truoe
+    config.active_record.raise_in_transactional_callbacks = true
     #2016/05/23 add
     #rake assets:precompileを失敗させない設定がある
     config.assets.initialize_on_precompile = false
