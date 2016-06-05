@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class PagesController - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">InheritedResources::Base
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="ChartUtil.html">ChartUtil</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-create">#create</a>
+    
+    <li ><a href="#method-i-daily_chart">#daily_chart</a>
+    
+    <li ><a href="#method-i-edit">#edit</a>
+    
+    <li ><a href="#method-i-hidden_training">#hidden_training</a>
+    
+    <li ><a href="#method-i-import">#import</a>
+    
+    <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-index_logic">#index_logic</a>
+    
+    <li ><a href="#method-i-new">#new</a>
+    
+    <li ><a href="#method-i-only_chart">#only_chart</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-show_index_init">#show_index_init</a>
+    
+    <li ><a href="#method-i-training_only">#training_only</a>
+    
+    <li ><a href="#method-i-training_only_note">#training_only_note</a>
+    
+    <li ><a href="#method-i-update">#update</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-PagesController">
+  <h1 id="class-PagesController" class="class">
+    class PagesController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">page_params</span>)
+  <span class="ruby-ivar">@new_lines</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">copy_page_lines</span>
+      <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">message</span> = <span class="ruby-string">&#39;Page was successfully updated.&#39;</span>
+      <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;Copy Lines!!!&#39;</span> <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@new_lines</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@page</span>, <span class="ruby-identifier">method</span><span class="ruby-operator">:</span> <span class="ruby-value">:get</span>,
+                    <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-identifier">message</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:new</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-daily_chart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">daily_chart</span><span
+            class="method-args">(page)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="daily_chart-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">daily_chart</span> <span class="ruby-identifier">page</span> 
+  <span class="ruby-ivar">@chart_pie_parts_index</span>[<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">day_training_chart</span>(<span class="ruby-identifier">page</span>)
+  <span class="ruby-ivar">@chart_pie_diets_index</span>[<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">day_diet_chart</span>(<span class="ruby-identifier">page</span>)
+  <span class="ruby-ivar">@chart_healths_index</span>[<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">day_health_chart</span>(<span class="ruby-identifier">page</span>)
+  <span class="ruby-ivar">@chart_waters_index</span>[<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">day_water_chart</span>(<span class="ruby-identifier">page</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@foods</span> = <span class="ruby-constant">Food</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">PageDecorator</span>.<span class="ruby-identifier">decorate</span>(<span class="ruby-ivar">@page</span>)
+  <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">build_image</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">image</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hidden_training" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hidden_training</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hidden_training-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hidden_training</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index_logic</span> <span class="ruby-string">&quot;hidden_training&quot;</span>
+  <span class="ruby-ivar">@show_detail</span> = <span class="ruby-keyword">true</span> 
+  <span class="ruby-ivar">@show_chart</span> = <span class="ruby-keyword">false</span> 
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:index</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-import" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">import</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="import-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">import</span>
+  <span class="ruby-constant">Page</span>.<span class="ruby-identifier">import</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:file</span>]) <span class="ruby-comment"># fileはtmpに自動で一時保存される</span>
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">pages_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Pageをインポートしました。&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index_logic</span> <span class="ruby-string">&quot;all&quot;</span>
+  <span class="ruby-ivar">@show_detail</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@show_chart</span> = <span class="ruby-keyword">false</span> 
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment">#default template </span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>   <span class="ruby-comment">#default template ajax</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-ivar">@pages</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date desc&quot;</span>) } <span class="ruby-comment">#jsonは全部</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index_logic" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index_logic</span><span
+            class="method-args">(disp_mode , disp_other = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index_logic-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 49</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">index_logic</span> <span class="ruby-identifier">disp_mode</span> , <span class="ruby-identifier">disp_other</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-ivar">@disp_mode</span> = <span class="ruby-identifier">disp_mode</span>
+    <span class="ruby-ivar">@disp_other_is</span> = <span class="ruby-identifier">disp_other</span>
+    <span class="ruby-ivar">@show</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@page_class</span> = <span class="ruby-string">&quot;col-xs-12 col-sm-12 col-md-6 col-lg-6&quot;</span> 
+<span class="ruby-comment">#    @page_class = &quot;col-xs-12 col-sm-12 col-md-12 col-lg-12&quot; </span>
+    <span class="ruby-ivar">@search_form</span> = <span class="ruby-constant">SearchForm</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:search_form</span>]
+    <span class="ruby-ivar">@pages</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">default</span>
+    <span class="ruby-ivar">@pages</span> = <span class="ruby-ivar">@pages</span>.<span class="ruby-identifier">training_only</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">disp_mode</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;training_only&quot;</span>
+    <span class="ruby-ivar">@pages</span> = <span class="ruby-ivar">@pages</span>.<span class="ruby-identifier">search</span> <span class="ruby-ivar">@search_form</span>.<span class="ruby-identifier">q</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@search_form</span>.<span class="ruby-identifier">q</span>.<span class="ruby-identifier">present?</span>
+    <span class="ruby-ivar">@pages</span> = <span class="ruby-ivar">@pages</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-identifier">page</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>], <span class="ruby-identifier">per_page</span><span class="ruby-operator">:</span> <span class="ruby-value">12</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_index_init</span>
+    <span class="ruby-ivar">@pages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">daily_chart</span> <span class="ruby-identifier">page</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-comment">#    @pages = PageDecorator.decorate_collection(@pages)</span>
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-comment">#トレーニンぐ時間、睡眠時間の初期値をセット</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">end_time</span><span class="ruby-operator">:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">current</span> <span class="ruby-operator">+</span> (<span class="ruby-value">2.5</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>),
+    <span class="ruby-identifier">sleep_time</span><span class="ruby-operator">:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-value">2000</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-value">22</span>, <span class="ruby-value">30</span>, <span class="ruby-value">00</span>) ,
+    <span class="ruby-identifier">sleep_hour</span><span class="ruby-operator">:</span> <span class="ruby-value">7.5</span>) 
+  <span class="ruby-ivar">@foods</span> = <span class="ruby-constant">Food</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">PageDecorator</span>.<span class="ruby-identifier">decorate</span>(<span class="ruby-ivar">@page</span>)
+  <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">build_image</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">image</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-only_chart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">only_chart</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="only_chart-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">only_chart</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index_logic</span> <span class="ruby-string">&quot;all&quot;</span>
+  <span class="ruby-ivar">@show_detail</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@show_chart</span> = <span class="ruby-keyword">true</span> 
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:index</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@show</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@disp_mode</span> = <span class="ruby-string">&quot;all&quot;</span>
+  <span class="ruby-ivar">@disp_other_is</span> = <span class="ruby-keyword">true</span> 
+  <span class="ruby-ivar">@page_class</span> = <span class="ruby-string">&quot;&quot;</span> 
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_index_init</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">daily_chart</span> <span class="ruby-ivar">@page</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">PageDecorator</span>.<span class="ruby-identifier">decorate</span>(<span class="ruby-ivar">@page</span>)
+  <span class="ruby-comment">#画像対応</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:format</span>].<span class="ruby-identifier">in?</span>([<span class="ruby-string">&quot;jpg&quot;</span>, <span class="ruby-string">&quot;png&quot;</span>, <span class="ruby-string">&quot;gif&quot;</span>])
+    <span class="ruby-identifier">send_image</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-string">&quot;show&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show_index_init" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show_index_init</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show_index_init-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show_index_init</span>
+  <span class="ruby-ivar">@chart_pie_parts_index</span> = {}
+  <span class="ruby-ivar">@chart_pie_diets_index</span> = {}
+  <span class="ruby-ivar">@chart_healths_index</span> = {}
+  <span class="ruby-ivar">@chart_waters_index</span> = {}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-training_only" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">training_only</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="training_only-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">training_only</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index_logic</span> <span class="ruby-string">&quot;training_only&quot;</span>
+  <span class="ruby-ivar">@show_detail</span> = <span class="ruby-keyword">true</span> 
+  <span class="ruby-ivar">@show_chart</span> = <span class="ruby-keyword">false</span> 
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:index</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-training_only_note" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">training_only_note</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="training_only_note-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">training_only_note</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">index_logic</span> <span class="ruby-string">&quot;training_only&quot;</span> ,<span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@show_detail</span> = <span class="ruby-keyword">true</span> 
+  <span class="ruby-ivar">@show_chart</span> = <span class="ruby-keyword">false</span> 
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:index</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/pages_controller.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">assign_attributes</span>(<span class="ruby-identifier">page_params</span>)
+  <span class="ruby-identifier">copy_page_lines</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">message</span> = <span class="ruby-string">&#39;Page was successfully updated.&#39;</span>
+      <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;Copy Lines!!!&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@new_lines</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@page</span>,
+                    <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-identifier">message</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:edit</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

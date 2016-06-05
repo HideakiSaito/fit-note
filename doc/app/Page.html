@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class Page - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ActiveRecord::Base
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="CalenderUtil.html">CalenderUtil</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-import">::import</a>
+    
+    <li ><a href="#method-c-search">::search</a>
+    
+    <li ><a href="#method-i-basic_burn_cal">#basic_burn_cal</a>
+    
+    <li ><a href="#method-i-burn_cal">#burn_cal</a>
+    
+    <li ><a href="#method-i-carbohydrate_sum">#carbohydrate_sum</a>
+    
+    <li ><a href="#method-i-diet_summaly">#diet_summaly</a>
+    
+    <li ><a href="#method-i-fat_sum">#fat_sum</a>
+    
+    <li ><a href="#method-i-health_summaly">#health_summaly</a>
+    
+    <li ><a href="#method-i-meal1_cal">#meal1_cal</a>
+    
+    <li ><a href="#method-i-meal2_cal">#meal2_cal</a>
+    
+    <li ><a href="#method-i-meal3_cal">#meal3_cal</a>
+    
+    <li ><a href="#method-i-meal4_cal">#meal4_cal</a>
+    
+    <li ><a href="#method-i-meal5_cal">#meal5_cal</a>
+    
+    <li ><a href="#method-i-memo_br">#memo_br</a>
+    
+    <li ><a href="#method-i-mweek">#mweek</a>
+    
+    <li ><a href="#method-i-my_initialize">#my_initialize</a>
+    
+    <li ><a href="#method-i-page_label">#page_label</a>
+    
+    <li ><a href="#method-i-protein_sum">#protein_sum</a>
+    
+    <li ><a href="#method-i-tortal_cal">#tortal_cal</a>
+    
+    <li ><a href="#method-i-vegetable_sum">#vegetable_sum</a>
+    
+    <li ><a href="#method-i-yweek">#yweek</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Page">
+  <h1 id="class-Page" class="class">
+    class Page
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-import" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">import</span><span
+            class="method-args">(file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>JSONのインポート</p>
+          
+          
+
+          
+          <div class="method-source-code" id="import-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 201</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">import</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">s</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span>, <span class="ruby-value">:encoding</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>)
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>( <span class="ruby-identifier">s</span> ).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">elem</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">page</span> = <span class="ruby-identifier">find_by</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">elem</span>[<span class="ruby-value">:id</span>]) <span class="ruby-operator">||</span> <span class="ruby-identifier">new</span> 
+    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">assign_attributes</span>(<span class="ruby-identifier">elem</span>)
+    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">save</span> 
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">search</span><span
+            class="method-args">(par_predicate)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="search-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 193</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">par_predicate</span>)
+  <span class="ruby-identifier">query</span> = <span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date desc,id desc&quot;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">par_predicate</span>.<span class="ruby-identifier">present?</span>
+    <span class="ruby-identifier">predicate</span> = <span class="ruby-node">&quot;%#{par_predicate}%&quot;</span>
+    <span class="ruby-identifier">query</span> = <span class="ruby-identifier">query</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;place LIKE ? or memo LIKE ? &quot;</span>, <span class="ruby-identifier">predicate</span> , <span class="ruby-identifier">predicate</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-basic_burn_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">basic_burn_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="basic_burn_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">basic_burn_cal</span>
+  <span class="ruby-comment">#ハリス・ベネディクト方程式(改良版)を使って基礎代謝量を計算しています。</span>
+  <span class="ruby-comment">#男性： 13.397×体重kg＋4.799×身長cm－5.677×年齢+88.362</span>
+  <span class="ruby-comment">#女性： 9.247×体重kg＋3.098×身長cm－4.33×年齢+447.593</span>
+  <span class="ruby-identifier">hight</span> = <span class="ruby-value">170.0</span> <span class="ruby-comment">#ここは後でユーザモデルから取得</span>
+  <span class="ruby-identifier">old</span> = <span class="ruby-value">33.0</span> <span class="ruby-comment">#ここは後でユーザモデルから取得</span>
+  <span class="ruby-identifier">w</span> = <span class="ruby-value">74.0</span> <span class="ruby-comment">#ここは後でユーザモデルから取得</span>
+  <span class="ruby-identifier">w</span> = <span class="ruby-identifier">wight</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">wight</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0.0</span>  <span class="ruby-comment">#最新でーたがあれば上書き</span>
+  <span class="ruby-identifier">burn_cal</span> = <span class="ruby-value">13.397</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">w</span> <span class="ruby-operator">+</span> <span class="ruby-value">4.799</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">hight</span> <span class="ruby-operator">-</span> <span class="ruby-value">5.866</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">old</span> <span class="ruby-operator">+</span> <span class="ruby-value">88.362</span>
+  <span class="ruby-identifier">burn_cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-burn_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">burn_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="burn_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">burn_cal</span>
+  <span class="ruby-identifier">mets</span> = <span class="ruby-value">6.0</span>  <span class="ruby-comment"># ウェイトトレーニング、ズンバを軽く見積もって。種目ごととかは難しいし、ズンバだけ分けるほどでもないので</span>
+  <span class="ruby-identifier">w</span> = <span class="ruby-value">70.0</span> <span class="ruby-comment">#ここは後でユーザモデルから取得</span>
+  <span class="ruby-identifier">w</span> = <span class="ruby-identifier">wight</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">wight</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0.0</span>  <span class="ruby-comment">#最新でーたがあれば上書き</span>
+  <span class="ruby-identifier">ex</span> = <span class="ruby-identifier">mets</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">training_hour</span>.<span class="ruby-identifier">to_f</span>  
+  <span class="ruby-identifier">ex</span> = <span class="ruby-identifier">ex</span> <span class="ruby-operator">*</span> <span class="ruby-value">0.7</span>  <span class="ruby-comment">#休み時間を考慮 3割くらいは休んでいる感じ。</span>
+  <span class="ruby-identifier">burn_cal</span> = <span class="ruby-identifier">ex</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">w</span> <span class="ruby-operator">*</span> <span class="ruby-value">1.05</span>
+  <span class="ruby-identifier">burn_cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-carbohydrate_sum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">carbohydrate_sum</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="carbohydrate_sum-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">carbohydrate_sum</span>
+  <span class="ruby-identifier">sum</span> = <span class="ruby-identifier">carbohydrate_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_5</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">sum</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-diet_summaly" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">diet_summaly</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="diet_summaly-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">diet_summaly</span>
+  <span class="ruby-identifier">d</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;&quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diet</span>.<span class="ruby-identifier">name</span>  <span class="ruby-keyword">if</span> <span class="ruby-identifier">diet_id</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; _ 運動消費カロリー:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">burn_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal&quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; _ 基礎代謝カロリー:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">basic_burn_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal ⬆︎これ以上は摂取する&quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/b&gt;&quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&amp;nbsp;&lt;table border=1&gt;&lt;tr&gt;&quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;&lt;b&gt; 熱量: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tortal_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal &lt;/b&gt;&lt;/td&gt; &quot;</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt; 炭水化物: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_sum</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g &lt;/td&gt;&lt;td&gt; 脂肪: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_sum</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&lt;td&gt;&lt;b&gt; たんぱく質 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_sum</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/b&gt;&lt;/td&gt;&lt;td&gt;野菜 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_sum</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&quot;</span> 
+  <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">diet_memo_1</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;①&lt;/b&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diet_memo_1</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;table border=1&gt;&lt;tr&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt; 熱量: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">meal1_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal &lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;炭水化物 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_1</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;脂肪 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_1</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;たんぱく質 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_1</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;野菜 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_1</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/tr&gt;&lt;/table&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">diet_memo_2</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;②&lt;/b&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diet_memo_2</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;table border=1&gt;&lt;tr&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt; 熱量: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">meal2_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal &lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;炭水化物 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_2</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;脂肪 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_2</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;たんぱく質 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_2</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;野菜 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_2</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/tr&gt;&lt;/table&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">diet_memo_3</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">diet_memo_3</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0.0</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;③&lt;/b&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diet_memo_3</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;table border=1&gt;&lt;tr&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt; 熱量: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">meal3_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal &lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;炭水化物 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_3</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;脂肪 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_3</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;たんぱく質 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_3</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;野菜 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_3</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/tr&gt;&lt;/table&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">diet_memo_4</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">diet_memo_4</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0.0</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;④&lt;/b&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diet_memo_4</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;table border=1&gt;&lt;tr&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt; 熱量: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">meal4_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal &lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;炭水化物 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_4</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;脂肪 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_4</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;たんぱく質 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_4</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;野菜 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_4</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/tr&gt;&lt;/table&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">diet_memo_5</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">diet_memo_5</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0.0</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;⑤&lt;/b&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">diet_memo_5</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;table border=1&gt;&lt;tr&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt; 熱量: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">meal5_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal &lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;炭水化物 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">carbohydrate_5</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt;&quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;脂肪 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_5</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;たんぱく質 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_5</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;td&gt;野菜 :&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_5</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;g&lt;/td&gt; &quot;</span>
+    <span class="ruby-identifier">d</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/tr&gt;&lt;/table&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">d</span> <span class="ruby-comment">#最後nilで終わると何も出ないので</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-fat_sum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">fat_sum</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="fat_sum-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fat_sum</span>
+  <span class="ruby-identifier">sum</span> = <span class="ruby-identifier">fat_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_5</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">sum</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-health_summaly" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">health_summaly</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="health_summaly-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">health_summaly</span>
+  <span class="ruby-identifier">h</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;体調：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;[&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">score</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;] , &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">condition</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;気分：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">feeling</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;[&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">feeling</span>.<span class="ruby-identifier">score</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;] , &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">feeling</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/b&gt;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;b&gt;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;睡眠時間：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">sleep_hour</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;h , &quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;ベッドイン：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">sleep_time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%H:%M&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot; , &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sleep_time</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/b&gt;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;水分：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">water</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;mg , &quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;カフェイン：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">caffeine</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;mg , &quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;アルコール：&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">alcohol</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;mg , &quot;</span>
+  <span class="ruby-identifier">h</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;&lt;/br&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-meal1_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">meal1_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="meal1_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">meal1_cal</span>
+  <span class="ruby-identifier">cal</span> = <span class="ruby-identifier">carbohydrate_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">9</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">cal</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-meal2_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">meal2_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="meal2_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">meal2_cal</span>
+  <span class="ruby-identifier">cal</span> = <span class="ruby-identifier">carbohydrate_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">9</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-meal3_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">meal3_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="meal3_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">meal3_cal</span>
+  <span class="ruby-identifier">cal</span> = <span class="ruby-identifier">carbohydrate_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">9</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-meal4_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">meal4_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="meal4_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">meal4_cal</span>
+  <span class="ruby-identifier">cal</span> = <span class="ruby-identifier">carbohydrate_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">9</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-meal5_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">meal5_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="meal5_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">meal5_cal</span>
+  <span class="ruby-identifier">cal</span> = <span class="ruby-identifier">carbohydrate_5</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_5</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">9</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_5</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-memo_br" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">memo_br</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>decolater like</p>
+          
+          
+
+          
+          <div class="method-source-code" id="memo_br-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">memo_br</span>
+  <span class="ruby-identifier">memo</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\r\n|\r|\n/</span>, <span class="ruby-string">&quot;&lt;br /&gt;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-mweek" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mweek</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>xx月yy週</p>
+          
+          
+
+          
+          <div class="method-source-code" id="mweek-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mweek</span>
+  <span class="ruby-identifier">disp_mweek</span>(<span class="ruby-identifier">date</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-my_initialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">my_initialize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="my_initialize-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">my_initialize</span>
+  <span class="ruby-identifier">sleep_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-value">2000</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-value">22</span>, <span class="ruby-value">30</span>, <span class="ruby-value">00</span>)
+  <span class="ruby-identifier">end_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">current</span> <span class="ruby-operator">+</span> (<span class="ruby-value">2.5</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>) 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-page_label" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">page_label</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="page_label-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">page_label</span>
+  <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">date</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">place</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-protein_sum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">protein_sum</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="protein_sum-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">protein_sum</span>
+  <span class="ruby-identifier">sum</span> = <span class="ruby-identifier">protein_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_5</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">sum</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tortal_cal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tortal_cal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tortal_cal-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tortal_cal</span>
+  <span class="ruby-identifier">cal</span> = <span class="ruby-identifier">carbohydrate_sum</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fat_sum</span> <span class="ruby-operator">*</span> <span class="ruby-value">9</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">protein_sum</span> <span class="ruby-operator">*</span> <span class="ruby-value">4</span>
+  <span class="ruby-identifier">cal</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-vegetable_sum" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">vegetable_sum</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="vegetable_sum-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">vegetable_sum</span>
+  <span class="ruby-identifier">sum</span> = <span class="ruby-identifier">vegetable_1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_3</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_4</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vegetable_5</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">sum</span>.<span class="ruby-identifier">round</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-yweek" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">yweek</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>今年の週</p>
+          
+          
+
+          
+          <div class="method-source-code" id="yweek-source">
+            <pre><span class="ruby-comment"># File app/models/page.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">yweek</span>
+ <span class="ruby-identifier">date</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%W&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

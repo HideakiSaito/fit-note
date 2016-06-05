@@ -1,7 +1,6 @@
 <%= form_for(@food) do |f| %>
   <% if @food.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@food.errors.count, "error") %> prohibited this food from being saved:</h2>
 
       <ul>
       <% @food.errors.full_messages.each do |message| %>
@@ -34,23 +33,23 @@
   </div>
   <div class="field">
     <%= f.label :calorie %><br>
-    <%= f.number_field :calorie ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
+    <%= f.number_field :calorie ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :carbohydrate %><br>
-    <%= f.number_field :carbohydrate ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
+    <%= f.number_field :carbohydrate ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :fat %><br>
-    <%= f.number_field :fat ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
+    <%= f.number_field :fat ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :protein %><br>
-    <%= f.number_field :protein ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
+    <%= f.number_field :protein ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :vegetable %><br>
-    <%= f.number_field :vegetable ,  class: "form-control" ,style: "width:10em;" ,step: 0.5, no_pattern: "\\d*" %>
+    <%= f.number_field :vegetable ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
   </div>
   <div class="field">
     <%= f.label :diet_memo %><br>

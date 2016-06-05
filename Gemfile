@@ -51,9 +51,12 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  #h.saito add 2016/06/02 RailsアプリでER図とかクラス図を作る
+  gem "railroady" #bundle exec rake diagram:all
+  gem "rails-erd" #bundle exec rake erd
+  gem "ruby-graphviz"
 end
 
   #### Add H.Saito ######

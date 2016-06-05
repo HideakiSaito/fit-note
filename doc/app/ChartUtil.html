@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>module ChartUtil - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-analysis_initialize">#analysis_initialize</a>
+    
+    <li ><a href="#method-i-analysis_pages">#analysis_pages</a>
+    
+    <li ><a href="#method-i-chart_data">#chart_data</a>
+    
+    <li ><a href="#method-i-chart_dates">#chart_dates</a>
+    
+    <li ><a href="#method-i-day_diet_chart">#day_diet_chart</a>
+    
+    <li ><a href="#method-i-day_health_chart">#day_health_chart</a>
+    
+    <li ><a href="#method-i-day_training_chart">#day_training_chart</a>
+    
+    <li ><a href="#method-i-day_water_chart">#day_water_chart</a>
+    
+    <li ><a href="#method-i-pie_chart_data_diet">#pie_chart_data_diet</a>
+    
+    <li ><a href="#method-i-pie_chart_data_parts">#pie_chart_data_parts</a>
+    
+    <li ><a href="#method-i-pie_chart_data_place">#pie_chart_data_place</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-ChartUtil">
+  <h1 id="module-ChartUtil" class="module">
+    module ChartUtil
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-analysis_initialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">analysis_initialize</span><span
+            class="method-args">(target_place)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="analysis_initialize-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">analysis_initialize</span>(<span class="ruby-identifier">target_place</span>)
+  <span class="ruby-comment">#必ずこのメソッドを呼んで初期化してから使い回す。</span>
+  <span class="ruby-identifier">@@pages</span> = <span class="ruby-identifier">analysis_pages</span>(<span class="ruby-identifier">target_place</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-analysis_pages" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">analysis_pages</span><span
+            class="method-args">(target_place)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="analysis_pages-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">analysis_pages</span>(<span class="ruby-identifier">target_place</span>)
+  <span class="ruby-comment">#ここを１週間単位</span>
+  <span class="ruby-identifier">targets</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:date</span>) 
+  <span class="ruby-identifier">targets</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">place</span><span class="ruby-operator">:</span> <span class="ruby-identifier">target_place</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">target_place</span>.<span class="ruby-identifier">presence</span> <span class="ruby-comment">#場所条件を追加</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chart_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chart_data</span><span
+            class="method-args">(target_item)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="chart_data-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 22</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">chart_data</span>(<span class="ruby-identifier">target_item</span>)
+    <span class="ruby-comment">#ここを１週間単位</span>
+    <span class="ruby-identifier">powers</span> = []
+    <span class="ruby-identifier">max_power</span> = <span class="ruby-value">0.0</span> 
+    <span class="ruby-identifier">this_power</span> = <span class="ruby-value">0.0</span>
+    <span class="ruby-identifier">last_power</span> = <span class="ruby-value">0.0</span>
+    <span class="ruby-identifier">last_week</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">@@pages</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">this_week</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">yweek</span>
+      <span class="ruby-identifier">target</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">item_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">target_item</span>).<span class="ruby-identifier">first</span> 
+      <span class="ruby-identifier">this_power</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">presence</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">this_max_reps</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">last_power</span> 
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">this_power</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">max_power</span> 
+        <span class="ruby-identifier">max_power</span> = <span class="ruby-identifier">this_power</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-comment">#debug </span>
+<span class="ruby-comment">#      p  page.yweek + &quot;:this&quot; + this_power.to_s + &quot;:max&quot; + max_power.to_s </span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">this_week</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">last_week</span>
+        <span class="ruby-identifier">powers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">this_power</span> 
+        <span class="ruby-identifier">last_power</span> = <span class="ruby-identifier">this_power</span>
+        <span class="ruby-identifier">max_power</span> = <span class="ruby-value">0.0</span> <span class="ruby-comment">#同一週で最大筋力を求めたいのでリセット</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">this_week_power</span> = <span class="ruby-identifier">max_power</span>
+        <span class="ruby-identifier">this_week_power</span> = <span class="ruby-identifier">last_power</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">max_power</span> <span class="ruby-operator">==</span> <span class="ruby-value">0.0</span> <span class="ruby-comment">#今回情報がない時は、前回の情報をセットする(比較演算子を勘違い</span>
+        <span class="ruby-identifier">this_week_power</span> = <span class="ruby-identifier">this_power</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">this_power</span> <span class="ruby-comment">#前回の記録よく下がることを考慮 </span>
+        <span class="ruby-identifier">powers</span>[<span class="ruby-value">-1</span>] = <span class="ruby-identifier">this_week_power</span> <span class="ruby-comment">#-配列指定は最後から数える</span>
+      <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">last_power</span> = <span class="ruby-identifier">this_power</span>
+        <span class="ruby-identifier">last_week</span> = <span class="ruby-identifier">this_week</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">powers</span> 
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chart_dates" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chart_dates</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="chart_dates-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chart_dates</span>
+  <span class="ruby-comment">#ここを１週間単位</span>
+  <span class="ruby-identifier">dates</span> = []
+  <span class="ruby-identifier">last_week</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">@@pages</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">this_week</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">yweek</span>
+    <span class="ruby-identifier">dates</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">mweek</span>  <span class="ruby-keyword">if</span> <span class="ruby-identifier">this_week</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">last_week</span>
+    <span class="ruby-identifier">last_week</span> = <span class="ruby-identifier">this_week</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">dates</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-day_diet_chart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">day_diet_chart</span><span
+            class="method-args">(page)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="day_diet_chart-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">day_diet_chart</span>(<span class="ruby-identifier">page</span>)
+   <span class="ruby-constant">LazyHighCharts</span><span class="ruby-operator">::</span><span class="ruby-constant">HighChart</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;graph&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">label</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">date</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})&quot;</span>) 
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">title</span>(<span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">label</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; 食事 &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">tortal_cal</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;kcal&quot;</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">series</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;グラム&#39;</span>,
+             <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> <span class="ruby-identifier">pie_chart_data_diet</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>) , <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;pie&#39;</span>)
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-day_health_chart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">day_health_chart</span><span
+            class="method-args">(page)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="day_health_chart-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">day_health_chart</span>(<span class="ruby-identifier">page</span>)
+   <span class="ruby-constant">LazyHighCharts</span><span class="ruby-operator">::</span><span class="ruby-constant">HighChart</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;graph&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">label</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">date</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})&quot;</span>) 
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">title</span>(<span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">label</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; 健康,休養 :睡眠 &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">sleep_hour</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;[h]&quot;</span> )
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">xAxis</span>(<span class="ruby-identifier">categories</span><span class="ruby-operator">:</span> [<span class="ruby-string">&quot;睡眠&quot;</span>,<span class="ruby-string">&quot;トレ&quot;</span>,<span class="ruby-string">&quot;勉強&quot;</span>,<span class="ruby-string">&quot;TV&quot;</span>,<span class="ruby-string">&quot;仕事&quot;</span>])
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">series</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;[h]&#39;</span>,
+             <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> [<span class="ruby-identifier">page</span>.<span class="ruby-identifier">sleep_hour</span>,
+                    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">training_hour</span>,
+                    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">study_hour</span>,
+                    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">tv_hour</span>,
+                    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">work_hour</span>] )
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">chart</span>(<span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;bar&quot;</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:plotOptions</span>] = {<span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> {<span class="ruby-identifier">stacking</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;normal&#39;</span>} }
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-day_training_chart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">day_training_chart</span><span
+            class="method-args">(page)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>page_controller kara</p>
+          
+          
+
+          
+          <div class="method-source-code" id="day_training_chart-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">day_training_chart</span>(<span class="ruby-identifier">page</span>)
+   <span class="ruby-constant">LazyHighCharts</span><span class="ruby-operator">::</span><span class="ruby-constant">HighChart</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;graph&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">label</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">date</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-node">&quot;%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})&quot;</span>) 
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">title</span>(<span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">label</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; 部位別バランス&#39;</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">series</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;レップス&#39;</span>,
+             <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> <span class="ruby-identifier">pie_chart_data_parts</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>) , <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;pie&#39;</span>)
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-day_water_chart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">day_water_chart</span><span
+            class="method-args">(page)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="day_water_chart-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">day_water_chart</span>(<span class="ruby-identifier">page</span>)
+   <span class="ruby-constant">LazyHighCharts</span><span class="ruby-operator">::</span><span class="ruby-constant">HighChart</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;graph&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">title</span>(<span class="ruby-identifier">text</span><span class="ruby-operator">:</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">date</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%Y/%m/%d(%a)&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&#39; 健康,水分、etc :水分 &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">page</span>.<span class="ruby-identifier">water</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;[ml]&quot;</span> )
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">xAxis</span>(<span class="ruby-identifier">categories</span><span class="ruby-operator">:</span> [<span class="ruby-string">&quot;水分&quot;</span>,<span class="ruby-string">&quot;カフェイン&quot;</span>,<span class="ruby-string">&quot;アルコール&quot;</span>])
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">series</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;[ml]&#39;</span>,
+             <span class="ruby-identifier">data</span><span class="ruby-operator">:</span> [<span class="ruby-identifier">page</span>.<span class="ruby-identifier">water</span>,
+                    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">caffeine</span>,
+                    <span class="ruby-identifier">page</span>.<span class="ruby-identifier">alcohol</span> ] )
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">chart</span>(<span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;bar&quot;</span>)
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:plotOptions</span>] = {<span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> {<span class="ruby-identifier">stacking</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;normal&#39;</span>} }
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pie_chart_data_diet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pie_chart_data_diet</span><span
+            class="method-args">( page_id = nil )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pie_chart_data_diet-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pie_chart_data_diet</span>( <span class="ruby-identifier">page_id</span> = <span class="ruby-keyword">nil</span> )
+  <span class="ruby-identifier">data</span> = []
+  <span class="ruby-identifier">page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span> <span class="ruby-identifier">page_id</span>
+  <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-string">&quot;炭水化物&quot;</span>,<span class="ruby-identifier">page</span>.<span class="ruby-identifier">carbohydrate_sum</span>]
+  <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-string">&quot;脂肪&quot;</span>,<span class="ruby-identifier">page</span>.<span class="ruby-identifier">fat_sum</span>]
+  <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-string">&quot;たんぱく質&quot;</span>,<span class="ruby-identifier">page</span>.<span class="ruby-identifier">protein_sum</span>]
+  <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-string">&quot;野菜&quot;</span>,<span class="ruby-identifier">page</span>.<span class="ruby-identifier">vegetable_sum</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pie_chart_data_parts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pie_chart_data_parts</span><span
+            class="method-args">( page_id = nil )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pie_chart_data_parts-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pie_chart_data_parts</span>( <span class="ruby-identifier">page_id</span> = <span class="ruby-keyword">nil</span> )
+  <span class="ruby-identifier">data</span> = []
+  <span class="ruby-identifier">parts</span> = <span class="ruby-constant">Part</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:id</span>)
+  <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">lines</span> = <span class="ruby-constant">Line</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:item</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">items</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">part_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">part</span>.<span class="ruby-identifier">id</span> })
+    <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">page_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">page_id</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_id</span>.<span class="ruby-identifier">presence</span>
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">get_sum_reps</span> <span class="ruby-keyword">end</span>.<span class="ruby-identifier">sum</span>
+    <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">part</span>.<span class="ruby-identifier">name</span>,<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pie_chart_data_place" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pie_chart_data_place</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pie_chart_data_place-source">
+            <pre><span class="ruby-comment"># File app/lib/chart_util.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pie_chart_data_place</span>
+  <span class="ruby-identifier">data</span> = []
+  <span class="ruby-identifier">places</span> = <span class="ruby-node">%W(ジム 家)</span> <span class="ruby-comment"># %Wで[&quot;hoge&quot;,&quot;fuga&quot;]を省略</span>
+  <span class="ruby-identifier">places</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">place</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">lines</span> = <span class="ruby-constant">Line</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:page</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">pages</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">place</span><span class="ruby-operator">:</span> <span class="ruby-identifier">place</span> })
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">get_sum_reps</span> <span class="ruby-keyword">end</span>.<span class="ruby-identifier">sum</span>
+    <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">place</span>,<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
