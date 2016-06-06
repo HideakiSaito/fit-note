@@ -15,7 +15,7 @@
     <% @foods.each do |food| %>
       <tr>
         <td><%= link_to food.id.to_s + "." + food.name, edit_food_path(food) %>
-          <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
+        <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
         </td>
         <td>sort:<%= food.sort_key %>
         <table border=1 >
@@ -23,17 +23,21 @@
               <th>炭水化物:</th>
               <th>脂肪:</th>
               <th>たんぱく質:</th>
-              <th> 野菜:</th></tr></thead>
+              <th> 野菜:</th>
+          </tr></thead>
           <tbody><tr>
               <td><%= food.carbohydrate %></td>
               <td><%= food.fat %></td>
               <td><%= food.protein %></td>
               <td><%= food.vegetable %></td>
+            </tr></tbody>
+        </table>
         </td>
-          </tbody></table>
-          </td>
-            </tr>
-          <% end %>
+        <td>
+          <%= link_to "copy", copy_food_path(food) %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

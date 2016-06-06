@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :page_images
   resources :food_categories
   resources :foods
+  get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
   resources :feelings
   resources :conditions
   resources :diets
