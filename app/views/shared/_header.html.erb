@@ -8,49 +8,39 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><i class="fa fa-home">Fit Nonte</i></a>
+      <a class="navbar-brand" href="/"><i class="fa fa-heartbeat">Fit Nonte</i></a>
       <a class="navbar-brand" href="/pages/<%= Page.maximum(:id) %>/"><i class="fa fa-check-square-o"></i></a>
       <a class="navbar-brand" href="/pages/<%= Page.maximum(:id) %>/edit"><i class="fa fa-edit"></i></a>
       <a class="navbar-brand" href="/pages"><i class="fa fa-calendar"></i></a>
       <a class="navbar-brand" href="/analysis"><i class="fa fa-bar-chart"></i></a>
-      <a class="navbar-brand" href="/items"><i class="fa fa-gavel"></i></a>
-      <a class="navbar-brand" href="/foods"><i class="fa fa-cutlery"></i></a>
-      <a class="navbar-brand" href="/maintenance"><i class="fa fa-database"></i></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!--
-        <a class="navbar-brand" href="https://github.com/HideakiSaito/r1"><i class="fa fa-git"></i></a>
-        <a class="navbar-brand" href="https://benkyoukai4app.herokuapp.com/projects/hide1app/agile/board"><i class="fa fa-tasks"></i></a>
-        -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">etc <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="active"><a href="/trainings">ruby or rails </a></li>
-            <li><a href="/food_categories">食事種類</a></li>
-            <li><a href="/modes">トレーニング方式</a></li>
-            <li><a href="/equipment">トレーニング器具</a></li>
-            <li><a href="/parts">トレーニング部位</a></li>
-            <li class="divider"></li>
-          </ul>
-        </li>
+        <li><a class="navbar-brand" href="/items"><i class="fa fa-gavel">トレーニング種目</i></a></li>
+        <li><a class="navbar-brand" href="/foods"><i class="fa fa-cutlery">食事</i></a></li>
+        <li><a class="navbar-brand" href="/maintenance"><i class="fa fa-database">データメンテナンス</i></a></li>
+        <li><a href="/food_categories">食事種類</a></li>
+        <li><a href="/modes">トレーニング方式</a></li>
+        <li><a href="/equipment">トレーニング器具</a></li>
+        <li><a href="/parts">トレーニング部位</a></li>
+        <li class="divider"></li>
       </ul>
     </div><!-- /.navbar-collapse -->
     <table style="width:100%;" ><tr><td>
           <div id="user_nav">
             <% if current_user %>
-                <%= image_tag current_user.icon , size: "24x24" %>
-                <strong><%= current_user.name %></strong>!
-                <i class="fa fa-user"></i>
-              <%= link_to "Sign out", signout_path, id: "sign_out" %>
-            <% else %>
-              Sign in wtih 
-                <i class="fa fa-facebook-square"></i>
-              <%= link_to "Facebook", "/auth/facebook", id: "sign_in" %>
-                <i class="fa fa-user"></i>
-              <%= link_to "ID/PASSWORD", "/users", id: "sign_in_local" %>
-            <% end %>
+            <%= image_tag current_user.icon , size: "24x24" %>
+            <strong><%= current_user.name %></strong>!
+            <i class="fa fa-user"></i>
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <% else %>
+            Sign in wtih 
+            <i class="fa fa-facebook-square"></i>
+            <%= link_to "Facebook", "/auth/facebook", id: "sign_in" %>
+            <i class="fa fa-user"></i>
+            <%= link_to "ID/PASSWORD", "/users", id: "sign_in_local" %>
+          <% end %>
           </div>
         </td>
         <td style="text-align: right;">
