@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:name], params[:password])
     if user
       session[:user_id] = user.id
+      flash[:success] = "ログインしました。" 
     else
       flash.alert = "名前とパスワードが一致しません"
     end
