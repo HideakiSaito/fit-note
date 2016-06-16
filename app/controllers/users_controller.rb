@@ -16,7 +16,7 @@ class UsersController < InheritedResources::Base
       sign_in @user
       flash[:success] = "#{fb}ログインしました。" 
       #redirect_to @user
-      redirect_to :root 
+      #redirect_to :root 
     else
       if fb.present?
         redirect_to auth_failure_path
@@ -24,15 +24,6 @@ class UsersController < InheritedResources::Base
         render 'new'
       end
     end
-  end
-  def password_singn_in
-    user = User.authenticate(params[:email],params[:password]) 
-    if user
-      sign_in user
-    else
-      flash.alert "メール と パスワードが一致しません"
-    end
-    redirect_to :root
   end
   def sign_in user
     session[:user_id] = user.id
