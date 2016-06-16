@@ -15,7 +15,8 @@ class UsersController < InheritedResources::Base
     if result
       sign_in @user
       flash[:success] = "#{fb}ログインしました。" 
-      redirect_to @user
+      #redirect_to @user
+      redirect_to :root 
     else
       if fb.present?
         redirect_to auth_failure_path
