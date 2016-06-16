@@ -40,7 +40,7 @@ class UsersController < InheritedResources::Base
   end
   def show
     @user = User.find params[:id]
-    sign_in @user
+    #sign_in @user
   end
   def destroy
     session[:user_id] = nil 
