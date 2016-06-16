@@ -17,4 +17,10 @@
 </div>
 <% else %>
   Facebook アカウントでログインしてください。
+  <br/>
+  <%= link_to image_tag("facebook_signin.png") , "/auth/facebook", id: "sign_in" %>
+  <br/>
+  <br/>
+  Facebook でのログインができない場合は、メールとパスワードを入力してください
+ <%= render "shared/login_form" %>
 <% end %>

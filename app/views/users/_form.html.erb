@@ -27,6 +27,21 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+  
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <% unless @user.new_record? %>
+    <p> パスワードを変更しない時は、パスワード入力欄を空にしてください  </p>
+  <% end %>
+
   <div class="field">
     <%= f.label :icon %><br>
     <%= f.text_field :icon %>

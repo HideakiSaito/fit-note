@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resource :session , only: [:create ,  :destroy]
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failurematch 
   get 'signout', to: 'users#destroy', as: 'signout'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   resources :feelings
   resources :conditions
   resources :diets
-  root :to => 'welcome#index', :as => 'home'
+  root :to => 'welcome#index', :as => 'root'
   get "about" => "welcome#about", as: "about"
   get "developer" => "welcome#developer", as: "developer"
   resources :analysis do

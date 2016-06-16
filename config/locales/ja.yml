@@ -209,6 +209,7 @@ ja:
       food: 食事
       item: 種目
       page_image: 画像
+      user: ユーザ 
     attributes:
       page:
         id: ID
@@ -293,3 +294,9 @@ ja:
         _destroy: 削除する
       image:
         uploaded_image: 画像
+      user:
+        name: 名前
+        uid: uid
+        email: メール
+        password: パスワード
+        password_confirmation: パスワードの確認

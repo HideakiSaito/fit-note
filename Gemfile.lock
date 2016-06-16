@@ -40,6 +40,7 @@ GEM
     arel (6.0.3)
     bcp47 (0.3.3)
       i18n
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
@@ -301,6 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   bullet
   byebug

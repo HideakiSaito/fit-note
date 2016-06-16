@@ -79,3 +79,9 @@ rails g scaffold user provider uid name email icon oauth_token oauth_expires_at:
 rake db:migrate
 
 heroku config:set FACEBOOK_KEY=0123456789
+
+#2016/04/23
+#training_hour
+rails g migration AddCoulumn1ToUser hashed_password 
+rake db:migrate
+heroku run rake db:migrate

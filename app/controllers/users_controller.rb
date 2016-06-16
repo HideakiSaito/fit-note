@@ -1,4 +1,5 @@
 class UsersController < InheritedResources::Base
+
   def create
     if env['omniauth.auth'].present?
       # Facebookログイン
@@ -23,13 +24,27 @@ class UsersController < InheritedResources::Base
       end
     end
   end
+  def password_singn_in
+    user = User.authenticate(params[:email],params[:password]) 
+    if user
+      sign_in user
+    else
+      flash.alert "メール と パスワードが一致しません"
+    end
+    redirect_to :root
+  end
+  def sign_in user
+    session[:user_id] = user.id
+    redirect_to :root
+    #  redirect_to root_url
+  end
   def show
     @user = User.find params[:id]
     sign_in @user
   end
   def destroy
     session[:user_id] = nil 
-    redirect_to :home 
+    redirect_to :root 
   end
   def sign_in user
     session[:user_id] = user.id
@@ -39,7 +54,7 @@ class UsersController < InheritedResources::Base
   private
 
   def user_params
-    params.require(:user).permit(:provider, :uid, :name, :email, :icon, :oauth_token, :oauth_expires_at)
+    params.require(:user).permit(:provider, :uid, :name, :email, :icon, :oauth_token, :oauth_expires_at, :password,:password_confirmation)
   end
 end
 
