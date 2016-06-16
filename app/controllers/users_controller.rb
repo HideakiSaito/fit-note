@@ -48,7 +48,7 @@ class UsersController < InheritedResources::Base
   end
   def sign_in user
     session[:user_id] = user.id
-    #  redirect_to root_url
+    redirect_to :root
   end
 
   private
