@@ -1,5 +1,5 @@
 class UsersController < InheritedResources::Base
-
+  before_action :login_required ,only:[:show,:index,:edit,:destroy]
   def create
     if env['omniauth.auth'].present?
       # Facebookログイン

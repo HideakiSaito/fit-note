@@ -1,4 +1,5 @@
 class PartsController < ApplicationController
+  before_action :login_required
   before_action :set_part, only: [:show, :edit, :update, :destroy]
 
   def search

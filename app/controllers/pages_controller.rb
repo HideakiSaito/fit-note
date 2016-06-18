@@ -1,4 +1,5 @@
 class PagesController < InheritedResources::Base
+  before_action :login_required
   include ChartUtil
   def hidden_training
     self.index_logic "hidden_training"

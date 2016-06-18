@@ -1,4 +1,5 @@
 class LinesController < InheritedResources::Base
+  before_action :login_required
 
   def index
     @lines = Line.all.order("page_id desc,no asc")

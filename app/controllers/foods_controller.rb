@@ -1,4 +1,5 @@
 class FoodsController < InheritedResources::Base
+  before_action :login_required
   def index
     @foods = Food.all
   end

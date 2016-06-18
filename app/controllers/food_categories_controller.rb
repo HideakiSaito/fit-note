@@ -1,4 +1,5 @@
 class FoodCategoriesController < InheritedResources::Base
+  before_action :login_required
 
   private
 

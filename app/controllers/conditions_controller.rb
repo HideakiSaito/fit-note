@@ -1,5 +1,5 @@
 class ConditionsController < InheritedResources::Base
-
+  before_action :login_required
   private
 
     def condition_params

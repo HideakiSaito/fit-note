@@ -1,4 +1,5 @@
 class AnalysisController < ApplicationController
+  before_action :login_required
   include ChartUtil
   def dash_bord
     #chart

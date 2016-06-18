@@ -1,4 +1,5 @@
 class TrainingsController < ApplicationController
+  before_action :login_required
   before_action :set_training, only: [:show, :edit, :update, :destroy]
 
   # GET /trainings

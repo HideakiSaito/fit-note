@@ -1,4 +1,5 @@
 class ModesController < ApplicationController
+  before_action :login_required
   before_action :set_mode, only: [:show, :edit, :update, :destroy]
 
   # GET /modes

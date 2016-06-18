@@ -1,4 +1,5 @@
 class MaintenanceController < ApplicationController
+  before_action :login_required
   def index
    @mes = "" 
   end
