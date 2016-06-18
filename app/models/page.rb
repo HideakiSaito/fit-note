@@ -38,11 +38,12 @@ class Page < ActiveRecord::Base
     d += "<b>"
     d += diet.name  if diet_id
     d += " _ 運動消費カロリー:" + burn_cal.to_s + "kcal"
-    d += " _ 基礎代謝カロリー:" + basic_burn_cal.to_s + "kcal ⬆︎これ以上は摂取する"
+    d += " _ 消費糖質:" + (burn_cal/100*4).round(2).to_s + "g "
+    d += " _ 基礎代謝カロリー:" + basic_burn_cal.to_s + "kcal ⬆︎"
     d += "</b>"
     d += "&nbsp;<table border=1><tr>"
     d += "<td><b> 熱量: " + tortal_cal.to_s + "kcal </b></td> "
-    d += "<td> 炭水化物: " + carbohydrate_sum.to_s + "g </td><td> 脂肪: " + fat_sum.to_s + "g</td><td><b> たんぱく質 :" + protein_sum.to_s + "g</b></td><td>野菜 :" + vegetable_sum.to_s + "g</td>" 
+    d += "<td> 炭水化物: " + carbohydrate_sum.to_s + "g - (" + (burn_cal/100*4).round(2).to_s  + "g)</td><td> 脂肪: " + fat_sum.to_s + "g</td><td><b> たんぱく質 :" + protein_sum.to_s + "g</b></td><td>野菜 :" + vegetable_sum.to_s + "g</td>" 
     d += "</tr></table><br>"
     if diet_memo_1
       d += "<b>①</b>"
