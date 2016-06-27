@@ -2,16 +2,14 @@
     <table style="vertical-align:baseline" >
       <tr>
         <td style="font-weight:bold;font-size:1.5em;">
-          <% if  page.date.strftime("%W").to_i.remainder(2) == 1 
-               week_class = 'success'
-          else
-            week_class = 'info'
-          end
-        %>
+          <% if page.date.strftime("%W").to_i.remainder(2) == 1 
+              week_class = 'success'
+             else
+              week_class = 'info'
+             end %>
     <button type="button" class="btn btn-<%= week_class %> "
                           onClick="location.href='/pages/<%= page.id  %>'">
-                          <%label = page.date.strftime("%y/%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]}) ") %>
-                          <%= label + page.mweek %>
+                          <%= disp_date(page.date) + page.mweek %>
     </button>
         &nbsp;&nbsp;<%= page.place %>
       <% if page.training_hour.to_f > 0  %>
@@ -26,7 +24,7 @@
           <p style="font-weight:bold;font-size:1.25em;">
           < <%= page.wight %> kg , <%= page.body_fat_per %> % >
           </p>
-          <div><%= page_image_tag page, width: @show ? 320 : 128  %></div>
+          <div><%= page_image_tag page, width: @show ? 320 : 128 , class: "hidari" %></div>
           <p style="font-size:1.0em;color:black;"><%= raw page.memo_br %></p>
       </td>
       </tr>

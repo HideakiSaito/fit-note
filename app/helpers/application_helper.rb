@@ -3,6 +3,10 @@ module ApplicationHelper
     link_to_unless_current(text, path) { content_tag(:span, text) }
   end
 
+  def disp_date(date)
+    date.strftime("%y/%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]}) ") 
+  end
+
   def page_image_tag(page, options = {})
     if page.image.present?
       path = page_path(page, format: page.image.extension)
