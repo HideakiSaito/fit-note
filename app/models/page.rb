@@ -50,11 +50,6 @@ class Page < ActiveRecord::Base
     d += "<th>野菜 </th> "
     d += "<th>食品</th> "
     d += "</tr> "
-    d += "<td>合計</td> "
-    d += "<td><b>  " + tortal_cal.to_s + "kcal </b></td> "
-    d += "<td>  " + carbohydrate_sum.to_s + "g - (" + (burn_cal/100*4).round(2).to_s  + "g)</td><td>  " + fat_sum.to_s + "g</td><td><b> " + protein_sum.to_s + "g</b></td><td>" + vegetable_sum.to_s + "g</td>" 
-      d += "<td>-</td> "
-    d += "</tr> "
     if diet_memo_1
       d += "<tr> "
       d += "<td>①</td>"
@@ -110,6 +105,12 @@ class Page < ActiveRecord::Base
       d += "<td>" + diet_memo_5.to_s+ "</td> "
       d += "</tr>"
     end
+    d += "<tr style='border-style:double;'> "
+    d += "<td>合計</td> "
+    d += "<td><b>  " + tortal_cal.to_s + "kcal </b></td> "
+    d += "<td>  " + carbohydrate_sum.to_s + "g - (" + (burn_cal/100*4).round(2).to_s  + "g)</td><td>  " + fat_sum.to_s + "g</td><td><b> " + protein_sum.to_s + "g</b></td><td>" + vegetable_sum.to_s + "g</td>" 
+      d += "<td>-</td> "
+    d += "</tr> "
     d += "</table>"
     d #最後nilで終わると何も出ないので
   end
