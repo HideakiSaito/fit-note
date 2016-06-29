@@ -41,14 +41,13 @@ class Page < ActiveRecord::Base
     d += " (" + (burn_cal/100*4).round(2).to_s + "g) "
     d += " _ 基礎代謝:" + basic_burn_cal.to_s + "kcal ⬆︎"
     d += "</b>"
-    d += "<table border=1 class='table table-striped' style='width:60em;'><tr>"
+    d += "<table border=1 class='table table-striped' style='width:30em;'><tr>"
     d += "<th></th> "
-    d += "<th> 熱量 </th> "
-    d += "<th>炭水化物 </th>"
-    d += "<th>脂肪 </th> "
-    d += "<th>たんぱく質 </th> "
-    d += "<th>野菜 </th> "
-    d += "<th style='width:30em;'>食品</th> "
+    d += "<th style='width:6em;'> 熱量 </th> "
+    d += "<th style='width:6em;'>炭水化物 </th>"
+    d += "<th style='width:6em;'>脂肪 </th> "
+    d += "<th style='width:6em;'>たんぱく質 </th> "
+    d += "<th style='width:6em;'>野菜 </th> "
     d += "</tr> "
     if diet_memo_1
       d += "<tr> "
@@ -58,7 +57,9 @@ class Page < ActiveRecord::Base
       d += "<td style='text-align:right;'>" + fat_1.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_1.to_s + "g</td> "
       d += "<td style='text-align:right;'> " + vegetable_1.to_s + "g</td> "
-      d += "<td>" + diet_memo_1.to_s+ "</td> "
+      d += "</tr>"
+      d += "<tr>"
+      d += "<td colspan='6'>" + diet_memo_1.to_s+ " </td>"
       d += "</tr>"
     end
     if diet_memo_2
@@ -69,7 +70,9 @@ class Page < ActiveRecord::Base
       d += "<td style='text-align:right;'>" + fat_2.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_2.to_s + "g</td> "
       d += "<td style='text-align:right;'> " + vegetable_2.to_s + "g</td> "
-      d += "<td>" + diet_memo_2.to_s+ "</td> "
+      d += "</tr>"
+      d += "<tr>"
+      d += "<td colspan='6'>" + diet_memo_2.to_s+ " </td>"
       d += "</tr>"
     end
     if diet_memo_3 && diet_memo_3.size > 0.0
@@ -80,7 +83,9 @@ class Page < ActiveRecord::Base
       d += "<td style='text-align:right;'>" + fat_3.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_3.to_s + "g</td> "
       d += "<td style='text-align:right;'> " + vegetable_3.to_s + "g</td> "
-      d += "<td>" + diet_memo_3.to_s+ "</td> "
+      d += "</tr>"
+      d += "<tr>"
+      d += "<td colspan='6'>" + diet_memo_3.to_s+ " </td>"
       d += "</tr>"
     end
     if diet_memo_4 && diet_memo_4.size > 0.0
@@ -91,7 +96,9 @@ class Page < ActiveRecord::Base
       d += "<td style='text-align:right;'>" + fat_4.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_4.to_s + "g</td> "
       d += "<td style='text-align:right;'> " + vegetable_4.to_s + "g</td> "
-      d += "<td>" + diet_memo_4.to_s+ "</td> "
+      d += "</tr>"
+      d += "<tr>"
+      d += "<td colspan='6'>" + diet_memo_4.to_s+ " </td>"
       d += "</tr>"
     end
     if diet_memo_5 && diet_memo_5.size > 0.0
@@ -102,7 +109,9 @@ class Page < ActiveRecord::Base
       d += "<td style='text-align:right;'>" + fat_5.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_5.to_s + "g</td> "
       d += "<td style='text-align:right;'> " + vegetable_5.to_s + "g</td> "
-      d += "<td>" + diet_memo_5.to_s+ "</td> "
+      d += "</tr>"
+      d += "<tr>"
+      d += "<td colspan='6'>" + diet_memo_5.to_s+ " </td>"
       d += "</tr>"
     end
     d += "<tr style='border-style:double;'> "
