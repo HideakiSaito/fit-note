@@ -53,7 +53,7 @@ class Page < ActiveRecord::Base
     if diet_memo_1
       d += "<tr> "
       d += "<td>①</td>"
-      d += "<td style='text-align:right;'> " + meal1_cal.to_s + "kcal </td> "
+      d += "<td style='text-align:right;'> " + meal1_cal.to_s + "<br/>kcal </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_1.to_s + "g</td>"
       d += "<td style='text-align:right;'>" + fat_1.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_1.to_s + "g</td> "
@@ -64,7 +64,7 @@ class Page < ActiveRecord::Base
     if diet_memo_2
       d += "<tr> "
       d += "<td>②</td>"
-      d += "<td style='text-align:right;'> " + meal2_cal.to_s + "kcal </td> "
+      d += "<td style='text-align:right;'> " + meal2_cal.to_s + "<br/>kcal </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_2.to_s + "g</td>"
       d += "<td style='text-align:right;'>" + fat_2.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_2.to_s + "g</td> "
@@ -75,7 +75,7 @@ class Page < ActiveRecord::Base
     if diet_memo_3 && diet_memo_3.size > 0.0
       d += "<tr> "
       d += "<td>③</td>"
-      d += "<td style='text-align:right;'> " + meal3_cal.to_s + "kcal </td> "
+      d += "<td style='text-align:right;'> " + meal3_cal.to_s + "<br/>kcal </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_3.to_s + "g</td>"
       d += "<td style='text-align:right;'>" + fat_3.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_3.to_s + "g</td> "
@@ -86,7 +86,7 @@ class Page < ActiveRecord::Base
     if diet_memo_4 && diet_memo_4.size > 0.0
       d += "<tr> "
       d += "<td>④</td>"
-      d += "<td style='text-align:right;'> " + meal4_cal.to_s + "kcal </td> "
+      d += "<td style='text-align:right;'> " + meal4_cal.to_s + "<br/>kcal </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_4.to_s + "g</td>"
       d += "<td style='text-align:right;'>" + fat_4.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_4.to_s + "g</td> "
@@ -97,7 +97,7 @@ class Page < ActiveRecord::Base
     if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<tr> "
       d += "<td>⑤</td>"
-      d += "<td style='text-align:right;'> " + meal5_cal.to_s + "kcal </td> "
+      d += "<td style='text-align:right;'> " + meal5_cal.to_s + "<br/>kcal </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_5.to_s + "g</td>"
       d += "<td style='text-align:right;'>" + fat_5.to_s + "g</td> "
       d += "<td style='text-align:right;'>" + protein_5.to_s + "g</td> "
@@ -107,9 +107,11 @@ class Page < ActiveRecord::Base
     end
     d += "<tr style='border-style:double;'> "
     d += "<td>合計</td> "
-    d += "<td><b>  " + tortal_cal.to_s + "kcal </b></td> "
-    d += "<td>  " + carbohydrate_sum.to_s + "g - (" + (burn_cal/100*4).round(2).to_s  + "g)</td><td>  " + fat_sum.to_s + "g</td><td><b> " + protein_sum.to_s + "g</b></td><td>" + vegetable_sum.to_s + "g</td>" 
-      d += "<td>-</td> "
+    d += "<td>  " + tortal_cal.to_s + "<br/>kcal </td> "
+    d += "<td>  " + carbohydrate_sum.to_s + "g - (" + (burn_cal/100*4).round(2).to_s  + "g)</td>" 
+    d += "<td>  " + fat_sum.to_s + "g</td> "
+    d += "<td> " + protein_sum.to_s + "g</td>"
+    d += "<td>" + vegetable_sum.to_s + "g</td>"
     d += "</tr> "
     d += "</table>"
     d #最後nilで終わると何も出ないので
