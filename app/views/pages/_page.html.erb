@@ -31,14 +31,25 @@
     </table>
   <div class="note" >
     <% if @disp_other_is %>
-    <div class="diet-line" style="color:black;">
+     <% if @show %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+     <% else %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+     <% end %>
+      <div class="diet-line" style="color:black;">
       <%= raw page.diet_summaly %>
-    </div>
-    <div class="health-line" style="color:black;">
+      </div>
+      <div class="health-line" style="color:black;">
       <%= raw page.health_summaly %>
+      </div>
     </div>
     <% end #if disp_other_is %>
     <% if @disp_mode != "hidden_training" %>
+     <% if @show %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+     <% else %>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+     <% end %>
     <div class="training-line">
       <table class="table table-striped table-hover "
              style="text-align: right; width: 100%;">
@@ -75,6 +86,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
     <% end #if hidden_training %>
   </div>
