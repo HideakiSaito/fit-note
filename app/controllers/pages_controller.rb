@@ -3,34 +3,34 @@ class PagesController < InheritedResources::Base
   include ChartUtil
   def hidden_training
     self.index_logic "hidden_training"
-    @show_detail = true 
-    @show_chart = false 
-    render :index 
+    @show_detail = true
+    @show_chart = false
+    render :index
   end
   def training_only_note
     self.index_logic "training_only" ,false
-    @show_detail = true 
-    @show_chart = false 
-    render :index 
+    @show_detail = true
+    @show_chart = false
+    render :index
   end
   def training_only
     self.index_logic "training_only"
-    @show_detail = true 
-    @show_chart = false 
-    render :index 
+    @show_detail = true
+    @show_chart = false
+    render :index
   end
   def only_chart
     self.index_logic "all"
     @show_detail = false
-    @show_chart = true 
-    render :index 
+    @show_chart = true
+    render :index
   end
   def index
     self.index_logic "all"
     @show_detail = false
-    @show_chart = false 
+    @show_chart = false
     respond_to do |format|
-      format.html #default template 
+      format.html #default template
       format.js   #default template ajax
       format.json { @pages = Page.order("date desc") } #jsonは全部
     end
@@ -41,7 +41,7 @@ class PagesController < InheritedResources::Base
     @chart_healths_index = {}
     @chart_waters_index = {}
   end
-  def daily_chart page 
+  def daily_chart page
     @chart_pie_parts_index[page.id] = day_training_chart(page)
     @chart_pie_diets_index[page.id] = day_diet_chart(page)
     @chart_healths_index[page.id] = day_health_chart(page)
@@ -51,10 +51,12 @@ class PagesController < InheritedResources::Base
     @disp_mode = disp_mode
     @disp_other_is = disp_other
     @show = false
-    @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6" 
-#    @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" 
+    @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
+#    @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"
     @search_form = SearchForm.new params[:search_form]
     @pages = Page.default
+    x_user = params[:user_id]? params[:user_id] : current_user
+    @pages = @pages.where("user_id=?", x_user) #user
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
@@ -67,8 +69,8 @@ class PagesController < InheritedResources::Base
   def show
     @show = true
     @disp_mode = "all"
-    @disp_other_is = true 
-    @page_class = "" 
+    @disp_other_is = true
+    @page_class = ""
     @page = Page.find(params[:id])
     self.show_index_init
     self.daily_chart @page
@@ -86,7 +88,7 @@ class PagesController < InheritedResources::Base
     @page = Page.new(
       end_time: Time.current + (2.5 * 60 * 60),
       sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
-      sleep_hour: 7.5) 
+      sleep_hour: 7.5)
     @foods = Food.all
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
@@ -96,10 +98,14 @@ class PagesController < InheritedResources::Base
     @foods = Food.all
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
+    if current_user != @page.user
+      redirect_to @page, notice: "編集権限のないページです。"
+    end
   end
 
   def create
     @page = Page.new(page_params)
+    @page.user = current_user #ユーザ情報と紐付ける
     @new_lines = nil
     respond_to do |format|
       if @page.save
@@ -150,7 +156,7 @@ class PagesController < InheritedResources::Base
     #ここで、コピーするなら過去の、トレーニングを取得する
     if  params[:copy_page][:id] != "" &&  @page.lines.empty?
       @copy_lines = Page.find(params[:copy_page][:id]).lines
-      @new_lines = @copy_lines.map do |copy_line| 
+      @new_lines = @copy_lines.map do |copy_line|
         @page.lines.create(no: copy_line.no,
                            item_id: copy_line.item_id,
                            mode_id: copy_line.mode_id,
@@ -166,7 +172,7 @@ class PagesController < InheritedResources::Base
 
   def page_params
 
-    attrs = [:date, :place, :start_time, :end_time, :memo, :diet_id ,:carbohydrate_1,:fat_1,:protein_1, :vegetable_1, :diet_memo_1,:carbohydrate_2,:fat_2,:protein_2, :vegetable_2, :diet_memo_2,:carbohydrate_3,:fat_3,:protein_3, :vegetable_3, :diet_memo_3,:carbohydrate_4,:fat_4,:protein_4, :vegetable_4, :diet_memo_4,:carbohydrate_5,:fat_5,:protein_5, :vegetable_5, :diet_memo_5 ,:condition_id ,:feeling_id ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour,:training_hour ,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left]
+    attrs = [:user_id,:date, :place, :start_time, :end_time, :memo, :diet_id ,:carbohydrate_1,:fat_1,:protein_1, :vegetable_1, :diet_memo_1,:carbohydrate_2,:fat_2,:protein_2, :vegetable_2, :diet_memo_2,:carbohydrate_3,:fat_3,:protein_3, :vegetable_3, :diet_memo_3,:carbohydrate_4,:fat_4,:protein_4, :vegetable_4, :diet_memo_4,:carbohydrate_5,:fat_5,:protein_5, :vegetable_5, :diet_memo_5 ,:condition_id ,:feeling_id ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour,:training_hour ,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left]
     attrs << { image_attributes: [:_destroy, :id, :uploaded_image] }
     params.require(:page).permit(attrs)
   end
@@ -175,4 +181,3 @@ class PagesController < InheritedResources::Base
     copy_line.permit(:page_id, :no, :item_id, :mode_id, :weight_1, :reps_1, :memo_1, :weight_2, :reps_2, :memo_2, :weight_3, :reps_3, :memo_3, :weight_4, :reps_4, :memo_4, :weight_5, :reps_5, :memo_5, :weight_6, :reps_6, :memo_6, :weight_7, :reps_7, :memo_7, :weight_8, :reps_8, :memo_8, :weight_9, :reps_9, :memo_9, :weight_0, :reps_0, :memo_0)
   end
 end
-

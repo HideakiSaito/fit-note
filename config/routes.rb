@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    resources :pages do
+      resources :lines
+      collection { get :training_only,:training_only_note ,:hidden_training,:only_chart}
+      collection { post :import }
+    end
+  end
   resource :session , only: [:create ,  :destroy]
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failurematch 

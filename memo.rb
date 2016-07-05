@@ -85,3 +85,9 @@ heroku config:set FACEBOOK_KEY=0123456789
 rails g migration AddCoulumn1ToUser hashed_password 
 rake db:migrate
 heroku run rake db:migrate
+
+#2016/07/03
+#user relation
+rails g migration AddColumn_user_ToPage user:belongs_to
+rake db:migrate
+heroku run rake db:migrate

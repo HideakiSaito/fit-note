@@ -2,7 +2,7 @@
     <table style="vertical-align:baseline" >
       <tr>
         <td style="font-weight:bold;font-size:1.5em;">
-          <% if page.date.strftime("%W").to_i.remainder(2) == 1 
+          <% if page.date.strftime("%W").to_i.remainder(2) == 1
               week_class = 'success'
              else
               week_class = 'info'
@@ -16,13 +16,16 @@
         &nbsp;<%= page.start_time.strftime("%H:%M") %> ~ <%= page.end_time.strftime("%H:%M") %>
       &nbsp;<%= page.training_hour.to_f %>[h]
     <% end %>
+     <% if current_user == page.user %>
      <button type="button" class="btn btn-default mini-size" onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
+     <% end %>
       </td>
       </tr>
       <tr>
         <td>
           <p style="font-weight:bold;font-size:1.25em;">
           < <%= page.wight %> kg , <%= page.body_fat_per %> % >
+          <%= page.user.name if page.user %>
           </p>
           <div><%= page_image_tag page, width: @show ? 320 : 128 , class: "hidari" %></div>
           <p style="font-size:1.0em;color:black;"><%= raw page.memo_br %></p>
@@ -67,10 +70,18 @@
           <% page.lines.default.order(:id).each do |line| %>
             <tr>
               <td style="text-align: left;"><%= line.no %>.
-                <%= link_to line.item.part.name , edit_line_path(line) %>
+                <% if current_user == page.user %>
+                  <%= link_to line.item.part.name , edit_line_path(line) %>
+                <% else %>
+                  <%= line.item.part.name %>
+                <% end %>
               </td>
               <td style="text-align: left;"><%= line.no %>.
-                <%= link_to line.item.name , edit_line_path(line) %>
+                <% if current_user == page.user %>
+                  <%= link_to line.item.name , edit_line_path(line) %>
+                <% else %>
+                  <%= line.item.name %>
+                <% end %>
               </td>
               <td><%= line.weight_1 %><br>/<%= line.reps_1 %></td>
               <td><%= line.weight_2 %><br>/<%= line.reps_2 %></td>
@@ -79,9 +90,11 @@
             </tr>
           <% end %>
           <tr>
-            <td colspan="7" 
+            <td colspan="7"
                 style="text-align: left; width: 100%;">
+              <% if current_user == page.user %>
               <%= link_to '行を追加する。', new_page_line_path(page) %>||
+              <% end %>
             </td>
           </tr>
         </tbody>

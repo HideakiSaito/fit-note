@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :password , :password_confirmation
+  
+  has_many :pages,->{order("date DESC") } ,dependent: :destroy
 
   validates :password, presence: false, on: :facebook_login
   validates :password,presence: { on: :create }, confirmation: { allow_blank: true }

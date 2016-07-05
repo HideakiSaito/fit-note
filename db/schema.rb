@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616130126) do
+ActiveRecord::Schema.define(version: 20160703103132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,11 +216,13 @@ ActiveRecord::Schema.define(version: 20160616130126) do
     t.float    "body_size_leg_left"
     t.float    "body_size_calf_right"
     t.float    "body_size_calf_left"
+    t.integer  "user_id"
   end
 
   add_index "pages", ["condition_id"], name: "index_pages_on_condition_id", using: :btree
   add_index "pages", ["diet_id"], name: "index_pages_on_diet_id", using: :btree
   add_index "pages", ["feeling_id"], name: "index_pages_on_feeling_id", using: :btree
+  add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
     t.string   "name"
@@ -268,6 +270,7 @@ ActiveRecord::Schema.define(version: 20160616130126) do
   add_foreign_key "pages", "conditions"
   add_foreign_key "pages", "diets"
   add_foreign_key "pages", "feelings"
+  add_foreign_key "pages", "users"
   add_foreign_key "trainings", "items"
   add_foreign_key "trainings", "modes"
 end

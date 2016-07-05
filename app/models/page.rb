@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   include CalenderUtil
+  belongs_to :user
   has_many :lines,->{order("no ASC") } ,dependent: :destroy
   has_one :image ,class_name: "PageImage",dependent: :destroy
   accepts_nested_attributes_for :image, allow_destroy: true
