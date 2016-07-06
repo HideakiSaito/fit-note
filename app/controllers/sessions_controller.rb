@@ -1,9 +1,12 @@
 class SessionsController < ApplicationController
+  def update
+    redirect_to :root
+  end
   def create
     user = User.authenticate(params[:name], params[:password])
     if user
       session[:user_id] = user.id
-      flash[:success] = "ログインしました。" 
+      flash[:success] = "ログインしました。"
     else
       flash.alert = "名前とパスワードが一致しません"
     end
