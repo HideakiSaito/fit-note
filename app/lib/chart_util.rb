@@ -5,7 +5,8 @@ module ChartUtil
   end
   def analysis_pages(target_place)
     #ここを１週間単位
-    targets = Page.order(:date) 
+    x_user = params[:user_id]? params[:user_id] : current_user
+    targets = Page.where("user_id=?", x_user).order(:date)
     targets.where(place: target_place) if target_place.presence #場所条件を追加
   end
   def chart_dates
@@ -22,38 +23,38 @@ module ChartUtil
   def chart_data(target_item)
     #ここを１週間単位
     powers = []
-    max_power = 0.0 
+    max_power = 0.0
     this_power = 0.0
     last_power = 0.0
     last_week = ""
     @@pages.map do |page|
       this_week = page.yweek
-      target = page.lines.where(item_id: target_item).first 
-      this_power = target.presence ? target.this_max_reps.to_f : last_power 
-      if this_power >= max_power 
+      target = page.lines.where(item_id: target_item).first
+      this_power = target.presence ? target.this_max_reps.to_f : last_power
+      if this_power >= max_power
         max_power = this_power
       end
-      #debug 
-#      p  page.yweek + ":this" + this_power.to_s + ":max" + max_power.to_s 
+      #debug
+#      p  page.yweek + ":this" + this_power.to_s + ":max" + max_power.to_s
       if this_week != last_week
-        powers << this_power 
+        powers << this_power
         last_power = this_power
         max_power = 0.0 #同一週で最大筋力を求めたいのでリセット
       else
         this_week_power = max_power
         this_week_power = last_power if max_power == 0.0 #今回情報がない時は、前回の情報をセットする(比較演算子を勘違い
-        this_week_power = this_power if this_power #前回の記録よく下がることを考慮 
+        this_week_power = this_power if this_power #前回の記録よく下がることを考慮
         powers[-1] = this_week_power #-配列指定は最後から数える
       end
         last_power = this_power
         last_week = this_week
     end
-    powers 
+    powers
   end
 #page_controller kara
   def day_training_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       f.title(text: label + ' 部位別バランス')
       f.series(name: 'レップス',
                data: pie_chart_data_parts(page.id) , type: 'pie')
@@ -61,7 +62,7 @@ module ChartUtil
   end
   def day_diet_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       f.title(text: label + ' 食事 ' + page.tortal_cal.to_s + "kcal")
       f.series(name: 'グラム',
                data: pie_chart_data_diet(page.id) , type: 'pie')
@@ -69,7 +70,7 @@ module ChartUtil
   end
   def day_health_chart(page)
      LazyHighCharts::HighChart.new('graph') do |f|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       f.title(text: label + ' 健康,休養 :睡眠 ' + page.sleep_hour.to_s + "[h]" )
       f.xAxis(categories: ["睡眠","トレ","勉強","TV","仕事"])
       f.series(name: '[h]',

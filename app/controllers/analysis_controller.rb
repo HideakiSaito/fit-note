@@ -3,7 +3,7 @@ class AnalysisController < ApplicationController
   include ChartUtil
   def dash_bord
     #chart
-    @_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6" 
+    @_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
     @gym_chart = self.gym_chart
     @diet_chart = self.diet_chart
     @weight_chart = self.weight_chart
@@ -55,7 +55,9 @@ class AnalysisController < ApplicationController
     end
   end
   def size_chart
-    pages = Page.where("body_size_bust is not null" ).order(:date)
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("body_size_bust is not null" ).order(:date)
     dates = []
     bust_data=[]
     waist_data=[]
@@ -65,8 +67,8 @@ class AnalysisController < ApplicationController
     leg_data=[]
     calf_data = []
     pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
-      dates << label 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+      dates << label
       bust_data << page.body_size_bust.to_f
       waist_data << page.body_size_waist.to_f
       hip_data << page.body_size_hip.to_f
@@ -90,16 +92,18 @@ class AnalysisController < ApplicationController
     end
   end
   def health_feel_chart
-    pages = Page.where("condition_id is not null
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("condition_id is not null
                         and feeling_id is not null").order(:date)
     dates = []
     condition_data = []
     feeling_data = []
     pages.feel_include.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
-      dates << label + 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+      dates << label +
                page.sleep_time.strftime("[%H:%M]")
-      condition_data << page.condition.score.to_f 
+      condition_data << page.condition.score.to_f
       feeling_data << page.feeling.score.to_f
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
@@ -112,7 +116,9 @@ class AnalysisController < ApplicationController
     end
   end
   def health_hour_chart
-    pages = Page.where("water > 0").order(:date) #過去データ出したくないだけなので
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("water > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     sleep_data = []
     training_data = []
@@ -120,8 +126,8 @@ class AnalysisController < ApplicationController
     study_data = []
     tv_data = []
     pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
-      dates << label + 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+      dates << label +
                page.sleep_time.strftime("[%H:%M]")
       sleep_data << page.sleep_hour.to_f
       training_data << page.training_hour.to_f
@@ -142,13 +148,15 @@ class AnalysisController < ApplicationController
     end
   end
   def health_water_chart
-    pages = Page.where("water > 0").order(:date) #過去データ出したくないだけなので
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("water > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     water_data = []
     caffe_data = []
     alcohol_data = []
     pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       dates << label
       water_data << page.water.to_f
       caffe_data << page.caffeine.to_f
@@ -165,25 +173,27 @@ class AnalysisController < ApplicationController
     end
   end
   def diet_chart
-    pages = Page.where("protein_1 > 0").order(:date)
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("protein_1 > 0").order(:date)
     dates = []
     protein_data = []
     fat_data = []
     carbohydrate_data = []
     vegetable_data = []
     pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       if page.wight.to_f > 0
         label += "[" + page.wight.to_s + "kg]"
       end
-      if page.training_hour.to_f > 0 
-        label = "*" + label + "*" #training day ** 
+      if page.training_hour.to_f > 0
+        label = "*" + label + "*" #training day **
       end
       dates << label     #カロリー換算
       protein_data << page.protein_sum * 4
       fat_data  << page.fat_sum * 9
       carbohydrate_data << page.carbohydrate_sum * 4
-      vegetable_data << page.vegetable_sum * 5 
+      vegetable_data << page.vegetable_sum * 5
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '食事のバランス推移')
@@ -193,16 +203,18 @@ class AnalysisController < ApplicationController
       f.series(name: '脂肪[kcal]', data: fat_data)
       f.series(name: 'たんぱく質[kcal]', data: protein_data)
       f.chart(type: "area")
-      f.options[:plotOptions] = { area: { stacking: 'normal'} } 
+      f.options[:plotOptions] = { area: { stacking: 'normal'} }
     end
   end
   def weight_chart
-    pages = Page.where("wight > 0").order(:date) #過去データ出したくないだけなので
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("wight > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     weight_data = []
     body_fat_per_data = []
     pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       label += "["+ page.body_fat_per.to_f.to_s + "% "+ page.tortal_cal.to_s + "kcal]"
       dates << label
       weight_data << page.wight.to_f
@@ -219,11 +231,13 @@ class AnalysisController < ApplicationController
     end
   end
   def fat_chart
-    pages = Page.where("body_fat_per > 0").order(:date) #過去データ出したくないだけなので
+    x_user = params[:user_id]? params[:user_id] : current_user
+    pages = Page.where("user_id=?", x_user).order(:date)
+    pages = pages.where("body_fat_per > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     body_fat_per_data = []
     pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})") 
+      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       label += "["+ page.body_fat_per.to_f.to_s + "% "+ page.tortal_cal.to_s + "kcal]"
       dates << label
       body_fat_per_data << page.body_fat_per.to_f
@@ -263,13 +277,13 @@ class AnalysisController < ApplicationController
   def pie_place
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'トレーニング場所別バランス')
-      f.series(name: 'レップス', 
+      f.series(name: 'レップス',
                data: pie_chart_data_place , type: 'pie')
     end
     render :index
   end
   def index
-#    @chart = LazyHighCharts::HighChart.new('graph') 
+#    @chart = LazyHighCharts::HighChart.new('graph')
     self.gym
   end
 end
