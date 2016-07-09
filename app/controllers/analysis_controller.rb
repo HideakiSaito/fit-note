@@ -25,7 +25,11 @@ class AnalysisController < ApplicationController
     render :index
   end
   def weight
-    @chart = self.weight_chart
+    @chart = self.weight_chart "all"
+    render :index
+  end
+  def weight_recent
+    @chart = self.weight_chart "recent"
     render :index
   end
   def gym
@@ -37,7 +41,11 @@ class AnalysisController < ApplicationController
     render :index
   end
   def diet
-    @chart = self.diet_chart
+    @chart = self.diet_chart "all"
+    render :index
+  end
+  def diet_recent
+    @chart = self.diet_chart "recent"
     render :index
   end
   def gym_chart
@@ -172,9 +180,12 @@ class AnalysisController < ApplicationController
       f.options[:plotOptions] = { column: {stacking: 'normal'} }
     end
   end
-  def diet_chart
+  def diet_chart(chart_type = "all")
     x_user = params[:user_id]? params[:user_id] : current_user
     pages = Page.where("user_id=?", x_user).order(:date)
+    if chart_type == "recent"
+      pages = Page.where("date >= ?", Date.current - 28)
+    end
     pages = pages.where("protein_1 > 0").order(:date)
     dates = []
     protein_data = []
@@ -206,9 +217,12 @@ class AnalysisController < ApplicationController
       f.options[:plotOptions] = { area: { stacking: 'normal'} }
     end
   end
-  def weight_chart
+  def weight_chart(chart_type = "all")
     x_user = params[:user_id]? params[:user_id] : current_user
     pages = Page.where("user_id=?", x_user).order(:date)
+    if chart_type == "recent"
+      pages = Page.where("date >= ?", Date.current - 28)
+    end
     pages = pages.where("wight > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     weight_data = []

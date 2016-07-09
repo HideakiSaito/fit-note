@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "developer" => "welcome#developer", as: "developer"
   resources :analysis do
     collection { get :dash_bord,:health,:size,:weight,:water,:feel,
-                 :diet,:gym,:home,:pie_parts,:pie_place }
+                 :diet,:gym,:home,:pie_parts,:pie_place,:diet_recent,:weight_recent}
   end
   resources :maintenance do
     collection {get :pages_delete_all,:items_delete_all,:foods_delete_all}
