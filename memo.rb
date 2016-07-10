@@ -91,3 +91,9 @@ heroku run rake db:migrate
 rails g migration AddColumn_user_ToPage user:belongs_to
 rake db:migrate
 heroku run rake db:migrate
+
+#2016/07/10
+#training_hour
+rails g migration AddCoulumn2ToUser administrator:boolean 
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate

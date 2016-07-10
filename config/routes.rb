@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :users do
+  namespace :admin do
+    root to: "top#index"
+    resources :users 
+  end
+  resources :users ,only: [:create, :destroy ,:show ]  do
     resources :pages do
       resources :lines
       collection { get :training_only,:training_only_note ,:hidden_training,:only_chart}

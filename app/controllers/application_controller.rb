@@ -26,7 +26,12 @@ class ApplicationController < ActionController::Base
 
  def rescue_403(exception)
    #render "welcome/index" ,status: 403,layout: "error" ,formats: [:html]
-    flash.alert = "ログインしてください"
+   alert_message = "ログインしてください"
+   if @current_user 
+     @current_user = nil 
+     alert_message = " 権限がありません。"
+   end
+   flash.alert = alert_message
    render "welcome/index" 
  end
  
