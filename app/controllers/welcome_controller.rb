@@ -2,9 +2,9 @@ class WelcomeController < ApplicationController
   include ChartUtil
   def index
     if current_user
-      latest_date = Page.maximum(:date) #最新日
+      latest_date = Page.where('user_id=?',current_user.id).maximum(:date) #最新日
       if latest_date
-      @latest_page = Page.where(date: latest_date).first
+      @latest_page = Page.where('user_id=?',current_user.id).where(date: latest_date).first
       else
        @latest_page = Page.new(date: Time.current,place: "none")
       end
