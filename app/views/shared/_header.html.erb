@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown" >
-          <% if current_user %>
+          <% if current_user && current_user.administrator?  %>
           <li><a href="/items"><i class="fa fa-gavel"> 種目</i></a></li>
           <li><a href="/foods"><i class="fa fa-cutlery"> 食事</i></a></li>
           <li><a href="/maintenance"><i class="fa fa-database"> データ</i></a></li>
