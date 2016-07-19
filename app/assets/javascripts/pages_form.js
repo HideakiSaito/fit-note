@@ -1,4 +1,4 @@
-//1<script type="text/javascript">
+//<script type="text/javascript">
   var dispflag = 0;
   var disp_no = 1;
   var memo;

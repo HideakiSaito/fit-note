@@ -1,9 +1,13 @@
 class Food < ActiveRecord::Base
   belongs_to :diet
   belongs_to :food_category
-  def disp_memo
+   def disp_memo
+    if food_category
+    "<" + food_category.no.to_s + "." + food_category.name + ">  " + diet_memo
+    else
       diet_memo
-  end
+    end
+  end 
   #スコープ
   default_scope  -> do
     #p "default_scope "
