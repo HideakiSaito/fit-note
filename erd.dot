@@ -1,0 +1,236 @@
+digraph R1 {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial BoldMT";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "ArialMT" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "ArialMT" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "FitNote model diagram\n\n";
+m_Condition [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Condition</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="memo">memo <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="score">score <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+</table>
+>];
+m_Diet [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Diet</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Equipment [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Equipment</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Feeling [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Feeling</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="memo">memo <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="score">score <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+</table>
+>];
+m_Food [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Food</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="calorie">calorie <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="carbohydrate">carbohydrate <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="diet_memo">diet_memo <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="fat">fat <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="protein">protein <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="sort_key">sort_key <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="vegetable">vegetable <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+</table>
+>];
+m_FoodCategory [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">FoodCategory</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="no">no <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="order">order <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_Item [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Item</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="reps">reps <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_Line [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Line</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="memo_0">memo_0 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_1">memo_1 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_2">memo_2 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_3">memo_3 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_4">memo_4 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_5">memo_5 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_6">memo_6 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_7">memo_7 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_8">memo_8 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="memo_9">memo_9 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="no">no <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="reps_0">reps_0 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_1">reps_1 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_2">reps_2 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_3">reps_3 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_4">reps_4 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_5">reps_5 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_6">reps_6 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_7">reps_7 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_8">reps_8 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="reps_9">reps_9 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_0">weight_0 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_1">weight_1 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_2">weight_2 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_3">weight_3 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_4">weight_4 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_5">weight_5 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_6">weight_6 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_7">weight_7 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_8">weight_8 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="weight_9">weight_9 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+</table>
+>];
+m_Mode [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Mode</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="detail">detail <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Page [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Page</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="alcohol">alcohol <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_fat_per">body_fat_per <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_arm_left">body_size_arm_left <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_arm_right">body_size_arm_right <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_bust">body_size_bust <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_calf_left">body_size_calf_left <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_calf_right">body_size_calf_right <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_hip">body_size_hip <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_leg_left">body_size_leg_left <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_leg_right">body_size_leg_right <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_neck">body_size_neck <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="body_size_waist">body_size_waist <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="caffeine">caffeine <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="carbohydrate_1">carbohydrate_1 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="carbohydrate_2">carbohydrate_2 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="carbohydrate_3">carbohydrate_3 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="carbohydrate_4">carbohydrate_4 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="carbohydrate_5">carbohydrate_5 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="diet_memo_1">diet_memo_1 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="diet_memo_2">diet_memo_2 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="diet_memo_3">diet_memo_3 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="diet_memo_4">diet_memo_4 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="diet_memo_5">diet_memo_5 <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="end_time">end_time <font face="Arial ItalicMT" color="grey60">time</font></td></tr>
+  <tr><td align="left" width="130" port="fat_1">fat_1 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="fat_2">fat_2 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="fat_3">fat_3 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="fat_4">fat_4 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="fat_5">fat_5 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="memo">memo <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="place">place <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="protein_1">protein_1 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="protein_2">protein_2 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="protein_3">protein_3 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="protein_4">protein_4 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="protein_5">protein_5 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="sleep_hour">sleep_hour <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="sleep_time">sleep_time <font face="Arial ItalicMT" color="grey60">time</font></td></tr>
+  <tr><td align="left" width="130" port="start_time">start_time <font face="Arial ItalicMT" color="grey60">time</font></td></tr>
+  <tr><td align="left" width="130" port="study_hour">study_hour <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="training_hour">training_hour <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="tv_hour">tv_hour <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="vegetable_1">vegetable_1 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="vegetable_2">vegetable_2 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="vegetable_3">vegetable_3 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="vegetable_4">vegetable_4 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="vegetable_5">vegetable_5 <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="water">water <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="wight">wight <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="work_hour">work_hour <font face="Arial ItalicMT" color="grey60">float</font></td></tr>
+</table>
+>];
+m_PageImage [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">PageImage</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="content_type">content_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="data">data <font face="Arial ItalicMT" color="grey60">binary</font></td></tr>
+</table>
+>];
+m_Part [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Part</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+>];
+m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="administrator">administrator <font face="Arial ItalicMT" color="grey60">boolean</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="hashed_password">hashed_password <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="icon">icon <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="oauth_expires_at">oauth_expires_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="oauth_token">oauth_token <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="provider">provider <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="uid">uid <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+>];
+  m_User -> m_Page [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Diet -> m_Food [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_FoodCategory -> m_Food [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Page -> m_Line [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Item -> m_Line [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Mode -> m_Line [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Page -> m_PageImage [arrowhead = "none", arrowtail = "none", weight = "2"];
+  m_Diet -> m_Page [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Condition -> m_Page [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Feeling -> m_Page [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Part -> m_Item [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Mode -> m_Item [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Equipment -> m_Item [arrowhead = "normal", arrowtail = "none", weight = "1"];
+}

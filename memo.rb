@@ -97,3 +97,5 @@ heroku run rake db:migrate
 rails g migration AddCoulumn2ToUser administrator:boolean 
 bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate
+
+bundle exec rake erd orientation=horizontal title='FitNote model diagram' inheritance=true notation=uml filetype=jpg
