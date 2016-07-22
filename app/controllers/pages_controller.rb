@@ -2,14 +2,14 @@ class PagesController < InheritedResources::Base
   before_action :login_required
   include ChartUtil
   def show_pic 
-    self.index_logic "all" ,true
+    self.index_logic "all" ,false
     @simple_page = false 
     @show_detail = false 
     @show_chart = false
     render :index
   end
   def training_only
-    self.index_logic "training_only"
+    self.index_logic "training_only",false
     @simple_page = false 
     @show_detail = true
     @show_chart = false
