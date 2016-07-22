@@ -7,6 +7,10 @@ module ApplicationHelper
     date.strftime("%y/%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]}) ") 
   end
 
+  def disp_short_date(date)
+    date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]}) ") 
+  end
+
   def page_image_tag(page, options = {})
     if page.image.present?
       path = page_path(page, format: page.image.extension)

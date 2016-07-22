@@ -1,18 +1,26 @@
 <p id="notice"><%= notice %></p>
 <h1>ノート <%= @disp_mode  %></h1>
 <ul class="nav nav-tabs">
-  <li><a href="/pages/hidden_training">トレーニングノートを非表示</a></li>
-  <li><a href="/pages/training_only_note">トレーニング日だけ、ノートだけ表示</a></li>
-  <li><a href="/pages/only_chart">グラフだけ表示</a></li>
-  <li><a href="/pages">全て</a></li>
+  <li><a href="/pages/training_only">トレーニング日だけ</a></li>
+  <li><a href="/pages/show_pic">画像、メモを表示</a></li>
+  <li><a href="/pages">シンプル</a></li>
 </ul>
 <%= form_for @search_form , :url => pages_path, :remote => true, :html => {:method => :get} do |f| %>
   <%= f.search_field :q %>
   <%= f.submit '検索' %>
+  <%= f.check_box :simple_page %> simple_page
 <% end %>
 <button type="button" class="btn btn-primary mini-size"
         onClick="location.href='/pages/new'">新しいページを作る。</button>
  <%= check_box_tag "page[hidden_lines]",true, @show_detail %> 日ごとの詳細表示 
  <%= check_box_tag "page[hidden_chart]" ,true , @show_chart %> グラフ表示
-<div id="pages" class="row" ><%= render @pages %></div>
+ <div id="pages" class="row" >
+   <% if @simple_page %>
+     <% @pages.each do |page| %>
+       <%= render 'simple_page' , page: page %>
+     <% end %>
+   <% else %>    
+   <%= render @pages %>
+ <% end %>
+ </div>
 <%= will_paginate @pages %>

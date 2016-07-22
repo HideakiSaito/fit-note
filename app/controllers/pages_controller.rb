@@ -1,32 +1,23 @@
 class PagesController < InheritedResources::Base
   before_action :login_required
   include ChartUtil
-  def hidden_training
-    self.index_logic "hidden_training"
-    @show_detail = true
-    @show_chart = false
-    render :index
-  end
-  def training_only_note
-    self.index_logic "training_only" ,false
-    @show_detail = true
+  def show_pic 
+    self.index_logic "all" ,true
+    @simple_page = false 
+    @show_detail = false 
     @show_chart = false
     render :index
   end
   def training_only
     self.index_logic "training_only"
+    @simple_page = false 
     @show_detail = true
     @show_chart = false
     render :index
   end
-  def only_chart
-    self.index_logic "all"
-    @show_detail = false
-    @show_chart = true
-    render :index
-  end
   def index
     self.index_logic "all"
+    @simple_page = true
     @show_detail = false
     @show_chart = false
     respond_to do |format|
@@ -54,12 +45,15 @@ class PagesController < InheritedResources::Base
     @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
 #    @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"
     @search_form = SearchForm.new params[:search_form]
+    #search
     @pages = Page.default
     x_user = params[:user_id]? params[:user_id] : current_user
     @pages = @pages.where("user_id=?", x_user) #user
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
+    #simple_page
+    @simple_page ||= true
     self.show_index_init
     @pages.each do |page|
       self.daily_chart page
