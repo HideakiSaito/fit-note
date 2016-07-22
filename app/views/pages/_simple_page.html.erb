@@ -11,7 +11,7 @@
       <%= disp_short_date(page.date) %>
     </button>
     </td>
-    <td style="text-align: right; width: 8em; ">
+    <td style="text-align: right; width: 4em; ">
       &nbsp;&nbsp;<%= page.place %>
       <% if page.training_hour.to_f > 0  %>
         &nbsp;<%= page.training_hour.to_f %>[h]
@@ -23,9 +23,11 @@
     <td style="text-align: right; width: 11em;">
       <%= page.wight %> kg , <%= page.body_fat_per %> %
     </td>
-    <td style="text-align: left; width: 20em; ">
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="4" style="text-align: left; width: 20em; ">
       <p style="font-size:1.0em;color:black;"><%= page.memo.slice(0,20)  %></p>
     </td>
-    <td></td>
   </tr>
 </table>
