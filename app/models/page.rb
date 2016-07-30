@@ -197,6 +197,15 @@ class Page < ActiveRecord::Base
   def page_label
     id.to_s + "." + date.to_s + "_" + place
   end
+  def page_training_label
+    label = 
+   date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]}) ") + "_" + place + "_" + lines.size.to_s + "_" 
+    t = ""
+    lines.each do |line|
+      t += line.item.name.slice(0,4)  + "/" 
+    end
+    label += t
+  end
   # 
   #decolater like
   ######################################

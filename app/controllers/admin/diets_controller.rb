@@ -1,5 +1,7 @@
-class DietsController < InheritedResources::Base
+class Admin::DietsController < InheritedResources::Base
   before_action :login_required
+  include AdminUtil
+  before_action :admin_login_required
 
   private
 

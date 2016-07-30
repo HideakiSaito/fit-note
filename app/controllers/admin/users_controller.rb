@@ -1,5 +1,8 @@
 class Admin::UsersController < InheritedResources::Base
   before_action :login_required ,only:[:show,:index,:edit,:destroy]
+  include AdminUtil
+  before_action :admin_login_required
+
   def create
     if env['omniauth.auth'].present?
       # Facebookログイン

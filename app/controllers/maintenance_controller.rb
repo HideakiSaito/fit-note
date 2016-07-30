@@ -5,8 +5,9 @@ class MaintenanceController < ApplicationController
   end
   def pages_delete_all
    l = Line.delete_all #子供のテーブルから消す
+   pi = PageImage.delete_all #子供のテーブルから消す
    p = Page.delete_all
-   @mes = "pages => #{p} & lines =>#{l} delete_all" 
+   @mes = "pages => #{p}  page_image => #{pi} & lines =>#{l} delete_all" 
    render :index
   end
   def items_delete_all

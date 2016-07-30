@@ -37,7 +37,7 @@ $(function() {
       },
       "6 豆、ナッツ": function(){
         select_category('6');
-      },
+      }_training,
       "7 野菜": function(){
         select_category('7');
       },
@@ -89,7 +89,7 @@ $(function() {
   <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
   <div class="field" id="copy_page_id">
     <%= collection_select :copy_page,:id  ,
-      Page.all.order("date desc") , :id ,:page_label, 
+      Page.training_only.where("date >= ?", Date.current - 60).order("date desc") , :id ,:page_training_label, 
       {prompt: true} , { class: "form-control"} %>
 </div>
 

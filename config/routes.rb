@@ -2,7 +2,42 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "top#index"
     resources :users 
+    resources :diets
+  #VVVV to admin 
+  resources :feelings
+  resources :conditions
+  resources :equipment
+  resources :parts do
+    get "search", to: "parts#search", on: :collection
   end
+  resources :modes
+  resources :food_categories
+  resources :foods
+  get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
+  resources :items do
+    collection { get "search"}
+    collection { post :import }
+  end
+  #AAAAAAAAAA
+  end
+
+  #VVVV to admin 
+  resources :feelings
+  resources :conditions
+  resources :equipment
+  resources :parts do
+    get "search", to: "parts#search", on: :collection
+  end
+  resources :modes
+  resources :food_categories
+  resources :foods
+  get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
+  resources :items do
+    collection { get "search"}
+    collection { post :import }
+  end
+  #AAAAAAAAAA
+
   resources :users ,only: [:create, :destroy ,:show ]  do
     resources :pages do
       resources :lines
@@ -14,13 +49,6 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failurematch 
   get 'signout', to: 'users#destroy', as: 'signout'
-  resources :page_images
-  resources :food_categories
-  resources :foods
-  get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
-  resources :feelings
-  resources :conditions
-  resources :diets
   root :to => 'welcome#index', :as => 'root'
   get "about" => "welcome#about", as: "about"
   get "developer" => "welcome#developer", as: "developer"
@@ -40,16 +68,8 @@ Rails.application.routes.draw do
     collection { get :training_only,:show_pic ,:hidden_training,:only_chart}
     collection { post :import }
   end
+  resources :page_images
   resources :trainings
-  resources :items do
-    collection { get "search"}
-    collection { post :import }
-  end
-  resources :equipment
-  resources :parts do
-    get "search", to: "parts#search", on: :collection
-  end
-  resources :modes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
