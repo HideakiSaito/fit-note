@@ -1,23 +1,25 @@
 <% @page_title = "管理ページ" %>
 <h2> 管理ページ </h2>
-
-<ul>
-<h3> ユーザ </h3>
-  <li><%= link_to "ユーザ", :admin_users %></li>
-  <li><%= link_to "ダイエットタイプ", :admin_diets %></li>
-  <br>
-<h3> コンディション</h3>
-  <li><%= link_to "気分", :admin_feelings %></li>
-  <li><%= link_to "体調", :admin_conditions %></li>
-  <br>
-<h3> トレーニング </h3>
-  <li><%= link_to "器具", 'admin/equipment' %></li>
-  <li><%= link_to "部位", :admin_parts %></li>
-  <li><%= link_to "メソッド", :admin_modes %></li>
-  <li><%= link_to "種目", :admin_items %></li>
-  <br>
-<h3> 食事</h3>
-  <li><%= link_to "食品カテゴリ", :admin_food_categories
- %></li>
-  <li><%= link_to "食品", :admin_foods %></li>
-</ul>
+<style>
+<!--
+p {
+  font-size:1.5em;
+ }
+-->
+</style>
+<hr>
+  <p><%= link_to "・ユーザ", :admin_users %></p>
+<hr>
+  <p><%= link_to "/・気分", :admin_feelings %></p>
+  <p><%= link_to "/・体調", :admin_conditions %></p>
+<hr>
+  <p><%= link_to "・器具", 'admin/equipment' %></p>
+  <p><%= link_to "/・部位", :admin_parts %></p>
+  <p><%= link_to "/・メソッド", :admin_modes %></p>
+  <p><%= link_to "/・種目", :admin_items %></p>
+<hr>
+  <p><%= link_to "/・食品カテゴリ", :admin_food_categories %></p>
+  <p><%= link_to "/・食品", :admin_foods %></p>
+  <p><%= link_to "・ダイエットタイプ", :admin_diets %></p>
+<hr>
+<p><a href="/maintenance"><i class="fa fa-database">・データ管理</i></a></p>
