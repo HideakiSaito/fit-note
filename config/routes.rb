@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    root to: "top#index"
+    root to: "top#index" , :as => "top"
     resources :users 
     resources :diets
   #VVVV to admin 
