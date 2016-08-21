@@ -1,0 +1,7 @@
+<tr>
+  <td><%= mode.name %></td>
+  <td><%= mode.detail %></td>
+  <td><%= link_to '参照', admin_mode_path(mode) %></td>
+  <td><%= link_to '編集', edit_admin_mode_path(mode) %></td>
+  <td><%= link_to 'Destroy', admin_mode_path(mode), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

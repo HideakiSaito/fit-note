@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Foods</h1>
+
+<%= link_to 'New Food', new_admin_food_path %>
+<%= link_to '食品を調べる', "http://calorie.slism.jp" %>
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>名称、カテゴリ、メモ</th>
+      <th>栄養素</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= link_to food.id.to_s + "." + food.name, edit_admin_food_path(food) %>
+        <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
+        </td>
+        <td>sort:<%= food.sort_key %>
+        <table border=1 >
+          <thead><tr>
+              <th>炭水化物:</th>
+              <th>脂肪:</th>
+              <th>たんぱく質:</th>
+              <th> 野菜:</th>
+          </tr></thead>
+          <tbody><tr>
+              <td><%= food.carbohydrate %></td>
+              <td><%= food.fat %></td>
+              <td><%= food.protein %></td>
+              <td><%= food.vegetable %></td>
+            </tr></tbody>
+        </table>
+        </td>
+        <td>
+          <%= link_to "copy", admin_copy_food_path(food) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '管理ページに戻る', admin_top_path %>
+
+<br>

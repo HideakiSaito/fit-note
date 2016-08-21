@@ -1,0 +1,61 @@
+<%= form_for([:admin,@food]) do |f| %>
+  <% if @food.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+      <% @food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name ,  class: "form-control" ,style: "width:20em;" %>
+  </div>
+<%= link_to '食品を調べる', "http://calorie.slism.jp" %>
+<div class="field">
+  <%= f.label :food_category_id %><br>
+  <%= f.collection_select :food_category_id ,
+    FoodCategory.all.order(:id), :id , :name ,
+    {prompt: true} , { class: "form-control"} %>
+  </div>
+<div class="field">
+  <%= f.label :diet_id %><br>
+  <%= f.collection_select :diet_id ,
+    Diet.all.order(:id), :id , :name ,
+    {prompt: true} , { class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :sort_key %><br>
+    <%= f.text_field :sort_key ,  class: "form-control" ,style: "width:20em;" %>
+  </div>
+  <div class="field">
+    <%= f.label :calorie %><br>
+    <%= f.number_field :calorie ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
+  </div>
+  <div class="field">
+    <%= f.label :carbohydrate %><br>
+    <%= f.number_field :carbohydrate ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
+  </div>
+  <div class="field">
+    <%= f.label :fat %><br>
+    <%= f.number_field :fat ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
+  </div>
+  <div class="field">
+    <%= f.label :protein %><br>
+    <%= f.number_field :protein ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
+  </div>
+  <div class="field">
+    <%= f.label :vegetable %><br>
+    <%= f.number_field :vegetable ,  class: "form-control" ,style: "width:10em;" ,step: 0.01, no_pattern: "\\d*" %>
+  </div>
+  <div class="field">
+    <%= f.label :diet_memo %><br>
+    <%= f.text_field :diet_memo ,  class: "form-control" ,style: "width:20em;" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

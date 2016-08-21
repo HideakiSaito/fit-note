@@ -1,13 +1,15 @@
 class Admin::EquipmentController < ApplicationController
   before_action :login_required
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
-
+  include AdminUtil
+  before_action :admin_login_required
+  
   # GET /equipment
   # GET /equipment.json
   def index
     @equipment = Equipment.all
     @new_equipment = Equipment.new
-    @search_form = SearchForm.new(params[:search_form]) 
+    @search_form = SearchForm.new(params[:search_form])
     @equipment = @equipment.search(@search_form.q) if  @search_form.q.present?
     #   respond_to do |format|
     #     format.html #index.html.erb

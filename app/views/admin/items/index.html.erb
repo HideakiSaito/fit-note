@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h1>種目管理・分析</h1>
+<div> ※種目名称をクリックすると、その種目の場所ごとの記録の推移を表示します</div>
+<%= form_tag :search_items, method: :get do %>
+  <p>
+    <%= text_field_tag "q", params[:q] %>
+    <%= submit_tag "検索" %>
+  </p>
+<% end %>
+<table class="table table-striped"
+       style="text-align: left; width: 100%;">
+  <thead>
+    <tr>
+      <th>部位</th>
+      <th>種目名称</th>
+      <th>器具</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.part.name %></td>
+        <td><%= link_to item.name , admin_item_path(item) %></td>
+        <td><%= item.equipment.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Item', new_admin_item_path %>
+
+<%= link_to '管理ページに戻る', admin_top_path %>

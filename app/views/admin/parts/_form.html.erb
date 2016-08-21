@@ -1,10 +1,10 @@
-<%= form_for([:admin,@equipment]) do |f| %>
-  <% if @equipment.errors.any? %>
+<%= form_for([:admin,@part]) do |f| %>
+  <% if @part.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
+      <h2><%= pluralize(@part.errors.count, "error") %> prohibited this part from being saved:</h2>
 
       <ul>
-      <% @equipment.errors.full_messages.each do |message| %>
+      <% @part.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

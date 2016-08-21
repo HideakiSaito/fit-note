@@ -9,7 +9,7 @@
       <%= button_tag 'キャンセル',class: 'cancel' , type: :button %>
     </div>
     <%= render 'form2' , equipment: equipment %>
-    <%= form_for equipment, method: :delete, remote: true,
+    <%= form_for [:admin,equipment], method: :delete, remote: true,
       html:{ id: nil,class: 'delete_equipment' } do |f| %>
       <%= f.submit '削除' %>
     <% end %>
