@@ -20,9 +20,9 @@
       <ul class="nav navbar-nav">
         <li class="dropdown" >
           <% if current_user && current_user.administrator?  %>
-          <li><a href="/items"><i class="fa fa-gavel"> 種目</i></a></li>
-          <li><a href="/foods"><i class="fa fa-cutlery"> 食事</i></a></li>
-          <li><a href="/admin"><i class="fa fa-cogs"> 管理機能</i></a></li>
+          <li><a href="/items"><i class="fa fa-gamepad"> トレーニング種目</i></a></li>
+          <li><a href="/foods"><i class="fa fa-cutlery"> 食品</i></a></li>
+          <li><a href="/admin"><i class="fa fa-cogs"> 管理ページ</i></a></li>
           <li class="divider"></li>
           <% end %>
         </li>
@@ -36,7 +36,7 @@
             <i class="fa fa-user"></i>
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
           <% else %>
-            Sign in wtih 
+            Sign in wtih
             <i class="fa fa-facebook-square"></i>
             <%= link_to "Facebook", "/auth/facebook", id: "sign_in" %>
             <i class="fa fa-user"></i>
@@ -55,4 +55,3 @@ function googleTranslateElementInit() {
         </td></tr></table>
   </div><!-- /.container-fluid -->
 </nav>
-

@@ -8,18 +8,18 @@ p {
 -->
 </style>
 <hr>
-  <p><%= link_to "・ユーザ", :admin_users %></p>
+  <p><i class="fa fa-users"/></i><%= link_to "・ユーザ", :admin_users %></p>
 <hr>
-  <p><%= link_to "・気分", :admin_feelings %></p>
-  <p><%= link_to "・体調", :admin_conditions %></p>
+  <p><i class="fa fa-smile-o"/></i><%= link_to "・気分", :admin_feelings %></p>
+  <p><i class="fa fa-hotel"/></i><%= link_to "・体調", :admin_conditions %></p>
 <hr>
-  <p><%= link_to "・器具", 'admin/equipment' %></p>
-  <p><%= link_to "・部位", :admin_parts %></p>
-  <p><%= link_to "・メソッド", :admin_modes %></p>
-  <p><%= link_to "・種目", :admin_items %></p>
+  <p><i class="fa fa-gamepad"/></i><%= link_to "・トレーニング種目", :admin_items %></p>
+  <p><i class="fa fa-gavel"/></i><%= link_to "・器具", 'admin/equipment' %></p>
+  <p><i class="fa fa-male"/></i><%= link_to "・部位", :admin_parts %></p>
+  <p><i class="fa fa-television"/></i><%= link_to "・メソッド", :admin_modes %></p>
 <hr>
-  <p><%= link_to "・食品カテゴリ", :admin_food_categories %></p>
-  <p><%= link_to "・食品", :admin_foods %></p>
-  <p><%= link_to "・ダイエットタイプ", :admin_diets %></p>
+  <p><i class="fa fa-cutlery"/></i><%= link_to "・食品", :admin_foods %></p>
+  <p><i class="fa fa-flask"/></i><%= link_to "・食品カテゴリ", :admin_food_categories %></p>
+  <p><i class="fa fa-fire"/></i><%= link_to "・ダイエットタイプ", :admin_diets %></p>
 <hr>
-<p><a href="/maintenance"><i class="fa fa-database">・データ管理</i></a></p>
+<p><i class="fa fa-database"/></i><a href="/maintenance">・データ管理</a></p>
