@@ -1,5 +1,6 @@
 class LinesController < InheritedResources::Base
   before_action :login_required
+  before_action :form_setup ,only:[:new, :edit]
 
   def index
     @lines = Line.all.order("page_id desc,no asc")
@@ -8,6 +9,11 @@ class LinesController < InheritedResources::Base
       format.js   #default template
       format.json  #jsonは全部 とりあえずデフォルトでいい
     end
+  end
+
+  def form_setup
+      #いいねしitemだけ
+      @items = current_user.voted_items.order(:part_id, :equipment_id)
   end
 
   def new
@@ -28,6 +34,8 @@ class LinesController < InheritedResources::Base
   end
 
   def edit
+    #編集時は全てにしないと。itemだけ
+    @items = Item.order(:part_id, :equipment_id)
     @line = Line.find(params[:id])
     #前後のlineへナビゲーション用
     if @line.no != nil

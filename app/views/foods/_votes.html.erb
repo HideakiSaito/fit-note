@@ -1,0 +1,8 @@
+<p class="vote">
+<% if current_user && !current_user.food_votable_for?(food) %>
+  <%= link_to "🔺いいね!", [:like , food ], method: :patch, class: "btn btn-primary" %>
+<% else %>
+  <%= link_to "🔻とりけし", [:unlike , food ], method: :patch, class: "btn btn-danger" %>
+    you liked♥
+<% end %>
+</p>

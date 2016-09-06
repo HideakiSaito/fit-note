@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710141805) do
+ActiveRecord::Schema.define(version: 20160823221728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20160710141805) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "food_votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "food_votes", ["food_id"], name: "index_food_votes_on_food_id", using: :btree
+  add_index "food_votes", ["user_id"], name: "index_food_votes_on_user_id", using: :btree
+
   create_table "foods", force: :cascade do |t|
     t.string   "name"
     t.integer  "diet_id"
@@ -84,6 +94,16 @@ ActiveRecord::Schema.define(version: 20160710141805) do
 
   add_index "foods", ["diet_id"], name: "index_foods_on_diet_id", using: :btree
   add_index "foods", ["food_category_id"], name: "index_foods_on_food_category_id", using: :btree
+
+  create_table "item_votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "item_votes", ["item_id"], name: "index_item_votes_on_item_id", using: :btree
+  add_index "item_votes", ["user_id"], name: "index_item_votes_on_user_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -259,8 +279,12 @@ ActiveRecord::Schema.define(version: 20160710141805) do
     t.boolean  "administrator",    default: false
   end
 
+  add_foreign_key "food_votes", "foods"
+  add_foreign_key "food_votes", "users"
   add_foreign_key "foods", "diets"
   add_foreign_key "foods", "food_categories"
+  add_foreign_key "item_votes", "items"
+  add_foreign_key "item_votes", "users"
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "modes"
   add_foreign_key "items", "parts"

@@ -1,27 +1,24 @@
 Rails.application.routes.draw do
   namespace :admin do
     root to: "top#index" , :as => "top"
-    resources :users 
+    resources :users
     resources :diets
-  #VVVV to admin 
-  resources :feelings
-  resources :conditions
-  resources :equipment
-  resources :parts do
-    get "search", to: "parts#search", on: :collection
-  end
-  resources :modes
-  resources :food_categories
-  resources :foods
-  get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
-  resources :items do
-    collection { get "search"}
-    collection { post :import }
-  end
-  #AAAAAAAAAA
+    resources :feelings
+    resources :conditions
+    resources :equipment
+    resources :parts do
+      get "search", to: "parts#search", on: :collection
+    end
+    resources :modes
+    resources :food_categories
+    resources :foods
+    get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
+    resources :items do
+      collection { get "search"}
+      collection { post :import }
+    end
   end
 
-  #VVVV to admin 
   resources :feelings
   resources :conditions
   resources :equipment
@@ -30,13 +27,18 @@ Rails.application.routes.draw do
   end
   resources :modes
   resources :food_categories
-  resources :foods
+  resources :foods do
+    member { patch :like, :unlike }
+    collection { get "voted"}
+  end
   get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
   resources :items do
+    member { patch :like, :unlike }
+    collection { get "voted"}
     collection { get "search"}
     collection { post :import }
   end
-  #AAAAAAAAAA
+
 
   resources :users ,only: [:create, :destroy ,:show ]  do
     resources :pages do
@@ -47,7 +49,7 @@ Rails.application.routes.draw do
   end
   resource :session , only: [:create ,  :destroy]
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
-  get '/auth/failure',               to: 'users#auth_failure', as: :auth_failurematch 
+  get '/auth/failure',               to: 'users#auth_failure', as: :auth_failurematch
   get 'signout', to: 'users#destroy', as: 'signout'
   root :to => 'welcome#index', :as => 'root'
   get "about" => "welcome#about", as: "about"

@@ -6,31 +6,36 @@
   /* 表示領域が768px以下の場合に適用するスタイル */
   div.note-index {
     border-collapse: collapse;
-    border-style:dotted; 
+    border-style:dotted;
     border-width: 1px;
     height:auto;
   }
 }
 @media screen and (min-width: 769px) {
   /* 表示領域が769px以上の場合に適用するスタイル */
-  div.note-index { 
+  div.note-index {
     border-collapse: collapse;
-    border-style:dotted; 
+    border-style:dotted;
     border-width: 1px;
     /* height:0; */
     height:auto;
   }
 }
 div.training-line {
-  overflow: scroll;   /* スクロール表示 */ 
+  overflow: scroll;   /* スクロール表示 */
   /*height: 20em;*/
 }
 div.diet-line {
-  overflow: scroll;   /* スクロール表示 */ 
+  overflow: scroll;   /* スクロール表示 */
  /* height: 10em;*/
 }
 .diet-memo{
   width:100%;
+}
+.diet-memo-bottom{
+  text-align:right;
+  border-bottom-width: 2px;
+
 }
 .nutrition{
   width:5em;

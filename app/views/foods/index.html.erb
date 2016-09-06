@@ -4,9 +4,11 @@
 
 <%= link_to 'New Food', new_food_path %>
 <%= link_to '食品を調べる', "http://calorie.slism.jp" %>
+<div> ♥ページの新規作成、編集時、いいねした食品だけが表示されます。</div>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
+      <th>Like</th>
       <th>名称、カテゴリ、メモ</th>
       <th>栄養素</th>
     </tr>
@@ -14,6 +16,7 @@
   <tbody>
     <% @foods.each do |food| %>
       <tr>
+        <td><%= render "votes" , food: food %></td>
         <td><%= link_to food.id.to_s + "." + food.name, edit_food_path(food) %>
         <br><p style="color:green;">&nbsp;<%= food.disp_memo %></p>
         </td>
@@ -42,4 +45,3 @@
 </table>
 
 <br>
-

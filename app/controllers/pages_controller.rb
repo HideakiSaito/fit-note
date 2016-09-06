@@ -1,16 +1,18 @@
 class PagesController < InheritedResources::Base
   before_action :login_required
+  before_action :form_setup ,only:[:new, :edit]
+
   include ChartUtil
-  def show_pic 
+  def show_pic
     self.index_logic "all" ,false
-    @simple_page = false 
-    @show_detail = false 
+    @simple_page = false
+    @show_detail = false
     @show_chart = false
     render :index
   end
   def training_only
     self.index_logic "training_only",false
-    @simple_page = false 
+    @simple_page = false
     @show_detail = true
     @show_chart = false
     render :index
@@ -77,19 +79,23 @@ class PagesController < InheritedResources::Base
     end
   end
 
+  def form_setup
+      #いいねした食品だけ
+      @foods = current_user.voted_foods
+  end
+
   def new
     #トレーニンぐ時間、睡眠時間の初期値をセット
     @page = Page.new(
       end_time: Time.current + (2.5 * 60 * 60),
       sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
       sleep_hour: 7.5)
-    @foods = Food.all
+
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
   end
   def edit
     @page = Page.find(params[:id])
-    @foods = Food.all
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
     if current_user != @page.user

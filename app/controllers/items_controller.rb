@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:q])
     render "index"
   end
-  
+
   # GET /items/1
   # GET /items/1.json
   def show
@@ -85,6 +85,27 @@ class ItemsController < ApplicationController
      Item.import(params[:file])
      redirect_to items_url, notice: "Itemをインポートしました。"
   end
+
+  # 投票
+    def like
+      @item = Item.find(params[:id])
+      current_user.voted_items << @item
+      redirect_to :items, notice: @item.name + "Like しました。"
+    end
+
+    # 投票削除
+    def unlike
+      @item = Item.find(params[:id])
+      current_user.voted_items.destroy(@item)
+      redirect_to :items, notice: @item.name + "Unlike しました。"
+    end
+
+    # 投票した記事
+    def voted
+      @items = current_user.voted_items
+        .order("item_votes.created_at DESC")
+        .paginate(page: params[:page], per_page: 15)
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

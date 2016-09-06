@@ -1,13 +1,16 @@
 class Food < ActiveRecord::Base
   belongs_to :diet
   belongs_to :food_category
+  has_many :food_votes, dependent: :destroy
+  has_many :voters, through: :food_votes, source: :user
+
    def disp_memo
     if food_category
     "<" + food_category.no.to_s + "." + food_category.name + ">  " + diet_memo
     else
       diet_memo
     end
-  end 
+  end
   #スコープ
   default_scope  -> do
     #p "default_scope "
@@ -24,10 +27,10 @@ class Food < ActiveRecord::Base
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
-      JSON.parse( s ).each do |elem| 
-        food = find_by(id: elem[:id]) || new 
+      JSON.parse( s ).each do |elem|
+        food = find_by(id: elem[:id]) || new
         food.assign_attributes(elem)
-        food.save 
+        food.save
       end
     end
   end

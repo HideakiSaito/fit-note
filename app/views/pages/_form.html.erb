@@ -58,7 +58,7 @@ $(function() {
 </script>
 
   <% # Food Dialog ################################################%>
-  <div id="dialog" title="食事の一覧"> 
+  <div id="dialog" title="食事の一覧">
     <div style="overflow:scroll;">
       <table class="table table-striped" height="200" >
         <thead> </thead>
@@ -66,7 +66,7 @@ $(function() {
           <% @foods.each do |food| %>
             <tr class="category_<%= food.food_category.no if food.food_category %>" >
               <td >
-                <p id="food_<%= food.id %>" 
+                <p id="food_<%= food.id %>"
                    onClick="food_add(
                    '<%= food.id %>','<%= food.name %>','<%= food.carbohydrate %>'
                    ,'<%= food.fat %>','<%= food.protein %>',
@@ -89,7 +89,7 @@ $(function() {
   <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
   <div class="field" id="copy_page_id">
     <%= collection_select :copy_page,:id  ,
-      Page.training_only.where("date >= ?", Date.current - 60).order("date desc") , :id ,:page_training_label, 
+      Page.training_only.where("date >= ?", Date.current - 60).order("date desc") , :id ,:page_training_label,
       {prompt: true} , { class: "form-control"} %>
 </div>
 
@@ -145,7 +145,7 @@ $(function() {
     <%= f.label :diet_memo_1 %>
     <button type="button" id="food1" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food1_cl" class="field btn-danger" > クリア </button>
-    <span><%= @page.meal1_cal %>kcal</span> 
+    <span><%= @page.meal1_cal %>kcal</span>
     <%= f.text_area :diet_memo_1 , { class: "form-control",rows: 3,style: "width:100%;"} %>
     <%= f.label :carbohydrate_1 %>[g]
     <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
@@ -160,7 +160,7 @@ $(function() {
     <%= f.label :diet_memo_2 %>
     <button type="button" id="food2" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food2_cl" class="field btn-danger" > クリア </button>
-    <span><%= @page.meal2_cal %>kcal</span> 
+    <span><%= @page.meal2_cal %>kcal</span>
     <%= f.text_area :diet_memo_2 , { class: "form-control",rows: 3,style: "width:100%;"} %>
     <%= f.label :carbohydrate_2 %>[g]
     <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
@@ -175,7 +175,7 @@ $(function() {
     <%= f.label :diet_memo_3 %>
     <button type="button" id="food3" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food3_cl" class="field btn-danger" > クリア </button>
-    <span><%= @page.meal3_cal %>kcal</span> 
+    <span><%= @page.meal3_cal %>kcal</span>
     <%= f.text_area :diet_memo_3 , { class: "form-control",rows: 3,style: "width:100%;"} %>
     <%= f.label :carbohydrate_3 %>[g]
     <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
@@ -190,7 +190,7 @@ $(function() {
     <%= f.label :diet_memo_4 %>
     <button type="button" id="food4" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food4_cl" class="field btn-danger" > クリア </button>
-    <span><%= @page.meal4_cal %>kcal</span> 
+    <span><%= @page.meal4_cal %>kcal</span>
     <%= f.text_area :diet_memo_4 , { class: "form-control",rows: 3,style: "width:100%;"} %>
     <%= f.label :carbohydrate_4 %>[g]
     <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
@@ -205,7 +205,7 @@ $(function() {
     <%= f.label :diet_memo_5 %>
     <button type="button" id="food5" class="field btn-danger" > 食事の選択 </button>
     <button type="button" id="food5_cl" class="field btn-danger" > クリア </button>
-    <span><%= @page.meal5_cal %>kcal</span> 
+    <span><%= @page.meal5_cal %>kcal</span>
     <%= f.text_area :diet_memo_5 , { class: "form-control",rows: 3,style: "width:100%;"} %>
     <%= f.label :carbohydrate_5 %>[g]
     <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>

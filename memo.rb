@@ -23,7 +23,7 @@ rails g controller maintenance
 #食事管理機能のために
 #page add
 #carbohydrate fat protein vegetable diet_memo
-rails g migration AddColumnToPage diet:belongs_to carbohydrate_1:float fat_1:float protein_1:float vegetable_1:float diet_memo_1:string carbohydrate_2:float fat_2:float protein_2:float vegetable_2:float diet_memo_2:string carbohydrate_3:float fat_3:float protein_3:float vegetable_3:float diet_memo_3:string carbohydrate_4:float fat_4:float protein_4:float vegetable_4:float diet_memo_4:string carbohydrate_5:float fat_5:float protein_5:float vegetable_5:float diet_memo_5:string 
+rails g migration AddColumnToPage diet:belongs_to carbohydrate_1:float fat_1:float protein_1:float vegetable_1:float diet_memo_1:string carbohydrate_2:float fat_2:float protein_2:float vegetable_2:float diet_memo_2:string carbohydrate_3:float fat_3:float protein_3:float vegetable_3:float diet_memo_3:string carbohydrate_4:float fat_4:float protein_4:float vegetable_4:float diet_memo_4:string carbohydrate_5:float fat_5:float protein_5:float vegetable_5:float diet_memo_5:string
 
 rails g migration DelColumn1ToPage
 
@@ -53,9 +53,9 @@ rails g migration AddCoulumn3ToPage training_hour:float
 rake db:migrate
 heroku run rake db:migrate
 
-#2016/04/26 
+#2016/04/26
 #food model
-rails g scaffold food name diet:belongs_to calorie:float carbohydrate:float fat:float protein:float vegetable:float diet_memo:string 
+rails g scaffold food name diet:belongs_to calorie:float carbohydrate:float fat:float protein:float vegetable:float diet_memo:string
 
 rails g migration AddCoulumn4ToPage body_fat_per:float body_size_neck:flaat  body_size_bust:float body_size_waist:float body_size_hip:float body_size_arm_right:float body_size_arm_left:float body_size_leg_right:float body_size_leg_left:float body_size_calf_right:float body_size_calf_left:float
 
@@ -66,11 +66,11 @@ rails g migration AddCoulumn4ToPage body_fat_per:float body_size_neck:flaat  bod
 rails g scaffold food_category name no:integer order:integer
 
 rails g migration AddColumn1ToFood food_category:belongs_to
-rails g migration AddColumn2ToFood sort_key 
+rails g migration AddColumn2ToFood sort_key
 
-#2016/05/09 
+#2016/05/09
 #page_image model
-rails g scaffold  page_image page:belongs_to data:binary content_type 
+rails g scaffold  page_image page:belongs_to data:binary content_type
 
 
 #2016/05/19
@@ -82,7 +82,7 @@ heroku config:set FACEBOOK_KEY=0123456789
 
 #2016/04/23
 #training_hour
-rails g migration AddCoulumn1ToUser hashed_password 
+rails g migration AddCoulumn1ToUser hashed_password
 rake db:migrate
 heroku run rake db:migrate
 
@@ -94,8 +94,15 @@ heroku run rake db:migrate
 
 #2016/07/10
 #training_hour
-rails g migration AddCoulumn2ToUser administrator:boolean 
+rails g migration AddCoulumn2ToUser administrator:boolean
 bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate
 
 bundle exec rake erd orientation=horizontal title='FitNote model diagram' inheritance=true notation=uml filetype=jpg
+
+#2016/08/24
+#many to many vote
+rails g model item_vote user:belongs_to item:belongs_to
+rails g model food_vote user:belongs_to food:belongs_to
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate

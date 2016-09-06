@@ -2,6 +2,9 @@ class Item < ActiveRecord::Base
   belongs_to :part
   belongs_to :mode
   belongs_to :equipment
+  has_many :item_votes, dependent: :destroy
+  has_many :voters, through: :item_votes, source: :user
+
   #カスタムプロパティ
   def index_name
     self.part.name + " : " + self.name
@@ -16,7 +19,7 @@ class Item < ActiveRecord::Base
   scope :equipment_include , -> do
     includes(:equipment)
   end
-  
+
   default_scope  -> do
     includes(:part)
   end
@@ -32,19 +35,19 @@ class Item < ActiveRecord::Base
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
-      JSON.parse( s ).each do |elem| 
-        item = find_by(id: elem[:id]) || new 
+      JSON.parse( s ).each do |elem|
+        item = find_by(id: elem[:id]) || new
         item.assign_attributes(elem)
-        item.save 
+        item.save
       end
     end
   end
-  
+
   #スコープ
   scope :inTheHome , ->  do
     where(equipment_id: [2,5] )
   end
- 
+
   scope :in_the_gym, -> do
     where(equipment_id: [1,2,3,4]
          )
@@ -55,9 +58,9 @@ class Item < ActiveRecord::Base
   end
 
   scope :on_backs, ->do
-    where(part_id: [2,3]) 
+    where(part_id: [2,3])
   end
- 
+
   scope :on_legs, ->do
     where(part_id: 4)
   end

@@ -33,7 +33,7 @@
   <div class="field">
     <%= f.label :item_id %><br>
     <%= f.collection_select :item_id ,
-      Item.order(:part_id, :equipment_id), :id , :index_name ,
+      @items, :id , :index_name ,
       {prompt: true} , { class: "form-control"} %>
 </div>
 <div class="field">

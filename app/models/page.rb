@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   belongs_to :feeling
   def my_initialize
     sleep_time = Time.local(2000, 1, 1, 22, 30, 00)
-    end_time = Time.current + (2.5 * 60 * 60) 
+    end_time = Time.current + (2.5 * 60 * 60)
   end
   #####################################
   #decolater like
@@ -52,7 +52,7 @@ class Page < ActiveRecord::Base
     d += "</tr> "
     if diet_memo_1
       d += "<tr> "
-      d += "<td>①</td>"
+      d += "<td class='btn-info' >①</td>"
       d += "<td style='text-align:right;'> " + meal1_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_1.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_1.to_s + "</td> "
@@ -65,7 +65,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_2
       d += "<tr> "
-      d += "<td>②</td>"
+      d += "<td class= 'btn-success' >②</td>"
       d += "<td style='text-align:right;'> " + meal2_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_2.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_2.to_s + "</td> "
@@ -78,7 +78,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_3 && diet_memo_3.size > 0.0
       d += "<tr> "
-      d += "<td>③</td>"
+      d += "<td class='btn-info'>③</td>"
       d += "<td style='text-align:right;'> " + meal3_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_3.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_3.to_s + "</td> "
@@ -91,7 +91,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_4 && diet_memo_4.size > 0.0
       d += "<tr> "
-      d += "<td>④</td>"
+      d += "<td class='btn-success'>④</td>"
       d += "<td style='text-align:right;'> " + meal4_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_4.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_4.to_s + "</td> "
@@ -104,7 +104,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<tr> "
-      d += "<td>⑤</td>"
+      d += "<td class='btn-info'>⑤</td>"
       d += "<td style='text-align:right;'> " + meal5_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_5.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_5.to_s + "</td> "
@@ -118,7 +118,7 @@ class Page < ActiveRecord::Base
     d += "<tr style='border-bottom-style:double;'> "
     d += "<td>合計</td> "
     d += "<td>  " + tortal_cal.to_s + " </td> "
-    d += "<td>  " + carbohydrate_sum.to_s + " - " + (burn_cal/100*4).round(2).to_s  + "</td>" 
+    d += "<td>  " + carbohydrate_sum.to_s + " - " + (burn_cal/100*4).round(2).to_s  + "</td>"
     d += "<td>  " + fat_sum.to_s + "</td> "
     d += "<td> " + protein_sum.to_s + "</td>"
     d += "<td>" + vegetable_sum.to_s + "</td>"
@@ -149,7 +149,7 @@ class Page < ActiveRecord::Base
     mets = 6.0  # ウェイトトレーニング、ズンバを軽く見積もって。種目ごととかは難しいし、ズンバだけ分けるほどでもないので
     w = 70.0 #ここは後でユーザモデルから取得
     w = wight.to_f if wight.to_f != 0.0  #最新でーたがあれば上書き
-    ex = mets * training_hour.to_f  
+    ex = mets * training_hour.to_f
     ex = ex * 0.7  #休み時間を考慮 3割くらいは休んでいる感じ。
     burn_cal = ex * w * 1.05
     burn_cal.round 2
@@ -188,7 +188,7 @@ class Page < ActiveRecord::Base
   end
   def protein_sum
     sum = protein_1.to_f + protein_2.to_f + protein_3.to_f + protein_4.to_f + protein_5.to_f
-    sum.round 2 
+    sum.round 2
   end
   def vegetable_sum
     sum = vegetable_1.to_f + vegetable_2.to_f + vegetable_3.to_f + vegetable_4.to_f + vegetable_5.to_f
@@ -198,20 +198,20 @@ class Page < ActiveRecord::Base
     id.to_s + "." + date.to_s + "_" + place
   end
   def page_training_label
-    label = 
-   date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]}) ") + "_" + place + "_" + lines.size.to_s + "_" 
+    label =
+   date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]}) ") + "_" + place + "_" + lines.size.to_s + "_"
     t = ""
     lines.each do |line|
-      t += line.item.name.slice(0,4)  + "/" 
+      t += line.item.name.slice(0,4)  + "/"
     end
     label += t
   end
-  # 
+  #
   #decolater like
   ######################################
   scope :training_only, ->do
    #trainig.size > 0
-   joins(:lines).distinct 
+   joins(:lines).distinct
    end
   scope :default, -> do
     includes(:diet).includes(:feeling).includes(:condition).order("date desc")
@@ -230,12 +230,11 @@ class Page < ActiveRecord::Base
     #JSONのインポート
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
-      JSON.parse( s ).each do |elem| 
-        page = find_by(id: elem[:id]) || new 
+      JSON.parse( s ).each do |elem|
+        page = find_by(id: elem[:id]) || new
         page.assign_attributes(elem)
-        page.save 
+        page.save
       end
     end
   end
 end
-
