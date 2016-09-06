@@ -1,5 +1,6 @@
 class FoodsController < InheritedResources::Base
   before_action :login_required
+  after_action :add_voted, only:[:create]
   def index
     @foods = Food.all
   end
@@ -12,6 +13,9 @@ class FoodsController < InheritedResources::Base
     end
   end
 
+  def add_voted
+    current_user.voted_foods << @food
+  end
 
   # 投票
     def like
