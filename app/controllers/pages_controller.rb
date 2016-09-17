@@ -1,11 +1,12 @@
 class PagesController < InheritedResources::Base
   before_action :login_required
   before_action :form_setup ,only:[:new, :edit]
+  before_action :growl_setup ,only:[:show]
 
   include ChartUtil
   def show_pic
     self.index_logic "all" ,false
-    @simple_page = false
+    @simple_page = fal  se
     @show_detail = false
     @show_chart = false
     render :index
@@ -143,6 +144,9 @@ class PagesController < InheritedResources::Base
   end
 
   private
+  def growl_setup
+    @tip = Tip.random_one
+  end
   # 画像送信
   def send_image
     if @page.image.present?

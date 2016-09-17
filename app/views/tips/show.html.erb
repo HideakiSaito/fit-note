@@ -1,0 +1,35 @@
+<%= render "shared/tipgrowl" %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong title="Name">タイトル:</strong>
+  <%= @tip.name %>
+</p>
+
+<p>
+  <strong title="Tip category">カテゴリ:</strong>
+  <%= @tip.tip_category.name %>
+</p>
+
+<p>
+  <strong titele="Tip recommendation">オススメ度:</strong>
+  <% @tip.tip_recommendation.rate.times do %>
+   ⭐️
+   <% end %>:
+  <%= @tip.tip_recommendation.name %>
+</p>
+
+<p>
+  <strong title="Description">説明:</strong>
+  <pre>
+  <%= raw @tip.description %>
+ </pre>
+</p>
+
+<p>
+  <strong title="Author">提供者:</strong>
+  <%= @tip.author %>
+</p>
+
+<%= link_to 'Edit', edit_tip_path(@tip) %> |
+<%= link_to 'Back', tips_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823221728) do
+ActiveRecord::Schema.define(version: 20160917014222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,32 @@ ActiveRecord::Schema.define(version: 20160823221728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tip_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tip_recommendations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tips", force: :cascade do |t|
+    t.integer  "tip_category_id"
+    t.integer  "tip_recommendation_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "author"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "tips", ["tip_category_id"], name: "index_tips_on_tip_category_id", using: :btree
+  add_index "tips", ["tip_recommendation_id"], name: "index_tips_on_tip_recommendation_id", using: :btree
+
   create_table "trainings", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "weight"
@@ -296,6 +322,8 @@ ActiveRecord::Schema.define(version: 20160823221728) do
   add_foreign_key "pages", "diets"
   add_foreign_key "pages", "feelings"
   add_foreign_key "pages", "users"
+  add_foreign_key "tips", "tip_categories"
+  add_foreign_key "tips", "tip_recommendations"
   add_foreign_key "trainings", "items"
   add_foreign_key "trainings", "modes"
 end

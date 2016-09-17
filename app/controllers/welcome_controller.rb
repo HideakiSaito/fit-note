@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  before_action :growl_setup ,only:[:index]
   include ChartUtil
   def index
     if current_user
@@ -16,20 +17,16 @@ class WelcomeController < ApplicationController
       flash.alert = "ログインしてください"
     end
   end
-
   def about
   end
-
   def developer
   end
-
   def latest_page_finished
     reps_sum = @latest_page.lines.collect do
       |line| line.get_sum_reps
     end.sum
     reps_sum != 0 #最新ページのトレーニング一回もやってなかったら
   end
-
   def get_greeting
       case Time.current.hour #now だとUTC
       when 2..4 then "こんな時間に。。。早く寝なさい！"
@@ -43,7 +40,6 @@ class WelcomeController < ApplicationController
       else "no message"
       end
   end
-
   def get_chart_gym
     #Big3 items id
     push_id = [1,2]
@@ -58,5 +54,8 @@ class WelcomeController < ApplicationController
       f.series(name: 'Leg', data: chart_data(leg_id))
     end
   end
-
+  private #####################
+  def growl_setup
+    @tip = Tip.random_one
+  end
 end

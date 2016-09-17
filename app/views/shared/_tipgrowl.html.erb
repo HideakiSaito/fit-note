@@ -1,0 +1,7 @@
+<% if @tip %>
+  <script type="text/javascript">
+  $(function() {
+   $.growl.notice({ title: '<%= @tip.id %>:<%=@tip.name %>', message: ' <%= @tip.grol_mes %>' });
+  });
+  </script>
+<% end %>

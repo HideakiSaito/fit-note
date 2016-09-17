@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tips
+  resources :tip_recommendations
+  resources :tip_categories
   namespace :admin do
     root to: "top#index" , :as => "top"
     resources :users

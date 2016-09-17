@@ -10,7 +10,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -37,7 +37,7 @@ ja:
       short: "%m/%d"
       short_day: "%m/%d(%a)"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -205,21 +205,41 @@ ja:
 
   activerecord:
     models:
-      page: ページ 
+      page: ページ
       food: 食事
       item: 種目
       page_image: 画像
-      user: ユーザ 
+      user: ユーザ
+      tip: ヒント
+      tip_category: ヒント・カテゴリ
+      tip_recommendation: ヒント・推奨レベル
     attributes:
+      tip:
+        tip_category_id: ヒント・カテゴリ
+        tip_recommendation_id: ヒント・推奨レベル
+        name: タイトル
+        description: 説明
+        author: ヒント提供者
+        created_at: 登録日時
+        updated_at: 更新日時
+      tip_category:
+        name: 名称
+        created_at: 登録日時
+        updated_at: 更新日時
+      tip_recommendation:
+        name: 名称
+        rate: レート
+        created_at: 登録日時
+        updated_at: 更新日時
       page:
         id: ID
         created_at: 登録日時
         updated_at: 更新日時
-        date: 日付 
-        place: 場所 
+        date: 日付
+        place: 場所
         start_time: 開始時刻
         end_time: 終了時刻
-        memo: メモ 
+        memo: メモ
         diet_id: ダイエット
         diet_memo_1: 食事メニュー1
         carbohydrate_1: 炭水化物1
@@ -259,7 +279,7 @@ ja:
         tv_hour: テレビ時間
         training_hour: トレーニング時間
         body_fat_per: 体脂肪
-        body_size_neck: サイズ_首回り 
+        body_size_neck: サイズ_首回り
         body_size_bust: サイズ_バスト
         body_size_waist: サイズ_ウェスト
         body_size_hip: サイズ_ヒップ
@@ -273,8 +293,8 @@ ja:
         id: ID
         created_at: 登録日時
         updated_at: 更新日時
-        name: 名前 
-        food_category_id: 種類 
+        name: 名前
+        food_category_id: 種類
         diet_id: ダイエット
         diet_memo: 食事メモ
         carbohydrate: 炭水化物

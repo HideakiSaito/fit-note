@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+ <%= render "shared/tipgrowl" %>
+<h1>ヒント一覧</h1>
+
+<table class="table table-striped"
+       style="text-align: right; width: 100%;">
+  <thead>
+    <tr>
+      <th>カテゴリ</th>
+      <th>オススメ度</th>
+      <th>タイトル</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tips.each do |tip| %>
+      <tr>
+        <td><%= tip.tip_category.name %></td>
+        <td>
+          <% tip.tip_recommendation.rate.times do %>
+           ⭐️
+           <% end %>
+        </td>
+        <td><%= tip.name %></td>
+        <td><%= link_to 'Show', tip %></td>
+        <td><%= link_to 'Edit', edit_tip_path(tip) %></td>
+        <td><%= link_to 'Destroy', tip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tip', new_tip_path %>

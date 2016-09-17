@@ -80,7 +80,7 @@ rake db:migrate
 
 heroku config:set FACEBOOK_KEY=0123456789
 
-#2016/04/23
+#2016/04/2
 #training_hour
 rails g migration AddCoulumn1ToUser hashed_password
 rake db:migrate
@@ -106,3 +106,68 @@ rails g model item_vote user:belongs_to item:belongs_to
 rails g model food_vote user:belongs_to food:belongs_to
 bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate
+
+#2016/09/17 #####################################VVVVV
+# HideakiSaito/r1#9
+# tipモデルを作る。ダイエット３１か条とか、トガシさんのアドバイスとかをランダムに出す
+####
+#tips model ehime ryokou densya de
+rails g scaffold tip_category name:string
+rails g scaffold tip_recommendation name:string rate:integer
+rails g scaffold tip tip_category:belongs_to tip_recommendation:belongs_to name:string description:string author:string
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
+
+##基本機能を作る
+# tip select-input
+# trash files
+
+##admin name space へ移す。
+# □ topにメニュー追加。
+# □ class の名前を名前空間つき。
+# □ とりあえず動くまで
+
+# controller names
+#  tip_categories
+#  tip_recommendations
+#  tips
+
+## design #### ほぼ日手帳とか、フランクリンプランナー的なデザインで。
+# home page -> recommend area に。
+# page page -> 上の方か、growlで。
+# pages page -> 上の方か、growlで。
+
+ ### labo tip/show で実験する
+
+#ヒント
+tip
+ name #タイトル string
+ description #説明 string
+ author #ヒントくれた人
+ tip_category_id #ヒントのカテゴリ many to one model
+ tip_recommendation_id #おすすめモデル many to on model
+
+#ヒント推奨レベル
+tip_recommendation
+ name #名前 string
+ rate #星１〜５ integer
+
+# data
+# 絶対オススメ	5	,かなりオススメ	4	,まあまあオススメ	3	,できれば	2	,どっちでもいい	1
+
+#ヒントカテゴリ
+tip_category
+ name #名前 string トレーニング関連:1、食事関連:2、休息:3、ダイエット全般:4、プログラム関連:5
+
+# data
+# トレーニング  ,ダイエット（食事）,休息, ダイエット（全般）,プログラム・IT
+
+##英語のふくしtips_まさしさん
+_at  場所、人
+_on 時間（その時）
+_by 手段、〜までに（時間）
+_of 〜の
+_for 〜のために
+_to 〜に
+
+############################################AAA
