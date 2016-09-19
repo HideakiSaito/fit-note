@@ -85,7 +85,7 @@ $(function() {
     </div>
   </div>
   <% # Food Dialog AAAA################################################%>
-<% # FixdeMenu VVV####### %>  
+<% # FixdeMenu VVV####### %>
   <style>
     .footer-fixed .fixbar{
       position: fixed;
@@ -93,9 +93,12 @@ $(function() {
       bottom: 0;
       with: 100%;
       /* height: 40px; */
+      padding-top:12px;
+      padding-bottom:12px;
     }
-    .fixvar{
-      vertical-align:middle;
+    .footer-fixed .fixbar a{
+      padding-top:12px;
+      padding-bottom:12px;
     }
   </style>
 <div class="footer-fixed">
@@ -109,7 +112,7 @@ $(function() {
     <%= link_to " 5" , "#food5" , class: "btn btn-default fa fa-cutlery" %>
     <%= link_to " 体調" , "#page_condition_label" , class: "btn btn-default fa fa-bed" %>
     <%= link_to " 水分、休息" , "#page_water_label" , class: "btn btn-default fa fa-coffee" %>
-    <%= link_to " サイズ" , "#page_size_label" , class: "btn btn-default fa fa-female" %>
+    <%= link_to " 体重、サイズ" , "#page_size_label" , class: "btn btn-default fa fa-female" %>
     <span> </span>
   </div>
 </div>
@@ -277,13 +280,13 @@ $(function() {
   <%= f.label :tv_hour %>[h]
   <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
   <br>
-  <%= f.label :wight %>[kg]
+  <%= f.label :wight , id: "page_size_label"%>[kg]
   <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
   <%= f.label :body_fat_per %>[%]
   <%= f.number_field :body_fat_per ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
-  <%= f.label :body_size_neck , id: "page_size_label" %>[cm]
+  <%= f.label :body_size_neck  %>[cm]
   <%= f.number_field :body_size_neck ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
 </div>
 <div class="field">
