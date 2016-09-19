@@ -12,6 +12,10 @@ p {
 <hr>
   <p><i class="fa fa-database"/></i><a href="/maintenance">・データ管理</a></p>
 <hr>
+  <p><i class="fa fa-commenting"/></i><%= link_to "・ヒント", :admin_tips %></p>
+  <p><i class="fa fa-tags"/></i><%= link_to "・ヒントカテゴリ", :admin_tip_categories %></p>
+  <p><i class="fa fa-star"/></i><%= link_to "・ヒント推奨レベル", :admin_tip_recommendations %></p>
+<hr>
   <p><i class="fa fa-cutlery"/></i><%= link_to "・食品", :admin_foods %></p>
   <p><i class="fa fa-flask"/></i><%= link_to "・食品カテゴリ", :admin_food_categories %></p>
   <p><i class="fa fa-fire"/></i><%= link_to "・ダイエットタイプ", :admin_diets %></p>

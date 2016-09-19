@@ -1,4 +1,32 @@
 <%= render 'shared/tipgrowl' %>
+<% # FixdeMenu VVV####### %>
+  <style>
+    .footer-fixed .fixbar{
+      position: fixed;
+      background-color:#f5f5f5;
+      bottom: 0;
+      with: 100%;
+      /* height: 40px; */
+    }
+    .fixvar{
+      vertical-align:middle;
+    }
+    .footer-fixed{
+      z-index: 999999;
+    }
+  </style>
+<div class="footer-fixed" style="z-index:9999;">
+  <div class="fixbar" >
+    <span> </span>
+    <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
+    <%= link_to " " , "#diet-line" , class: "btn btn-default fa fa-cutlery" %>
+    <%= link_to " " , "#training-line" , class: "btn btn-default fa fa-hand-rock-o" %>
+    <%= link_to " " , "#highcharts-0" , class: "btn btn-default fa fa-pie-chart" %>
+    <%= link_to " " , "#highcharts-2" , class: "btn btn-default fa fa-coffee" %>
+    <span> </span>
+  </div>
+</div>
+<% # FixdeMenu AAA####### %>
 <div class= "<%= @page_class %> note-index" >
     <table style="vertical-align:baseline" >
       <tr>
@@ -40,7 +68,7 @@
      <% else %>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
      <% end %>
-      <div class="diet-line" style="color:black;">
+      <div class="diet-line" style="color:black;" id="diet-line">
       <%= raw page.diet_summaly %>
       </div>
       <div class="health-line" style="color:black;">
@@ -54,7 +82,7 @@
      <% else %>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
      <% end %>
-    <div class="training-line">
+    <div class="training-line" id="training-line">
       <table class="table table-striped table-hover "
              style="text-align: right; width: 100%;">
         <thead>

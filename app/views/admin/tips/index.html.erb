@@ -1,0 +1,41 @@
+<style>table th {text-align:center;} </style>
+<p id="notice"><%= notice %></p>
+<%= render "shared/tipgrowl" %>
+<h1>ヒント一覧</h1>
+
+<table class="table table-striped"
+style="text-align: right; width: 100%;">
+<thead>
+  <tr>
+    <th>カテゴリ</th>
+    <th>オススメ度</th>
+    <th>タイトル</th>
+    <th></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @tips.each do |tip| %>
+  <tr>
+    <td><%= link_to tip.tip_category.name , admin_tip_path(tip)%></td>
+    <td>
+      <% tip.tip_recommendation.rate.times do %>
+      ⭐️
+      <% end %>
+    </td>
+    <td><%= link_to tip.name ,admin_tip_path(tip) %></td>
+    <td>
+      <%= link_to '参照', admin_tip_path(tip) ,class: "btn btn-default" %>
+      <%= link_to '編集', edit_admin_tip_path(tip) ,class: "btn btn-default" %>
+      <%= link_to '削除', admin_tip_path(tip), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default" %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+<br>
+
+<%= link_to '新規作成', new_admin_tip_path ,class: "btn btn-default" %>
+
+<%= link_to '管理ページに戻る', admin_top_path %>

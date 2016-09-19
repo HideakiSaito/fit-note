@@ -119,23 +119,25 @@ bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate
 
 ##基本機能を作る
-# tip select-input
-# trash files
+# ✅tip select-input
+# ✅trash files
+# ✅管理者権限機能
+# ✅わかるアイコン
 
 ##admin name space へ移す。
-# □ topにメニュー追加。
-# □ class の名前を名前空間つき。
-# □ とりあえず動くまで
+# ✅ topにメニュー追加。
+# ✅ class の名前を名前空間つき。
+# ✅ とりあえず動くまで
 
 # controller names
-#  tip_categories
-#  tip_recommendations
-#  tips
+# ✅tip_categories
+# ✅tip_recommendations
+# ✅tips
 
 ## design #### ほぼ日手帳とか、フランクリンプランナー的なデザインで。
-# home page -> recommend area に。
-# page page -> 上の方か、growlで。
-# pages page -> 上の方か、growlで。
+# ✅home page -> recommend area に。
+# ✅page page -> 上の方か、growlで。
+# ✅pages page -> 上の方か、growlで。
 
  ### labo tip/show で実験する
 
@@ -171,3 +173,20 @@ _for 〜のために
 _to 〜に
 
 ############################################AAA
+#2016/09/19 #####################################VVVVV
+# HideakiSaito/r1#20
+# プロフィール機能の追加（TOPに
+# user model へ属性の追加
+#
+####
+#tips model ehime ryokou densya de
+rails g scaffold tip_category name:string
+rails g scaffold tip_recommendation name:string rate:integer
+rails g scaffold tip tip_category:belongs_to tip_recommendation:belongs_to name:string description:string author:string
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
+
+##基本機能を作る
+# ✅tip select-input
+# ✅trash files
+# ✅管理者権限機能

@@ -1,5 +1,6 @@
 class UsersController < InheritedResources::Base
   before_action :login_required ,only:[:show,:index,:edit,:destroy]
+  
   def create
     if env['omniauth.auth'].present?
       # Facebookログイン
@@ -13,7 +14,7 @@ class UsersController < InheritedResources::Base
       fb       = ""
     end
     if result
-      flash[:success] = "#{fb}ログインしました。" 
+      flash[:success] = "#{fb}ログインしました。"
       sign_in @user
     else
       if fb.present?
@@ -33,8 +34,8 @@ class UsersController < InheritedResources::Base
     #sign_in @user
   end
   def destroy
-    session[:user_id] = nil 
-    redirect_to :root 
+    session[:user_id] = nil
+    redirect_to :root
   end
   def sign_in user
     session[:user_id] = user.id
@@ -47,4 +48,3 @@ class UsersController < InheritedResources::Base
     params.require(:user).permit(:provider, :uid, :name, :email, :icon, :oauth_token, :oauth_expires_at, :password,:password_confirmation)
   end
 end
-

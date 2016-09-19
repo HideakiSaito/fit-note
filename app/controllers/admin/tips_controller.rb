@@ -1,4 +1,7 @@
-class TipsController < InheritedResources::Base
+class Admin::TipsController < InheritedResources::Base
+  include AdminUtil
+  before_action :login_required
+  before_action :admin_login_required
   before_action :growl_setup ,only:[:index]
   private
   def growl_setup

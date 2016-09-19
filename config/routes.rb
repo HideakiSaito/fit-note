@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :tips
-  resources :tip_recommendations
-  resources :tip_categories
+  #resources :tips
+  #resources :tip_recommendations
+  #resources :tip_categories
   namespace :admin do
     root to: "top#index" , :as => "top"
     resources :users
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       collection { get "search"}
       collection { post :import }
     end
+    resources :tips
+    resources :tip_recommendations
+    resources :tip_categories
   end
 
   resources :feelings
@@ -41,8 +44,7 @@ Rails.application.routes.draw do
     collection { get "search"}
     collection { post :import }
   end
-
-
+  
   resources :users ,only: [:create, :destroy ,:show ]  do
     resources :pages do
       resources :lines

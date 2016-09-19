@@ -1,4 +1,4 @@
-<%= form_for(@tip_recommendation) do |f| %>
+<%= form_for([:admin,@tip_recommendation]) do |f| %>
   <% if @tip_recommendation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tip_recommendation.errors.count, "error") %> prohibited this tip_recommendation from being saved:</h2>

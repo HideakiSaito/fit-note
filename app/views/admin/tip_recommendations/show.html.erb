@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>名称:</strong>
+  <%= @tip_recommendation.name %>
+</p>
+
+<p>
+  <strong>レート:</strong>
+  <%= @tip_recommendation.rate %>
+</p>
+
+<%= link_to 'Edit', edit_admin_tip_recommendation_path(@tip_recommendation) %> |
+<%= link_to 'Back', admin_tip_recommendations_path %>

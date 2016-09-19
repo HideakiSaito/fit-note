@@ -1,8 +1,8 @@
 class Admin::FoodsController < InheritedResources::Base
-  before_action :login_required
   include AdminUtil
+  before_action :login_required
   before_action :admin_login_required
-  
+
   def index
     @foods = Food.all
   end
