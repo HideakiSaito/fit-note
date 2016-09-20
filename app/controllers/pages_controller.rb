@@ -6,7 +6,7 @@ class PagesController < InheritedResources::Base
   include ChartUtil
   def show_pic
     self.index_logic "all" ,false
-    @simple_page = fal  se
+    @simple_page = false
     @show_detail = false
     @show_chart = false
     render :index

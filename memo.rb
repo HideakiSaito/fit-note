@@ -177,7 +177,8 @@ _to 〜に
 # HideakiSaito/r1#20
 # プロフィール機能の追加（TOPに
 # user model へ属性の追加
-#
+#  >
+#  >
 ####
 #tips model ehime ryokou densya de
 rails g scaffold tip_category name:string
