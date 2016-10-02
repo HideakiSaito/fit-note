@@ -26,7 +26,6 @@
 <div class="footer-fixed" style="z-index:9999;">
   <div class="fixbar" >
     <span> </span>
-    <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
     <% if @prev_line %>
            <%= link_to " <" , "/lines/#{@prev_line.id}/edit" , class: "btn btn-default fa fa-child" %>
     <% else %>
