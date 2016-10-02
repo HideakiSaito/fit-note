@@ -14,6 +14,14 @@
     padding-top:12px;
     padding-bottom:12px;
   }
+
+  /* memo PCようにおおきく*/
+  @media (min-width: 768px){
+    .form-control.memo{
+      width:350px;
+    }
+  }
+
   </style>
 <div class="footer-fixed" style="z-index:9999;">
   <div class="fixbar" >
@@ -89,7 +97,7 @@
     /<%= label_tag "回数" %>
     <%= f.number_field :reps_1 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
-    <%= f.text_field :memo_1 ,class: "form-control"%>
+    <%= f.text_field :memo_1 ,class: "form-control memo" %>
   </div>
   <hr/>
   <div class="field form-group" id="set2">
@@ -108,7 +116,7 @@
     /<%= label_tag "回数" %>
     <%= f.number_field :reps_2 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
-    <%= f.text_field :memo_2 ,class: "form-control"%>
+    <%= f.text_field :memo_2 ,class: "form-control memo"%>
   </div>
   <hr/>
   <div class="field form-group" id="set3">
@@ -127,7 +135,7 @@
     /<%= label_tag "回数" %>
     <%= f.number_field :reps_3 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
-    <%= f.text_field :memo_3 ,class: "form-control"%>
+    <%= f.text_field :memo_3 ,class: "form-control memo"%>
   </div>
   <hr/>
     <%= f.submit class: "btn btn-primary btn-block" %>
@@ -167,7 +175,7 @@
     /<%= label_tag "回数" %>
     <%= f.number_field :reps_4 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
-    <%= f.text_field :memo_4 ,class: "form-control"%>
+    <%= f.text_field :memo_4 ,class: "form-control memo"%>
   </div>
   <hr/>
   <div class="field form-group" id="set5">
@@ -186,7 +194,7 @@
     /<%= label_tag "回数" %>
     <%= f.number_field :reps_5 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
     :<%= label_tag "メモ" %>
-    <%= f.text_field :memo_5 ,class: "form-control"%>
+    <%= f.text_field :memo_5 ,class: "form-control memo"%>
   </div>
   <hr/>
     <%= f.submit class: "btn btn-primary btn-block" %>
