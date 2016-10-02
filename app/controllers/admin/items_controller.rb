@@ -4,6 +4,7 @@ class Admin::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   include AdminUtil
   before_action :admin_login_required
+  after_action :add_voted, only:[:create]
 
   # GET /items
   # GET /items.json
@@ -86,6 +87,10 @@ class Admin::ItemsController < ApplicationController
     # fileはtmpに自動で一時保存される
      Item.import(params[:file])
      redirect_to items_url, notice: "Itemをインポートしました。"
+  end
+
+  def add_voted
+    current_user.voted_items << @item
   end
 
   private

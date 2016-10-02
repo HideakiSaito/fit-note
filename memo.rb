@@ -191,3 +191,8 @@ heroku run bundle exec rake db:migrate
 # ✅tip select-input
 # ✅trash files
 # ✅管理者権限機能
+#
+
+インポートごにすることseqの訂正
+ select setval('foods_id_seq', (select max(id)+1 from foods) );
+ select setval('items_id_seq', (select max(id)+1 from items) );

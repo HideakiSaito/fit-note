@@ -2,6 +2,7 @@ class Admin::FoodsController < InheritedResources::Base
   include AdminUtil
   before_action :login_required
   before_action :admin_login_required
+  after_action :add_voted, only:[:create]
 
   def index
     @foods = Food.all
@@ -13,6 +14,9 @@ class Admin::FoodsController < InheritedResources::Base
       @food = @from.dup #クローンのId抜き
       @food.name = "[copy]" +  @food.name
     end
+  end
+  def add_voted
+    current_user.voted_foods << @food
   end
   private
     def food_params

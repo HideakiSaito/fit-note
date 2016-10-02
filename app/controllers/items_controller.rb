@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   include ChartUtil
   before_action :login_required
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  after_action :add_voted, only:[:create]
 
   # GET /items
   # GET /items.json
@@ -86,6 +87,9 @@ class ItemsController < ApplicationController
      redirect_to items_url, notice: "Itemをインポートしました。"
   end
 
+  def add_voted
+    current_user.voted_items << @item
+  end
   # 投票
     def like
       @item = Item.find(params[:id])
