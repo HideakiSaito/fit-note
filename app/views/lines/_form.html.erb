@@ -27,11 +27,20 @@
   <div class="fixbar" >
     <span> </span>
     <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
-    <%= link_to " 1" , "#set1" , class: "btn btn-default fa fa-hand-rock-o" %>
+    <% if @prev_line %>
+           <%= link_to " <" , "/lines/#{@prev_line.id}/edit" , class: "btn btn-default fa fa-child" %>
+    <% else %>
+      <%= link_to " " , "#" , class: "" %>
+    <% end %>
+    <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
     <%= link_to " 2" , "#set2" , class: "btn btn-default fa fa-hand-rock-o" %>
     <%= link_to " 3" , "#set3" , class: "btn btn-default fa fa-hand-rock-o" %>
     <%= link_to " 4" , "#set4" , class: "btn btn-default fa fa-hand-rock-o" %>
-    <%= link_to " 5" , "#set5" , class: "btn btn-default fa fa-hand-rock-o" %>
+    <% if @next_line %>
+      <%= link_to " >" , "/lines/#{@next_line.id}/edit" , class: "btn btn-default fa fa-child" %>
+    <% else %>
+      <%= link_to " " , "#" , class: "" %>
+    <% end %>
     <span> </span>
   </div>
 </div>
@@ -217,3 +226,6 @@
      onclick="location.href='<%=new_page_line_path(@line.page)  %>' "
   <% end %>
   />
+  <input type="button" class="btn btn-default"
+     value="ページへ"
+     onclick="location.href='/pages/<%= @line.page_id %>' " />
