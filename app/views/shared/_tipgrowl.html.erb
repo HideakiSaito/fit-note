@@ -1,4 +1,4 @@
-<% if @tip %>
+<% if @tip && [*1..4].sample == 1 %>
   <script type="text/javascript">
   $(function() {
    $.growl.warning  ({ title: '<%= @tip.id %>:<%=@tip.name %>', message: ' <%= @tip.grol_mes %>' });
