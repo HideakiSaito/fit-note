@@ -196,3 +196,5 @@ heroku run bundle exec rake db:migrate
 インポートごにすることseqの訂正
  select setval('foods_id_seq', (select max(id)+1 from foods) );
  select setval('items_id_seq', (select max(id)+1 from items) );
+
+ #アプリ名称、リポジトリ名称を見直して、キーたとか色々見直し
