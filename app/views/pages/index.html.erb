@@ -2,7 +2,7 @@
 <h1>ノート <%= @disp_mode  %></h1>
 <ul class="nav nav-tabs">
   <li><a href="/pages/training_only">トレーニングだけ</a></li>
-  <li><a href="/pages/show_pic">画像、メモを表示</a></li>
+  <li><a href="/pages/show_pic">詳細</a></li>
   <li><a href="/pages">シンプル</a></li>
 </ul>
 <%= form_for @search_form , :url => pages_path, :remote => true, :html => {:method => :get} do |f| %>
@@ -12,7 +12,8 @@
 <% end %>
 <button type="button" class="btn btn-primary mini-size"
         onClick="location.href='/pages/new'">新しいページを作る。</button>
- <%= check_box_tag "page[hidden_lines]",true, @show_detail %> 詳細表示 
+ <%= check_box_tag "page[hidden_picture]" ,true , @show_picture %> 画像表示
+ <%= check_box_tag "page[hidden_lines]",true, @show_detail %> トレーニング内容表示 
  <%= check_box_tag "page[hidden_chart]" ,true , @show_chart %> グラフ表示
  <div id="pages" class="row" >
    <% if @simple_page %>

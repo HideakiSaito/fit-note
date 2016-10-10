@@ -23,3 +23,11 @@ $(document).on "ready page:load",->
   $("#page_hidden_chart").bind("click",change_page_hidden_chart_at)
   change_page_hidden_chart_at()
 
+  change_page_hidden_picture_at = ->
+    if $("#page_hidden_picture").prop("checked")
+      $(".picture").show()
+    else
+      $(".picture").hide()
+  $("#page_hidden_picture").bind("click",change_page_hidden_picture_at)
+  change_page_hidden_picture_at()
+
