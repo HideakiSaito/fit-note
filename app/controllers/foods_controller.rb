@@ -5,11 +5,64 @@ class FoodsController < InheritedResources::Base
     @foods = Food.all
   end
   def new
+    #コピーの場合のロジック
     @food = Food.new
-    if params[:copy_from] #コピーの場合のロジック
+    if params[:copy_from] 
       @from = Food.find(params[:copy_from])
       @food = @from.dup #クローンのId抜き
       @food.name = "[copy]" +  @food.name
+    end
+    #pageからの定番メニュー追加ロジック
+    if params[:page]
+      page = Page.find params[:page]
+      sort_key = page.date.strftime("%Y%m%d")
+      diet_id = page.diet_id
+      case params[:item].to_i
+      when 1
+        name = page.diet_memo_1
+        protein = page.protein_1
+        fat = page.fat_1
+        carbohydrate = page.carbohydrate_1
+        vegetable = page.vegetable_1
+        sort_key += "-1"
+      when 2
+        name = page.diet_memo_2
+        protein = page.protein_2
+        fat = page.fat_2
+        carbohydrate = page.carbohydrate_2
+        vegetable = page.vegetable_2
+        sort_key += "-2"
+      when 3
+        name = page.diet_memo_3
+        protein = page.protein_3
+        fat = page.fat_3
+        carbohydrate = page.carbohydrate_3
+        vegetable = page.vegetable_3
+        sort_key += "-3"
+      when 4
+        name = page.diet_memo_4
+        protein = page.protein_4
+        fat = page.fat_4
+        carbohydrate = page.carbohydrate_4
+        vegetable = page.vegetable_4
+        sort_key += "-4"
+      when 5
+        name = page.diet_memo_5
+        protein = page.protein_5
+        fat = page.fat_5
+        carbohydrate = page.carbohydrate_5
+        vegetable = page.vegetable_5
+        sort_key += "-5"
+      end
+      @food.name = name
+      @food.protein = protein
+      @food.fat = fat
+      @food.carbohydrate = carbohydrate
+      @food.vegetable = vegetable
+      @food.sort_key = sort_key
+      @food.diet_id = diet_id
+      @food.food_category_id = 1
+      @food.diet_memo = sort_key + ":定番メニュー追加"
     end
   end
 

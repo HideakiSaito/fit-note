@@ -11,51 +11,6 @@
       </ul>
     </div>
   <% end %>
-<script type="text/javascript">
-//食事メニューのダイアログ定義
-$(function() {
-  $( "#dialog" ).dialog({
-    autoOpen: false,
-    modal: true,
-    width: 440,
-    height: 580,
-    buttons: {
-      "1 定番": function(){
-        select_category('1');
-      },
-      "2 肉、魚": function(){
-        select_category('2');
-      },
-      "3 卵": function(){
-        select_category('3');
-      },
-      "4 乳": function(){
-        select_category('4');
-      },
-      "5 穀物": function(){
-        select_category('5');
-      },
-      "6 豆、ナッツ": function(){
-        select_category('6');
-      }_training,
-      "7 野菜": function(){
-        select_category('7');
-      },
-      "8 果物": function(){
-        select_category('8');
-      },
-      "9 サプリ": function(){
-        select_category('9');
-      },
-      "10 他": function(){
-        select_category('10');
-      },
-      "OK": function(){
-        $(this).dialog('close');
-      }
-    }
-  });
-</script>
   <% # Food Dialog ################################################%>
   <div id="dialog" title="食事の一覧">
     <div style="overflow:scroll;">

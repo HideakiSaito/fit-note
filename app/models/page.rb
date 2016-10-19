@@ -52,7 +52,9 @@ class Page < ActiveRecord::Base
     d += "</tr> "
     if diet_memo_1
       d += "<tr> "
-      d += "<td class='btn-info' >①</td>"
+      d += "<td class='btn-info' >"
+      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=1'> ① </a>"
+      d += "</td>"
       d += "<td style='text-align:right;'> " + meal1_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_1.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_1.to_s + "</td> "
@@ -65,7 +67,9 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_2
       d += "<tr> "
-      d += "<td class= 'btn-success' >②</td>"
+      d += "<td class='btn-success' >"
+      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=2'> ② </a>"
+      d += "</td>"
       d += "<td style='text-align:right;'> " + meal2_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_2.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_2.to_s + "</td> "
@@ -78,7 +82,9 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_3 && diet_memo_3.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-info'>③</td>"
+      d += "<td class='btn-info' >"
+      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=3'> ③  </a>"
+      d += "</td>"
       d += "<td style='text-align:right;'> " + meal3_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_3.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_3.to_s + "</td> "
@@ -91,7 +97,9 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_4 && diet_memo_4.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-success'>④</td>"
+      d += "<td class='btn-success' >"
+      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=4'> ④  </a>"
+      d += "</td>"
       d += "<td style='text-align:right;'> " + meal4_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_4.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_4.to_s + "</td> "
@@ -104,7 +112,10 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-info'>⑤</td>"
+      d += "<td class='btn-info'></td>"
+      d += "<td class='btn-info' >"
+      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=5'> ⑤  </a>"
+      d += "</td>"
       d += "<td style='text-align:right;'> " + meal5_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + carbohydrate_5.to_s + "</td>"
       d += "<td style='text-align:right;'>" + fat_5.to_s + "</td> "
