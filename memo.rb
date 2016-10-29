@@ -198,3 +198,9 @@ heroku run bundle exec rake db:migrate
  select setval('items_id_seq', (select max(id)+1 from items) );
 
  #アプリ名称、リポジトリ名称を見直して、キーたとか色々見直し
+ #
+ 
+pbpasteを使う
+Macには、pbpasteというclipboardの中身を出力するコマンドがある。
+これと、:r !commandがcommandの出力を挿入することを組み合わせると…？
+:r !pbpaste

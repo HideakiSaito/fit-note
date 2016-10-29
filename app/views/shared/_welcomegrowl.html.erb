@@ -1,0 +1,12 @@
+<% if @welcome_mes  %>
+  <script type="text/javascript">
+  $(function() {
+   $.growl.error({ title: '<%= @welcome_mes[0] %>', message: ' <%= @welcome_mes[1] %>' });
+  });
+  </script>
+  <style>
+  .growl{
+    /* background-color: #0ff; */
+  }
+  </style>
+<% end %>

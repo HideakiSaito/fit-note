@@ -13,6 +13,7 @@ class WelcomeController < ApplicationController
       @recommend_2 = "焦らず重量は２kg刻みで６〜８repsで調整しましょう。フォームを大切に。１２週間に一回はレイオフを設けましょう。"
       @greeting = get_greeting
       @cheer = latest_page_finished ? "お疲れ様でした。" : "頑張りましょう"
+      @welcome_mes = get_welcome_mes
     else
       flash.alert = "ログインしてください"
     end
@@ -26,6 +27,22 @@ class WelcomeController < ApplicationController
       |line| line.get_sum_reps
     end.sum
     reps_sum != 0 #最新ページのトレーニング一回もやってなかったら
+  end
+  def get_welcome_mes
+    #月末から５日前くらいからサイズ測定をだす
+    welcome_mes = nil
+    now = Date.current
+    diff_end_of_month = now.end_of_month - now
+    if  diff_end_of_month < 5 
+      #当月で測定すみかチェックする
+      cnt = Page.where("body_size_bust is not null and date > ?",Date.current.beginning_of_month).count 
+      if cnt == 0
+        title = "サイズ測定を行ってください"
+        mes = "月末まであと#{diff_end_of_month}日です。" 
+        welcome_mes = [title,mes] 
+      end
+    end
+    welcome_mes
   end
   def get_greeting
       case Time.current.hour #now だとUTC
