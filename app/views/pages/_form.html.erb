@@ -26,9 +26,9 @@
                    ,'<%= food.fat %>','<%= food.protein %>',
                    '<%= food.vegetable %>');" >
                    <%= food.id  %>.<b><%= food.name %></b></br >
-                   <i class="fa fa-apple"> ：<%= food.carbohydrate %></i>
-                   <i class="fa fa-paw">：<%= food.fat %></i>
                    <i class="fa fa-hand-rock-o">：<%= food.protein %></i>
+                   <i class="fa fa-paw">：<%= food.fat %></i>
+                   <i class="fa fa-apple"> ：<%= food.carbohydrate %></i>
                    <i class="fa fa-leaf">：<%= food.vegetable %> </i>
                    <i class="fa fa-commenting-o"><%= food.disp_memo %></i>
               </p>
@@ -133,12 +133,12 @@
     <button type="button" id="food1_cl" class="field btn-danger" > クリア </button>
     <span><%= @page.meal1_cal %>kcal</span>
     <%= f.text_area :diet_memo_1 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :carbohydrate_1 %>[g]
-    <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_1 %>[g]
-    <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :protein_1 %>[g]
     <%= f.number_field :protein_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :fat_1 %>[g]
+    <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :carbohydrate_1 %>[g]
+    <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :vegetable_1 %>[g]
     <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
   </div>
@@ -148,12 +148,12 @@
     <button type="button" id="food2_cl" class="field btn-danger" > クリア </button>
     <span><%= @page.meal2_cal %>kcal</span>
     <%= f.text_area :diet_memo_2 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :carbohydrate_2 %>[g]
-    <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_2 %>[g]
-    <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :protein_2 %>[g]
     <%= f.number_field :protein_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :fat_2 %>[g]
+    <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :carbohydrate_2 %>[g]
+    <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :vegetable_2 %>[g]
     <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
   </div>
@@ -163,12 +163,12 @@
     <button type="button" id="food3_cl" class="field btn-danger" > クリア </button>
     <span><%= @page.meal3_cal %>kcal</span>
     <%= f.text_area :diet_memo_3 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :carbohydrate_3 %>[g]
-    <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_3 %>[g]
-    <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :protein_3 %>[g]
     <%= f.number_field :protein_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :fat_3 %>[g]
+    <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :carbohydrate_3 %>[g]
+    <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :vegetable_3 %>[g]
     <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
   </div>
@@ -178,12 +178,12 @@
     <button type="button" id="food4_cl" class="field btn-danger" > クリア </button>
     <span><%= @page.meal4_cal %>kcal</span>
     <%= f.text_area :diet_memo_4 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :carbohydrate_4 %>[g]
-    <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_4 %>[g]
-    <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :protein_4 %>[g]
     <%= f.number_field :protein_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :fat_4 %>[g]
+    <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :carbohydrate_4 %>[g]
+    <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :vegetable_4 %>[g]
     <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
   </div>
@@ -193,12 +193,12 @@
     <button type="button" id="food5_cl" class="field btn-danger" > クリア </button>
     <span><%= @page.meal5_cal %>kcal</span>
     <%= f.text_area :diet_memo_5 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :carbohydrate_5 %>[g]
-    <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_5 %>[g]
-    <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :protein_5 %>[g]
     <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :fat_5 %>[g]
+    <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+    <%= f.label :carbohydrate_5 %>[g]
+    <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
     <%= f.label :vegetable_5 %>[g]
     <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
   </div>

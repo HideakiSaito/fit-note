@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     end
     resources :modes
     resources :food_categories
-    resources :foods
+    resources :foods do
+      collection { get "search"}
+    end
     get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
     resources :items do
       collection { get "search"}
@@ -35,6 +37,7 @@ Rails.application.routes.draw do
   resources :food_categories
   resources :foods do
     member { patch :like, :unlike }
+    collection { get "search"}
     collection { get "voted"}
   end
   get 'foods/:copy_from/copy', :to => 'foods#new', :as => 'copy_food'
