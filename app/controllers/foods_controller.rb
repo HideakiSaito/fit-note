@@ -12,8 +12,10 @@ class FoodsController < InheritedResources::Base
     render "index"
   end
   def new
+    @food = Food.new(
+      sort_key: Time.current.strftime("%Y%m%d")
+    )
     #コピーの場合のロジック
-    @food = Food.new
     if params[:copy_from] 
       @from = Food.find(params[:copy_from])
       @food = @from.dup #クローンのId抜き
