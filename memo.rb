@@ -204,3 +204,9 @@ pbpasteを使う
 Macには、pbpasteというclipboardの中身を出力するコマンドがある。
 これと、:r !commandがcommandの出力を挿入することを組み合わせると…？
 :r !pbpaste
+
+#2016/11/15
+#page_selfy model
+rails g scaffold  page_selfy page:belongs_to data:binary content_type
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate

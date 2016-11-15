@@ -18,6 +18,13 @@ class PagesController < InheritedResources::Base
     @show_chart = false
     render :index
   end
+  def selfy_only
+    self.index_logic "selfy_only",false
+    @simple_page = false
+    @show_detail = false 
+    @show_chart = false
+    render :index
+  end
   def index
     self.index_logic "all"
     @simple_page = true
@@ -53,6 +60,7 @@ class PagesController < InheritedResources::Base
     x_user = params[:user_id]? params[:user_id] : current_user
     @pages = @pages.where("user_id=?", x_user) #user
     @pages = @pages.training_only if disp_mode == "training_only"
+    @pages = @pages.selfy_only if disp_mode == "selfy_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
     @pages = @pages.paginate(page: params[:page], per_page: 12)
     #simple_page
@@ -74,7 +82,11 @@ class PagesController < InheritedResources::Base
     @page = PageDecorator.decorate(@page)
     #画像対応
     if params[:format].in?(["jpg", "png", "gif"])
-      send_image
+      if params[:sefly]
+        send_selfy
+      else
+        send_image
+      end
     else
       render "show"
     end
@@ -94,11 +106,13 @@ class PagesController < InheritedResources::Base
 
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
+    @page.build_selfy unless @page.selfy
   end
   def edit
     @page = Page.find(params[:id])
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
+    @page.build_selfy unless @page.selfy
     if current_user != @page.user
       redirect_to @page, notice: "編集権限のないページです。"
     end
@@ -156,6 +170,14 @@ class PagesController < InheritedResources::Base
       raise NotFound
     end
   end
+  def send_selfy
+    if @page.selfy.present?
+      send_data @page.selfy.data,
+        type: @page.selfy.content_type, disposition: "inline"
+    else
+      raise NotFound
+    end
+  end
   def copy_page_lines
     #ここで、コピーするなら過去の、トレーニングを取得する
     if  params[:copy_page][:id] != "" &&  @page.lines.empty?
@@ -178,6 +200,7 @@ class PagesController < InheritedResources::Base
 
     attrs = [:user_id,:date, :place, :start_time, :end_time, :memo, :diet_id ,:carbohydrate_1,:fat_1,:protein_1, :vegetable_1, :diet_memo_1,:carbohydrate_2,:fat_2,:protein_2, :vegetable_2, :diet_memo_2,:carbohydrate_3,:fat_3,:protein_3, :vegetable_3, :diet_memo_3,:carbohydrate_4,:fat_4,:protein_4, :vegetable_4, :diet_memo_4,:carbohydrate_5,:fat_5,:protein_5, :vegetable_5, :diet_memo_5 ,:condition_id ,:feeling_id ,:sleep_hour ,:sleep_time ,:water ,:alcohol ,:caffeine ,:wight ,:work_hour ,:study_hour ,:tv_hour,:training_hour ,:body_fat_per,:body_size_neck,:body_size_bust,:body_size_waist,:body_size_hip,:body_size_arm_right,:body_size_arm_left,:body_size_leg_right,:body_size_leg_left,:body_size_calf_right,:body_size_calf_left]
     attrs << { image_attributes: [:_destroy, :id, :uploaded_image] }
+    attrs << { selfy_attributes: [:_destroy, :id, :uploaded_image] }
     params.require(:page).permit(attrs)
   end
 

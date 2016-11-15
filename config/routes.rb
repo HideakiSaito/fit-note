@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :page_selfies
   #resources :tips
   #resources :tip_recommendations
   #resources :tip_categories
@@ -75,7 +76,7 @@ Rails.application.routes.draw do
   end
   resources :pages do
     resources :lines
-    collection { get :training_only,:show_pic ,:hidden_training,:only_chart}
+    collection { get :training_only,:selfy_only,:show_pic ,:hidden_training,:only_chart}
     collection { post :import }
   end
   resources :page_images

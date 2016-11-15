@@ -3,7 +3,9 @@ class Page < ActiveRecord::Base
   belongs_to :user
   has_many :lines,->{order("no ASC") } ,dependent: :destroy
   has_one :image ,class_name: "PageImage",dependent: :destroy
+  has_one :selfy ,class_name: "PageSelfy",dependent: :destroy
   accepts_nested_attributes_for :image, allow_destroy: true
+  accepts_nested_attributes_for :selfy, allow_destroy: true
   belongs_to :diet
   belongs_to :condition
   belongs_to :feeling
@@ -223,6 +225,10 @@ class Page < ActiveRecord::Base
   scope :training_only, ->do
    #trainig.size > 0
    joins(:lines).distinct
+   end
+  scope :selfy_only, ->do
+   #trainig.size > 0
+   joins(:selfy).distinct
    end
   scope :default, -> do
     includes(:diet).includes(:feeling).includes(:condition).order("date desc")

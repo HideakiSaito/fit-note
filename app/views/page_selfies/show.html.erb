@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @page_selfy.page %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @page_selfy.data %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @page_selfy.content_type %>
+</p>
+
+<%= link_to 'Edit', edit_page_selfy_path(@page_selfy) %> |
+<%= link_to 'Back', page_selfies_path %>

@@ -63,7 +63,8 @@ html {
         < <%= page.wight %> kg , <%= page.body_fat_per %> % >
         <%= page.user.name if page.user %>
         </p>
-        <div><%= page_image_tag page, width: @show ? 320 : 128 , class: "hidari picture" %></div>
+        <%= page_image_tag page, width: @show ? 320 : 128 , class: "hidari picture" %>
+        <%= page_selfy_tag page, width: @show ? 320 : 128 , class: " picture" %>
         <p style="font-size:1.0em;color:black;"><%= raw page.memo_br %></p>
       </td>
     </tr>

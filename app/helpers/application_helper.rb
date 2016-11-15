@@ -19,4 +19,12 @@ module ApplicationHelper
       ""
     end
   end
+  def page_selfy_tag(page, options = {})
+    if page.selfy.present?
+      path = page_path(page, format: page.selfy.extension) + "&sefly=1"
+      link_to(image_tag(path, { alt: page.date.to_s }.merge(options)), path)
+    else
+      ""
+    end
+  end
 end

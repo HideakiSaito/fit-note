@@ -17,7 +17,8 @@
       <table class="table table-striped" height="200" >
         <thead> </thead>
         <tbody id="food-table">
-          <% @foods.each do |food| %>
+          <% if @foods 
+               @foods.each do |food| %>
             <tr class="category_<%= food.food_category.no if food.food_category %>" >
               <td >
                 <p id="food_<%= food.id %>"
@@ -34,7 +35,8 @@
               </p>
               </td>
             </tr>
-          <% end %>
+          <%   end
+             end%>
         </tbody>
       </table>
     </div>
@@ -110,6 +112,26 @@
           <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
             <div>
               <%= page_image_tag @page, width: 96 %>
+              <%= imgf.check_box :_destroy %>
+              <%= imgf.label :_destroy %>
+              <%= imgf.hidden_field :id %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<div class="field">
+  <%= f.fields_for :selfy do |imgf| %>
+    <table border=1>
+      <tr>
+        <th><%= imgf.label :uploaded_image %></th>
+        <td>
+          <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
+          <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+            <div>
+              <%= page_selfy_tag @page, width: 96 %>
               <%= imgf.check_box :_destroy %>
               <%= imgf.label :_destroy %>
               <%= imgf.hidden_field :id %>
