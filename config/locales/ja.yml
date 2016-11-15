@@ -314,6 +314,11 @@ ja:
         _destroy: 削除する
       image:
         uploaded_image: 画像
+      page_selfy:
+        uploaded_image: selfy画像
+        _destroy: 削除する
+      selfy:
+        uploaded_image: selfy
       user:
         name: 名前
         uid: uid
