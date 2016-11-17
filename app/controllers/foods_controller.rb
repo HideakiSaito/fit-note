@@ -8,7 +8,7 @@ class FoodsController < InheritedResources::Base
     category_id = params[:category_id]
     @foods = Food.search(params[:q])
     @foods = @foods.where("food_category_id = ?",category_id) if category_id
-    @foods = @foods.paginate(page: params[:page], per_page: 12)
+    @foods = @foods.paginate(page: params[:page], per_page: 30)
     render "index"
   end
   def new
