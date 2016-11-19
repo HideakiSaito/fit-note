@@ -103,7 +103,16 @@ class PagesController < InheritedResources::Base
       end_time: Time.current + (2.5 * 60 * 60),
       sleep_time: Time.local(2000, 1, 1, 22, 30, 00) ,
       sleep_hour: 7.5)
-
+    #一番直近の同じ曜日の健康データをセットする
+    last_wday = Page.where("extract(dow from date) = ?",Time.current.wday).order("date desc").first
+    if last_wday
+      @page.water = last_wday.water
+      @page.alcohol = last_wday.alcohol
+      @page.caffeine = last_wday.caffeine
+      @page.work_hour = last_wday.work_hour
+      @page.tv_hour = last_wday.tv_hour
+      @page.study_hour = last_wday.study_hour
+    end
     @page = PageDecorator.decorate(@page)
     @page.build_image unless @page.image
     @page.build_selfy unless @page.selfy
