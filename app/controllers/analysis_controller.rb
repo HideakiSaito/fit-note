@@ -194,12 +194,6 @@ class AnalysisController < ApplicationController
     vegetable_data = []
     pages.each do |page|
       label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      if page.wight.to_f > 0
-        label += "[" + page.wight.to_s + "kg]"
-      end
-      if page.training_hour.to_f > 0
-        label = "*" + label + "*" #training day **
-      end
       dates << label     #カロリー換算
       protein_data << page.protein_sum * 4
       fat_data  << page.fat_sum * 9
@@ -229,7 +223,6 @@ class AnalysisController < ApplicationController
     body_fat_per_data = []
     pages.each do |page|
       label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      label += "["+ page.body_fat_per.to_f.to_s + "% "+ page.tortal_cal.to_s + "kcal]"
       dates << label
       weight_data << page.wight.to_f
       body_fat_per_data << page.body_fat_per.to_f
