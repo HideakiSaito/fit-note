@@ -7,10 +7,10 @@
     <%= date_field_tag "end_day", params[:end_day] %>
     
     グラフの集計単位[
-    <%= label_tag "analysis_scope_day","１日" %>
-    <%= radio_button "analysis","scope","day",checked: true %>
-    <%= label_tag "analysis_scope_week","１週間 " %>
-    <%= radio_button "analysis","scope","week",checked: false %>
+    <%= label_tag "scope_day","１日" %>
+    <%= radio_button_tag "scope","day", params[:scope].eql?("day") %>
+    <%= label_tag "scope_week","１週間 " %>
+    <%= radio_button_tag "scope","week", params[:scope].eql?("week")  %>
     ]
     &nbsp;
     <%= submit_tag "検索" %>
