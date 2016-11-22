@@ -290,7 +290,6 @@ class AnalysisController < ApplicationController
     render :index
   end
   def index
-#    @chart = LazyHighCharts::HighChart.new('graph')
     self.gym
   end
 end
