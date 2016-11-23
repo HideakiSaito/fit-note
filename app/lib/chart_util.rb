@@ -8,8 +8,11 @@ module ChartUtil
     x_user = params[:user_id]? params[:user_id] : current_user
     targets = Page.where("user_id=?", x_user).order(:date)
     targets = targets.where(place: target_place) if target_place.presence #場所条件を追加
-    start_day = params[:start_day]? params[:start_day] : Date.current - 30*7
-    targets = targets.where("date >= ?", start_day)
+    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
+    start_day ||= Date.current - 30*7
+    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
+    end_day ||= Date.current 
+    targets = targets.where("date >= ? and date <= ?", start_day, end_day)
     targets
   end
   def chart_dates

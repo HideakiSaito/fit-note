@@ -210,3 +210,9 @@ Macには、pbpasteというclipboardの中身を出力するコマンドがあ�
 rails g scaffold  page_selfy page:belongs_to data:binary content_type
 bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate
+
+#2016/11/23
+sql="select date,sum(wight) as weight from pages group by date"
+sql = "select to_char(date,'YY/MM/W') as ymw ,avg(wight) as weight,avg(body_fat_per) as fat from pages where true and wight > 0 group by to_char(date,'YY/MM/W') order by to_char(date,'YY/MM/W')"
+w = Page.find_by_sql(sql).map(&:attributes)
+w.each { |x| p x["weight"]  }

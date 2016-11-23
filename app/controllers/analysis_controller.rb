@@ -217,15 +217,37 @@ class AnalysisController < ApplicationController
     if chart_type == "recent"
       pages = Page.where("date >= ?", Date.current - 28)
     end
-    pages = pages.where("wight > 0").order(:date) #過去データ出したくないだけなので
     dates = []
     weight_data = []
     body_fat_per_data = []
-    pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      dates << label
-      weight_data << page.wight.to_f
-      body_fat_per_data << page.body_fat_per.to_f
+    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
+    start_day ||= Date.current - 30*7
+    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
+    end_day ||= Date.current 
+    where = "and date >= '#{start_day}' and date <= '#{end_day}' "
+    if params[:scope] == "week"
+      sql = " select 
+      to_char(date,'YY/MM/W') as date ,
+      avg(wight) as weight,
+      avg(body_fat_per) as fat 
+      from pages
+      where true and wight > 0 #{where} 
+      group by to_char(date,'YY/MM/W') 
+      order by to_char(date,'YY/MM/W') "
+      pages = Page.find_by_sql(sql).map(&:attributes)
+      pages.each { |page| 
+        dates << page["date"] 
+        weight_data << page["weight"]  
+        body_fat_per_data << page["fat"]  
+      }
+    else
+      pages = pages.where("wight > 0 #{where}").order(:date) #過去データ出したくないだけなので
+      pages.each do |page|
+        label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+        dates << label
+        weight_data << page.wight.to_f
+        body_fat_per_data << page.body_fat_per.to_f
+      end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '体重,体脂肪の推移')
