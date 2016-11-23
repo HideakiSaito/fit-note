@@ -186,19 +186,49 @@ class AnalysisController < ApplicationController
     if chart_type == "recent"
       pages = Page.where("date >= ?", Date.current - 28)
     end
-    pages = pages.where("protein_1 > 0").order(:date)
     dates = []
     protein_data = []
     fat_data = []
     carbohydrate_data = []
     vegetable_data = []
-    pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      dates << label     #カロリー換算
-      protein_data << page.protein_sum * 4
-      fat_data  << page.fat_sum * 9
-      carbohydrate_data << page.carbohydrate_sum * 4
-      vegetable_data << page.vegetable_sum * 5
+    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
+    start_day ||= Date.current - 30*7
+    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
+    end_day ||= Date.current 
+    where = "and date >= '#{start_day}' and date <= '#{end_day}' "
+    if params[:scope] == "week"
+      sql = "select 
+      to_char(date,'YY/MM/W') as date, 
+      avg( COALESCE(protein_1,0) + COALESCE(protein_2,0) + 
+           COALESCE(protein_3,0) + COALESCE(protein_4,0) + COALESCE(protein_5,0) ) as protein,
+      avg( COALESCE(fat_1,0) + COALESCE(fat_2,0) + 
+           COALESCE(fat_3,0) + COALESCE(fat_4,0) + COALESCE(fat_5,0) ) as fat,
+      avg( COALESCE(carbohydrate_1,0) + COALESCE(carbohydrate_2,0) + 
+           COALESCE(carbohydrate_3,0) + COALESCE(carbohydrate_4,0) + COALESCE(carbohydrate_5,0) ) as carbohydrate,
+      avg( COALESCE(vegetable_1,0) + COALESCE(vegetable_2,0) + 
+           COALESCE(vegetable_3,0) + COALESCE(vegetable_4,0) + COALESCE(vegetable_5,0) ) as vegetable 
+      from pages 
+      where true and wight > 0 #{where}
+      group by to_char(date,'YY/MM/W') 
+      order by to_char(date,'YY/MM/W')"
+      pages = Page.find_by_sql(sql).map(&:attributes)
+      pages.each { |page| 
+        dates << page["date"] 
+        protein_data << page["protein"] * 4
+        fat_data  << page["fat"] * 9
+        carbohydrate_data << page["carbohydrate"] * 4
+        vegetable_data << page["vegetable"] * 5
+      }
+    else
+      pages = pages.where("protein_1 > 0 #{where}").order(:date) #過去データ出したくないだけなので
+      pages.each do |page|
+        label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+        dates << label     #カロリー換算
+        protein_data << page.protein_sum * 4
+        fat_data  << page.fat_sum * 9
+        carbohydrate_data << page.carbohydrate_sum * 4
+        vegetable_data << page.vegetable_sum * 5
+      end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '食事のバランス推移')
@@ -257,27 +287,6 @@ class AnalysisController < ApplicationController
       f.series(name: "体重[kg]" ,data: weight_data,yAxis: 1)
       f.chart(type: "line")
 #      f.options[:plotOptions] = { area: {stacking: 'normal'}
-    end
-  end
-  def fat_chart
-    x_user = params[:user_id]? params[:user_id] : current_user
-    pages = Page.where("user_id=?", x_user).order(:date)
-    pages = pages.where("body_fat_per > 0").order(:date) #過去データ出したくないだけなので
-    dates = []
-    body_fat_per_data = []
-    pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      label += "["+ page.body_fat_per.to_f.to_s + "% "+ page.tortal_cal.to_s + "kcal]"
-      dates << label
-      body_fat_per_data << page.body_fat_per.to_f
-    end
-    chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: '体脂肪の推移')
-      f.xAxis(categories: dates)
-#      f.yAxis(min:10.0)
-      f.series(name: "体脂肪[%]" ,data: body_fat_per_data)
-      f.chart(type: "line")
-      f.options[:plotOptions] = { area: {stacking: 'normal'} }
     end
   end
   def home

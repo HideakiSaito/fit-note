@@ -216,3 +216,14 @@ sql="select date,sum(wight) as weight from pages group by date"
 sql = "select to_char(date,'YY/MM/W') as ymw ,avg(wight) as weight,avg(body_fat_per) as fat from pages where true and wight > 0 group by to_char(date,'YY/MM/W') order by to_char(date,'YY/MM/W')"
 w = Page.find_by_sql(sql).map(&:attributes)
 w.each { |x| p x["weight"]  }
+
+
+sql = "select to_char(date,'YY/MM/W') as date, 
+avg( COALESCE(protein_1,0) + COALESCE(protein_2,0) + COALESCE(protein_3,0) + COALESCE(protein_4,0) + COALESCE(protein_5,0) ) as protein,
+avg( COALESCE(fat_1,0) + COALESCE(fat_2,0) + COALESCE(fat_3,0) + COALESCE(fat_4,0) + COALESCE(fat_5,0) ) as fat,
+avg( COALESCE(carbohydrate_1,0) + COALESCE(carbohydrate_2,0) + COALESCE(carbohydrate_3,0) + COALESCE(carbohydrate_4,0) + COALESCE(carbohydrate_5,0) ) as carbohydrate,
+avg( COALESCE(vegetable_1,0) + COALESCE(vegetable_2,0) + COALESCE(vegetable_3,0) + COALESCE(vegetable_4,0) + COALESCE(vegetable_5,0) ) as vegetable 
+from pages where true and wight > 0 group by to_char(date,'YY/MM/W') order by to_char(date,'YY/MM/W')"
+select
+COALESCE(vegetable_1,0) + COALESCE(vegetable_2,0) + COALESCE(vegetable_3,0) + COALESCE(vegetable_4,0) + COALESCE(vegetable_5,0) as vege ,
+  date from pages where date > '2016/08/10';
