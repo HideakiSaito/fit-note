@@ -63,7 +63,7 @@ class PagesController < InheritedResources::Base
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.selfy_only if disp_mode == "selfy_only"
     @pages = @pages.search @search_form.q if @search_form.q.present?
-    @pages = @pages.paginate(page: params[:page], per_page: 12)
+    @pages = @pages.paginate(page: params[:page], per_page: 30)
     #simple_page
     @simple_page ||= true
     @selfy_only ||= false
