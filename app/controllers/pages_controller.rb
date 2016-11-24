@@ -20,6 +20,7 @@ class PagesController < InheritedResources::Base
   end
   def selfy_only
     self.index_logic "selfy_only",false
+    @selfy_only = true
     @simple_page = false
     @show_detail = false 
     @show_chart = false
@@ -65,6 +66,7 @@ class PagesController < InheritedResources::Base
     @pages = @pages.paginate(page: params[:page], per_page: 12)
     #simple_page
     @simple_page ||= true
+    @selfy_only ||= false
     self.show_index_init
     @pages.each do |page|
       self.daily_chart page

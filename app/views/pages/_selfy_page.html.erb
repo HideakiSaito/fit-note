@@ -1,0 +1,7 @@
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+  <button type="button" class="btn btn-info"
+                        onClick="location.href='/pages/<%= page.id  %>'">
+                        <%= disp_short_date(page.date) %>
+  </button>
+        <%= page_selfy_tag page, width:  360  %>
+</div>

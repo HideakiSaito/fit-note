@@ -17,12 +17,16 @@
  <%= check_box_tag "page[hidden_lines]",true, @show_detail %> トレーニング内容表示 
  <%= check_box_tag "page[hidden_chart]" ,true , @show_chart %> グラフ表示
  <div id="pages" class="row" >
-   <% if @simple_page %>
+   <% if @selfy_only %>
+     <% @pages.each do |page| %>
+       <%= render 'selfy_page' , page: page %>
+     <% end %>
+   <% elsif @simple_page %>
      <% @pages.each do |page| %>
        <%= render 'simple_page' , page: page %>
      <% end %>
    <% else %>    
-   <%= render @pages %>
+     <%= render @pages %>
  <% end %>
  </div>
 <%= will_paginate @pages %>
