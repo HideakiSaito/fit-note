@@ -248,7 +248,7 @@ class Page < ActiveRecord::Base
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
       JSON.parse( s ).each do |elem|
-        page = find_by(id: elem[:id]) || new
+        page = find_by(id: elem["id"]) || new
         page.assign_attributes(elem)
         page.save
       end

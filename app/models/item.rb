@@ -36,7 +36,7 @@ class Item < ActiveRecord::Base
     def import(file)
       s = File.read(file.path, :encoding => Encoding::UTF_8)
       JSON.parse( s ).each do |elem|
-        item = find_by(id: elem[:id]) || new
+        item = find_by(id: elem["id"]) || new
         item.assign_attributes(elem)
         item.save
       end
