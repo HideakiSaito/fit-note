@@ -13,6 +13,7 @@ class AnalysisController < ApplicationController
     @health_water_chart = self.health_water_chart
     @health_feel_chart = self.health_feel_chart
     @size_chart = self.size_chart
+    @parts_chart = self.pie_parts_chart
   end
   def health
     @chart = self.health_hour_chart
@@ -324,12 +325,15 @@ class AnalysisController < ApplicationController
     render :index
   end
   def pie_parts
+    @chart = pie_parts_chart
+    render :index
+  end
+  def pie_parts_chart
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'トレーニング部位別バランス')
       f.series(name: 'レップス',
                data: pie_chart_data_parts , type: 'pie')
     end
-    render :index
   end
   def pie_place
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
