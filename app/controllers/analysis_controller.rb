@@ -2,6 +2,8 @@ class AnalysisController < ApplicationController
   before_action :login_required
   include ChartUtil
   def dash_bord
+    params[:start_day] = Date.current - 30
+    params[:end_day] = Date.current
     #chart
     @_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
     @gym_chart = self.gym_chart
