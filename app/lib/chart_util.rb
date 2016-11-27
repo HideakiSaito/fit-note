@@ -110,10 +110,15 @@ module ChartUtil
     data << ["野菜",page.vegetable_sum]
   end
   def pie_chart_data_place
+    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
+    start_day ||= Date.current - 30*7
+    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
+    end_day ||= Date.current 
     data = []
     places = %W(ジム 家) # %Wで["hoge","fuga"]を省略
     places.each do |place|
       lines = Line.joins(:page).where(pages: { place: place })
+      lines = lines.where("pages.date >= '#{start_day}' and pages.date <= '#{end_day}' " )
       value = lines.collect do |i| i.get_sum_reps end.sum
       data << [place,value.to_i]
     end
@@ -123,8 +128,17 @@ module ChartUtil
     data = []
     parts = Part.order(:id)
     parts.each do |part|
-      lines = Line.joins(:item).where(items: { part_id: part.id })
-      lines = lines.where(page_id: page_id) if page_id.presence
+#      lines = Line.joins(:item).where(items: { part_id: part.id })
+      lines = Line.joins(:page).joins(:item).where(items: { part_id: part.id })
+      if page_id.presence
+        lines = lines.where(page_id: page_id) 
+      else
+        start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
+        start_day ||= Date.current - 30*7
+        end_day = params[:end_day] != "" ? params[:end_day] : Date.current
+        end_day ||= Date.current 
+        lines = lines.where("pages.date >= '#{start_day}' and pages.date <= '#{end_day}' " )
+      end
       value = lines.collect do |i| i.get_sum_reps end.sum
       data << [part.name,value.to_i] if value.to_i > 0
     end

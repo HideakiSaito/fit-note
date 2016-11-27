@@ -397,9 +397,4 @@ class AnalysisController < ApplicationController
     end_day ||= Date.current 
     where = "and date >= '#{start_day}' and date <= '#{end_day}' "
   end
-  def jp_week(date)
-    mm = date.slice 5,2
-    ww = date.slice 7,2
-    "#{mm}月#{ww}週"
-  end
 end
