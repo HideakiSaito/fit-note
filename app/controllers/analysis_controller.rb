@@ -51,6 +51,14 @@ class AnalysisController < ApplicationController
     @chart = self.diet_chart "recent"
     render :index
   end
+  def pie_parts
+    @chart = pie_parts_chart
+    render :index
+  end
+  def pie_place
+    @chart = pie_place_chart
+    render :index
+  end
   def gym_chart
     #Big3 items id
     push_id = [1]
@@ -112,12 +120,32 @@ class AnalysisController < ApplicationController
     dates = []
     condition_data = []
     feeling_data = []
-    pages.feel_include.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      dates << label +
-               page.sleep_time.strftime("[%H:%M]")
-      condition_data << page.condition.score.to_f
-      feeling_data << page.feeling.score.to_f
+    if params[:scope] == "week"
+      #時間は合計がわかりやすいと思うので
+      sql = "select to_char(date,'YY/MM/W') as date, 
+             sum(t2.score) as condition,
+             sum(t3.score ) as feeling 
+             from pages t1
+             left join conditions t2
+             on t1.condition_id= t2.id
+             left join feelings t3
+             on t1.feeling_id = t3.id
+             where true and wight > 0 #{where}
+             group by to_char(date,'YY/MM/W') 
+             order by to_char(date,'YY/MM/W')"
+      pages = Page.find_by_sql(sql).map(&:attributes)
+      pages.each { |page| 
+        dates << page["date"].strftime("%m月%d週")
+        condition_data << page["condition"]
+        feeling_data << page["feeling"]
+      }
+    else
+      pages.feel_include.each do |page|
+        label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+        dates << label + page.sleep_time.strftime("[%H:%M]")
+        condition_data << page.condition.score.to_f
+        feeling_data << page.feeling.score.to_f
+      end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '体調、気分の推移')
@@ -153,7 +181,7 @@ class AnalysisController < ApplicationController
              order by to_char(date,'YY/MM/W')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"] 
+        dates << page["date"].strftime("%m月%d週")
         sleep_data << page["sleep_hour"]
         training_data << page["training_hour"]
         work_data << page["work_hour"]
@@ -186,17 +214,37 @@ class AnalysisController < ApplicationController
   def health_water_chart
     x_user = params[:user_id]? params[:user_id] : current_user
     pages = Page.where("user_id=?", x_user).order(:date)
-    pages = pages.where("water > 0").order(:date) #過去データ出したくないだけなので
+    where = search_params_where
+    pages = pages.where("water > 0 #{where}").order(:date) #過去データ出したくないだけなので
     dates = []
     water_data = []
     caffe_data = []
     alcohol_data = []
-    pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      dates << label
-      water_data << page.water.to_f
-      caffe_data << page.caffeine.to_f
-      alcohol_data << page.alcohol.to_f
+    if params[:scope] == "week"
+      #時間は合計がわかりやすいと思うので
+      sql = "select to_char(date,'YY/MM/W') as date, 
+             sum(water) as water,
+             sum(caffeine) as caffeine,
+             sum(alcohol) as alcohol
+             from pages 
+             where true and wight > 0 #{where}
+             group by to_char(date,'YY/MM/W') 
+             order by to_char(date,'YY/MM/W')"
+      pages = Page.find_by_sql(sql).map(&:attributes)
+      pages.each { |page| 
+        dates << page["date"].strftime("%m月%d週")
+        water_data << page["water"]
+        caffe_data << page["caffeine"]
+        alcohol_data << page["alcohol"]
+      }
+    else
+      pages.each do |page|
+        label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+        dates << label
+        water_data << page.water.to_f
+        caffe_data << page.caffeine.to_f
+        alcohol_data << page.alcohol.to_f
+      end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '健康、休養 [水分]の推移')
@@ -237,7 +285,7 @@ class AnalysisController < ApplicationController
       order by to_char(date,'YY/MM/W')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"] 
+        dates << page["date"].strftime("%m月%d週")
         protein_data << page["protein"] * 4
         fat_data  << page["fat"] * 9
         carbohydrate_data << page["carbohydrate"] * 4
@@ -286,7 +334,7 @@ class AnalysisController < ApplicationController
       order by to_char(date,'YY/MM/W') "
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"] 
+        dates << page["date"].strftime("%m月%d週")
         weight_data << page["weight"]  
         body_fat_per_data << page["fat"]  
       }
@@ -324,10 +372,6 @@ class AnalysisController < ApplicationController
     end
     render :index
   end
-  def pie_parts
-    @chart = pie_parts_chart
-    render :index
-  end
   def pie_parts_chart
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'トレーニング部位別バランス')
@@ -335,13 +379,12 @@ class AnalysisController < ApplicationController
                data: pie_chart_data_parts , type: 'pie')
     end
   end
-  def pie_place
+  def pie_place_chart
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'トレーニング場所別バランス')
       f.series(name: 'レップス',
                data: pie_chart_data_place , type: 'pie')
     end
-    render :index
   end
   def index
     self.gym
@@ -353,5 +396,10 @@ class AnalysisController < ApplicationController
     end_day = params[:end_day] != "" ? params[:end_day] : Date.current
     end_day ||= Date.current 
     where = "and date >= '#{start_day}' and date <= '#{end_day}' "
+  end
+  def jp_week(date)
+    mm = date.slice 5,2
+    ww = date.slice 7,2
+    "#{mm}月#{ww}週"
   end
 end
