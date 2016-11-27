@@ -65,7 +65,8 @@ class AnalysisController < ApplicationController
   def size_chart
     x_user = params[:user_id]? params[:user_id] : current_user
     pages = Page.where("user_id=?", x_user).order(:date)
-    pages = pages.where("body_size_bust is not null" ).order(:date)
+    where = search_params_where
+    pages = pages.where("body_size_bust is not null #{where}" ).order(:date)
     dates = []
     bust_data=[]
     waist_data=[]
@@ -102,8 +103,9 @@ class AnalysisController < ApplicationController
   def health_feel_chart
     x_user = params[:user_id]? params[:user_id] : current_user
     pages = Page.where("user_id=?", x_user).order(:date)
+    where = search_params_where
     pages = pages.where("condition_id is not null
-                        and feeling_id is not null").order(:date)
+                        and feeling_id is not null #{where}").order(:date)
     dates = []
     condition_data = []
     feeling_data = []
@@ -126,22 +128,45 @@ class AnalysisController < ApplicationController
   def health_hour_chart
     x_user = params[:user_id]? params[:user_id] : current_user
     pages = Page.where("user_id=?", x_user).order(:date)
-    pages = pages.where("water > 0").order(:date) #過去データ出したくないだけなので
+    where = search_params_where
+    pages = pages.where("water > 0 #{where}").order(:date) #過去データ出したくないだけなので
     dates = []
     sleep_data = []
     training_data = []
     work_data = []
     study_data = []
     tv_data = []
-    pages.each do |page|
-      label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
-      dates << label +
-               page.sleep_time.strftime("[%H:%M]")
-      sleep_data << page.sleep_hour.to_f
-      training_data << page.training_hour.to_f
-      work_data << page.work_hour.to_f
-      study_data << page.study_hour.to_f
-      tv_data << page.tv_hour.to_f
+    if params[:scope] == "week"
+      #時間は合計がわかりやすいと思うので
+      sql = "select to_char(date,'YY/MM/W') as date, 
+             sum(sleep_hour) as sleep_hour,
+             sum(work_hour) as work_hour,
+             sum(study_hour) as study_hour,
+             sum(tv_hour) as tv_hour,
+             sum(training_hour) as training_hour
+             from pages 
+             where true and wight > 0 #{where}
+             group by to_char(date,'YY/MM/W') 
+             order by to_char(date,'YY/MM/W')"
+      pages = Page.find_by_sql(sql).map(&:attributes)
+      pages.each { |page| 
+        dates << page["date"] 
+        sleep_data << page["sleep_hour"]
+        training_data << page["training_hour"]
+        work_data << page["work_hour"]
+        study_data << page["study_hour"]
+        tv_data << page["tv_hour"]
+      }
+    else
+      pages.each do |page|
+        label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
+        dates << label 
+        sleep_data << page.sleep_hour.to_f
+        training_data << page.training_hour.to_f
+        work_data << page.work_hour.to_f
+        study_data << page.study_hour.to_f
+        tv_data << page.tv_hour.to_f
+      end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '健康、休養 [時間]の推移')
@@ -191,11 +216,7 @@ class AnalysisController < ApplicationController
     fat_data = []
     carbohydrate_data = []
     vegetable_data = []
-    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
-    start_day ||= Date.current - 30*7
-    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
-    end_day ||= Date.current 
-    where = "and date >= '#{start_day}' and date <= '#{end_day}' "
+    where = search_params_where
     if params[:scope] == "week"
       sql = "select 
       to_char(date,'YY/MM/W') as date, 
@@ -250,11 +271,7 @@ class AnalysisController < ApplicationController
     dates = []
     weight_data = []
     body_fat_per_data = []
-    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
-    start_day ||= Date.current - 30*7
-    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
-    end_day ||= Date.current 
-    where = "and date >= '#{start_day}' and date <= '#{end_day}' "
+    where = search_params_where
     if params[:scope] == "week"
       sql = " select 
       to_char(date,'YY/MM/W') as date ,
@@ -322,5 +339,13 @@ class AnalysisController < ApplicationController
   end
   def index
     self.gym
+  end
+  private
+  def search_params_where
+    start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
+    start_day ||= Date.current - 30*7
+    end_day = params[:end_day] != "" ? params[:end_day] : Date.current
+    end_day ||= Date.current 
+    where = "and date >= '#{start_day}' and date <= '#{end_day}' "
   end
 end

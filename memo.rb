@@ -227,3 +227,28 @@ from pages where true and wight > 0 group by to_char(date,'YY/MM/W') order by to
 select
 COALESCE(vegetable_1,0) + COALESCE(vegetable_2,0) + COALESCE(vegetable_3,0) + COALESCE(vegetable_4,0) + COALESCE(vegetable_5,0) as vege ,
   date from pages where date > '2016/08/10';
+
+sql = "select to_char(date,'YY/MM/W') as date, 
+avg(sleep_hour) as sleep_hour,
+avg(work_hour) as work_hour,
+avg(study_hour) as study_hour,
+avg(tv_hour) as tv_hour,
+avg(training_hour) as training_hour
+from pages where true and wight > 0 group by to_char(date,'YY/MM/W') order by to_char(date,'YY/MM/W')"
+
+    t.float    "sleep_hour"
+    t.float    "work_hour"
+    t.float    "study_hour"
+    t.float    "tv_hour"
+    t.float    "training_hour"
+
+      sql = "select to_char(date,'YY/MM/W') as date, 
+             avg(sleep_hour) as sleep_hour,
+             avg(work_hour) as work_hour,
+             avg(study_hour) as study_hour,
+             avg(tv_hour) as tv_hour,
+             avg(training_hour) as training_hour
+             from pages 
+             where true and wight > 0 #{where}
+             group by to_char(date,'YY/MM/W') 
+             order by to_char(date,'YY/MM/W')"
