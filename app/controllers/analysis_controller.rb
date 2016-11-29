@@ -1,5 +1,6 @@
 class AnalysisController < ApplicationController
   before_action :login_required
+  before_action :init
   include ChartUtil
   def dash_bord
     params[:start_day] = Date.current - 30
@@ -16,46 +17,77 @@ class AnalysisController < ApplicationController
     @parts_chart = self.pie_parts_chart
   end
   def health
+     params[:scope] ||= "week"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.health_hour_chart
     render :index
   end
   def water
+     params[:scope] ||= "week"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.health_water_chart
     render :index
   end
   def feel
+     params[:scope] ||= "week"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.health_feel_chart
     render :index
   end
   def weight
+     params[:scope] ||= "week"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.weight_chart "all"
     render :index
   end
   def weight_recent
+     params[:scope] ||= "day"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.weight_chart "recent"
     render :index
   end
   def gym
+     params[:scope] ||= "week"
+    @scop_day_label = ""
+    @scop_week_label = "1週間"
     @chart = self.gym_chart
     render :index
   end
   def size
+    params[:scope] ||= "day"
+    @scop_day_label = "All"
+    @scop_week_label = "First & Last"
     @chart = self.size_chart
     render :index
   end
   def diet
+     params[:scope] ||= "week"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.diet_chart "all"
     render :index
   end
   def diet_recent
+     params[:scope] ||= "day"
+     #@scop_day_label = ""
+     #@scop_week_label = "1週間"
     @chart = self.diet_chart "recent"
     render :index
   end
   def pie_parts
+    @scop_day_label = ""
+    @scop_week_label = ""
     @chart = pie_parts_chart
     render :index
   end
   def pie_place
+    @scop_day_label = ""
+    @scop_week_label = ""
     @chart = pie_place_chart
     render :index
   end
@@ -86,6 +118,13 @@ class AnalysisController < ApplicationController
     arm_data=[]
     leg_data=[]
     calf_data = []
+    
+    if params[:scope] == "week"
+      temp = pages
+      pages = []
+      pages << temp.first 
+      pages << temp.last
+    end
     pages.each do |page|
       label = page.date.strftime("%m/%d(#{%w(日 月 火 水 木 金 土)[page.date.wday]})")
       dates << label
@@ -100,13 +139,13 @@ class AnalysisController < ApplicationController
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'サイズの推移')
       f.xAxis(categories: dates)
-      f.series(name: "バスト[cm]" ,data: bust_data )
-      f.series(name: "ウェイスト[cm]" ,data: waist_data )
-      f.series(name: "ヒップ[cm]" ,data: hip_data )
-      f.series(name: "首[cm]" ,data: neck_data )
-      f.series(name: "腕[cm]" ,data: arm_data )
-      f.series(name: "脚[cm]" ,data: leg_data )
       f.series(name: "ふくらはぎ[cm]" ,data: calf_data )
+      f.series(name: "脚[cm]" ,data: leg_data )
+      f.series(name: "ヒップ[cm]" ,data: hip_data )
+      f.series(name: "ウェイスト[cm]" ,data: waist_data )
+      f.series(name: "腕[cm]" ,data: arm_data )
+      f.series(name: "バスト[cm]" ,data: bust_data )
+      f.series(name: "首[cm]" ,data: neck_data )
       f.chart(type: "bar")
       f.options[:plotOptions] = { area: { stacking: 'normal'} }
     end
@@ -358,6 +397,9 @@ class AnalysisController < ApplicationController
     end
   end
   def home
+    params[:scope] ||= "week"
+    @scop_day_label = ""
+    @scop_week_label = "1週間"
     #Big3 items id
     push_id = [1]
     pull_id = [8] #ワンハンドローイングで
@@ -390,6 +432,10 @@ class AnalysisController < ApplicationController
     self.gym
   end
   private
+  def init
+   @scop_day_label = "1日"
+   @scop_week_label = "1週間"
+  end
   def search_params_where
     start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
     start_day ||= Date.current - 30*7

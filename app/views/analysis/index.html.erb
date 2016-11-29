@@ -7,9 +7,9 @@
     <%= date_field_tag "end_day", params[:end_day] %>
     
     グラフの集計単位[
-    <%= label_tag "scope_day","１日" %>
+    <%= label_tag "scope_day",@scop_day_label %>
     <%= radio_button_tag "scope","day", params[:scope].eql?("day") %>
-    <%= label_tag "scope_week","１週間 " %>
+    <%= label_tag "scope_week",@scop_week_label %>
     <%= radio_button_tag "scope","week", params[:scope].eql?("week")  %>
     ]
     &nbsp;
