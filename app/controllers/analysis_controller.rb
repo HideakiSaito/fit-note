@@ -161,7 +161,7 @@ class AnalysisController < ApplicationController
     feeling_data = []
     if params[:scope] == "week"
       #時間は合計がわかりやすいと思うので
-      sql = "select to_char(date,'YY/MM/W') as date, 
+      sql = "select to_char(date,'YY/WW') as week, 
              sum(t2.score) as condition,
              sum(t3.score ) as feeling 
              from pages t1
@@ -170,11 +170,12 @@ class AnalysisController < ApplicationController
              left join feelings t3
              on t1.feeling_id = t3.id
              where true and wight > 0 #{where}
-             group by to_char(date,'YY/MM/W') 
-             order by to_char(date,'YY/MM/W')"
+             group by to_char(date,'YY/WW') 
+             order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"].strftime("%m月%d週")
+        #dates << page["date"].strftime("%m月%d週")
+        dates << page["week"].slice(0,5)
         condition_data << page["condition"]
         feeling_data << page["feeling"]
       }
@@ -208,7 +209,7 @@ class AnalysisController < ApplicationController
     tv_data = []
     if params[:scope] == "week"
       #時間は合計がわかりやすいと思うので
-      sql = "select to_char(date,'YY/MM/W') as date, 
+      sql = "select to_char(date,'YY/WW') as week, 
              sum(sleep_hour) as sleep_hour,
              sum(work_hour) as work_hour,
              sum(study_hour) as study_hour,
@@ -216,11 +217,12 @@ class AnalysisController < ApplicationController
              sum(training_hour) as training_hour
              from pages 
              where true and wight > 0 #{where}
-             group by to_char(date,'YY/MM/W') 
-             order by to_char(date,'YY/MM/W')"
+             group by to_char(date,'YY/WW') 
+             order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"].strftime("%m月%d週")
+        #dates << page["date"].strftime("%m月%d週")
+        dates << page["week"].slice(0,5)
         sleep_data << page["sleep_hour"]
         training_data << page["training_hour"]
         work_data << page["work_hour"]
@@ -261,17 +263,18 @@ class AnalysisController < ApplicationController
     alcohol_data = []
     if params[:scope] == "week"
       #時間は合計がわかりやすいと思うので
-      sql = "select to_char(date,'YY/MM/W') as date, 
+      sql = "select to_char(date,'YY/WW') as week, 
              sum(water) as water,
              sum(caffeine) as caffeine,
              sum(alcohol) as alcohol
              from pages 
              where true and wight > 0 #{where}
-             group by to_char(date,'YY/MM/W') 
-             order by to_char(date,'YY/MM/W')"
+             group by to_char(date,'YY/WW') 
+             order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"].strftime("%m月%d週")
+        #dates << page["date"].strftime("%m月%d週")
+        dates << page["week"].slice(0,5)
         water_data << page["water"]
         caffe_data << page["caffeine"]
         alcohol_data << page["alcohol"]
@@ -309,7 +312,7 @@ class AnalysisController < ApplicationController
     where = search_params_where
     if params[:scope] == "week"
       sql = "select 
-      to_char(date,'YY/MM/W') as date, 
+      to_char(date,'YY/WW') as week, 
       avg( COALESCE(protein_1,0) + COALESCE(protein_2,0) + 
            COALESCE(protein_3,0) + COALESCE(protein_4,0) + COALESCE(protein_5,0) ) as protein,
       avg( COALESCE(fat_1,0) + COALESCE(fat_2,0) + 
@@ -320,11 +323,12 @@ class AnalysisController < ApplicationController
            COALESCE(vegetable_3,0) + COALESCE(vegetable_4,0) + COALESCE(vegetable_5,0) ) as vegetable 
       from pages 
       where true and wight > 0 #{where}
-      group by to_char(date,'YY/MM/W') 
-      order by to_char(date,'YY/MM/W')"
+      group by to_char(date,'YY/WW') 
+      order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"].strftime("%m月%d週")
+        #dates << page["date"].strftime("%m月%d週")
+        dates << page["week"].slice(0,5)
         protein_data << page["protein"] * 4
         fat_data  << page["fat"] * 9
         carbohydrate_data << page["carbohydrate"] * 4
@@ -364,16 +368,17 @@ class AnalysisController < ApplicationController
     where = search_params_where
     if params[:scope] == "week"
       sql = " select 
-      to_char(date,'YY/MM/W') as date ,
+      to_char(date,'YY/WW') as week ,
       avg(wight) as weight,
       avg(body_fat_per) as fat 
       from pages
       where true and wight > 0 #{where} 
-      group by to_char(date,'YY/MM/W') 
-      order by to_char(date,'YY/MM/W') "
+      group by to_char(date,'YY/WW') 
+      order by to_char(date,'YY/WW') "
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        dates << page["date"].strftime("%m月%d週")
+        #dates << page["date"].strftime("%m月%d週")
+        dates << page["week"].slice(0,5)
         weight_data << page["weight"]  
         body_fat_per_data << page["fat"]  
       }
