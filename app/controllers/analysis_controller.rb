@@ -2,6 +2,7 @@ class AnalysisController < ApplicationController
   before_action :login_required
   before_action :init
   include ChartUtil
+  include CalenderUtil
   def dash_bord
     params[:start_day] = Date.current - 35
     params[:end_day] = Date.current
@@ -17,8 +18,8 @@ class AnalysisController < ApplicationController
     @parts_chart = self.pie_parts_chart
   end
   def health
-     params[:start_day] = Date.current - 30*7
-     params[:end_day] = Date.current
+     params[:start_day] ||= Date.current - 30*7
+     params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -26,8 +27,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def water
-     params[:start_day] = Date.current - 30*7
-     params[:end_day] = Date.current
+     params[:start_day] ||= Date.current - 30*7
+     params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -35,8 +36,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def feel
-     params[:start_day] = Date.current - 30*7
-     params[:end_day] = Date.current
+     params[:start_day] ||= Date.current - 30*7
+     params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -53,8 +54,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def weight_recent
-     params[:start_day] = Date.current - 30
-     params[:end_day] = Date.current
+     params[:start_day] ||= Date.current - 30
+     params[:end_day] ||= Date.current
      params[:scope] ||= "day"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -62,8 +63,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def gym
-     params[:start_day] = Date.current - 30*7
-     params[:end_day] = Date.current
+     params[:start_day] ||= Date.current - 30*7
+     params[:end_day] ||= Date.current
      params[:scope] ||= "week"
     @scop_day_label = ""
     @scop_week_label = "1週間"
@@ -71,8 +72,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def size
-    params[:start_day] = Date.current - 30*7
-    params[:end_day] = Date.current
+    params[:start_day] ||= Date.current - 30*7
+    params[:end_day] ||= Date.current
     params[:scope] ||= "week"
     @scop_day_label = "全て"
     @scop_week_label = "最初 & 最近"
@@ -80,8 +81,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def diet
-    params[:start_day] = Date.current - 30*7
-    params[:end_day] = Date.current
+    params[:start_day] ||= Date.current - 30*7
+    params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -89,8 +90,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def diet_recent
-     params[:start_day] = Date.current - 30
-     params[:end_day] = Date.current
+     params[:start_day] ||= Date.current - 30
+     params[:end_day] ||= Date.current
      params[:scope] ||= "day"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -98,16 +99,16 @@ class AnalysisController < ApplicationController
     render :index
   end
   def pie_parts
-    params[:start_day] = Date.current - 30*7
-    params[:end_day] = Date.current
+    params[:start_day] ||= Date.current - 30*7
+    params[:end_day] ||= Date.current
     @scop_day_label = ""
     @scop_week_label = ""
     @chart = pie_parts_chart
     render :index
   end
   def pie_place
-    params[:start_day] = Date.current - 30*7
-    params[:end_day] = Date.current
+    params[:start_day] ||= Date.current - 30*7
+    params[:end_day] ||= Date.current
     @scop_day_label = ""
     @scop_week_label = ""
     @chart = pie_place_chart
@@ -196,8 +197,7 @@ class AnalysisController < ApplicationController
              order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        #dates << page["date"].strftime("%m月%d週")
-        dates << page["week"].slice(0,5)
+        dates << yw_to_date(page["week"])
         condition_data << page["condition"]
         feeling_data << page["feeling"]
       }
@@ -243,8 +243,7 @@ class AnalysisController < ApplicationController
              order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        #dates << page["date"].strftime("%m月%d週")
-        dates << page["week"].slice(0,5)
+        dates << yw_to_date(page["week"])
         sleep_data << page["sleep_hour"]
         training_data << page["training_hour"]
         work_data << page["work_hour"]
@@ -295,8 +294,7 @@ class AnalysisController < ApplicationController
              order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        #dates << page["date"].strftime("%m月%d週")
-        dates << page["week"].slice(0,5)
+        dates << yw_to_date(page["week"])
         water_data << page["water"]
         caffe_data << page["caffeine"]
         alcohol_data << page["alcohol"]
@@ -349,8 +347,7 @@ class AnalysisController < ApplicationController
       order by to_char(date,'YY/WW')"
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        #dates << page["date"].strftime("%m月%d週")
-        dates << page["week"].slice(0,5)
+        dates << yw_to_date(page["week"])
         protein_data << page["protein"] * 4
         fat_data  << page["fat"] * 9
         carbohydrate_data << page["carbohydrate"] * 4
@@ -399,8 +396,7 @@ class AnalysisController < ApplicationController
       order by to_char(date,'YY/WW') "
       pages = Page.find_by_sql(sql).map(&:attributes)
       pages.each { |page| 
-        #dates << page["date"].strftime("%m月%d週")
-        dates << page["week"].slice(0,5)
+        dates << yw_to_date(page["week"])
         weight_data << page["weight"]  
         body_fat_per_data << page["fat"]  
       }
@@ -459,6 +455,14 @@ class AnalysisController < ApplicationController
     self.gym
   end
   private
+  def yw_to_date(yw)
+    y = yw.slice(0,2)
+    year = 2000 + y.to_i
+    w = yw.slice(3,2)
+    day = (w.to_i - 1) * 7
+    date = Date.new(year, 1, 1) + day
+    disp_mweek date
+  end
   def init
    @scop_day_label = "1日"
    @scop_week_label = "1週間"
