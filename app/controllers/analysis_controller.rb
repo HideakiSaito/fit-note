@@ -3,7 +3,7 @@ class AnalysisController < ApplicationController
   before_action :init
   include ChartUtil
   def dash_bord
-    params[:start_day] = Date.current - 30
+    params[:start_day] = Date.current - 35
     params[:end_day] = Date.current
     #chart
     @_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
@@ -17,6 +17,8 @@ class AnalysisController < ApplicationController
     @parts_chart = self.pie_parts_chart
   end
   def health
+     params[:start_day] = Date.current - 30*7
+     params[:end_day] = Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -24,6 +26,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def water
+     params[:start_day] = Date.current - 30*7
+     params[:end_day] = Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -31,6 +35,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def feel
+     params[:start_day] = Date.current - 30*7
+     params[:end_day] = Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -38,6 +44,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def weight
+     params[:start_day] = Date.current - 30*7
+     params[:end_day] = Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -45,6 +53,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def weight_recent
+     params[:start_day] = Date.current - 30
+     params[:end_day] = Date.current
      params[:scope] ||= "day"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -52,6 +62,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def gym
+     params[:start_day] = Date.current - 30*7
+     params[:end_day] = Date.current
      params[:scope] ||= "week"
     @scop_day_label = ""
     @scop_week_label = "1週間"
@@ -59,13 +71,17 @@ class AnalysisController < ApplicationController
     render :index
   end
   def size
-    params[:scope] ||= "day"
-    @scop_day_label = "All"
-    @scop_week_label = "First & Last"
+    params[:start_day] = Date.current - 30*7
+    params[:end_day] = Date.current
+    params[:scope] ||= "week"
+    @scop_day_label = "全て"
+    @scop_week_label = "最初 & 最近"
     @chart = self.size_chart
     render :index
   end
   def diet
+    params[:start_day] = Date.current - 30*7
+    params[:end_day] = Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -73,6 +89,8 @@ class AnalysisController < ApplicationController
     render :index
   end
   def diet_recent
+     params[:start_day] = Date.current - 30
+     params[:end_day] = Date.current
      params[:scope] ||= "day"
      #@scop_day_label = ""
      #@scop_week_label = "1週間"
@@ -80,12 +98,16 @@ class AnalysisController < ApplicationController
     render :index
   end
   def pie_parts
+    params[:start_day] = Date.current - 30*7
+    params[:end_day] = Date.current
     @scop_day_label = ""
     @scop_week_label = ""
     @chart = pie_parts_chart
     render :index
   end
   def pie_place
+    params[:start_day] = Date.current - 30*7
+    params[:end_day] = Date.current
     @scop_day_label = ""
     @scop_week_label = ""
     @chart = pie_place_chart
