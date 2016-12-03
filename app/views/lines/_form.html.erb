@@ -206,6 +206,64 @@
   </div>
   <hr/>
     <%= f.submit class: "btn btn-primary btn-block" %>
+  <hr/>
+  <div class="field form-group" id="set6">
+    <%= label_tag "6セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(6) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(6) %><br>
+    <% end %>
+    <% if @last_line.present? %>
+      <%= @last_line.get_set_label(6) %><br>
+    <% end %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_6, class: "form-control" ,step: 0.5, no_pattern: "\\d*"   %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_6 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_6 ,class: "form-control memo"%>
+  </div>
+  <hr/>
+  <div class="field form-group" id="set7">
+    <%= label_tag "7セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(7) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(7) %><br>
+    <% end %>
+    <% if @last_line.present? %>
+      <%= @last_line.get_set_label(7) %><br>
+    <% end %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_7, class: "form-control" ,step: 0.5, no_pattern: "\\d*"   %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_7 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_7 ,class: "form-control memo"%>
+  </div>
+  <hr/>
+  <div class="field form-group" id="set8">
+    <%= label_tag "8セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(8) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(8) %><br>
+    <% end %>
+    <% if @last_line.present? %>
+      <%= @last_line.get_set_label(8) %><br>
+    <% end %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_8, class: "form-control" ,step: 0.5, no_pattern: "\\d*"   %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_8 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_8 ,class: "form-control memo"%>
+  </div>
+  <hr/>
 <% end %>
 <!--BUD DRY-->
   <input type="button" class="btn btn-default"
