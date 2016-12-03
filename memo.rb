@@ -252,3 +252,31 @@ from pages where true and wight > 0 group by to_char(date,'YY/MM/W') order by to
              where true and wight > 0 #{where}
              group by to_char(date,'YY/MM/W') 
              order by to_char(date,'YY/MM/W')"
+
+
+iOSアプリ開発をしているとコンパイル回数が多いせいか、結構Macが重くなります。
+不要なログ的なデータ削除だったり、メモリやCPUの開放だったりで軽くなることが多々有ります。
+
+メモリ解放
+sudo purge
+
+メモリ解放（そこそこ時間かかります）
+du -sx /
+
+アプリとOSのキャッシュのアップデート
+sudo update_dyld_shared_cache -force 
+
+ドライバキャッシュのクリア
+sudo kextcache -system-caches
+
+カーネルエクステンションというドライバのキャッシュをクリアします。
+カーネルキャッシュの更新
+sudo kextcache -system-prelinked-kernel
+
+メンテナンススクリプトの手動実行
+sudo periodic daily weekly monthly
+
+ls -l /var/log/*.out
+sudo rm -rf ~/Library/Developer/Xcode/DerivedData
+sudo rm -rf ~/Library/Developer/Xcode/Archives
+sudo rm -rf ~/Library/Caches
