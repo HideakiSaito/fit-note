@@ -38,7 +38,15 @@ html {
   <table style="vertical-align:baseline" >
     <tr>
       <td style="font-weight:bold;font-size:1.5em;">
-        <% if page.date.strftime("%W").to_i.remainder(2) == 1
+  <input type="button" class="btn btn-default mini-size""
+  <% if @prev_page %>
+     value="<%= '前へ ' + disp_date( @prev_page.date) %>"
+     onclick="location.href='/pages/<%= @prev_page.id %>' "
+  <% else %>
+     value=""
+  <% end %>
+  />
+  <% if page.date.strftime("%W").to_i.remainder(2) == 1
              week_class = 'success'
         else
           week_class = 'info'
@@ -53,8 +61,17 @@ html {
 &nbsp;<%= page.training_hour.to_f %>[h]
     <% end %>
     <% if current_user == page.user %>
-      <button type="button" class="btn btn-default mini-size" onClick="location.href='/pages/<%= page.id  %>/edit/'">編集</button>
-    <% end %>
+      <button type="button" class="btn btn-default " onClick="location.href='/pages/<%= page.id  %>/edit/'"> 編 集 </button>
+      <% end %>
+  <input type="button" class="btn btn-default mini-size"
+  <% if @next_page %>
+     value="<%= '次へ ' +disp_date( @next_page.date) %>"
+     onclick="location.href='/pages/<%= @next_page.id %>' "
+  <% else %>
+     value="最後です。 新規作成"
+     onclick="location.href='/pages/new' "
+  <% end %>
+  />
       </td>
     </tr>
     <tr>

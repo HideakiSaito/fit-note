@@ -82,6 +82,8 @@ class PagesController < InheritedResources::Base
     self.show_index_init
     self.daily_chart @page
     @page = PageDecorator.decorate(@page)
+    @prev_page = Page.where("date < ? ",@page.date).order("date desc").first 
+    @next_page = Page.where("date > ? ",@page.date).order("date asc").first 
     #画像対応
     if params[:format].in?(["jpg", "png", "gif"])
       if params[:sefly]
