@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  start_date: 2016-12-11
+  end_date: 2016-12-11
+  memo: MyString
+  push_val1: 1.5
+  push_val2: 1.5
+  pull_val1: 1.5
+  pull_val2: 1.5
+  leg_val1: 1.5
+  leg_val2: 1.5
+  back_val1: 1.5
+  back_val2: 1.5
+  protein_val1: 1.5
+  protein_val2: 1.5
+  carbohydrate_val1: 1.5
+  carbohydrate_val2: 1.5
+  fat_val1: 1.5
+  fat_val2: 1.5
+  vegetable_val1: 1.5
+  vegetable_val2: 1.5
+  weight_val1: 1.5
+  fat_per_val1: 1.5
+  body_size_neck: 1.5
+  body_size_bust: 1.5
+  body_size_waist: 1.5
+  body_size_hip: 1.5
+  body_size_arm: 1.5
+  body_size_leg_right: 1.5
+  body_size_calf_right: 1.5
+
+two:
+  user_id: 
+  start_date: 2016-12-11
+  end_date: 2016-12-11
+  memo: MyString
+  push_val1: 1.5
+  push_val2: 1.5
+  pull_val1: 1.5
+  pull_val2: 1.5
+  leg_val1: 1.5
+  leg_val2: 1.5
+  back_val1: 1.5
+  back_val2: 1.5
+  protein_val1: 1.5
+  protein_val2: 1.5
+  carbohydrate_val1: 1.5
+  carbohydrate_val2: 1.5
+  fat_val1: 1.5
+  fat_val2: 1.5
+  vegetable_val1: 1.5
+  vegetable_val2: 1.5
+  weight_val1: 1.5
+  fat_per_val1: 1.5
+  body_size_neck: 1.5
+  body_size_bust: 1.5
+  body_size_waist: 1.5
+  body_size_hip: 1.5
+  body_size_arm: 1.5
+  body_size_leg_right: 1.5
+  body_size_calf_right: 1.5

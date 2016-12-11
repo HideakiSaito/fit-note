@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115120725) do
+ActiveRecord::Schema.define(version: 20161211145131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,42 @@ ActiveRecord::Schema.define(version: 20161115120725) do
 
   add_index "foods", ["diet_id"], name: "index_foods_on_diet_id", using: :btree
   add_index "foods", ["food_category_id"], name: "index_foods_on_food_category_id", using: :btree
+
+  create_table "goals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "memo"
+    t.float    "push_val1"
+    t.float    "push_val2"
+    t.float    "pull_val1"
+    t.float    "pull_val2"
+    t.float    "leg_val1"
+    t.float    "leg_val2"
+    t.float    "back_val1"
+    t.float    "back_val2"
+    t.float    "protein_val1"
+    t.float    "protein_val2"
+    t.float    "carbohydrate_val1"
+    t.float    "carbohydrate_val2"
+    t.float    "fat_val1"
+    t.float    "fat_val2"
+    t.float    "vegetable_val1"
+    t.float    "vegetable_val2"
+    t.float    "weight_val1"
+    t.float    "fat_per_val1"
+    t.float    "body_size_neck"
+    t.float    "body_size_bust"
+    t.float    "body_size_waist"
+    t.float    "body_size_hip"
+    t.float    "body_size_arm"
+    t.float    "body_size_leg_right"
+    t.float    "body_size_calf_right"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
 
   create_table "item_votes", force: :cascade do |t|
     t.integer  "user_id"
@@ -319,6 +355,7 @@ ActiveRecord::Schema.define(version: 20161115120725) do
   add_foreign_key "food_votes", "users"
   add_foreign_key "foods", "diets"
   add_foreign_key "foods", "food_categories"
+  add_foreign_key "goals", "users"
   add_foreign_key "item_votes", "items"
   add_foreign_key "item_votes", "users"
   add_foreign_key "items", "equipment"

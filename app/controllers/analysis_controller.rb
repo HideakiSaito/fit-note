@@ -123,7 +123,6 @@ class AnalysisController < ApplicationController
     analysis_initialize("ジム")#ChartUtilを利用
     size = chart_dates.size
     goals = [Array.new(size),Array.new(size),Array.new(size),Array.new(size)]
-
     #とりあえず中級目標で
     goals[0][-1] = 65*1.5
     goals[2][-1] = 65*2.0

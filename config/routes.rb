@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   resources :page_selfies
   #resources :tips
   #resources :tip_recommendations

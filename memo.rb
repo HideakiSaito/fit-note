@@ -172,26 +172,6 @@ _of 〜の
 _for 〜のために
 _to 〜に
 
-############################################AAA
-#2016/09/19 #####################################VVVVV
-# HideakiSaito/r1#20
-# プロフィール機能の追加（TOPに
-# user model へ属性の追加
-#  >
-#  >
-####
-#tips model ehime ryokou densya de
-rails g scaffold tip_category name:string
-rails g scaffold tip_recommendation name:string rate:integer
-rails g scaffold tip tip_category:belongs_to tip_recommendation:belongs_to name:string description:string author:string
-bundle exec rake db:migrate
-heroku run bundle exec rake db:migrate
-
-##基本機能を作る
-# ✅tip select-input
-# ✅trash files
-# ✅管理者権限機能
-#
 
 インポートごにすることseqの訂正
  select setval('foods_id_seq', (select max(id)+1 from foods) );
@@ -280,3 +260,16 @@ ls -l /var/log/*.out
 sudo rm -rf ~/Library/Developer/Xcode/DerivedData
 sudo rm -rf ~/Library/Developer/Xcode/Archives
 sudo rm -rf ~/Library/Caches
+
+############################################AAA
+#2016/12/12 #####################################VVVVV
+# HideakiSaito/r1#20
+# プロフィール機能の追加（TOPに
+# user model へ属性の追加
+rails g scaffold goal user:belongs_to start_date:date end_date:date memo:string push_val1:float push_val2:float pull_val1:float pull_val2:float leg_val1:float leg_val2:float back_val1:float back_val2:float protein_val1:float protein_val2:float carbohydrate_val1:float carbohydrate_val2:float fat_val1:float fat_val2:float vegetable_val1:float vegetable_val2:float weight_val1:float fat_per_val1:float  body_size_neck:float  body_size_bust:float body_size_waist:float body_size_hip:float body_size_arm:float body_size_leg_right:float body_size_calf_right:float
+
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
+
+##基本機能を作る
+#
