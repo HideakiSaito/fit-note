@@ -134,12 +134,12 @@ class AnalysisController < ApplicationController
       f.xAxis(categories: chart_dates)
       f.series(name: 'Push:ベンチプレス[kg]', data: chart_data(push_id))
       f.series(name: 'Pull:デッドリフト[kg]', data: chart_data(pull_id))
-      f.series(name: 'Back:チンニング[kg]', data: chart_data(chin_id))
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
+      f.series(name: 'Back:チンニング[kg]', data: chart_data(chin_id))
       f.series(name: 'Push:ベンチプレス目標[kg]', data: goals[0])
       f.series(name: 'Pull:デッドリフト目標[kg]', data: goals[1])
-      f.series(name: 'Back:チンニング目標[kg]', data: goals[3])
       f.series(name: 'Leg:スクワット目標[kg]', data: goals[2])
+      f.series(name: 'Back:チンニング目標[kg]', data: goals[3])
     end
   end
   def size_chart
