@@ -134,7 +134,7 @@ class AnalysisController < ApplicationController
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
       f.series(name: 'Push:ベンチプレス目標[kg]', data: goals[0])
       f.series(name: 'Pull:デッドリフト目標[kg]', data: goals[1])
-      f.series(name: 'Leg:スクワット[kg]', data: goals[2])
+      f.series(name: 'Leg:スクワット目標[kg]', data: goals[2])
     end
   end
   def size_chart
