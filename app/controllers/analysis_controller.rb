@@ -3,6 +3,10 @@ class AnalysisController < ApplicationController
   before_action :init
   include ChartUtil
   include CalenderUtil
+  def index
+    self.dash_bord #最初ダッシュボードで見やすいように順番を変えた。今2016/12/12現在で
+    render :dash_bord
+  end
   def dash_bord
     params[:start_day] = Date.current - 35
     params[:end_day] = Date.current
@@ -463,9 +467,6 @@ class AnalysisController < ApplicationController
       f.series(name: 'レップス',
                data: pie_chart_data_place , type: 'pie')
     end
-  end
-  def index
-    self.gym
   end
   private
   def yw_to_date(yw)
