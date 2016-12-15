@@ -62,7 +62,7 @@ class PagesController < InheritedResources::Base
     #search
     params[:start_day] ||= Date.current - 30*9
     params[:end_day] ||= Date.current
-    params[:scope] ||= "all"
+    params[:scope] ||= "startend"
     start_day = params[:start_day] 
     end_day = params[:end_day] 
     where = "date >= '#{start_day}' and date <= '#{end_day}' "
