@@ -67,13 +67,14 @@ class PagesController < InheritedResources::Base
     end_day = params[:end_day] 
     where = "date >= '#{start_day}' and date <= '#{end_day}' "
     @pages = @pages.where(where) 
-    @pages = @pages.paginate(page: params[:page], per_page: 15)
     if params[:scope] == "startend"
       temp = @pages
       pages = []
       pages << temp.first 
       pages << temp.last
       @pages = pages
+    else
+      @pages = @pages.paginate(page: params[:page], per_page: 15) 
     end
     #simple_page
     @simple_page ||= true
