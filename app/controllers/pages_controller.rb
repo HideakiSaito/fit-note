@@ -54,16 +54,27 @@ class PagesController < InheritedResources::Base
     @disp_other_is = disp_other
     @show = false
     @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
-#    @page_class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"
-    @search_form = SearchForm.new params[:search_form]
-    #search
     @pages = Page.default
     x_user = params[:user_id]? params[:user_id] : current_user
     @pages = @pages.where("user_id=?", x_user) #user
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.selfy_only if disp_mode == "selfy_only"
-    @pages = @pages.search @search_form.q if @search_form.q.present?
-    @pages = @pages.paginate(page: params[:page], per_page: 30)
+    #search
+    params[:start_day] ||= Date.current - 30*6
+    params[:end_day] ||= Date.current
+    params[:scope] ||= "all"
+    start_day = params[:start_day] 
+    end_day = params[:end_day] 
+    where = "date >= '#{start_day}' and date <= '#{end_day}' "
+    @pages = @pages.where(where) 
+    @pages = @pages.paginate(page: params[:page], per_page: 15)
+    if params[:scope] == "startend"
+      temp = @pages
+      pages = []
+      pages << temp.first 
+      pages << temp.last
+      @pages = pages
+    end
     #simple_page
     @simple_page ||= true
     @selfy_only ||= false
