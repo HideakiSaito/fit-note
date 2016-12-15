@@ -60,7 +60,7 @@ class PagesController < InheritedResources::Base
     @pages = @pages.training_only if disp_mode == "training_only"
     @pages = @pages.selfy_only if disp_mode == "selfy_only"
     #search
-    params[:start_day] ||= Date.current - 30*6
+    params[:start_day] ||= Date.current - 30*9
     params[:end_day] ||= Date.current
     params[:scope] ||= "all"
     start_day = params[:start_day] 

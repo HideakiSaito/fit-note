@@ -3,5 +3,6 @@
                         onClick="location.href='/pages/<%= page.id  %>'">
                         <%= disp_short_date(page.date) %>
   </button>
-        <%= page_selfy_tag page, width:  360  %>
+      <%= page.wight %> kg , <%= page.body_fat_per %> %
+      <%= page_selfy_tag page, width:  360  %>
 </div>
