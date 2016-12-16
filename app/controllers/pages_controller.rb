@@ -19,6 +19,7 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def selfy_only
+    params[:scope] ||= "startend"
     self.index_logic "selfy_only",false
     @selfy_only = true
     @simple_page = false
