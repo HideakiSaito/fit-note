@@ -401,6 +401,7 @@ class AnalysisController < ApplicationController
     dates = []
     weight_data = []
     body_fat_per_data = []
+    not_fat_weight_data = []
     where = search_params_where
     if params[:scope] == "week"
       sql = " select 
@@ -416,6 +417,7 @@ class AnalysisController < ApplicationController
         dates << yw_to_date(page["week"])
         weight_data << page["weight"]  
         body_fat_per_data << page["fat"]  
+        not_fat_weight_data << Page.func_not_fat_weight(page["weight"] ,page["fat"] )   
       }
     else
       pages = pages.where("wight > 0 #{where}").order(:date) #過去データ出したくないだけなので
@@ -424,14 +426,17 @@ class AnalysisController < ApplicationController
         dates << label
         weight_data << page.wight.to_f
         body_fat_per_data << page.body_fat_per.to_f
+        not_fat_weight_data << page.not_fat_weight.to_f
       end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: '体重,体脂肪の推移')
+      f.title(text: '体重,体脂肪 (除脂肪重量click) [推移]')
       f.xAxis(categories: dates,title:"日付")
       f.yAxis([ {title: "b" , opposite: true},{title: "a"} ] )
       f.series(name: "体脂肪[%]" ,data: body_fat_per_data,yAxis: 0)
       f.series(name: "体重[kg]" ,data: weight_data,yAxis: 1)
+      f.series(name: "除脂肪重量[kg]" ,data: not_fat_weight_data,yAxis: 1,visible: false)
+
       f.chart(type: "line")
 #      f.options[:plotOptions] = { area: {stacking: 'normal'}
     end

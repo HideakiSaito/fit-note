@@ -77,7 +77,7 @@ html {
     <tr>
       <td>
         <p style="font-weight:bold;font-size:1.25em;">
-        < <%= page.wight %> kg , <%= page.body_fat_per %> % >
+        <%= page.wight %> kg ,  <%= page.body_fat_per %> % ->  (<%= page.not_fat_weight %> kg)
         <%= page.user.name if page.user %>
         </p>
         <%= page_image_tag page, height: @show ? 320 : 128 , class: "hidari picture" %>

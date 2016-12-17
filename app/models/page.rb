@@ -19,6 +19,9 @@ class Page < ActiveRecord::Base
   def memo_br
     memo.gsub(/\r\n|\r|\n/, "<br />")
   end
+  def not_fat_weight
+    not_fat_weight = (wight * (1-(body_fat_per/100))).round(2) if body_fat_per #0除算するんで
+  end
   def health_summaly
     h = ""
     h += "<b>"
@@ -237,6 +240,9 @@ class Page < ActiveRecord::Base
     includes(:feeling).includes(:condition)
   end
   class << self
+  def func_not_fat_weight(w,f)
+    not_fat_weight = (w * (1-(f/100))).round(2) if f #0除算するんで
+  end
     def search(par_predicate)
       query = order("date desc,id desc")
       if par_predicate.present?
