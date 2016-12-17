@@ -25,7 +25,7 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def selfy_only
-    params[:start_day] ||= Date.current - 30*7
+    params[:start_day] ||= Date.current - 30*8
     params[:end_day] ||= Date.current
     params[:scope] ||= "startend"
     self.index_logic "selfy_only",false
