@@ -5,6 +5,9 @@ class PagesController < InheritedResources::Base
 
   include ChartUtil
   def show_pic
+    params[:start_day] ||= Date.current - 30
+    params[:end_day] ||= Date.current
+    params[:scope] ||= "all"
     self.index_logic "all" ,false
     @simple_page = false
     @show_detail = false
@@ -12,6 +15,9 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def training_only
+    params[:start_day] ||= Date.current - 30
+    params[:end_day] ||= Date.current
+    params[:scope] ||= "all"
     self.index_logic "training_only",false
     @simple_page = false
     @show_detail = true
@@ -19,6 +25,8 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def selfy_only
+    params[:start_day] ||= Date.current - 30*7
+    params[:end_day] ||= Date.current
     params[:scope] ||= "startend"
     self.index_logic "selfy_only",false
     @selfy_only = true
@@ -28,6 +36,9 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def index
+    params[:start_day] ||= Date.current - 30
+    params[:end_day] ||= Date.current
+    params[:scope] ||= "all"
     self.index_logic "all"
     @simple_page = true
     @show_detail = false
