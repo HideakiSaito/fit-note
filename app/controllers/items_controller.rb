@@ -18,6 +18,8 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    params[:start_day] ||= Date.current - 30*9
+    params[:end_day] ||= Date.current
     analysis_initialize("ジム") #ChartUtil
     @chart_gym = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでの' + @item.name + 'のトレーニング推移')
