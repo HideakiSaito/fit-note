@@ -14,9 +14,15 @@
     <%= date_field_tag "end_day", params[:end_day] %>
     
     ページの表示条件[
-      <%= label_tag "scope_all","すべて" %>
-      <%= radio_button_tag "scope","all", params[:scope].eql?("all") %>
-      <%= label_tag "scope_startend","最初と最後" %>
+      <%= label_tag "scope_all"," すべて" %>
+      <%= radio_button_tag "scope","all", params[:scope].eql?("all") %>,
+      <% if request.path_info == "/pages/training_only" %>
+        <%= label_tag "scope_startend"," ジムだけ" %>
+        <%= radio_button_tag "scope","gym", params[:scope].eql?("gym")  %>,
+        <%= label_tag "scope_startend"," 家だけ" %>
+        <%= radio_button_tag "scope","home", params[:scope].eql?("home")  %>,
+      <% end %>
+      <%= label_tag "scope_startend"," 最初と最後" %>
       <%= radio_button_tag "scope","startend", params[:scope].eql?("startend")  %>
     ]
     &nbsp;

@@ -17,7 +17,7 @@ class PagesController < InheritedResources::Base
   def training_only
     params[:start_day] ||= Date.current - 30
     params[:end_day] ||= Date.current
-    params[:scope] ||= "all"
+    params[:scope] ||= "gym"
     self.index_logic "training_only",false
     @simple_page = false
     @show_detail = true
@@ -78,6 +78,8 @@ class PagesController < InheritedResources::Base
     start_day = params[:start_day] 
     end_day = params[:end_day] 
     where = "date >= '#{start_day}' and date <= '#{end_day}' "
+    where += " and place like 'ジム' " if params[:scope] == "gym"
+    where += " and place like '家' " if params[:scope] == "home"
     @pages = @pages.where(where) 
     if params[:scope] == "startend"
       temp = @pages
