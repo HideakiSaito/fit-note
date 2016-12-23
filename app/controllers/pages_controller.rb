@@ -5,9 +5,6 @@ class PagesController < InheritedResources::Base
 
   include ChartUtil
   def show_pic
-    params[:start_day] ||= Date.current - 30
-    params[:end_day] ||= Date.current
-    params[:scope] ||= "all"
     self.index_logic "all" ,false
     @simple_page = false
     @show_detail = false
@@ -15,9 +12,6 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def training_only
-    params[:start_day] ||= Date.current - 30
-    params[:end_day] ||= Date.current
-    params[:scope] ||= "gym"
     self.index_logic "training_only",false
     @simple_page = false
     @show_detail = true
@@ -25,8 +19,6 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def selfy_only
-    params[:start_day] ||= Date.current - 30*8
-    params[:end_day] ||= Date.current
     params[:scope] ||= "startend"
     self.index_logic "selfy_only",false
     @selfy_only = true
@@ -36,9 +28,6 @@ class PagesController < InheritedResources::Base
     render :index
   end
   def index
-    params[:start_day] ||= Date.current - 30
-    params[:end_day] ||= Date.current
-    params[:scope] ||= "all"
     self.index_logic "all"
     @simple_page = true
     @show_detail = false
@@ -78,8 +67,6 @@ class PagesController < InheritedResources::Base
     start_day = params[:start_day] 
     end_day = params[:end_day] 
     where = "date >= '#{start_day}' and date <= '#{end_day}' "
-    where += " and place like 'ジム' " if params[:scope] == "gym"
-    where += " and place like '家' " if params[:scope] == "home"
     @pages = @pages.where(where) 
     if params[:scope] == "startend"
       temp = @pages
@@ -136,7 +123,12 @@ class PagesController < InheritedResources::Base
     #一番直近の同じ曜日の健康データをセットする
     last_wday = Page.where("extract(dow from date) = ?",Time.current.wday).order("date desc").first
     if last_wday
-      @page.water = last_wday.water
+      @page.place = last_wday.place
+      @page.start_time = last_wday.start_time #トレーニングも定期的だろうから
+      @page.end_time = last_wday.end_time
+      @page.training_hour = last_wday.training_hour
+      @page.diet_id = last_wday.diet_id
+      @page.water = last_wday.water #日常の数値
       @page.alcohol = last_wday.alcohol
       @page.caffeine = last_wday.caffeine
       @page.work_hour = last_wday.work_hour
