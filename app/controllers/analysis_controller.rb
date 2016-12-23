@@ -8,8 +8,10 @@ class AnalysisController < ApplicationController
     render :dash_bord
   end
   def dash_bord
-    params[:start_day] = Date.current - 35
-    params[:end_day] = Date.current
+    params[:start_day] ||= Date.current - 35
+    params[:end_day] ||= Date.current
+    @scop_day_label = ""
+    @scop_week_label = ""
     #chart
     @_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
     @gym_chart = self.gym_chart
@@ -103,7 +105,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def pie_parts
-    params[:start_day] ||= Date.current - 30*7
+    params[:start_day] ||= Date.current - 7
     params[:end_day] ||= Date.current
     @scop_day_label = ""
     @scop_week_label = ""
@@ -127,11 +129,13 @@ class AnalysisController < ApplicationController
     analysis_initialize("ジム")#ChartUtilを利用
     size = chart_dates.size
     goals = [Array.new(size),Array.new(size),Array.new(size),Array.new(size)]
-    #とりあえず中級目標で
-    goals[0][-1] = 65*1.5
-    goals[2][-1] = 65*2.0
-    goals[1][-1] =  65*2.5
-    goals[3][-1] =  65*1.25
+    if size > 0
+      #とりあえず中級目標で
+      goals[0][-1] = 65*1.5
+      goals[2][-1] = 65*2.0
+      goals[1][-1] =  65*2.5
+      goals[3][-1] =  65*1.25
+    end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでのトレーニング推移')
       f.xAxis(categories: chart_dates)
@@ -175,7 +179,7 @@ class AnalysisController < ApplicationController
       arm_data << (page.body_size_arm_left.to_f + page.body_size_arm_right.to_f)/2
       leg_data << (page.body_size_leg_left.to_f + page.body_size_leg_right.to_f)/2
       calf_data << (page.body_size_calf_left.to_f + page.body_size_calf_right.to_f)/2
-    end
+    end 
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'サイズの推移')
       f.xAxis(categories: dates)
@@ -436,7 +440,6 @@ class AnalysisController < ApplicationController
       f.series(name: "体脂肪[%]" ,data: body_fat_per_data,yAxis: 0)
       f.series(name: "体重[kg]" ,data: weight_data,yAxis: 1)
       f.series(name: "除脂肪重量[kg]" ,data: not_fat_weight_data,yAxis: 1,visible: false)
-
       f.chart(type: "line")
 #      f.options[:plotOptions] = { area: {stacking: 'normal'}
     end
