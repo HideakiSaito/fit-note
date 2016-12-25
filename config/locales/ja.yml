@@ -213,6 +213,7 @@ ja:
       tip: ヒント
       tip_category: ヒント・カテゴリ
       tip_recommendation: ヒント・推奨レベル
+      goal: 目標
     attributes:
       tip:
         tip_category_id: ヒント・カテゴリ
@@ -325,3 +326,36 @@ ja:
         email: メール
         password: パスワード
         password_confirmation: パスワードの確認
+      goal:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        user_id: ユーザ
+        start_date: 開始日
+        end_date: 終了日
+        memo: メモ
+        push_val1: プッシュ_重量  
+        push_val2: プッシュ_回数  
+        pull_val1: プル_重量  
+        pull_val2: プル_回数  
+        leg_val1: レッグ_重量
+        leg_val2: レッグ_回数  
+        back_val1: チンニング_重量
+        back_val2: チンニング_回数  
+        protein_val1: タンパク質摂取量_レスト
+        protein_val2: タンパク質摂取量_トレーニング
+        carbohydrate_val1: 炭水化物摂取量_レスト
+        carbohydrate_val2: 淡水貨物摂取量_トレーニング
+        fat_val1: 脂肪摂取量_レスト
+        fat_val2: 脂肪摂取量_トレーニング
+        vegetable_val1: 野菜摂取量_レスト
+        vegetable_val2: 野菜摂取量_トレーニング
+        weight_val1: 体重
+        fat_per_val1: 体脂肪
+        body_size_neck: サイズ_首回り
+        body_size_bust: サイズ_バスト
+        body_size_waist: サイズ_ウェスト
+        body_size_hip: サイズ_ヒップ
+        body_size_arm: サイズ_腕
+        body_size_leg_right: サイズ_脚
+        body_size_calf_right: サイズ_ふくらはぎ

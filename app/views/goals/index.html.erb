@@ -2,77 +2,30 @@
 
 <h1>Listing Goals</h1>
 
-<table>
+<table class="table table-striped"
+style="text-align: right; width: 100%;">
   <thead>
     <tr>
       <th>User</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Memo</th>
-      <th>Push val1</th>
-      <th>Push val2</th>
-      <th>Pull val1</th>
-      <th>Pull val2</th>
-      <th>Leg val1</th>
-      <th>Leg val2</th>
-      <th>Back val1</th>
-      <th>Back val2</th>
-      <th>Protein val1</th>
-      <th>Protein val2</th>
-      <th>Carbohydrate val1</th>
-      <th>Carbohydrate val2</th>
-      <th>Fat val1</th>
-      <th>Fat val2</th>
-      <th>Vegetable val1</th>
-      <th>Vegetable val2</th>
-      <th>Weight val1</th>
-      <th>Fat per val1</th>
-      <th>Body size neck</th>
-      <th>Body size bust</th>
-      <th>Body size waist</th>
-      <th>Body size hip</th>
-      <th>Body size arm</th>
-      <th>Body size leg right</th>
-      <th>Body size calf right</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
-        <td><%= goal.user %></td>
+        <td><%= goal.user.name %></td>
         <td><%= goal.start_date %></td>
         <td><%= goal.end_date %></td>
         <td><%= goal.memo %></td>
-        <td><%= goal.push_val1 %></td>
-        <td><%= goal.push_val2 %></td>
-        <td><%= goal.pull_val1 %></td>
-        <td><%= goal.pull_val2 %></td>
-        <td><%= goal.leg_val1 %></td>
-        <td><%= goal.leg_val2 %></td>
-        <td><%= goal.back_val1 %></td>
-        <td><%= goal.back_val2 %></td>
-        <td><%= goal.protein_val1 %></td>
-        <td><%= goal.protein_val2 %></td>
-        <td><%= goal.carbohydrate_val1 %></td>
-        <td><%= goal.carbohydrate_val2 %></td>
-        <td><%= goal.fat_val1 %></td>
-        <td><%= goal.fat_val2 %></td>
-        <td><%= goal.vegetable_val1 %></td>
-        <td><%= goal.vegetable_val2 %></td>
-        <td><%= goal.weight_val1 %></td>
-        <td><%= goal.fat_per_val1 %></td>
-        <td><%= goal.body_size_neck %></td>
-        <td><%= goal.body_size_bust %></td>
-        <td><%= goal.body_size_waist %></td>
-        <td><%= goal.body_size_hip %></td>
-        <td><%= goal.body_size_arm %></td>
-        <td><%= goal.body_size_leg_right %></td>
-        <td><%= goal.body_size_calf_right %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to '参照', goal_path(goal) ,class: "btn btn-default" %>
+      <%= link_to '編集', edit_goal_path(goal) ,class: "btn btn-default" %>
+      <%= link_to '削除', goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default" %>
+    </td>
       </tr>
     <% end %>
   </tbody>
@@ -80,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Goal', new_goal_path %>
+<%= link_to '新規作成', new_goal_path ,class: "btn btn-default" %>

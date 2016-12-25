@@ -1,4 +1,5 @@
 class GoalsController < InheritedResources::Base
+  before_action :login_required
 
   private
 
