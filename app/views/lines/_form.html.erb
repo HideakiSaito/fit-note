@@ -109,7 +109,7 @@
   </div>
   <hr/>
   <div class="field form-group" id="set2">
-    <h4> 2セット kg / 回数:メモ </h4> <br>
+    <%= label_tag "2セット kg / 回数:メモ" %><br>
     <% if @last3_line.present? %>
       <%= @last3_line.get_set_label(2) %><br>
     <% end %>
@@ -145,27 +145,6 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_3 ,class: "form-control memo"%>
   </div>
-  <hr/>
-    <%= f.submit class: "btn btn-primary btn-block" %>
-    <br/>
-<!--BUD DRY-->
-  <input type="button" class="btn btn-default"
-  <% if @prev_line %>
-     value="<%= '前へ' +  @prev_line.short_label %>"
-     onclick="location.href='/lines/<%= @prev_line.id %>/edit' "
-  <% else %>
-     value=""
-  <% end %>
-  />
-  <input type="button" class="btn btn-info"
-  <% if @next_line %>
-     value="<%= '次へ[' + @next_line.no.to_s + '.' + @next_line.item.part.name + ']'+ @next_line.item.name  %>"
-     onclick="location.href='/lines/<%= @next_line.id %>/edit' "
-  <% else %>
-     value="最後です。行を追加する。"
-     onclick="location.href='<%=new_page_line_path(@line.page)  %>' "
-  <% end %>
-  />
   <hr/>
   <div class="field form-group" id="set4">
     <%= label_tag "4セット kg / 回数:メモ" %><br>
@@ -204,8 +183,6 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_5 ,class: "form-control memo"%>
   </div>
-  <hr/>
-    <%= f.submit class: "btn btn-primary btn-block" %>
   <hr/>
   <div class="field form-group" id="set6">
     <%= label_tag "6セット kg / 回数:メモ" %><br>
@@ -263,6 +240,8 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_8 ,class: "form-control memo"%>
   </div>
+  <hr/>
+    <%= f.submit class: "btn btn-primary btn-block" %>
   <hr/>
 <% end %>
 <!--BUD DRY-->
