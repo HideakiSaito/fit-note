@@ -69,7 +69,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def gym
-     params[:start_day] ||= Date.current - 30*7
+     params[:start_day] ||= Date.current - 30*9
      params[:end_day] ||= Date.current
      params[:scope] ||= "week"
     @scop_day_label = ""
@@ -78,7 +78,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def size
-    params[:start_day] ||= Date.current - 30*7
+    params[:start_day] ||= Date.current - 30*9
     params[:end_day] ||= Date.current
     params[:scope] ||= "week"
     @scop_day_label = "全て"
@@ -113,7 +113,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def pie_place
-    params[:start_day] ||= Date.current - 30*7
+    params[:start_day] ||= Date.current - 30*9
     params[:end_day] ||= Date.current
     @scop_day_label = ""
     @scop_week_label = ""
