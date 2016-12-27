@@ -38,7 +38,7 @@ html {
   <table style="vertical-align:baseline" >
     <tr>
       <td style="font-weight:bold;font-size:1.5em;">
-  <input type="button" class="btn btn-default mini-size""
+        <input type="button" class="btn btn-default mini-size" style="display:<%= "none" unless @show %>"
   <% if @prev_page %>
      value="<%= '前へ ' + disp_date( @prev_page.date) %>"
      onclick="location.href='/pages/<%= @prev_page.id %>' "
@@ -63,7 +63,8 @@ html {
     <% if current_user == page.user %>
       <button type="button" class="btn btn-default " onClick="location.href='/pages/<%= page.id  %>/edit/'"> 編 集 </button>
       <% end %>
-  <input type="button" class="btn btn-default mini-size"
+  <input type="button" class="btn btn-default mini-size" style="display:<%= "none" unless @show %>"
+
   <% if @next_page %>
      value="<%= '次へ ' +disp_date( @next_page.date) %>"
      onclick="location.href='/pages/<%= @next_page.id %>' "
