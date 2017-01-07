@@ -117,7 +117,6 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-info'></td>"
       d += "<td class='btn-info' >"
       d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=5'> ⑤  </a>"
       d += "</td>"
