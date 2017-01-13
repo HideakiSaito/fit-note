@@ -63,7 +63,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.8.0)
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
     draper (2.1.0)
@@ -335,7 +335,6 @@ DEPENDENCIES
   bullet
   byebug
   coffee-rails (~> 4.1.0)
-  coffee-script-source (= 1.8.0)
   draper
   font-awesome-sass
   inherited_resources

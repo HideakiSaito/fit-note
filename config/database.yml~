@@ -18,8 +18,6 @@ development:
   #encoding: SQL_ASCII
   encoding: unicode
   database: r1_dev
-  #  username: r1_dev #windows
-  #  password: r1_dev #windows
   username: r1_dev #windows
   password: r1_dev #windows
     ### H.saito Add <<<<<<<<<<<<<<<<<<<<<<<<<<<<

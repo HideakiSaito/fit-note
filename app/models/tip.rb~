@@ -4,11 +4,9 @@ class Tip < ActiveRecord::Base
 
 class <<self
   def random_one
-    tip = Tip.new
     #rondom １件 http://easyramble.com/get-record-randomly-with-active-record.html
-    if Tip.count > 0
-     tip = Tip.where( 'id >= ?', rand(Tip.first.id..Tip.last.id) ).first
-    end
+    tip = Tip.where( 'id >= ?', rand(Tip.first.id..Tip.last.id) ).first
+    tip ||= Tip.new
   end
 end
   def grol_mes
