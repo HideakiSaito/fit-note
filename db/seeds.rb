@@ -8,8 +8,8 @@
 #
 #
 Diet.create([
-  {name: "増量_3000kcal↗︎"" },
-  {name: "減量_2000kcal↘︎"},
+  {name: "増量_3000kcal" },
+  {name: "減量_2000kcal"},
   {name:"体重維持_2500kcal"}
   ])
 
