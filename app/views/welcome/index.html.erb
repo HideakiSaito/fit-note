@@ -11,13 +11,16 @@
   <div> 直近のページ：<%= l(@latest_page.date, format: :short_day) if @latest_page.id != nil %>
 </div>
 <% if @latest_page.id != nil %>
-  <input type="button" value="直近のページ確認" class="btn btn-success btn-block" onclick="location.href='<%= page_path(@latest_page.id) %>'" />
+  <input type="button" value="直近のページ確認" class="btn btn-success btn-block"
+   onclick="location.href='<%= page_path(@latest_page.id) %>'" />
 <% end %>
-<input type="button" value="新規作成" class="btn btn-primary btn-block" onclick="location.href='<%= new_page_path  %>'" />
+<input type="button" value="新規作成" class="btn btn-primary btn-block"
+ onclick="location.href='<%= new_page_path  %>'" />
 <hr>
 <% if @latest_page.id != nil %>
 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >
-  <input type="button" value="直近のページ編集" class="btn btn-default btn-block" onclick="location.href='<%= edit_page_path(@latest_page.id)%>'" />
+  <input type="button" value="直近のページ編集" class="btn btn-default btn-block"
+   onclick="location.href='<%= edit_page_path(@latest_page.id)%>'" />
 </div>
 <% end %>
 <% else %>
