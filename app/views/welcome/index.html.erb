@@ -1,11 +1,10 @@
 <%= render 'shared/tipgrowl' %>
 <%= render 'shared/welcomegrowl' %>
 <p id="notice"><%= notice %></p>
-<div style="text-align: left;">
-  <h2 style="font-weight: normal" >
-    <a href="/">GIVE UP OR GET UP</a>
-  </h2>
-</div>
+<h1>  <i class="fa fa-heartbeat fa-lg"></i>Fit Note  </h1>
+<span style="text-align: left;">
+    <p style="font-size: 1.5em;">Diet & Exercise Management System</p>
+</span>
 <% if current_user %>
   <%= render "welcome" %>
   <div> 直近のページ：<%= l(@latest_page.date, format: :short_day) if @latest_page.id != nil %>
