@@ -18,4 +18,4 @@ secret.key
 !/log/.keep
 /tmp
 
-Gemfile.lock
+#Gemfile.lock
