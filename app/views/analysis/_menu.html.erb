@@ -1,18 +1,31 @@
 <h1>Data Analysis</h1>
 <ul class="nav nav-tabs">
-  <li><a href="/analysis/dash_bord">Dashbord</a></li>
-  <li><a href="/analysis/weight_recent">最近の体重</a></li>
-  <li><a href="/analysis/diet_recent">最近の食事</a></li>
-  <li><a href="/analysis/weight">体重</a></li>
-  <li><a href="/analysis/diet">食事</a></li>
-  <li><a href="/analysis/gym">ジム</a></li>
-  <li><a href="/analysis/size">サイズ</a></li>
-  <li><a href="/analysis/health">健康時間</a></li>
-  <li><a href="/analysis/water">水分</a></li>
-  <li><a href="/analysis/feel">体調</a></li>
-  <li><a href="/analysis/pie_parts">部位</a></li>
-  <li><a href="/analysis/pie_place">場所</a></li>
-  <li><a href="/analysis/home">家</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info"  
+  href="/analysis/dash_bord">Dashbord</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/weight_recent">最近の体重</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/diet_recent">最近の食事</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info"  
+  href="/analysis/weight">体重</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/diet">食事</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/gym">ジム</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/size">サイズ</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info"  
+  href="/analysis/health">健康時間</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/water">水分</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/feel">体調</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info"  
+  href="/analysis/pie_parts">部位</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/pie_place">場所</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+   href="/analysis/home">家</a></li>
 </ul>
 <%= form_tag "", method: :get do %>
   <p>
@@ -32,6 +45,6 @@
     <% end %>
     ]
     &nbsp;
-    <%= submit_tag "検索" %>
+    <%= submit_tag "検索" ,class: "btn btn-default" %>
   </p>
 <% end %>

@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 <h1>ノート <%= @disp_mode  %></h1>
 <ul class="nav nav-tabs">
-  <li><a href="/pages/training_only">トレーニングだけ</a></li>
-  <li><a href="/pages/selfy_only">セルフィだけ</a></li>
-  <li><a href="/pages/show_pic">詳細</a></li>
-  <li><a href="/pages">シンプル</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+ href="/pages/training_only">トレーニングだけ</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info"
+   href="/pages/selfy_only">セルフィだけ</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+  href="/pages/show_pic">詳細</a></li>
+  <li class="nav-item" ><a class="nav-link bg-info" 
+  href="/pages">シンプル</a></li>
 </ul>
 <%= form_tag "", method: :get do %>
+
   <p>
     <%= label_tag "start_day","開始日" %>
     <%= date_field_tag "start_day", params[:start_day] %>
@@ -26,10 +31,10 @@
       <%= radio_button_tag "scope","startend", params[:scope].eql?("startend")  %>
     ]
     &nbsp;
-    <%= submit_tag "検索" %>
+    <%= submit_tag "検索" ,class: "btn btn-default" %>
   </p>
 <% end %>
-<button type="button" class="btn btn-primary mini-size"
+<button type="button" class="btn btn-primary"
         onClick="location.href='/pages/new'">新しいページを作る。</button>
  <%= check_box_tag "page[hidden_picture]" ,true , @show_picture %> 画像表示
  <%= check_box_tag "page[hidden_lines]",true, @show_detail %> トレーニング内容表示 
