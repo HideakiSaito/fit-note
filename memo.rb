@@ -273,3 +273,12 @@ heroku run bundle exec rake db:migrate
 
 ##基本機能を作る
 #
+
+############################################AAA
+#2017/02/05 #####################################VVVVV
+# 食事を、選択したら次回うえにくるように #51
+rails g scaffold last_meal user:belongs_to food:belongs_to date:date memo:string
+
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
+

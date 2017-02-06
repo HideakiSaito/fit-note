@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211145131) do
+ActiveRecord::Schema.define(version: 20170205112023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,18 @@ ActiveRecord::Schema.define(version: 20161211145131) do
   add_index "items", ["equipment_id"], name: "index_items_on_equipment_id", using: :btree
   add_index "items", ["mode_id"], name: "index_items_on_mode_id", using: :btree
   add_index "items", ["part_id"], name: "index_items_on_part_id", using: :btree
+
+  create_table "last_meals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "food_id"
+    t.date     "date"
+    t.string   "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "last_meals", ["food_id"], name: "index_last_meals_on_food_id", using: :btree
+  add_index "last_meals", ["user_id"], name: "index_last_meals_on_user_id", using: :btree
 
   create_table "lines", force: :cascade do |t|
     t.integer  "page_id"
@@ -361,6 +373,8 @@ ActiveRecord::Schema.define(version: 20161211145131) do
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "modes"
   add_foreign_key "items", "parts"
+  add_foreign_key "last_meals", "foods"
+  add_foreign_key "last_meals", "users"
   add_foreign_key "lines", "items"
   add_foreign_key "lines", "modes"
   add_foreign_key "lines", "pages"

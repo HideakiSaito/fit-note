@@ -1,0 +1,2 @@
+module LastMealsHelper
+end

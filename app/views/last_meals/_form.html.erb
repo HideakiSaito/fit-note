@@ -1,0 +1,33 @@
+<%= form_for(@last_meal) do |f| %>
+  <% if @last_meal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@last_meal.errors.count, "error") %> prohibited this last_meal from being saved:</h2>
+
+      <ul>
+      <% @last_meal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id , { class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :food_id %><br>
+    <%= f.text_field :food_id , { class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date , { class: "form-control"} %>
+  </div>
+  <div class="field">
+    <%= f.label :memo %><br>
+    <%= f.text_field :memo , { class: "form-control"} %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

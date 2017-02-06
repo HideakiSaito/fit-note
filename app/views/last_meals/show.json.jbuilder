@@ -1,0 +1,1 @@
+json.partial! "last_meals/last_meal", last_meal: @last_meal

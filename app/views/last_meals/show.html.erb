@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @last_meal.user.name %>
+</p>
+
+<p>
+  <strong>Food:</strong>
+  <%= @last_meal.food.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @last_meal.date %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @last_meal.memo %>
+</p>
+
+<%= link_to '編集', edit_last_meal_path(@last_meal) ,class: "btn btn-default"%> |
+<%= link_to '戻る', last_meals_path ,class: "btn btn-default" %>

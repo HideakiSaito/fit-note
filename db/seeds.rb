@@ -132,3 +132,21 @@ Item.create ([
   {name: "バーベルスクワット", reps: 8, part_id: 4 , mode_id: 1, equipment_id: 1},
   {name: "自重スクワット", reps: 8, part_id: 4 , mode_id: 1, equipment_id: 5}
 ])
+
+TipCategory.create ([
+  {name: "トレーニング"},
+  {name: "ダイエット（食事）"},
+  {name: "休息"},
+  {name: "ダイエット（全般）"},
+  {name: "プログラム・IT"}
+])
+
+TipRecommendation.create ([
+  {name: "絶対オススメ", rate: 5 },
+  {name: "かなりオススメ", rate: 4 },
+  {name: "まあまあオススメ", rate: 3 },
+  {name: "できれば", rate: 2 },
+  {name: "どっちでもいい", rate: 1 },
+  {name: "なし", rate: 0 }
+])
+

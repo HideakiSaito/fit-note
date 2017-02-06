@@ -1,0 +1,1 @@
+json.array! @last_meals, partial: 'last_meals/last_meal', as: :last_meal
