@@ -11,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+
   <% # Food Dialog ################################################%>
   <div id="dialog" title="食事の一覧">
     <div style="overflow:scroll;">
@@ -77,7 +78,7 @@
   <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
   <div class="field" id="copy_page_id">
     <%= collection_select :copy_page,:id  ,
-      Page.training_only.where("date >= ?", Date.current - 60).order("date desc") , :id ,:page_training_label,
+      Page.training_only.where("date >= ?", Date.current - 30).order("date desc") , :id ,:page_training_label,
       {prompt: true} , { class: "form-control"} %>
 </div>
 
@@ -149,6 +150,8 @@
     {prompt: true} , { class: "form-control"} %>
   </div>
 <%= link_to '食品を調べる', "http://calorie.slism.jp" %>
+  <%= label_tag "last_meals","今回食べた食品" %>
+  <%= text_field_tag "last_meals", params[:last_meals] %>
   <div class="field btn-info" >
     <%= f.label :diet_memo_1 %>
     <button type="button" id="food1" class="field btn-danger btn" > 食事の選択 </button>

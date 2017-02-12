@@ -6,6 +6,7 @@
   var fat;
   var protein;
   var vegetable;
+  var last_meal = $("#last_meals");
   //食事メニューのエレメントを取得
   function get_food_element(p_no){
     memo = $("#page_diet_memo_" + p_no );
@@ -13,6 +14,7 @@
     fat = $("#page_fat_" + p_no );
     protein = $("#page_protein_" + p_no );
     vegetable = $("#page_vegetable_" + p_no );
+    last_meal = $("#last_meals");
   }
   //文字列を数値で扱うように初期r
   function temp_reset(p_val){
@@ -26,6 +28,9 @@
     //食事メニュの追加
     temp = memo.val(); if (temp.length > 0 ) { temp += "、"; }
     memo.val(temp + p_name); 
+    //最後に食べた食事のIDを追加（クリアをとりあえず考慮しない）
+    temp = last_meal.val(); if (temp.length > 0 ) { temp += ","; }
+    last_meal.val(temp + p_no)
     //炭水化物の追加
     temp = temp_reset(carbo.val());
     carbo.val(temp + Number(p_carbohydrate) );

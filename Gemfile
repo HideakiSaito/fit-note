@@ -59,6 +59,9 @@ group :development do
   gem "railroady" #bundle exec rake diagram:all
   gem "rails-erd" #bundle exec rake erd
   gem "ruby-graphviz"
+
+gem 'ruby-debug-ide'  #2017/02/06 add VSCODEでデバッグ用
+gem 'debase'          #2017/02/06 add VSCODEでデバッグ用
 end
 
   #### Add H.Saito ######

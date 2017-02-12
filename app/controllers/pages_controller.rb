@@ -123,8 +123,8 @@ class PagesController < InheritedResources::Base
   end
 
   def form_setup
-      #いいねした食品だけ
-      @foods = current_user.voted_foods
+      #いいねした食品だけ、かつ最後に食べたものが上にくるように
+      @foods = current_user.voted_foods.order_last_meal
   end
 
   def new
@@ -152,6 +152,7 @@ class PagesController < InheritedResources::Base
     @page.build_image unless @page.image
     @page.build_selfy unless @page.selfy
   end
+
   def edit
     @page = Page.find(params[:id])
     @page = PageDecorator.decorate(@page)
@@ -170,6 +171,7 @@ class PagesController < InheritedResources::Base
       if @page.save
         copy_page_lines
         @page.save
+        last_meals_save
         message = 'Page was successfully updated.'
         message += 'Copy Lines!!!' if  @new_lines
         format.html { redirect_to @page, method: :get,
@@ -186,6 +188,7 @@ class PagesController < InheritedResources::Base
     copy_page_lines
     respond_to do |format|
       if @page.save
+        last_meals_save
         message = 'Page was successfully updated.'
         message += 'Copy Lines!!!' if @new_lines
         format.html { redirect_to @page,
@@ -195,7 +198,26 @@ class PagesController < InheritedResources::Base
       end
     end
   end
-
+  
+  # 食事メニューから選択した食事を最後に食べた食事モデルに保存する
+  def last_meals_save
+    if meals = params[:last_meals].split(",")
+      meals.each do |food_id|
+        meal = LastMeal.where("user_id = ? and food_id = ? ",current_user.id,food_id).first
+        if meal
+          #Update
+          meal.date = Date.current
+          meal.save
+        else
+          #Insert
+          food = Food.find food_id
+          meal = LastMeal.new(user: current_user,food: food,date: Date.current)
+          meal.save
+        end
+      end
+    end   
+  end  
+  
   def import
     Page.import(params[:file]) # fileはtmpに自動で一時保存される
     redirect_to pages_url, notice: "Pageをインポートしました。"

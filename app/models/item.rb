@@ -21,7 +21,7 @@ class Item < ActiveRecord::Base
   end
 
   default_scope  -> do
-    includes(:part)
+    #includes(:part)
   end
 
   class << self

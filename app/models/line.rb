@@ -13,6 +13,8 @@ class Line < ActiveRecord::Base
     includes(:item)
   end
   default_scope  -> do
+    #includes(:item).inculdes(:part)
+    includes(:item)
   end
   class <<self
     #行NOを採番する
