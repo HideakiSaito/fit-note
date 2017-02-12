@@ -29,7 +29,7 @@ class Food < ActiveRecord::Base
 
   #current_user.voted_foods.order_last_meal
   scope :order_last_meal , -> do
-    includes(:last_meal).order("last_meals.date DESC")
+    includes(:last_meal).order("last_meals.date DESC, sort_key DESC")
   end
 
   class << self
