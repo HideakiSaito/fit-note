@@ -1,149 +1,159 @@
 <p id="notice"><%= notice %></p>
+<table class="table table-striped"
+style="text-align: left;">
+  <thead>
+    <tr>
+      <th style="width:16em;">name</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+  <td style="text-align: right; ">ユーザ:</td><td>
+  <%= @goal.user.name %>
+</td></tr>
 
-<p>
-  <strong>User:</strong>
-  <%= @goal.user %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
+<tr>
+  <td style="text-align: right; ">開始日:</td><td>
   <%= @goal.start_date %>
-</p>
+</td></tr>
 
-<p>
-  <strong>End date:</strong>
+<tr>
+  <td style="text-align: right; ">終了日:</td><td>
   <%= @goal.end_date %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Memo:</strong>
+<tr>
+  <td style="text-align: right; ">メモ:</td><td>
   <%= @goal.memo %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Push val1:</strong>
+<tr>
+  <td style="text-align: right; ">プッシュ_重量:</td><td>
   <%= @goal.push_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Push val2:</strong>
+<tr>
+  <td style="text-align: right; ">プッシュ_回数:</td><td>
   <%= @goal.push_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Pull val1:</strong>
+<tr>
+  <td style="text-align: right; ">プル_重量:</td><td>
   <%= @goal.pull_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Pull val2:</strong>
+<tr>
+  <td style="text-align: right; ">プル_回数:</td><td>
   <%= @goal.pull_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Leg val1:</strong>
+<tr>
+  <td style="text-align: right; ">レッグ_重量:</td><td>
   <%= @goal.leg_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Leg val2:</strong>
+<tr>
+  <td style="text-align: right; ">レッグ_回数:</td><td>
   <%= @goal.leg_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Back val1:</strong>
+<tr>
+  <td style="text-align: right; ">チンニング_重量:</td><td>
   <%= @goal.back_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Back val2:</strong>
+<tr>
+  <td style="text-align: right; ">チンニング_回数:</td><td>
   <%= @goal.back_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Protein val1:</strong>
+<tr>
+  <td style="text-align: right; ">タンパク質摂取量_レスト:</td><td>
   <%= @goal.protein_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Protein val2:</strong>
+<tr>
+  <td style="text-align: right; ">タンパク質摂取量_トレーニング:</td><td>
   <%= @goal.protein_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Carbohydrate val1:</strong>
+<tr>
+  <td style="text-align: right; ">炭水化物摂取量_レスト:</td><td>
   <%= @goal.carbohydrate_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Carbohydrate val2:</strong>
+<tr>
+  <td style="text-align: right; ">淡水貨物摂取量_トレーニング:</td><td>
   <%= @goal.carbohydrate_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Fat val1:</strong>
+<tr>
+  <td style="text-align: right; ">脂肪摂取量_レスト:</td><td>
   <%= @goal.fat_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Fat val2:</strong>
+<tr>
+  <td style="text-align: right; ">脂肪摂取量_トレーニング:</td><td>
   <%= @goal.fat_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Vegetable val1:</strong>
+<tr>
+  <td style="text-align: right; ">野菜摂取量_レスト:</td><td>
   <%= @goal.vegetable_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Vegetable val2:</strong>
+<tr>
+  <td style="text-align: right; ">野菜摂取量_トレーニング:</td><td>
   <%= @goal.vegetable_val2 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Weight val1:</strong>
+<tr>
+  <td style="text-align: right; ">体重:</td><td>
   <%= @goal.weight_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Fat per val1:</strong>
+<tr>
+  <td style="text-align: right; ">体脂肪:</td><td>
   <%= @goal.fat_per_val1 %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size neck:</strong>
+<tr>
+  <td style="text-align: right; ">サイズ_首回り:</td><td>
   <%= @goal.body_size_neck %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size bust:</strong>
+<tr>
+  <td style="text-align: right; ">サイズ_バスト:</td><td>
   <%= @goal.body_size_bust %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size waist:</strong>
+<tr>
+  <td style="text-align: right; ">サイズ_ウェスト:</td><td>
   <%= @goal.body_size_waist %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size hip:</strong>
+<tr>
+  <td style="text-align: right; ">サイズ_ヒップ:</td><td>
   <%= @goal.body_size_hip %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size arm:</strong>
+<tr>
+  <td style="text-align: right; ">サイズ_腕:</td><td>
   <%= @goal.body_size_arm %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size leg right:</strong>
+<tr>
+  <td style="text-align: right; ">サイズ_脚:</td><td>
   <%= @goal.body_size_leg_right %>
-</p>
+</td></tr>
 
-<p>
-  <strong>Body size calf right:</strong>
+<tr>
+  <td style="text-align: right; ">Bodサイズ_ふくらはぎ:</td><td>
   <%= @goal.body_size_calf_right %>
-</p>
+</td></tr>
+</tbody>
+</table>
 
 <%= link_to '編集', edit_goal_path(@goal) ,class: "btn btn-default"%> |
 <%= link_to '戻る', goals_path ,class: "btn btn-default" %>
