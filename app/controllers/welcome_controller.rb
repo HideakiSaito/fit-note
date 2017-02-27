@@ -14,6 +14,7 @@ class WelcomeController < ApplicationController
       @greeting = get_greeting
       @cheer = latest_page_finished ? "お疲れ様でした。" : "頑張りましょう"
       @welcome_mes = get_welcome_mes
+      @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).first
     else
       flash.alert = "ログインしてください"
     end

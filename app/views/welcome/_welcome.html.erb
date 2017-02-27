@@ -7,6 +7,19 @@
   <% if @latest_page.id != nil %>
     <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
     の トレーニング<%= @cheer  %>
+
+<hr>
+  <% if @goal %>
+  今日は、「<%= Date.current %>」です。<br/>
+  今回の目標は、<%= @goal.start_date %> -> <%= @goal.end_date %>
+  [<%= (Date.current - @goal.start_date).to_i %>日経過、あと<%= (@goal.end_date - Date.current).to_i %>日]<br/>
+  <p style="font-size:1.0em;color:black;"><%= raw @goal.memo_br %></p>
+  <% else %>
+    目標設定がありません。
+  <% end %>
+
+<hr>
+
 <% else %>
   まだトレーニングの記録がありません。
 <% end %>
