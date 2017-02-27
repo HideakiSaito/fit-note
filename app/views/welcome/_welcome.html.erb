@@ -5,9 +5,6 @@
   <% end %>
     <%= @greeting %></strong><br> 
   <% if @latest_page.id != nil %>
-    <%= @latest_page.date.strftime("%Y/%m/%d(%a)") %>:<%= @latest_page.place %> 
-    の トレーニング<%= @cheer  %>
-
 <hr>
   <% if @goal %>
   今日は、「<%= Date.current %>」です。<br/>
@@ -24,6 +21,7 @@
   まだトレーニングの記録がありません。
 <% end %>
 <br>
+最後のページ記録から
 => <%= (Date.current - @latest_page.date).to_i %>日間 経過しています。
 <br><%= @recommend_1 %>
 </div>

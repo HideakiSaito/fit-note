@@ -12,7 +12,6 @@ class WelcomeController < ApplicationController
       @recommend_1 = "しっかり栄養をとって休息をとりましょう。"
       @recommend_2 = "焦らず重量は２kg刻みで６〜８repsで調整しましょう。フォームを大切に。１２週間に一回はレイオフを設けましょう。"
       @greeting = get_greeting
-      @cheer = latest_page_finished ? "お疲れ様でした。" : "頑張りましょう"
       @welcome_mes = get_welcome_mes
       @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).first
     else
@@ -54,7 +53,7 @@ class WelcomeController < ApplicationController
       when 13..17 then "こんにちわ"
       when 18..20 then "こんばんわ！トレーニングの時間帯ですね"
       when 21..23 then "そろそろ寝ましょう！睡眠大事です。"
-      when 0..1 then "早く寝てください。成長ホルモンが"
+      when 0..1 then "早く寝てください。成長ホルモンが！？"
       else "no message"
       end
   end
