@@ -9,6 +9,8 @@
   <% if @latest_page.id != nil %>
 <hr>
   <% if @goal %>
+  <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/knsv/mermaid/7.0.0/dist/mermaid.css" />
+  <script src="https://cdn.rawgit.com/knsv/mermaid/7.0.0/dist/mermaid.min.js" ></script>
   今日は、「<strong><%= disp_date(Date.current) %></strong>」です。<br/>
   今回の目標は、<%= disp_short_date(@goal.start_date) %> -> <%= disp_short_date(@goal.end_date) %>
   ...<%= (Date.current - @goal.start_date).to_i %>日経過、あと<%= (@goal.end_date - Date.current).to_i %>日です。<br/>
