@@ -1,6 +1,14 @@
 class GoalsController < InheritedResources::Base
   before_action :login_required
 
+  #直近の体重、ジムの記録と、目標値との差分を見えるか
+  def sow
+    @page = Page.first
+    
+    
+  end
+
+
   private
 
     def goal_params

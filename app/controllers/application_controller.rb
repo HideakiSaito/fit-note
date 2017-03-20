@@ -18,17 +18,17 @@ class ApplicationController < ActionController::Base
  rescue_from Forbidden ,with: :rescue_403
 
   private
- #ログインしないと使えない
- def login_required
-   p "login_required"
-    raise Forbidden  unless current_user
- end
+  #ログインしないと使えない
+  def login_required
+    p "login_required"
+      raise Forbidden  unless current_user
+  end
 
- def rescue_403(exception)
-   alert_message = "ログインしてください"
-   redirect_to "/", notice: alert_message 
-   #render "welcome/index" 
- end
+  def rescue_403(exception)
+    alert_message = "ログインしてください"
+    redirect_to "/", notice: alert_message 
+    #render "welcome/index" 
+  end
  
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

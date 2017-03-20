@@ -130,11 +130,11 @@ class AnalysisController < ApplicationController
     size = chart_dates.size
     goals = [Array.new(size),Array.new(size),Array.new(size),Array.new(size)]
     if size > 0
-      #とりあえず中級目標で
-      goals[0][-1] = 65*1.5
-      goals[2][-1] = 65*2.0
-      goals[1][-1] =  65*2.5
-      goals[3][-1] =  65*1.25
+        #とりあえず中級目標で
+        goals[0][-1] = 65*1.5
+        goals[2][-1] = 65*2.0
+        goals[1][-1] =  65*2.5
+        goals[3][-1] =  65*1.25
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでのトレーニング推移')
