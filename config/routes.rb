@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :last_meals
   resources :goals
+    get 'goals/:copy_from/copy', :to => 'goals#new', :as => 'copy_goal'
   resources :page_selfies
   #resources :tips
   #resources :tip_recommendations

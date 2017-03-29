@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
       @recommend_2 = "焦らず重量は２kg刻みで６〜８repsで調整しましょう。フォームを大切に。１２週間に一回はレイオフを設けましょう。"
       @greeting = get_greeting
       @welcome_mes = get_welcome_mes
-      @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).first
+      @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).order("end_date asc").first
     else
       flash.alert = "ログインしてください"
     end

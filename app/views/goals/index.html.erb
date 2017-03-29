@@ -24,6 +24,7 @@ style="text-align: left; width: 100%;">
     <td>
       <%= link_to '参照', goal_path(goal) ,class: "btn btn-default" %>
       <%= link_to '編集', edit_goal_path(goal) ,class: "btn btn-default" %>
+      <%= link_to "copy", copy_goal_path(goal) ,class: "btn btn-default" %>
       <%= link_to '削除', goal_path(goal), method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default" %>
     </td>
       </tr>

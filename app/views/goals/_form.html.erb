@@ -94,11 +94,13 @@
   </div>
   <hr/>
   <div class="field">
-    <%= f.label :weight_val1 %><br>
+    <%= f.label :weight_val1 %>
+    (今：<%= @page.wight %>)<br>
     <%= f.text_field :weight_val1 , class: "form-control" ,style: "width:10em;" %>
   </div>
   <div class="field">
-    <%= f.label :fat_per_val1 %><br>
+    <%= f.label :fat_per_val1 %>
+    (今：<%= @page.body_fat_per %>)<br>
     <%= f.text_field :fat_per_val1 , class: "form-control" ,style: "width:10em;" %>
   </div>
   <hr/>
