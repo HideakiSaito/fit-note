@@ -24,7 +24,7 @@ class AnalysisController < ApplicationController
     @parts_chart = self.pie_parts_chart
   end
   def health
-     params[:start_day] ||= Date.current - 30*9
+     params[:start_day] ||= Date.current - 365
      params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
@@ -33,7 +33,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def water
-     params[:start_day] ||= Date.current - 30*9
+     params[:start_day] ||= Date.current - 365
      params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
@@ -42,7 +42,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def feel
-     params[:start_day] ||= Date.current - 30*9
+     params[:start_day] ||= Date.current - 365
      params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
@@ -51,7 +51,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def weight
-     params[:start_day] ||= Date.current - 30*9
+     params[:start_day] ||= Date.current - 365
      params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
@@ -69,7 +69,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def gym
-     params[:start_day] ||= Date.current - 30*9
+     params[:start_day] ||= Date.current - 365
      params[:end_day] ||= Date.current
      params[:scope] ||= "week"
     @scop_day_label = ""
@@ -78,7 +78,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def size
-    params[:start_day] ||= Date.current - 30*9
+    params[:start_day] ||= Date.current - 365
     params[:end_day] ||= Date.current
     params[:scope] ||= "week"
     @scop_day_label = "全て"
@@ -87,7 +87,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def diet
-    params[:start_day] ||= Date.current - 30*7
+    params[:start_day] ||= Date.current - 365
     params[:end_day] ||= Date.current
      params[:scope] ||= "week"
      #@scop_day_label = ""
@@ -113,7 +113,7 @@ class AnalysisController < ApplicationController
     render :index
   end
   def pie_place
-    params[:start_day] ||= Date.current - 30*9
+    params[:start_day] ||= Date.current - 365
     params[:end_day] ||= Date.current
     @scop_day_label = ""
     @scop_week_label = ""
