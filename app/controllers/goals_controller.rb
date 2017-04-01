@@ -8,6 +8,8 @@ class GoalsController < InheritedResources::Base
 
   def new
     #super.new
+    @goal = Goal.new
+    get_goal_and_last_page
     if params[:copy_from] 
       @from = Goal.find(params[:copy_from])
       @goal = @from.dup #クローンのId抜き
@@ -22,7 +24,7 @@ class GoalsController < InheritedResources::Base
   private
 
     def get_goal_and_last_page
-      @goal = Goal.find(params[:id])
+      @goal ||= Goal.find(params[:id])
 
       latest_date = Page.where('user_id=?',current_user.id).maximum(:date) #最新日
       @page = Page.where('user_id=?',current_user.id).where(date: latest_date).first
