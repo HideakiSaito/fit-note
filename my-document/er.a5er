@@ -1,0 +1,1138 @@
+﻿# A5:ER FORMAT:10
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  http://www.wind.sannet.ne.jp/m_matsu/developer/a5m2/
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Entity]
+PName=active_admin_comments
+LName=active_admin_comments
+Comment=
+TableOption=
+Page=MAIN
+Left=950
+Top=1500
+Field="id","id","integer","NOT NULL",0,"nextval(\qactive_admin_comments_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="namespace","namespace","character varying",,,"","",$FFFFFFFF,""
+Field="body","body","text",,,"","",$FFFFFFFF,""
+Field="resource_id","resource_id","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="resource_type","resource_type","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Field="author_id","author_id","integer",,,"","",$FFFFFFFF,""
+Field="author_type","author_type","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone",,,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone",,,"","",$FFFFFFFF,""
+Index=index_active_admin_comments_on_author_type_and_author_id=0,author_type,author_id
+Index=index_active_admin_comments_on_namespace=0,namespace
+Index=index_active_admin_comments_on_resource_type_and_resource_id=0,resource_type,resource_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",950,1500
+
+[Entity]
+PName=conditions
+LName=conditions
+Comment=
+TableOption=
+Page=MAIN
+Left=350
+Top=450
+Field="id","id","integer","NOT NULL",0,"nextval(\qconditions_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="score","score","double precision",,,"","",$FFFFFFFF,""
+Field="memo","memo","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",350,450
+
+[Entity]
+PName=diets
+LName=diets
+Comment=
+TableOption=
+Page=MAIN
+Left=650
+Top=350
+Field="id","id","integer","NOT NULL",0,"nextval(\qdiets_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",650,350
+
+[Entity]
+PName=equipment
+LName=equipment
+Comment=
+TableOption=
+Page=MAIN
+Left=950
+Top=50
+Field="id","id","integer","NOT NULL",0,"nextval(\qequipment_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",950,50
+
+[Entity]
+PName=feelings
+LName=feelings
+Comment=
+TableOption=
+Page=MAIN
+Left=1250
+Top=50
+Field="id","id","integer","NOT NULL",0,"nextval(\qfeelings_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="score","score","double precision",,,"","",$FFFFFFFF,""
+Field="memo","memo","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",1250,50
+
+[Entity]
+PName=food_categories
+LName=food_categories
+Comment=
+TableOption=
+Page=MAIN
+Left=1550
+Top=50
+Field="id","id","integer","NOT NULL",0,"nextval(\qfood_categories_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="no","no","integer",,,"","",$FFFFFFFF,""
+Field="order","order","integer",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",1550,50
+
+[Entity]
+PName=food_votes
+LName=food_votes
+Comment=
+TableOption=
+Page=MAIN
+Left=2050
+Top=250
+Field="id","id","integer","NOT NULL",0,"nextval(\qfood_votes_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="user_id","user_id","integer",,,"","",$FFFFFFFF,""
+Field="food_id","food_id","integer",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_food_votes_on_food_id=0,food_id
+Index=index_food_votes_on_user_id=0,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2050,250
+
+[Entity]
+PName=foods
+LName=foods
+Comment=
+TableOption=
+Page=MAIN
+Left=1500
+Top=600
+Field="id","id","integer","NOT NULL",0,"nextval(\qfoods_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="diet_id","diet_id","integer",,,"","",$FFFFFFFF,""
+Field="calorie","calorie","double precision",,,"","",$FFFFFFFF,""
+Field="carbohydrate","carbohydrate","double precision",,,"","",$FFFFFFFF,""
+Field="fat","fat","double precision",,,"","",$FFFFFFFF,""
+Field="protein","protein","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable","vegetable","double precision",,,"","",$FFFFFFFF,""
+Field="diet_memo","diet_memo","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="food_category_id","food_category_id","integer",,,"","",$FFFFFFFF,""
+Field="sort_key","sort_key","character varying",,,"","",$FFFFFFFF,""
+Index=index_foods_on_diet_id=0,diet_id
+Index=index_foods_on_food_category_id=0,food_category_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",1500,600
+
+[Entity]
+PName=goals
+LName=goals
+Comment=
+TableOption=
+Page=MAIN
+Left=2750
+Top=900
+Field="id","id","integer","NOT NULL",0,"nextval(\qgoals_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="user_id","user_id","integer",,,"","",$FFFFFFFF,""
+Field="start_date","start_date","date",,,"","",$FFFFFFFF,""
+Field="end_date","end_date","date",,,"","",$FFFFFFFF,""
+Field="memo","memo","character varying",,,"","",$FFFFFFFF,""
+Field="push_val1","push_val1","double precision",,,"","",$FFFFFFFF,""
+Field="push_val2","push_val2","double precision",,,"","",$FFFFFFFF,""
+Field="pull_val1","pull_val1","double precision",,,"","",$FFFFFFFF,""
+Field="pull_val2","pull_val2","double precision",,,"","",$FFFFFFFF,""
+Field="leg_val1","leg_val1","double precision",,,"","",$FFFFFFFF,""
+Field="leg_val2","leg_val2","double precision",,,"","",$FFFFFFFF,""
+Field="back_val1","back_val1","double precision",,,"","",$FFFFFFFF,""
+Field="back_val2","back_val2","double precision",,,"","",$FFFFFFFF,""
+Field="protein_val1","protein_val1","double precision",,,"","",$FFFFFFFF,""
+Field="protein_val2","protein_val2","double precision",,,"","",$FFFFFFFF,""
+Field="carbohydrate_val1","carbohydrate_val1","double precision",,,"","",$FFFFFFFF,""
+Field="carbohydrate_val2","carbohydrate_val2","double precision",,,"","",$FFFFFFFF,""
+Field="fat_val1","fat_val1","double precision",,,"","",$FFFFFFFF,""
+Field="fat_val2","fat_val2","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_val1","vegetable_val1","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_val2","vegetable_val2","double precision",,,"","",$FFFFFFFF,""
+Field="weight_val1","weight_val1","double precision",,,"","",$FFFFFFFF,""
+Field="fat_per_val1","fat_per_val1","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_neck","body_size_neck","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_bust","body_size_bust","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_waist","body_size_waist","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_hip","body_size_hip","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_arm","body_size_arm","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_leg_right","body_size_leg_right","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_calf_right","body_size_calf_right","double precision",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_goals_on_user_id=0,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2750,900
+
+[Entity]
+PName=item_votes
+LName=item_votes
+Comment=
+TableOption=
+Page=MAIN
+Left=2650
+Top=50
+Field="id","id","integer","NOT NULL",0,"nextval(\qitem_votes_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="user_id","user_id","integer",,,"","",$FFFFFFFF,""
+Field="item_id","item_id","integer",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_item_votes_on_item_id=0,item_id
+Index=index_item_votes_on_user_id=0,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2650,50,226,203
+
+[Entity]
+PName=items
+LName=items
+Comment=
+TableOption=
+Page=MAIN
+Left=3050
+Top=50
+Field="id","id","integer","NOT NULL",0,"nextval(\qitems_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="reps","reps","integer",,,"","",$FFFFFFFF,""
+Field="part_id","part_id","integer",,,"","",$FFFFFFFF,""
+Field="mode_id","mode_id","integer",,,"","",$FFFFFFFF,""
+Field="equipment_id","equipment_id","integer",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_items_on_equipment_id=0,equipment_id
+Index=index_items_on_mode_id=0,mode_id
+Index=index_items_on_part_id=0,part_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",3050,50
+
+[Entity]
+PName=last_meals
+LName=last_meals
+Comment=
+TableOption=
+Page=MAIN
+Left=3250
+Top=850
+Field="id","id","integer","NOT NULL",0,"nextval(\qlast_meals_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="user_id","user_id","integer",,,"","",$FFFFFFFF,""
+Field="food_id","food_id","integer",,,"","",$FFFFFFFF,""
+Field="date","date","date",,,"","",$FFFFFFFF,""
+Field="memo","memo","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_last_meals_on_food_id=0,food_id
+Index=index_last_meals_on_user_id=0,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",3250,850
+
+[Entity]
+PName=lines
+LName=lines
+Comment=
+TableOption=
+Page=MAIN
+Left=1750
+Top=1650
+Field="id","id","integer","NOT NULL",0,"nextval(\qlines_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="page_id","page_id","integer",,,"","",$FFFFFFFF,""
+Field="no","no","integer",,,"","",$FFFFFFFF,""
+Field="item_id","item_id","integer",,,"","",$FFFFFFFF,""
+Field="mode_id","mode_id","integer",,,"","",$FFFFFFFF,""
+Field="weight_1","weight_1","numeric",,,"","",$FFFFFFFF,""
+Field="reps_1","reps_1","numeric",,,"","",$FFFFFFFF,""
+Field="memo_1","memo_1","character varying",,,"","",$FFFFFFFF,""
+Field="weight_2","weight_2","numeric",,,"","",$FFFFFFFF,""
+Field="reps_2","reps_2","numeric",,,"","",$FFFFFFFF,""
+Field="memo_2","memo_2","character varying",,,"","",$FFFFFFFF,""
+Field="weight_3","weight_3","numeric",,,"","",$FFFFFFFF,""
+Field="reps_3","reps_3","numeric",,,"","",$FFFFFFFF,""
+Field="memo_3","memo_3","character varying",,,"","",$FFFFFFFF,""
+Field="weight_4","weight_4","numeric",,,"","",$FFFFFFFF,""
+Field="reps_4","reps_4","numeric",,,"","",$FFFFFFFF,""
+Field="memo_4","memo_4","character varying",,,"","",$FFFFFFFF,""
+Field="weight_5","weight_5","numeric",,,"","",$FFFFFFFF,""
+Field="reps_5","reps_5","numeric",,,"","",$FFFFFFFF,""
+Field="memo_5","memo_5","character varying",,,"","",$FFFFFFFF,""
+Field="weight_6","weight_6","numeric",,,"","",$FFFFFFFF,""
+Field="reps_6","reps_6","numeric",,,"","",$FFFFFFFF,""
+Field="memo_6","memo_6","character varying",,,"","",$FFFFFFFF,""
+Field="weight_7","weight_7","numeric",,,"","",$FFFFFFFF,""
+Field="reps_7","reps_7","numeric",,,"","",$FFFFFFFF,""
+Field="memo_7","memo_7","character varying",,,"","",$FFFFFFFF,""
+Field="weight_8","weight_8","numeric",,,"","",$FFFFFFFF,""
+Field="reps_8","reps_8","numeric",,,"","",$FFFFFFFF,""
+Field="memo_8","memo_8","character varying",,,"","",$FFFFFFFF,""
+Field="weight_9","weight_9","numeric",,,"","",$FFFFFFFF,""
+Field="reps_9","reps_9","numeric",,,"","",$FFFFFFFF,""
+Field="memo_9","memo_9","character varying",,,"","",$FFFFFFFF,""
+Field="weight_0","weight_0","numeric",,,"","",$FFFFFFFF,""
+Field="reps_0","reps_0","numeric",,,"","",$FFFFFFFF,""
+Field="memo_0","memo_0","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_lines_on_item_id=0,item_id
+Index=index_lines_on_mode_id=0,mode_id
+Index=index_lines_on_page_id=0,page_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",1750,1650
+
+[Entity]
+PName=modes
+LName=modes
+Comment=
+TableOption=
+Page=MAIN
+Left=3700
+Top=500
+Field="id","id","integer","NOT NULL",0,"nextval(\qmodes_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="detail","detail","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",3700,500
+
+[Entity]
+PName=page_images
+LName=page_images
+Comment=
+TableOption=
+Page=MAIN
+Left=50
+Top=600
+Field="id","id","integer","NOT NULL",0,"nextval(\qpage_images_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="page_id","page_id","integer",,,"","",$FFFFFFFF,""
+Field="data","data","bytea",,,"","",$FFFFFFFF,""
+Field="content_type","content_type","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_page_images_on_page_id=0,page_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",50,600
+
+[Entity]
+PName=page_selfies
+LName=page_selfies
+Comment=
+TableOption=
+Page=MAIN
+Left=50
+Top=1100
+Field="id","id","integer","NOT NULL",0,"nextval(\qpage_selfies_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="page_id","page_id","integer",,,"","",$FFFFFFFF,""
+Field="data","data","bytea",,,"","",$FFFFFFFF,""
+Field="content_type","content_type","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_page_selfies_on_page_id=0,page_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",50,1100
+
+[Entity]
+PName=pages
+LName=pages
+Comment=
+TableOption=
+Page=MAIN
+Left=500
+Top=1000
+Field="id","id","integer","NOT NULL",0,"nextval(\qpages_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="date","date","date",,,"","",$FFFFFFFF,""
+Field="place","place","character varying",,,"","",$FFFFFFFF,""
+Field="start_time","start_time","time without time zone",,,"","",$FFFFFFFF,""
+Field="end_time","end_time","time without time zone",,,"","",$FFFFFFFF,""
+Field="memo","memo","text",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="diet_id","diet_id","integer",,,"","",$FFFFFFFF,""
+Field="carbohydrate_1","carbohydrate_1","double precision",,,"","",$FFFFFFFF,""
+Field="fat_1","fat_1","double precision",,,"","",$FFFFFFFF,""
+Field="protein_1","protein_1","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_1","vegetable_1","double precision",,,"","",$FFFFFFFF,""
+Field="diet_memo_1","diet_memo_1","character varying",,,"","",$FFFFFFFF,""
+Field="carbohydrate_2","carbohydrate_2","double precision",,,"","",$FFFFFFFF,""
+Field="fat_2","fat_2","double precision",,,"","",$FFFFFFFF,""
+Field="protein_2","protein_2","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_2","vegetable_2","double precision",,,"","",$FFFFFFFF,""
+Field="diet_memo_2","diet_memo_2","character varying",,,"","",$FFFFFFFF,""
+Field="carbohydrate_3","carbohydrate_3","double precision",,,"","",$FFFFFFFF,""
+Field="fat_3","fat_3","double precision",,,"","",$FFFFFFFF,""
+Field="protein_3","protein_3","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_3","vegetable_3","double precision",,,"","",$FFFFFFFF,""
+Field="diet_memo_3","diet_memo_3","character varying",,,"","",$FFFFFFFF,""
+Field="carbohydrate_4","carbohydrate_4","double precision",,,"","",$FFFFFFFF,""
+Field="fat_4","fat_4","double precision",,,"","",$FFFFFFFF,""
+Field="protein_4","protein_4","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_4","vegetable_4","double precision",,,"","",$FFFFFFFF,""
+Field="diet_memo_4","diet_memo_4","character varying",,,"","",$FFFFFFFF,""
+Field="carbohydrate_5","carbohydrate_5","double precision",,,"","",$FFFFFFFF,""
+Field="fat_5","fat_5","double precision",,,"","",$FFFFFFFF,""
+Field="protein_5","protein_5","double precision",,,"","",$FFFFFFFF,""
+Field="vegetable_5","vegetable_5","double precision",,,"","",$FFFFFFFF,""
+Field="diet_memo_5","diet_memo_5","character varying",,,"","",$FFFFFFFF,""
+Field="condition_id","condition_id","integer",,,"","",$FFFFFFFF,""
+Field="feeling_id","feeling_id","integer",,,"","",$FFFFFFFF,""
+Field="sleep_hour","sleep_hour","double precision",,,"","",$FFFFFFFF,""
+Field="sleep_time","sleep_time","time without time zone",,,"","",$FFFFFFFF,""
+Field="water","water","double precision",,,"","",$FFFFFFFF,""
+Field="alcohol","alcohol","double precision",,,"","",$FFFFFFFF,""
+Field="caffeine","caffeine","double precision",,,"","",$FFFFFFFF,""
+Field="wight","wight","double precision",,,"","",$FFFFFFFF,""
+Field="work_hour","work_hour","double precision",,,"","",$FFFFFFFF,""
+Field="study_hour","study_hour","double precision",,,"","",$FFFFFFFF,""
+Field="tv_hour","tv_hour","double precision",,,"","",$FFFFFFFF,""
+Field="training_hour","training_hour","double precision",,,"","",$FFFFFFFF,""
+Field="body_fat_per","body_fat_per","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_neck","body_size_neck","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_bust","body_size_bust","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_waist","body_size_waist","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_hip","body_size_hip","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_arm_right","body_size_arm_right","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_arm_left","body_size_arm_left","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_leg_right","body_size_leg_right","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_leg_left","body_size_leg_left","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_calf_right","body_size_calf_right","double precision",,,"","",$FFFFFFFF,""
+Field="body_size_calf_left","body_size_calf_left","double precision",,,"","",$FFFFFFFF,""
+Field="user_id","user_id","integer",,,"","",$FFFFFFFF,""
+Index=index_pages_on_condition_id=0,condition_id
+Index=index_pages_on_diet_id=0,diet_id
+Index=index_pages_on_feeling_id=0,feeling_id
+Index=index_pages_on_user_id=0,user_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",500,1000
+
+[Entity]
+PName=parts
+LName=parts
+Comment=
+TableOption=
+Page=MAIN
+Left=950
+Top=450
+Field="id","id","integer","NOT NULL",0,"nextval(\qparts_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",950,450
+
+[Entity]
+PName=schema_migrations
+LName=schema_migrations
+Comment=
+TableOption=
+Page=MAIN
+Left=950
+Top=2050
+Field="version","version","character varying","NOT NULL",,"","",$FFFFFFFF,""
+Index=unique_schema_migrations=1,version
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",950,2050,131,138
+
+[Entity]
+PName=tip_categories
+LName=tip_categories
+Comment=
+TableOption=
+Page=MAIN
+Left=2350
+Top=2200
+Field="id","id","integer","NOT NULL",0,"nextval(\qtip_categories_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2350,2200
+
+[Entity]
+PName=tip_recommendations
+LName=tip_recommendations
+Comment=
+TableOption=
+Page=MAIN
+Left=2650
+Top=2200
+Field="id","id","integer","NOT NULL",0,"nextval(\qtip_recommendations_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="rate","rate","integer",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2650,2200
+
+[Entity]
+PName=tips
+LName=tips
+Comment=
+TableOption=
+Page=MAIN
+Left=2450
+Top=1900
+Field="id","id","integer","NOT NULL",0,"nextval(\qtips_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="tip_category_id","tip_category_id","integer",,,"","",$FFFFFFFF,""
+Field="tip_recommendation_id","tip_recommendation_id","integer",,,"","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="description","description","character varying",,,"","",$FFFFFFFF,""
+Field="author","author","character varying",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Index=index_tips_on_tip_category_id=0,tip_category_id
+Index=index_tips_on_tip_recommendation_id=0,tip_recommendation_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2450,1900
+
+[Entity]
+PName=trainings
+LName=trainings
+Comment=
+TableOption=
+Page=MAIN
+Left=2450
+Top=450
+Field="id","id","integer","NOT NULL",0,"nextval(\qtrainings_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="item_id","item_id","integer",,,"","",$FFFFFFFF,""
+Field="weight","weight","integer",,,"","",$FFFFFFFF,""
+Field="reps","reps","integer",,,"","",$FFFFFFFF,""
+Field="set","set","integer",,,"","",$FFFFFFFF,""
+Field="mode_id","mode_id","integer",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="day","day","date",,,"","",$FFFFFFFF,""
+Field="num","num","integer",,,"","",$FFFFFFFF,""
+Index=index_trainings_on_item_id=0,item_id
+Index=index_trainings_on_mode_id=0,mode_id
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2450,450
+
+[Entity]
+PName=users
+LName=users
+Comment=
+TableOption=
+Page=MAIN
+Left=2250
+Top=800
+Field="id","id","integer","NOT NULL",0,"nextval(\qusers_id_seq\q::regclass)","",$FFFFFFFF,""
+Field="provider","provider","character varying",,,"","",$FFFFFFFF,""
+Field="uid","uid","character varying",,,"","",$FFFFFFFF,""
+Field="name","name","character varying",,,"","",$FFFFFFFF,""
+Field="email","email","character varying",,,"","",$FFFFFFFF,""
+Field="icon","icon","character varying",,,"","",$FFFFFFFF,""
+Field="oauth_token","oauth_token","character varying",,,"","",$FFFFFFFF,""
+Field="oauth_expires_at","oauth_expires_at","timestamp without time zone",,,"","",$FFFFFFFF,""
+Field="created_at","created_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="updated_at","updated_at","timestamp without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="hashed_password","hashed_password","character varying",,,"","",$FFFFFFFF,""
+Field="administrator","administrator","boolean",,,"false","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="MAIN",2250,800
+
+[Relation]
+Entity1=parts
+Entity2=items
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=part_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=modes
+Entity2=items
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=mode_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=equipment
+Entity2=items
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=equipment_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=items
+Entity2=trainings
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=item_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=modes
+Entity2=trainings
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=mode_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=pages
+Entity2=lines
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=page_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=items
+Entity2=lines
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=item_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=modes
+Entity2=lines
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=mode_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=diets
+Entity2=pages
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=diet_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=conditions
+Entity2=pages
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=condition_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=feelings
+Entity2=pages
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=feeling_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=diets
+Entity2=foods
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=diet_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=food_categories
+Entity2=foods
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=food_category_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=pages
+Entity2=page_images
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=page_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=users
+Entity2=pages
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=users
+Entity2=item_votes
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,532,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=53
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=items
+Entity2=item_votes
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=item_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=users
+Entity2=food_votes
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,570,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=57
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=foods
+Entity2=food_votes
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=food_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=tip_categories
+Entity2=tips
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=tip_category_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=tip_recommendations
+Entity2=tips
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=tip_recommendation_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=pages
+Entity2=page_selfies
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=page_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=users
+Entity2=goals
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,542,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=54
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=users
+Entity2=last_meals
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+
+[Relation]
+Entity1=foods
+Entity2=last_meals
+RelationType1=1
+RelationType2=3
+Fields1=id
+Fields2=food_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R

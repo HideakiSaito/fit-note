@@ -26,7 +26,7 @@ class GoalsController < InheritedResources::Base
     def get_goal_and_last_page
       @goal ||= Goal.find(params[:id])
 
-      latest_date = Page.where('user_id=?',current_user.id).maximum(:date) #最新日
+      latest_date = Page.where('user_id=? and wight is not null',current_user.id).maximum(:date) #最新日
       @page = Page.where('user_id=?',current_user.id).where(date: latest_date).first
     end
 
