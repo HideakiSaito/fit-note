@@ -14,6 +14,9 @@ class WelcomeController < ApplicationController
       @greeting = get_greeting
       @welcome_mes = get_welcome_mes
       @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).order("end_date asc").first
+
+      weight_presence_last_page
+      
     else
       flash.alert = "ログインしてください"
     end
@@ -27,6 +30,10 @@ class WelcomeController < ApplicationController
       |line| line.get_sum_reps
     end.sum
     reps_sum != 0 #最新ページのトレーニング一回もやってなかったら
+  end
+  def weight_presence_last_page
+    latest_date = Page.where('user_id=? and wight is not null',current_user.id).maximum(:date) #最新日
+    @goal_to_now_page = Page.where('user_id=?',current_user.id).where(date: latest_date).first
   end
   def get_welcome_mes
     #月末から５日前くらいからサイズ測定をだす

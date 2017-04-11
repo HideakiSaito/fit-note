@@ -14,6 +14,13 @@
   今日は、「<strong><%= disp_date(Date.current) %></strong>」です。<br/>
   今回の目標は、<%= disp_short_date(@goal.start_date) %> -> <%= disp_short_date(@goal.end_date) %>
   ...<%= (Date.current - @goal.start_date).to_i %>日経過、あと<%= (@goal.end_date - Date.current).to_i %>日です。<br/>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目標 => 直近 <%= disp_short_date(@goal_to_now_page.date) %>
+<br/>
+体重&nbsp;&nbsp;:<%= @goal.weight_val1 %>kg => 
+<%= @goal_to_now_page.wight %>kg
+<br/>
+体脂肪:<%= @goal.fat_per_val1 %>% =>
+<%= @goal_to_now_page.body_fat_per %>% </P>
   <p style="font-size:1.0em;color:black;"><%= raw @goal.memo_br %></p>
   <% else %>
     目標設定がありません。
