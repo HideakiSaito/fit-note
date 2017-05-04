@@ -107,9 +107,9 @@ html {
             <% if @disp_mode != "hidden_training" %>
               <% if @show %>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-                <% else %>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                    <% end %>
+               <% else %>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+              <% end %>
                       <span id="training-line"></span>
                       <%= render 'page_nav' %>
                       <div class="training-line" >
@@ -162,22 +162,24 @@ html {
                     </div>
                     <% end #if hidden_training %>
                 </div>
-                <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-                  <span id="piechart"></span>
-                  <%= render 'page_nav' %>
-                  <%= high_chart( "chart_diet_"+page.id.to_s , @chart_pie_diets_index[page.id]) %>
-                </div>
-                <% if page.lines.size > 0 %>
+                <% if @show %>
                   <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-                    <%= high_chart( "chart_part_"+page.id.to_s , @chart_pie_parts_index[page.id]) %>
+                    <span id="piechart"></span>
+                    <%= render 'page_nav' %>
+                    <%= high_chart( "chart_diet_"+page.id.to_s , @chart_pie_diets_index[page.id]) %>
+                  </div>
+                  <% if page.lines.size > 0 %>
+                    <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+                      <%= high_chart( "chart_part_"+page.id.to_s , @chart_pie_parts_index[page.id]) %>
+                    </div>
+                  <% end %>
+                  <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+                    <span id='barchart'></span>
+                    <%= render 'page_nav' %>
+                    <%= high_chart( "chart_health_"+page.id.to_s , @chart_healths_index[page.id]) %>
+                  </div>
+                  <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+                    <%= high_chart( "chart_water_"+page.id.to_s , @chart_waters_index[page.id]) %>
                   </div>
                 <% end %>
-                <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-                  <span id='barchart'></span>
-                  <%= render 'page_nav' %>
-                  <%= high_chart( "chart_health_"+page.id.to_s , @chart_healths_index[page.id]) %>
-                </div>
-                <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
-                  <%= high_chart( "chart_water_"+page.id.to_s , @chart_waters_index[page.id]) %>
-                </div>
         </div>

@@ -4,7 +4,7 @@ style="text-align: left;">
   <thead>
     <tr>
       <th style="width:16em;">name</th>
-      <th>value</th>
+      <th>value</th>   
     </tr>
   </thead>
   <tbody>
@@ -31,21 +31,33 @@ style="text-align: left;">
 <tr>
   <td style="text-align: right; ">プッシュ_重量:</td><td>
   <%= @goal.push_val1 %>
+  :
+  標準目標（体重＊1.5）…
+  <%= @page.wight * 1.5 %>
 </td></tr>
 
 <tr>
   <td style="text-align: right; ">プッシュ_回数:</td><td>
   <%= @goal.push_val2 %>
+  :
+  目標パワー計算（重量＊回数の係数）…
+  <%= @goal.push_power %>
 </td></tr>
 
 <tr>
   <td style="text-align: right; ">プル_重量:</td><td>
   <%= @goal.pull_val1 %>
+  :
+  標準目標（体重＊2.5）…
+  <%= @page.wight * 2.5 %>
 </td></tr>
 
 <tr>
   <td style="text-align: right; ">プル_回数:</td><td>
   <%= @goal.pull_val2 %>
+  :
+  目標パワー計算（重量＊回数の係数）…
+  <%= @goal.pull_power %>
 </td></tr>
 
 <tr>
