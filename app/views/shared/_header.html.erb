@@ -19,11 +19,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown" >
-          <% if current_user && current_user.administrator?  %>
+          <% if current_user %>
           <li><a href="/goals"><i class="fa fa-map-signs fa-lg"> 目標設定</i></a></li>
           <li><a href="/items"><i class="fa fa-gamepad fa-lg"> トレーニング種目</i></a></li>
           <li><a href="/foods"><i class="fa fa-cutlery fa-lg"> 食品</i></a></li>
-          <li><a href="/admin"><i class="fa fa-cogs fa-lg"> 管理ページ</i></a></li>
+          <% if current_user && current_user.administrator?  %>
+            <li><a href="/admin"><i class="fa fa-cogs fa-lg"> 管理ページ</i></a></li>
+          <% end %>
           <li class="divider"></li>
           <% end %>
         </li>
