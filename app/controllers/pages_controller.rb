@@ -101,7 +101,7 @@ class PagesController < InheritedResources::Base
   end
   def show
     @show = true
-    @disp_mode = "all"
+    @disp_mode = "show"
     @disp_other_is = true
     @page_class = ""
     @page = Page.find(params[:id])
