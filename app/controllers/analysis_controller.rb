@@ -150,7 +150,7 @@ class AnalysisController < ApplicationController
     end
   end
   def size_chart
-    x_user = params[:user_id]? params[:user_id] : current_user
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     pages = Page.where("user_id=?", x_user).order(:date)
     where = search_params_where
     pages = pages.where("body_size_bust is not null #{where}" ).order(:date)
@@ -195,7 +195,7 @@ class AnalysisController < ApplicationController
     end
   end
   def health_feel_chart
-    x_user = params[:user_id]? params[:user_id] : current_user
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     pages = Page.where("user_id=?", x_user).order(:date)
     where = search_params_where
     pages = pages.where("condition_id is not null
@@ -240,7 +240,7 @@ class AnalysisController < ApplicationController
     end
   end
   def health_hour_chart
-    x_user = params[:user_id]? params[:user_id] : current_user
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     pages = Page.where("user_id=?", x_user).order(:date)
     where = search_params_where
     pages = pages.where("water > 0 #{where}").order(:date) #過去データ出したくないだけなので
@@ -295,7 +295,7 @@ class AnalysisController < ApplicationController
     end
   end
   def health_water_chart
-    x_user = params[:user_id]? params[:user_id] : current_user
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     pages = Page.where("user_id=?", x_user).order(:date)
     where = search_params_where
     pages = pages.where("water > 0 #{where}").order(:date) #過去データ出したくないだけなので
@@ -340,7 +340,7 @@ class AnalysisController < ApplicationController
     end
   end
   def diet_chart(chart_type = "all")
-    x_user = params[:user_id]? params[:user_id] : current_user
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     pages = Page.where("user_id=?", x_user).order(:date)
     if chart_type == "recent"
       pages = Page.where("date >= ?", Date.current - 28)
@@ -397,7 +397,7 @@ class AnalysisController < ApplicationController
     end
   end
   def weight_chart(chart_type = "all")
-    x_user = params[:user_id]? params[:user_id] : current_user
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     pages = Page.where("user_id=?", x_user).order(:date)
     if chart_type == "recent"
       pages = Page.where("date >= ?", Date.current - 28)
@@ -490,10 +490,11 @@ class AnalysisController < ApplicationController
    @scop_week_label = "1週間"
   end
   def search_params_where
+    x_user = params[:user_id]? params[:user_id] : current_user.id
     start_day = params[:start_day] != ""? params[:start_day] : Date.current - 30*7
     start_day ||= Date.current - 30*7
     end_day = params[:end_day] != "" ? params[:end_day] : Date.current
     end_day ||= Date.current 
-    where = "and date >= '#{start_day}' and date <= '#{end_day}' "
+    where = "and date >= '#{start_day}' and date <= '#{end_day}' and user_id = '#{x_user}' "
   end
 end
