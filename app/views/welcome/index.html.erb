@@ -13,7 +13,7 @@
   <input type="button" value="直近のページ確認" class="btn btn-success btn-block"
    onclick="location.href='<%= page_path(@latest_page.id) %>'" />
 <% end %>
-<input type="button" value="新規作成" class="btn btn-primary btn-block"
+<input type="button" value="ページを新規作成" class="btn btn-primary btn-block"
  onclick="location.href='<%= new_page_path  %>'" />
 <hr>
 <% if @latest_page.id != nil %>
@@ -22,6 +22,13 @@
    onclick="location.href='<%= edit_page_path(@latest_page.id)%>'" />
 </div>
 <% end %>
+<% if @goal != nil %>
+  <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" >
+    <input type="button" value="直近の目標確認" class="btn btn-warning btn-block"
+    onclick="location.href='<%= goal_path(@goal.id)%>'" />
+  </div>
+<% end %>
+
 <% else %>
   Facebook アカウントでログインしてください。
   <br/>

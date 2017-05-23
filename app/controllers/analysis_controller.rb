@@ -130,11 +130,11 @@ class AnalysisController < ApplicationController
     size = chart_dates.size
     goals = [Array.new(size),Array.new(size),Array.new(size),Array.new(size)]
     if size > 0
-        #とりあえず中級目標で
+        #とりあえず中級目標で(Github#20 目標値を)
         goals[0][-1] = 65*1.5
         goals[2][-1] = 65*2.0
         goals[1][-1] =  65*2.5
-        goals[3][-1] =  65*1.25
+        goals[3][-1] =  65*1.35
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでのトレーニング推移')
@@ -143,10 +143,10 @@ class AnalysisController < ApplicationController
       f.series(name: 'Pull:デッドリフト[kg]', data: chart_data(pull_id))
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
       f.series(name: 'Back:チンニング[kg]', data: chart_data(chin_id))
-      f.series(name: 'Push:ベンチプレス目標[kg]', data: goals[0])
-      f.series(name: 'Pull:デッドリフト目標[kg]', data: goals[1])
-      f.series(name: 'Leg:スクワット目標[kg]', data: goals[2])
-      f.series(name: 'Back:チンニング目標[kg]', data: goals[3])
+      f.series(name: 'Push:ベンチプレス目標[kg]', data: goals[0], visible: false)
+      f.series(name: 'Pull:デッドリフト目標[kg]', data: goals[1], visible: false)
+      f.series(name: 'Leg:スクワット目標[kg]', data: goals[2], visible: false)
+      f.series(name: 'Back:チンニング目標[kg]', data: goals[3],visible: false)
     end
   end
   def size_chart
