@@ -128,13 +128,25 @@ class AnalysisController < ApplicationController
     leg_id = [9] #19
     analysis_initialize("ジム")#ChartUtilを利用
     size = chart_dates.size
-    goals = [Array.new(size),Array.new(size),Array.new(size),Array.new(size)]
+    goals = Array.new(4)
+    goal_label = ""
     if size > 0
-        #とりあえず中級目標で(Github#20 目標値を)
-        goals[0][-1] = 65*1.5
-        goals[2][-1] = 65*2.0
-        goals[1][-1] =  65*2.5
-        goals[3][-1] =  65*1.35
+      @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).order("end_date asc").first
+      if @goal != nil
+        #目標があれば設定
+        goals[0] = Array.new(size,@goal.push_power)
+        goals[2] = Array.new(size,@goal.leg_power)
+        goals[1] = Array.new(size,@goal.pull_power)
+        goals[3] = Array.new(size,@goal.back_power)      
+        goal_label = "(" + @goal.end_date.to_s + ")"
+      else  
+        #なければ、中級者の目安を設定
+        goals[0] = Array.new(size,65*1.5)
+        goals[2] = Array.new(size,65*2.0)
+        goals[1] = Array.new(size,65*2.5)
+        goals[3] = Array.new(size,65*1.35)
+        goal_label = "(65kgの中級者目標)"
+      end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: 'ジムでのトレーニング推移')
@@ -143,10 +155,10 @@ class AnalysisController < ApplicationController
       f.series(name: 'Pull:デッドリフト[kg]', data: chart_data(pull_id))
       f.series(name: 'Leg:フルスクワット[kg]', data: chart_data(leg_id))
       f.series(name: 'Back:チンニング[kg]', data: chart_data(chin_id))
-      f.series(name: 'Push:ベンチプレス目標[kg]', data: goals[0], visible: false)
-      f.series(name: 'Pull:デッドリフト目標[kg]', data: goals[1], visible: false)
-      f.series(name: 'Leg:スクワット目標[kg]', data: goals[2], visible: false)
-      f.series(name: 'Back:チンニング目標[kg]', data: goals[3],visible: false)
+      f.series(name: "Push:ベンチプレス目標[kg]" + goal_label, data: goals[0], visible: false)
+      f.series(name: 'Pull:デッドリフト目標[kg]' + goal_label, data: goals[1], visible: false)
+      f.series(name: 'Leg:スクワット目標[kg]' + goal_label, data: goals[2], visible: false)
+      f.series(name: 'Back:チンニング目標[kg]' + goal_label, data: goals[3],visible: false)
     end
   end
   def size_chart
@@ -402,10 +414,24 @@ class AnalysisController < ApplicationController
     if chart_type == "recent"
       pages = Page.where("date >= ?", Date.current - 28)
     end
+      @goal = Goal.where('user_id=?',current_user.id).where("start_date <= ? and end_date >= ?" ,Date.current,Date.current ).order("end_date asc").first
+      if @goal != nil
+        #目標があれば設定
+        weight_goal = @goal.weight_val1
+        body_fat_per_goal = @goal.fat_per_val1
+        goal_label = "(" + @goal.end_date.to_s + ")"
+      else  
+        #なければ、中級者の目安を設定
+        weight_goal = 65
+        body_fat_per_goal = 13
+        goal_label = "(65kgの中級者目標)"
+      end
     dates = []
     weight_data = []
     body_fat_per_data = []
     not_fat_weight_data = []
+    weight_goals = []
+    body_fat_per_goals = []
     where = search_params_where
     if params[:scope] == "week"
       sql = " select 
@@ -422,6 +448,8 @@ class AnalysisController < ApplicationController
         weight_data << page["weight"]  
         body_fat_per_data << page["fat"]  
         not_fat_weight_data << Page.func_not_fat_weight(page["weight"] ,page["fat"] )   
+        weight_goals << weight_goal
+        body_fat_per_goals << body_fat_per_goal
       }
     else
       pages = pages.where("wight > 0 #{where}").order(:date) #過去データ出したくないだけなので
@@ -431,6 +459,8 @@ class AnalysisController < ApplicationController
         weight_data << page.wight.to_f
         body_fat_per_data << page.body_fat_per.to_f
         not_fat_weight_data << page.not_fat_weight.to_f
+        weight_goals << weight_goal
+        body_fat_per_goals << body_fat_per_goal
       end
     end
     chart = LazyHighCharts::HighChart.new('graph') do |f|
@@ -440,6 +470,8 @@ class AnalysisController < ApplicationController
       f.series(name: "体脂肪[%]" ,data: body_fat_per_data,yAxis: 0)
       f.series(name: "体重[kg]" ,data: weight_data,yAxis: 1)
       f.series(name: "除脂肪重量[kg]" ,data: not_fat_weight_data,yAxis: 1,visible: false)
+      f.series(name: "目標_体脂肪[%]" + goal_label ,data: body_fat_per_goals,yAxis: 0,visible: false)
+      f.series(name: "目標_体重[kg]" + goal_label ,data: weight_goals,yAxis: 1,visible: false)
       f.chart(type: "line")
 #      f.options[:plotOptions] = { area: {stacking: 'normal'}
     end
