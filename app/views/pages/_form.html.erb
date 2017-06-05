@@ -1,305 +1,310 @@
 <%= form_for(@page,html:{class: "form-inline",multipart: true }) do |f| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
-        <ul>
+      <h2>
+        <%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+      <ul>
         <% @page.errors.full_messages.each do |message| %>
           <div class="alert alert-success" style="padding-left: 3em;">
             <%= message %>
           </div>
-        <% end %>
+          <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <% # Food Dialog ################################################%>
-  <div id="dialog" title="食事の一覧">
-    <div style="overflow:scroll;">
-      <table class="table table-striped" height="200" >
-        <thead> </thead>
-        <tbody id="food-table">
-          <% if @foods 
+      <% # Food Dialog ################################################%>
+        <div id="dialog" title="食事の一覧">
+          <div style="overflow:scroll;">
+            <table class="table table-striped" height="200">
+              <thead> </thead>
+              <tbody id="food-table">
+                <% if @foods 
                @foods.each do |food| %>
-            <tr class="category_<%= food.food_category.no if food.food_category %>" >
-              <td >
-                <p id="food_<%= food.id %>"
-                   onClick="food_add(
-                   '<%= food.id %>','<%= food.name %>','<%= food.carbohydrate %>'
-                   ,'<%= food.fat %>','<%= food.protein %>',
-                   '<%= food.vegetable %>');" >
-                   <%= food.id  %>.<b><%= food.name %></b></br >
-                   <i class="fa fa-hand-rock-o">：<%= food.protein %></i>
-                   <i class="fa fa-paw">：<%= food.fat %></i>
-                   <i class="fa fa-apple"> ：<%= food.carbohydrate %></i>
-                   <i class="fa fa-leaf">：<%= food.vegetable %> </i>
-                   <i class="fa fa-commenting-o"><%= food.disp_memo %></i>
-              </p>
-              </td>
-            </tr>
-          <%   end
+                  <tr class="category_<%= food.food_category.no if food.food_category %>">
+                    <td style="cursor: pointer;">
+                      <p id="food_<%= food.id %>" onClick="food_add(
+                      '<%= food.id %>','<%= food.name %>','<%= food.carbohydrate %>'
+                      ,'<%= food.fat %>','<%= food.protein %>',
+                      '<%= food.vegetable %>');">
+                        <%= food.id  %>.<b><%= food.name %></b></br>
+                          <i class="fa fa-hand-rock-o">：<%= food.protein %></i>
+                          <i class="fa fa-paw">：<%= food.fat %></i>
+                          <i class="fa fa-apple"> ：<%= food.carbohydrate %></i>
+                          <i class="fa fa-leaf">：<%= food.vegetable %> </i>
+                          <i class="fa fa-commenting-o"><%= food.disp_memo %></i>
+                      </p>
+                    </td>
+                  </tr>
+                  <%   end
              end%>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <% # Food Dialog AAAA################################################%>
-<% # FixdeMenu VVV####### %>
-  <style>
-    .footer-fixed .fixbar{
-      position: fixed;
-      background-color:#f5f5f5;
-      bottom: 0;
-      with: 100%;
-      /* height: 40px; */
-      padding-top:12px;
-      padding-bottom:12px;
-    }
-    .footer-fixed .fixbar a{
-      padding-top:12px;
-      padding-bottom:12px;
-    }
-  </style>
-<div class="footer-fixed">
-  <div class="fixbar" >
-    <span> </span>
-    <%= link_to " " , "#page_is_copy" , class: "btn btn-default fa fa-eye" %>
-    <%= link_to " 1" , "#food1" , class: "btn btn-default fa fa-cutlery" %>
-    <%= link_to " 2" , "#food2" , class: "btn btn-default fa fa-cutlery" %>
-    <%= link_to " 3" , "#food3" , class: "btn btn-default fa fa-cutlery" %>
-    <%= link_to " 4" , "#food4" , class: "btn btn-default fa fa-cutlery" %>
-    <%= link_to " 5" , "#food5" , class: "btn btn-default fa fa-cutlery" %>
-    <%= link_to " 体調" , "#page_condition_label" , class: "btn btn-default fa fa-bed" %>
-    <%= link_to " 水分、休息" , "#page_water_label" , class: "btn btn-default fa fa-coffee" %>
-    <%= link_to " 体重、サイズ" , "#page_size_label" , class: "btn btn-default fa fa-female" %>
-    <span> </span>
-  </div>
-</div>
-<% # FixdeMenu AAA####### %>
-  <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
-  <div class="field" id="copy_page_id">
-    <%= collection_select :copy_page,:id  ,
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <% # Food Dialog AAAA################################################%>
+          <% # FixdeMenu VVV####### %>
+            <style>
+              .footer-fixed .fixbar {
+                position: fixed;
+                background-color: #f5f5f5;
+                bottom: 0;
+                with: 100%;
+                /* height: 40px; */
+                padding-top: 12px;
+                padding-bottom: 12px;
+              }
+
+              .footer-fixed .fixbar a {
+                padding-top: 12px;
+                padding-bottom: 12px;
+              }
+            </style>
+            <div class="footer-fixed">
+              <div class="fixbar">
+                <span> </span>
+                <%= link_to " " , "#page_is_copy" , class: "btn btn-default fa fa-eye" %>
+                  <%= link_to " 1" , "#food1" , class: "btn btn-default fa fa-cutlery" %>
+                    <%= link_to " 2" , "#food2" , class: "btn btn-default fa fa-cutlery" %>
+                      <%= link_to " 3" , "#food3" , class: "btn btn-default fa fa-cutlery" %>
+                        <%= link_to " 4" , "#food4" , class: "btn btn-default fa fa-cutlery" %>
+                          <%= link_to " 5" , "#food5" , class: "btn btn-default fa fa-cutlery" %>
+                            <%= link_to " 体調" , "#page_condition_label" , class: "btn btn-default fa fa-bed" %>
+                              <%= link_to " 水分、休息" , "#page_water_label" , class: "btn btn-default fa fa-coffee" %>
+                                <%= link_to " 体重、サイズ" , "#page_size_label" , class: "btn btn-default fa fa-female" %>
+                                  <span> </span>
+              </div>
+            </div>
+            <% # FixdeMenu AAA####### %>
+              <%= check_box_tag "page[is_copy]" %>トレーニング記録をコピーする（種目と重量）<br>
+                <div class="field" id="copy_page_id">
+                  <%= collection_select :copy_page,:id  ,
       Page.training_only.where("date >= ?", Date.current - 30).order("date desc") , :id ,:page_training_label,
       {prompt: true} , { class: "form-control"} %>
-</div>
+                </div>
 
-<div class="field">
-  <%= f.label :date %><br>
-  <%= f.date_select :date , { class: "form-control"} %>
-</div>
-<div class="field">
-  <%= f.label :place %><br>
-  <%= f.text_field :place , { class: "form-control"} %>
-</div>
-<div class="field">
-  <%= f.label :start_time %>
-  <%= f.time_select :start_time , { class: "form-control"} %>
-  &nbsp;=>&nbsp;
-  <%= f.label :end_time %>
-  <%= f.time_select :end_time , { class: "form-control"} %>
-  <%= f.label :training_hour %>[h]
-  <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.25%>
-</div>
-<div class="field">
-  <%= f.label :memo %><br>
-  <%= f.text_area :memo , { class: "form-control",cols: 5,rows: 5,style: "width:100%;"} %>
-</div>
-<div class="field">
-  <%= f.fields_for :image do |imgf| %>
-    <table border=1>
-      <tr>
-        <th><%= imgf.label :uploaded_image %></th>
-        <td>
-          <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
-          <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
-            <div>
-              <%= page_image_tag @page, width: 96 %>
-              <%= imgf.check_box :_destroy %>
-              <%= imgf.label :_destroy %>
-              <%= imgf.hidden_field :id %>
-            </div>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-</div>
-<div class="field">
-  <%= f.fields_for :selfy do |imgf| %>
-    <table border=1>
-      <tr>
-        <th><%= imgf.label :uploaded_image %></th>
-        <td>
-          <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
-          <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
-            <div>
-              <%= page_selfy_tag @page, width: 96 %>
-              <%= imgf.check_box :_destroy %>
-              <%= imgf.label :_destroy %>
-              <%= imgf.hidden_field :id %>
-            </div>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-  <% end %>
-</div>
-<div class="field">
-  <%= f.label :diet_id %><br>
-  <%= f.collection_select :diet_id ,
+                <div class="field">
+                  <%= f.label :date %><br>
+                    <%= f.date_select :date , { class: "form-control"} %>
+                </div>
+                <div class="field">
+                  <%= f.label :place %><br>
+                    <%= f.text_field :place , { class: "form-control"} %>
+                </div>
+                <div class="field">
+                  <%= f.label :start_time %>
+                    <%= f.time_select :start_time , { class: "form-control"} %>
+                      &nbsp;=>&nbsp;
+                      <%= f.label :end_time %>
+                        <%= f.time_select :end_time , { class: "form-control"} %>
+                          <%= f.label :training_hour %>[h]
+                            <%= f.number_field :training_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.25%>
+                </div>
+                <div class="field">
+                  <%= f.label :memo %><br>
+                    <%= f.text_area :memo , { class: "form-control",cols: 5,rows: 5,style: "width:100%;"} %>
+                </div>
+                <div class="field">
+                  <%= f.fields_for :image do |imgf| %>
+                    <table border=1>
+                      <tr>
+                        <th>
+                          <%= imgf.label :uploaded_image %>
+                        </th>
+                        <td>
+                          <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
+                            <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+                              <div>
+                                <%= page_image_tag @page, width: 96 %>
+                                  <%= imgf.check_box :_destroy %>
+                                    <%= imgf.label :_destroy %>
+                                      <%= imgf.hidden_field :id %>
+                              </div>
+                              <% end %>
+                        </td>
+                      </tr>
+                    </table>
+                    <% end %>
+                </div>
+                <div class="field">
+                  <%= f.fields_for :selfy do |imgf| %>
+                    <table border=1>
+                      <tr>
+                        <th>
+                          <%= imgf.label :uploaded_image %>
+                        </th>
+                        <td>
+                          <%= imgf.file_field :uploaded_image ,class: "btn btn-default hundred" %>
+                            <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+                              <div>
+                                <%= page_selfy_tag @page, width: 96 %>
+                                  <%= imgf.check_box :_destroy %>
+                                    <%= imgf.label :_destroy %>
+                                      <%= imgf.hidden_field :id %>
+                              </div>
+                              <% end %>
+                        </td>
+                      </tr>
+                    </table>
+                    <% end %>
+                </div>
+                <div class="field">
+                  <%= f.label :diet_id %><br>
+                    <%= f.collection_select :diet_id ,
     Diet.all.order(:id), :id , :name ,
     {prompt: true} , { class: "form-control"} %>
-  </div>
-<%= link_to '食品を調べる', "http://calorie.slism.jp" %>
-  <%= label_tag "last_meals","今回食べた食品" %>
-  <%= text_field_tag "last_meals", params[:last_meals] %>
-  <div class="field btn-info" >
-    <%= f.label :diet_memo_1 %>
-    <button type="button" id="food1" class="field btn-danger btn" > 食事の選択 </button>
-    <button type="button" id="food1_cl" class="field btn-danger btn" > クリア </button>
-    <span><%= @page.meal1_cal %>kcal</span>
-    <%= f.text_area :diet_memo_1 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :protein_1 %>[g]
-    <%= f.number_field :protein_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_1 %>[g]
-    <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :carbohydrate_1 %>[g]
-    <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :vegetable_1 %>[g]
-    <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  </div>
-  <div class="field btn-success" >
-    <%= f.label :diet_memo_2 %>
-    <button type="button" id="food2" class="field btn-danger btn" > 食事の選択 </button>
-    <button type="button" id="food2_cl" class="field btn-danger btn" > クリア </button>
-    <span><%= @page.meal2_cal %>kcal</span>
-    <%= f.text_area :diet_memo_2 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :protein_2 %>[g]
-    <%= f.number_field :protein_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_2 %>[g]
-    <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :carbohydrate_2 %>[g]
-    <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :vegetable_2 %>[g]
-    <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-  </div>
-  <div class="field btn-info" >
-    <%= f.label :diet_memo_3 %>
-    <button type="button" id="food3" class="field btn-danger btn" > 食事の選択 </button>
-    <button type="button" id="food3_cl" class="field btn-danger btn " > クリア </button>
-    <span><%= @page.meal3_cal %>kcal</span>
-    <%= f.text_area :diet_memo_3 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :protein_3 %>[g]
-    <%= f.number_field :protein_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_3 %>[g]
-    <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :carbohydrate_3 %>[g]
-    <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :vegetable_3 %>[g]
-    <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-  </div>
-  <div class="field btn-success" >
-    <%= f.label :diet_memo_4 %>
-    <button type="button" id="food4" class="field btn-danger btn" > 食事の選択 </button>
-    <button type="button" id="food4_cl" class="field btn-danger btn" > クリア </button>
-    <span><%= @page.meal4_cal %>kcal</span>
-    <%= f.text_area :diet_memo_4 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :protein_4 %>[g]
-    <%= f.number_field :protein_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_4 %>[g]
-    <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :carbohydrate_4 %>[g]
-    <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :vegetable_4 %>[g]
-    <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-  </div>
-  <div class="field btn-info" >
-    <%= f.label :diet_memo_5 %>
-    <button type="button" id="food5" class="field btn-danger btn" > 食事の選択 </button>
-    <button type="button" id="food5_cl" class="field btn-danger btn" > クリア </button>
-    <span><%= @page.meal5_cal %>kcal</span>
-    <%= f.text_area :diet_memo_5 , { class: "form-control",rows: 3,style: "width:100%;"} %>
-    <%= f.label :protein_5 %>[g]
-    <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :fat_5 %>[g]
-    <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :carbohydrate_5 %>[g]
-    <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-    <%= f.label :vegetable_5 %>[g]
-    <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
-  </div>
-    <div class="field">
-      <%= f.label :condition , id: "page_condition_label" %><br>
-      <%= f.collection_select :condition_id ,
+                </div>
+                <%= link_to '食品を調べる', "http://calorie.slism.jp" %>
+                  <%= label_tag "last_meals","今回食べた食品" %>
+                    <%= text_field_tag "last_meals", params[:last_meals] %>
+                      <div class="field btn-info">
+                        <%= f.label :diet_memo_1 %>
+                          <button type="button" id="food1" class="field btn-danger btn"> 食事の選択 </button>
+                          <button type="button" id="food1_cl" class="field btn-danger btn"> クリア </button>
+                          <span><%= @page.meal1_cal %>kcal</span>
+                          <%= f.text_area :diet_memo_1 , { class: "form-control",rows: 3,style: "width:100%;"} %>
+                            <%= f.label :protein_1 %>[g]
+                              <%= f.number_field :protein_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                <%= f.label :fat_1 %>[g]
+                                  <%= f.number_field :fat_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                    <%= f.label :carbohydrate_1 %>[g]
+                                      <%= f.number_field :carbohydrate_1 , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                        <%= f.label :vegetable_1 %>[g]
+                                          <%= f.number_field :vegetable_1 ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field btn-success">
+                        <%= f.label :diet_memo_2 %>
+                          <button type="button" id="food2" class="field btn-danger btn"> 食事の選択 </button>
+                          <button type="button" id="food2_cl" class="field btn-danger btn"> クリア </button>
+                          <span><%= @page.meal2_cal %>kcal</span>
+                          <%= f.text_area :diet_memo_2 , { class: "form-control",rows: 3,style: "width:100%;"} %>
+                            <%= f.label :protein_2 %>[g]
+                              <%= f.number_field :protein_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                <%= f.label :fat_2 %>[g]
+                                  <%= f.number_field :fat_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                    <%= f.label :carbohydrate_2 %>[g]
+                                      <%= f.number_field :carbohydrate_2 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                        <%= f.label :vegetable_2 %>[g]
+                                          <%= f.number_field :vegetable_2 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field btn-info">
+                        <%= f.label :diet_memo_3 %>
+                          <button type="button" id="food3" class="field btn-danger btn"> 食事の選択 </button>
+                          <button type="button" id="food3_cl" class="field btn-danger btn "> クリア </button>
+                          <span><%= @page.meal3_cal %>kcal</span>
+                          <%= f.text_area :diet_memo_3 , { class: "form-control",rows: 3,style: "width:100%;"} %>
+                            <%= f.label :protein_3 %>[g]
+                              <%= f.number_field :protein_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                <%= f.label :fat_3 %>[g]
+                                  <%= f.number_field :fat_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                    <%= f.label :carbohydrate_3 %>[g]
+                                      <%= f.number_field :carbohydrate_3 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                        <%= f.label :vegetable_3 %>[g]
+                                          <%= f.number_field :vegetable_3 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field btn-success">
+                        <%= f.label :diet_memo_4 %>
+                          <button type="button" id="food4" class="field btn-danger btn"> 食事の選択 </button>
+                          <button type="button" id="food4_cl" class="field btn-danger btn"> クリア </button>
+                          <span><%= @page.meal4_cal %>kcal</span>
+                          <%= f.text_area :diet_memo_4 , { class: "form-control",rows: 3,style: "width:100%;"} %>
+                            <%= f.label :protein_4 %>[g]
+                              <%= f.number_field :protein_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                <%= f.label :fat_4 %>[g]
+                                  <%= f.number_field :fat_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                    <%= f.label :carbohydrate_4 %>[g]
+                                      <%= f.number_field :carbohydrate_4 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                        <%= f.label :vegetable_4 %>[g]
+                                          <%= f.number_field :vegetable_4 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field btn-info">
+                        <%= f.label :diet_memo_5 %>
+                          <button type="button" id="food5" class="field btn-danger btn"> 食事の選択 </button>
+                          <button type="button" id="food5_cl" class="field btn-danger btn"> クリア </button>
+                          <span><%= @page.meal5_cal %>kcal</span>
+                          <%= f.text_area :diet_memo_5 , { class: "form-control",rows: 3,style: "width:100%;"} %>
+                            <%= f.label :protein_5 %>[g]
+                              <%= f.number_field :protein_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                <%= f.label :fat_5 %>[g]
+                                  <%= f.number_field :fat_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                    <%= f.label :carbohydrate_5 %>[g]
+                                      <%= f.number_field :carbohydrate_5 , class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                                        <%= f.label :vegetable_5 %>[g]
+                                          <%= f.number_field :vegetable_5 ,  class: "form-control" ,style: "width:6em;"  ,step: 0.01, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :condition , id: "page_condition_label" %><br>
+                          <%= f.collection_select :condition_id ,
         Condition.all.order(:id), :id , :name ,
         {prompt: true} , { class: "form-control"} %>
-  </div>
-  <div class="field">
-    <%= f.label :feeling %><br>
-    <%= f.collection_select :feeling_id ,
+                      </div>
+                      <div class="field">
+                        <%= f.label :feeling %><br>
+                          <%= f.collection_select :feeling_id ,
       Feeling.all.order(:id), :id , :name ,
       {prompt: true} , { class: "form-control"} %>
-</div>
-<div class="field btn-warning" >
-  <%= f.label :sleep_hour %>[h]
-  <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <%= f.label :sleep_time %>
-  <%= f.time_select :sleep_time , { class: "form-control"} %>
-  <br>
-  <%= f.label :water , id: "page_water_label" %>[g]
-  <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <br>
-  <%= f.label :alcohol %>[g]
-  <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <%= f.label :caffeine %>[g]
-  <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <br>
-  <%= f.label :work_hour %>[h]
-  <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <%= f.label :study_hour %>[h]
-  <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <%= f.label :tv_hour %>[h]
-  <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <br>
-  <%= f.label :wight , id: "page_size_label"%>[kg]
-  <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
-  <%= f.label :body_fat_per %>[%]
-  <%= f.number_field :body_fat_per ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_neck  %>[cm]
-  <%= f.number_field :body_size_neck ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_bust%>[cm]
-  <%= f.number_field :body_size_bust ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_waist%>[cm]
-  <%= f.number_field :body_size_waist ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_hip %>[cm]
-  <%= f.number_field :body_size_hip ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_arm_right %>[cm]
-  <%= f.number_field :body_size_arm_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-  <%= f.label :body_size_arm_left %>[cm]
-  <%= f.number_field :body_size_arm_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_leg_right %>[cm]
-  <%= f.number_field :body_size_leg_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-  <%= f.label :body_size_leg_left %>[cm]
-  <%= f.number_field :body_size_leg_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="field">
-  <%= f.label :body_size_calf_right %>[cm]
-  <%= f.number_field :body_size_calf_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-  <%= f.label :body_size_calf_left %>[cm]
-  <%= f.number_field :body_size_calf_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
-</div>
-<div class="actions">
-  <%= f.submit class: "btn btn-primary btn-block" %>
-</div>
-<% end %>
+                      </div>
+                      <div class="field btn-warning">
+                        <%= f.label :sleep_hour %>[h]
+                          <%= f.number_field :sleep_hour , class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                            <%= f.label :sleep_time %>
+                              <%= f.time_select :sleep_time , { class: "form-control"} %>
+                                <br>
+                                <%= f.label :water , id: "page_water_label" %>[g]
+                                  <%= f.number_field :water , class: "form-control" ,style: "width:8em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                    <br>
+                                    <%= f.label :alcohol %>[g]
+                                      <%= f.number_field :alcohol,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                        <%= f.label :caffeine %>[g]
+                                          <%= f.number_field :caffeine ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                            <br>
+                                            <%= f.label :work_hour %>[h]
+                                              <%= f.number_field :work_hour ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                                <%= f.label :study_hour %>[h]
+                                                  <%= f.number_field :study_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                                    <%= f.label :tv_hour %>[h]
+                                                      <%= f.number_field :tv_hour,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                                        <br>
+                                                        <%= f.label :wight , id: "page_size_label"%>[kg]
+                                                          <%= f.number_field :wight ,  class: "form-control" ,style: "width:6em;" ,step: 0.01, no_pattern: "\\d*" %>
+                                                            <%= f.label :body_fat_per %>[%]
+                                                              <%= f.number_field :body_fat_per ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_neck  %>[cm]
+                          <%= f.number_field :body_size_neck ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_bust%>[cm]
+                          <%= f.number_field :body_size_bust ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_waist%>[cm]
+                          <%= f.number_field :body_size_waist ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_hip %>[cm]
+                          <%= f.number_field :body_size_hip ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_arm_right %>[cm]
+                          <%= f.number_field :body_size_arm_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                            <%= f.label :body_size_arm_left %>[cm]
+                              <%= f.number_field :body_size_arm_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_leg_right %>[cm]
+                          <%= f.number_field :body_size_leg_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                            <%= f.label :body_size_leg_left %>[cm]
+                              <%= f.number_field :body_size_leg_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="field">
+                        <%= f.label :body_size_calf_right %>[cm]
+                          <%= f.number_field :body_size_calf_right ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                            <%= f.label :body_size_calf_left %>[cm]
+                              <%= f.number_field :body_size_calf_left ,  class: "form-control" ,style: "width:6em;" ,step: 0.1, no_pattern: "\\d*" %>
+                      </div>
+                      <div class="actions">
+                        <%= f.submit class: "btn btn-primary btn-block" %>
+                      </div>
+                      <% end %>
