@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><i class="fa fa-heartbeat fa-lg">Fit Note</i></a>
+      <a class="navbar-brand" href="/"><i class="fa fa-heartbeat fa-lg">Note</i></a>
       <% if current_user %>
       <a class="navbar-brand" href="/pages/<%= Page.where('user_id=?',current_user.id).maximum(:id) %>/"><i class="fa fa-check-square-o fa-lg"></i></a>
       <a class="navbar-brand" href="/pages"><i class="fa fa-calendar fa-lg"></i></a>
