@@ -48,7 +48,7 @@ class Page < ActiveRecord::Base
     d += " _ 基礎代謝:" + basic_burn_cal.to_s + "kcal ⬆︎"
     d += "</b>"
     d += "<table border=1 class='table table-striped' style='width:28em;'><tr>"
-    d += "<th style='border-bottom-width: 2px;'></th> "
+    d += "<th style='border-bottom-width: 2px;text-align:center;'><a class='fa fa-cutlery' href='#'> </a> </th> "
     d += "<th style='border-bottom-width: 2px;width:6em;'> 熱量kcal </th> "
     d += "<th style='border-bottom-width: 2px;width:6em;'>たんぱく質g </th> "
     d += "<th style='border-bottom-width: 2px;width:6em;'>脂肪g </th> "
@@ -58,7 +58,7 @@ class Page < ActiveRecord::Base
     if diet_memo_1
       d += "<tr> "
       d += "<td class='btn-info' >"
-      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=1'> 1 </a>"
+      d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=1'> 1 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal1_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + protein_1.to_s + "</td> "
@@ -73,7 +73,7 @@ class Page < ActiveRecord::Base
     if diet_memo_2
       d += "<tr> "
       d += "<td class='btn-success' >"
-      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=2'> 2 </a>"
+      d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=2'> 2 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal2_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + protein_2.to_s + "</td> "
@@ -88,7 +88,7 @@ class Page < ActiveRecord::Base
     if diet_memo_3 && diet_memo_3.size > 0.0
       d += "<tr> "
       d += "<td class='btn-info' >"
-      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=3'> 3  </a>"
+      d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=3'> 3  </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal3_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + protein_3.to_s + "</td> "
@@ -103,7 +103,7 @@ class Page < ActiveRecord::Base
     if diet_memo_4 && diet_memo_4.size > 0.0
       d += "<tr> "
       d += "<td class='btn-success' >"
-      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=4'> 4 </a>"
+      d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=4'> 4 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal4_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + protein_4.to_s + "</td> "
@@ -118,7 +118,7 @@ class Page < ActiveRecord::Base
     if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<tr> "
       d += "<td class='btn-info' >"
-      d += "<a class='btn btn-default fa fa-cutlery' href='/foods/new?page=#{id.to_s}&item=5'> 5 </a>"
+      d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=5'> 5 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal5_cal.to_s + " </td> "
       d += "<td style='text-align:right;'>" + protein_5.to_s + "</td> "
