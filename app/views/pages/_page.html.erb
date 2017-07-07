@@ -1,5 +1,4 @@
 <%= render 'shared/tipgrowl' %>
-<% # FixdeMenu VVV####### %>
 <style>
 html {
   position: relative;
@@ -9,31 +8,7 @@ html {
     /* Margin bottom by footer height */
     margin-bottom: 40px;
   }
-  .footer {  /*<footer class="footer">*/
-    /*position: absolute;*/
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 40px;
-    background-color: #f5f5f5;
-  }
-  .footer-fixed .fixbar{
-    /*display:none;*/
-    /*position: fixed;*/
-    background-color:#f5f5f5;
-    top: 0;
-    width: 100%;
-    height: ;
-    padding-top:6px;
-    padding-bottom:6px;
-  }
-  .footer-fixed .fixbar a{
-    padding-top:6px;
-    padding-bottom:6px;
-  }
 </style>
-<% # FixdeMenu AAA####### %>
-<%= render 'page_nav' %>
 <div class= "<%= @page_class %> note-index" >
   <table style="vertical-align:baseline;width:100%;" >
     <tr>
@@ -88,7 +63,6 @@ html {
     </tr>
   </table>
   <span id="diet-line"></span>
-  <%= render 'page_nav' %>
   <div class="note" >
     <% if @disp_other_is %>
       <% if @show %>
@@ -96,7 +70,7 @@ html {
         <% else %>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
             <% end %>
-              <div class="diet-line" style="color:black;" >
+              <div class="diet-line" style="color:black;padding: 0;" >
                 <%= raw page.diet_summaly %>
               </div>
               <div class="health-line" style="color:black;">
@@ -111,7 +85,6 @@ html {
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
               <% end %>
                       <span id="training-line"></span>
-                      <%= render 'page_nav' %>
                       <div class="training-line" >
                         <table class="table table-striped table-hover "
                                style="text-align: right; width: 100%;">
@@ -165,7 +138,6 @@ html {
                 <% if @show %>
                   <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
                     <span id="piechart"></span>
-                    <%= render 'page_nav' %>
                     <%= high_chart( "chart_diet_"+page.id.to_s , @chart_pie_diets_index[page.id]) %>
                   </div>
                   <% if page.lines.size > 0 %>
@@ -175,7 +147,6 @@ html {
                   <% end %>
                   <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
                     <span id='barchart'></span>
-                    <%= render 'page_nav' %>
                     <%= high_chart( "chart_health_"+page.id.to_s , @chart_healths_index[page.id]) %>
                   </div>
                   <div class="chart col-xs-12 col-sm-6 col-md-6 col-lg-6" >
