@@ -21,6 +21,19 @@
   <%= submit_tag "ページ&行データ JSON インポート", class: "btn btn-warning hundred" %>
 <% end %>
 <hr>
+<h3>目標データ：エクスポート</h3>
+[goals.json]
+<button type="button" class="btn btn-info hundred"
+        onClick="location.href='/goals.json'">目標データ JOSN エクスポート</button>
+<h3>目標データ：インポート</h3>
+<button type="button" class="btn btn-danger hundred"
+        onClick="location.href='/maintenance/goals_delete_all'">目標データ全削除</button>
+[goals.json]
+<%= form_tag "/maintenance/goals_import", multipart: true do %>
+  <%= file_field_tag :file ,class: "btn btn-default hundred" %>
+  <%= submit_tag "目標データ JSON インポート", class: "btn btn-warning hundred" %>
+<% end %>
+<hr>
 <h3>種目データ：エクスポート</h3>
 [items.json]
 <button type="button" class="btn btn-info hundred"

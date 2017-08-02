@@ -1,6 +1,15 @@
 class GoalsController < InheritedResources::Base
   before_action :login_required
 
+  def index
+    @goals = Goal.all.order("start_date desc")
+    respond_to do |format|
+      format.html #default template
+      format.js   #default template
+      format.json  #jsonは全部 とりあえずデフォルトでいい
+    end
+  end
+
   #直近の体重、ジムの記録と、目標値との差分を見えるか
   def show
      get_goal_and_last_page
