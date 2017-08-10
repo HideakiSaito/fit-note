@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 #ruby '2.2.3'
 #ruby '2.2.1'
-ruby '2.2.6' #windows 対応
-
+#ruby ' 2.2.6' #windows 対応  surface対応
+ruby '~>2.2.6' #surface対応
+ 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 ### H.saito Del >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -13,7 +14,8 @@ gem 'rails', '4.2.4'
 
 ### H.saito Add >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Use postgresql as the database for Active Record
-gem 'pg'
+#gem 'pg' #windows surface
+gem 'pg','~> 0.20.0'
 gem 'rails_12factor', group: :production
 ### H.saito Add <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 # Use SCSS for stylesheets
