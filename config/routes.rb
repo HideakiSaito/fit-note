@@ -71,8 +71,8 @@ Rails.application.routes.draw do
                  :diet,:gym,:home,:pie_parts,:pie_place,:diet_recent,:weight_recent}
   end
   resources :maintenance do
-    collection {get :pages_delete_all,:items_delete_all,:foods_delete_all}
-    collection { post :pages_import,:items_import,:foods_import}
+    collection {get :pages_delete_all,:items_delete_all,:foods_delete_all,:goals_delete_all}
+    collection { post :pages_import,:items_import,:foods_import,:goals_import}
   end
   resources :lines do
     collection { post :import }

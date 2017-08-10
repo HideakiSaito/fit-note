@@ -20,4 +20,16 @@ class Goal < ActiveRecord::Base
   default_scope -> do
     order("start_date desc")
   end
+
+  class << self
+    #JSONのインポート
+    def import(file)
+      s = File.read(file.path, :encoding => Encoding::UTF_8)
+      JSON.parse( s ).each do |elem|
+        goal = find_by(id: elem["id"]) || new
+        goal.assign_attributes(elem)
+        goal.save
+      end
+    end
+  end
 end
