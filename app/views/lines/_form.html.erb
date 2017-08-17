@@ -240,6 +240,44 @@
     :<%= label_tag "メモ" %>
     <%= f.text_field :memo_8 ,class: "form-control memo"%>
   </div>
+ <hr/>
+  <div class="field form-group" id="set9">
+    <%= label_tag "9セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(9) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(9) %><br>
+    <% end %>
+    <% if @last_line.present? %>
+      <%= @last_line.get_set_label(9) %><br>
+    <% end %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_9, class: "form-control" ,step: 0.5, no_pattern: "\\d*"   %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_9 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_9 ,class: "form-control memo"%>
+  </div>
+  <hr/>
+  <div class="field form-group" id="set0">
+    <%= label_tag "10セット kg / 回数:メモ" %><br>
+    <% if @last3_line.present? %>
+      <%= @last3_line.get_set_label(0) %><br>
+    <% end %>
+    <% if @last2_line.present? %>
+      <%= @last2_line.get_set_label(0) %><br>
+    <% end %>
+    <% if @last_line.present? %>
+      <%= @last_line.get_set_label(0) %><br>
+    <% end %>
+    <%= label_tag "重量" %>
+    <%= f.number_field :weight_0, class: "form-control" ,step: 0.5, no_pattern: "\\d*"   %>
+    /<%= label_tag "回数" %>
+    <%= f.number_field :reps_0 , class: "form-control"  ,step: 0.5, no_pattern: "\\d*" %>
+    :<%= label_tag "メモ" %>
+    <%= f.text_field :memo_0 ,class: "form-control memo"%>
+  </div>
   <hr/>
     <%= f.submit class: "btn btn-primary btn-block" %>
   <hr/>

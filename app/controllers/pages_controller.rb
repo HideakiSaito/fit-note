@@ -256,8 +256,14 @@ class PagesController < InheritedResources::Base
                            weight_2: copy_line.weight_2,
                            weight_3: copy_line.weight_3,
                            weight_4: copy_line.weight_4,
-                           weight_5: copy_line.weight_5
+                           weight_5: copy_line.weight_5,
+                           weight_6: copy_line.weight_6,
+                           weight_7: copy_line.weight_7,
+                           weight_8: copy_line.weight_8,
+                           weight_9: copy_line.weight_9,
+                           weight_0: copy_line.weight_0
                           )
+                          0
       end
     end
   end

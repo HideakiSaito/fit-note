@@ -50,7 +50,7 @@ class Line < ActiveRecord::Base
   end
   #統計データ用にレップス合計を取得
   def get_sum_reps
-    reps_1.to_i + reps_2.to_i + reps_3.to_i + reps_4.to_i + reps_5.to_i + reps_6.to_i + reps_7.to_i + reps_8.to_i #nil.to_i => 0 を利用
+    reps_1.to_i + reps_2.to_i + reps_3.to_i + reps_4.to_i + reps_5.to_i + reps_6.to_i + reps_7.to_i + reps_8.to_i + reps_9.to_i + reps_0.to_i #nil.to_i => 0 を利用
   end
   #前回、前々回とかの記録を簡単に見せるように
   def get_set_label(set)
@@ -63,6 +63,8 @@ class Line < ActiveRecord::Base
      when 6 then  w = weight_6; r = reps_6; m = memo_6;
      when 7 then  w = weight_7; r = reps_7; m = memo_7;
      when 8 then  w = weight_8; r = reps_8; m = memo_8;
+     when 9 then  w = weight_9; r = reps_9; m = memo_9;
+     when 0 then  w = weight_0; r = reps_0; m = memo_0;
     end
     w ||= ""; r ||= "";  m ||= ""; #nil => ""
     page.date.strftime("%m/%d(%a)") + "＞" + w.to_s + "/" + r.to_s + " : " + m
