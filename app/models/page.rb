@@ -57,7 +57,7 @@ class Page < ActiveRecord::Base
     d += "</tr> "
     if diet_memo_1
       d += "<tr> "
-      d += "<td class='btn-info' >"
+      d += "<td class='bg-info' >"
       d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=1'> 1 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal1_cal.to_s + " </td> "
@@ -72,7 +72,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_2
       d += "<tr> "
-      d += "<td class='btn-success' >"
+      d += "<td class='bg-success' >"
       d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=2'> 2 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal2_cal.to_s + " </td> "
@@ -87,7 +87,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_3 && diet_memo_3.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-info' >"
+      d += "<td class='bg-warning' >"
       d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=3'> 3  </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal3_cal.to_s + " </td> "
@@ -102,7 +102,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_4 && diet_memo_4.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-success' >"
+      d += "<td class='bg-danger' >"
       d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=4'> 4 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal4_cal.to_s + " </td> "
@@ -117,7 +117,7 @@ class Page < ActiveRecord::Base
     end
     if diet_memo_5 && diet_memo_5.size > 0.0
       d += "<tr> "
-      d += "<td class='btn-info' >"
+      d += "<td class='bg-primary' >"
       d += "<a class='btn btn-default' href='/foods/new?page=#{id.to_s}&item=5'> 5 </a>"
       d += "</td>"
       d += "<td style='text-align:right;'> " + meal5_cal.to_s + " </td> "
