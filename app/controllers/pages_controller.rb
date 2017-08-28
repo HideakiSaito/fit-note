@@ -93,7 +93,8 @@ class PagesController < InheritedResources::Base
       pages << temp.last
       @pages = pages
     else
-      @pages = @pages.paginate(page: params[:page], per_page: 15) 
+      pg_count = @simple_page ? 35 : 15
+      @pages = @pages.paginate(page: params[:page], per_page: pg_count) 
     end
     #simple_page
     @simple_page ||= true

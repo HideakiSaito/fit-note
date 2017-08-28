@@ -1,14 +1,22 @@
-    <td style="text-align: left; width: 5em;" >
-      <%
-        if page.date.strftime("%W").to_i.remainder(2) == 1
-            week_class = 'success'
-        else
-            week_class = 'info'
-        end
-      %>
-    <button type="button" class="btn btn-<%= week_class %> "
-                          onClick="location.href='/pages/<%= page.id  %>'">
-                          <%= disp_short_date(page.date) %>
-    </button>
-      <%= page.wight %> kg ,  <%= page.body_fat_per %> % ->  (<%= page.not_fat_weight %> kg)
-    </td>
+<td style="text-align: left; width: 5em;" >
+  <%
+  if page.date.wday == 0 
+    week_class = 'warning' 
+  elsif page.date.wday == 6 
+    week_class = 'danger'
+  else
+    if page.date.strftime("%W").to_i.remainder(2) == 1
+        week_class = 'success'
+    else
+        week_class = 'info'
+    end
+  end  
+  %>
+<button type="button" class="btn btn-<%= week_class %> "
+                      onClick="location.href='/pages/<%= page.id  %>'">
+                      <%= disp_short_date(page.date) %>
+</button>
+  <p><%= page.wight %> kg </p>
+  <p><%= page.body_fat_per %> %</p>
+  <p> (<%= page.not_fat_weight %> kg)</p>
+</td>
