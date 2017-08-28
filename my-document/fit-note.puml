@@ -1,0 +1,16 @@
+@startuml fit-note
+start
+:start;
+:process1;
+:process2;
+if(var?) then( 1)
+:process3;
+elseif() then( 2)
+:process4;
+elseif() then( 3)
+:process5;
+stop
+endif
+:process_default;
+end
+@enduml

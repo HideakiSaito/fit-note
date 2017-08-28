@@ -235,6 +235,9 @@ class Page < ActiveRecord::Base
   scope :default, -> do
     includes(:diet).includes(:feeling).includes(:condition).order("date desc")
   end
+  scope :dafault_cal, -> do
+    includes(:diet).includes(:feeling).includes(:condition).order("date")
+  end
   scope :feel_include , -> do
     includes(:feeling).includes(:condition)
   end

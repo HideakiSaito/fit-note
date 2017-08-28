@@ -39,10 +39,10 @@ class PagesController < InheritedResources::Base
     params[:start_day] ||= Date.current - 30		
     params[:end_day] ||= Date.current		
     params[:scope] ||= "all"
-    self.index_logic "all"
     @simple_page = true
     @show_detail = false
     @show_chart = false
+    self.index_logic "all"
     respond_to do |format|
       format.html #default template
       format.js   #default template ajax
@@ -66,7 +66,12 @@ class PagesController < InheritedResources::Base
     @disp_other_is = disp_other
     @show = false
     @page_class = "col-xs-12 col-sm-12 col-md-6 col-lg-6"
-    @pages = Page.default
+    if @simple_page
+#      @pages = Page.default_cal
+       @pages = Page.includes(:diet).includes(:feeling).includes(:condition).order("date")
+    else
+      @pages = Page.default
+    end
     x_user = params[:user_id]? params[:user_id] : current_user
     @pages = @pages.where("user_id=?", x_user) #user
     @pages = @pages.training_only if disp_mode == "training_only"

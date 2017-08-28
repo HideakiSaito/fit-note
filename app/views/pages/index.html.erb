@@ -45,9 +45,15 @@
        <%= render 'selfy_page' , page: page %>
      <% end %>
    <% elsif @simple_page %>
+
+   <table>
+     <tr>
      <% @pages.each do |page| %>
        <%= render 'simple_page' , page: page %>
+       <%= raw '</tr>' if page.date.wday == 6 ; %>
      <% end %>
+   </table>
+
    <% else %>    
      <%= render @pages %>
  <% end %>
