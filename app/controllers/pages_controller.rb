@@ -43,6 +43,7 @@ class PagesController < InheritedResources::Base
     @show_detail = false
     @show_chart = false
     self.index_logic "all"
+    @dummy_page_count = @pages.first.date.wday.to_i
     respond_to do |format|
       format.html #default template
       format.js   #default template ajax

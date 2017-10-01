@@ -48,6 +48,9 @@
 
    <table>
      <tr>
+     <% @dummy_page_count.times do %>
+       <td></td>
+     <% end %>
      <% @pages.each do |page| %>
        <%= render 'simple_page' , page: page %>
        <%= raw '</tr>' if page.date.wday == 6 ; %>
