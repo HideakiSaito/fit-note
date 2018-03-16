@@ -10,9 +10,9 @@
       </button>
       <a class="navbar-brand" href="/"><i class="fa fa-heartbeat fa-lg">Note</i></a>
       <% if current_user %>
-      <a class="navbar-brand" href="/pages/<%= Page.where('user_id=?',current_user.id).maximum(:id) %>/"><i class="fa fa-check-square-o fa-lg"></i></a>
-      <a class="navbar-brand" href="/pages"><i class="fa fa-calendar fa-lg"></i></a>
-      <a class="navbar-brand" href="/analysis"><i class="fa fa-bar-chart fa-lg"></i></a>
+      <a class="navbar-brand" href="/pages/<%= Page.where('user_id=?',current_user.id).maximum(:id) %>/"><i class="far fa-check-square-o fa-lg"></i></a>
+      <a class="navbar-brand" href="/pages"><i class="far fa-calendar fa-lg"></i></a>
+      <a class="navbar-brand" href="/analysis"><i class="fas fa-bar-chart fa-lg"></i></a>
     <% end %>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,9 +20,9 @@
       <ul class="nav navbar-nav">
         <li class="dropdown" >
           <% if current_user %>
-          <li><a href="/goals"><i class="fa fa-map-signs fa-lg"> 目標設定</i></a></li>
-          <li><a href="/items"><i class="fa fa-gamepad fa-lg"> トレーニング種目</i></a></li>
-          <li><a href="/foods"><i class="fa fa-cutlery fa-lg"> 食品</i></a></li>
+          <li><a href="/goals"><i class="fas fa-map-signs fa-lg"> 目標設定</i></a></li>
+          <li><a href="/items"><i class="fas fa-gamepad fa-lg"> トレーニング種目</i></a></li>
+          <li><a href="/foods"><i class="fas fa-cutlery fa-lg"> 食品</i></a></li>
           <% if current_user && current_user.administrator?  %>
             <li><a href="/admin"><i class="fa fa-cogs fa-lg"> 管理ページ</i></a></li>
           <% end %>
