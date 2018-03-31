@@ -98,9 +98,10 @@ class LinesController < InheritedResources::Base
   # DELETE /items/1.json
   def destroy
     @line = Line.find(params[:id])
+    page = @line.page
     @line.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to page, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
