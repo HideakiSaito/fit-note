@@ -37,6 +37,8 @@ module RepsCalculator
     line_reps <<  max_reps(line.weight_1,line.reps_1).to_f
     line_reps <<  max_reps(line.weight_2,line.reps_2).to_f 
     line_reps <<  max_reps(line.weight_3,line.reps_3).to_f 
+    line_reps <<  max_reps(line.weight_4,line.reps_4).to_f 
+    line_reps <<  max_reps(line.weight_5,line.reps_5).to_f 
     return line_reps.max
   end
 end
