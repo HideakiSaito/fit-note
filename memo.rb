@@ -287,10 +287,10 @@ heroku run bundle exec rake db:migrate
 # user に birthday
 rails g migration AddCoulumn3ToUser birthday:date
 bundle exec rake db:migrate
-heroku run bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate -a fit-note
 # WantToDo やりたいこと
 rails g scaffold want_to_do user:belongs_to estimate:date title description category status done:boolean
 bundle exec rake db:migrate
-heroku run bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate -a fit-note
 #Life
 rails g controller life
