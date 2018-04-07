@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @want_to_do.user %>
+</p>
+
+<p>
+  <strong>Estimate:</strong>
+  <%= @want_to_do.estimate %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @want_to_do.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @want_to_do.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @want_to_do.category %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @want_to_do.status %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @want_to_do.done %>
+</p>
+
+<%= link_to 'Edit', edit_want_to_do_path(@want_to_do) %> |
+<%= link_to 'Back', want_to_dos_path %>

@@ -59,7 +59,7 @@ class Admin::UsersController < InheritedResources::Base
   private
 
   def user_params
-    params.require(:user).permit(:provider, :uid, :name, :email, :icon, :oauth_token, :oauth_expires_at, :password,:password_confirmation,:administrator)
+    params.require(:user).permit(:provider, :uid, :name, :email,:birthday, :icon, :oauth_token, :oauth_expires_at, :password,:password_confirmation,:administrator)
   end
 end
 

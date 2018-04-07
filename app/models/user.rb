@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :voted_foods, through: :food_votes, source: :food
   has_many :item_votes, dependent: :destroy
   has_many :voted_items, through: :item_votes, source: :item
+  has_many :want_to_dos
 
   validates :password, presence: false, on: :facebook_login
   validates :password,presence: { on: :create }, confirmation: { allow_blank: true }

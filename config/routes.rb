@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :life
+  resources :want_to_dos
   resources :last_meals
   resources :goals
     get 'goals/:copy_from/copy', :to => 'goals#new', :as => 'copy_goal'

@@ -1,0 +1,9 @@
+<h1>Your Life</h1>
+<% if current_user %>
+
+birthday:
+ <%= current_user.birthday %>
+ <br>
+ want_to_dos.count:
+ <%= current_user.want_to_dos.count %>
+<% end %>

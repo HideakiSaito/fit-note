@@ -282,3 +282,15 @@ rails g scaffold last_meal user:belongs_to food:belongs_to date:date memo:string
 bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate
 
+#############################################
+# 2018/04/07
+# user に birthday
+rails g migration AddCoulumn3ToUser birthday:date
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
+# WantToDo やりたいこと
+rails g scaffold want_to_do user:belongs_to estimate:date title description category status done:boolean
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
+#Life
+rails g controller life
