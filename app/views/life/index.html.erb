@@ -15,7 +15,7 @@
 		display: inline-block;
 		box-sizing: border-box;
 		/*width: calc(100%/52);*/
-        width: 7px;
+        width: 3px;
 		height: 7px; line-height: 1px;
 		outline: 1px solid black;
 		color: white;
@@ -42,7 +42,7 @@ birthday:
 </div>
  <% 
     diff =  Date.today - current_user.birthday
-    lifepast = (diff/7).ceil.to_i
+    lifepast = (diff/7).ceil.to_i   
     lifecount = 0
  %>
  <div>
