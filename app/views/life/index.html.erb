@@ -17,10 +17,22 @@
 		/*width: calc(100%/52);*/
         width: 4px;
 		height: 5px; line-height: 0px;
-		outline: 1px solid black;
+		outline: 0.5px solid gray;
         background-color: cyan;
 		overflow: hidden;
 	}
+    .color0{
+        background-color: #FFFF99;
+    }
+    .color1{
+        background-color:#99FF99;
+    }
+      .color2{
+        background-color: #99CCFF;
+    }
+      .color3{
+        background-color: #FF99FF;
+    }
     .heaed{
         display: inline-block;
 		box-sizing: border-box;
@@ -74,9 +86,14 @@ birthday:
  </div>
 <% end %>
 <div class='life'>
-<% for year in 0..80 %>
+<% for year in 0..80 
+  lifecolor = (year) / 20
+  %>
   <div class='year' style="font-size:0.7rem;line-height:4px;">
-  <div class="heaed"><%= year %></div>
+  <% if ((year) % 5) == 0 %>
+     <hr style="margin:0;">
+  <% end %> 
+  <div class="heaed color<%= lifecolor %>"><%= year %></div>
   <% for week in 0..52
      lifecount += 1
      if lifepast > lifecount 
@@ -88,7 +105,7 @@ birthday:
        dispclass = ""
      end
    %>
-    <div style="line-height:4px;" class='week <%= dispclass %> '></div>
+    <div style="line-height:4px;" class='week <%= dispclass %> color<%= lifecolor %>'></div>
   <% end %>
   </div>
 <% end %>
