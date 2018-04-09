@@ -57,7 +57,6 @@
 		}
 	}
 </style>
-
 <h1>Your Life</h1>
 <% if current_user %>
 <div>
@@ -69,16 +68,11 @@ birthday:
     lifepast = (diff/7).ceil.to_i   
     lifecount = 0
  %>
- <div>
- Past week:
- <%= lifepast %>
- </div>
- <div>
+  <div>
  Want ToDo Count:
  <%= current_user.want_to_dos.count %>
  </div>
 <% end %>
-<br>
 <div class='life'>
 <% for year in 0..80 %>
   <div class='year' style="font-size:0.7rem;line-height:4px;">

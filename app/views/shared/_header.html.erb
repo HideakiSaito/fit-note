@@ -20,11 +20,11 @@
       <ul class="nav navbar-nav">
         <li class="dropdown" >
           <% if current_user %>
+          <li><a href="/life"><i class="fas fa-hourglass-half fa-lg"> Life</i></a></li>
+          <li><a href="/want_to_dos"><i class="fas fa-fighter-jet fa-lg"> やりたいこと</i></a></li>
           <li><a href="/goals"><i class="fas fa-map-signs fa-lg"> 目標設定</i></a></li>
           <li><a href="/items"><i class="fas fa-gamepad fa-lg"> トレーニング種目</i></a></li>
           <li><a href="/foods"><i class="fas fa-utensils fa-lg"> 食品</i></a></li>
-          <li><a href="/life"><i class="fas fa-hourglass-half fa-lg"> Life</i></a></li>
-          <li><a href="/want_to_dos"><i class="fas fa-fighter-jet fa-lg"> やりたいこと</i></a></li>
           <% if current_user && current_user.administrator?  %>
             <li><a href="/admin"><i class="fa fa-cogs fa-lg"> 管理ページ</i></a></li>
           <% end %>
