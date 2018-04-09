@@ -8,20 +8,28 @@
 		font-size: small;
 	}
 	.life {
-		border: 1px solid white;
-		margin: 1px;
+		border: 0   px solid white;
+		margin: 0px;
 	}
 	.week {
 		display: inline-block;
 		box-sizing: border-box;
 		/*width: calc(100%/52);*/
         width: 2px;
-		height: 7px; line-height: 1px;
+		height: 7px; line-height: 0px;
 		outline: 1px solid black;
-		color: white;
         background-color: cyan;
 		overflow: hidden;
 	}
+    .heaed{
+        display: inline-block;
+		box-sizing: border-box;
+		/*width: calc(100%/52);*/
+        width: 6px;
+		height: 7px; line-height: 0px;
+		outline: 1px solid black;
+		overflow: hidden;
+    }
     .interactive {
 		-webkit-transition: background-color 1s;
 		transition: background-color 1s;
@@ -31,6 +39,22 @@
 	}
 	.paniced {
 		background-color: #FF3300 !important;
+	}
+	.disable {
+		display: none;
+	}
+
+	#monster {
+		position: absolute;
+		top: 0;
+		z-index: 0;
+	}
+
+	@media (max-width: 720px) {
+		.week {
+			color: transparent;
+			height: 1rem; line-height: 1rem;
+		}
 	}
 </style>
 
@@ -57,8 +81,8 @@ birthday:
 <br>
 <div class='life'>
 <% for year in 0..80 %>
-  <div class='year'>
-  <span style="font-size:0.7rem;"  ><%= year %> : </span>
+  <div class='year' style="font-size:0.7rem;line-height:4px;">
+  <div class="heaed"><%= year %></div>
   <% for week in 0..52
      lifecount += 1
      if lifepast > lifecount 
@@ -70,7 +94,7 @@ birthday:
        dispclass = ""
      end
    %>
-    <div class='week <%= dispclass %> '></div>
+    <div style="line-height:4px;" class='week <%= dispclass %> '></div>
   <% end %>
   </div>
 <% end %>
