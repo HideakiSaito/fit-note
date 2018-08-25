@@ -23,26 +23,6 @@
   }
 
   </style>
-<div class="footer-fixed" style="z-index:9999;">
-  <div class="fixbar" >
-    <span> </span>
-    <% if @prev_line %>
-           <%= link_to " <" , "/lines/#{@prev_line.id}/edit" , class: "btn btn-default fa fa-child" %>
-    <% else %>
-      <%= link_to " " , "#" , class: "" %>
-    <% end %>
-    <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
-    <%= link_to " 2" , "#set2" , class: "btn btn-default fa fa-hand-rock-o" %>
-    <%= link_to " 3" , "#set3" , class: "btn btn-default fa fa-hand-rock-o" %>
-    <%= link_to " 4" , "#set4" , class: "btn btn-default fa fa-hand-rock-o" %>
-    <% if @next_line %>
-      <%= link_to " >" , "/lines/#{@next_line.id}/edit" , class: "btn btn-default fa fa-child" %>
-    <% else %>
-      <%= link_to " " , "#" , class: "" %>
-    <% end %>
-    <span> </span>
-  </div>
-</div>
 <% # FixdeMenu AAA####### %>
   <input type="button" class="btn btn-default"
      value="ページへ"
@@ -66,6 +46,28 @@
   <% end %>
   />
 <%= form_for(@line , remote: true,:html => {class: "form-inline"}) do |f| %>
+
+<div class="footer-fixed" style="z-index:9999;display:inline; ">
+  <div class="fixbar" style= "display:inline;" >
+    <span> </span>
+    <% if @prev_line %>
+           <%= link_to " <" , "/lines/#{@prev_line.id}/edit" , class: "btn btn-default fa fa-child" %>
+    <% else %>
+      <%= link_to " " , "#" , class: "" %>
+    <% end %>
+    <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
+    <span class="btn btn-primary btn-block" style="display:inline;" onclick="$('form').submit();"> 
+    更新 
+    </span>
+    <% if @next_line %>
+      <%= link_to " >" , "/lines/#{@next_line.id}/edit" , class: "btn btn-default fa fa-child" %>
+    <% else %>
+      <%= link_to " " , "#" , class: "" %>
+    <% end %>
+    <span> </span>
+  </div>
+</div>
+
   <span id="err_span">
     <%= render "shared/errors" ,obj: @line %>
   </span>
