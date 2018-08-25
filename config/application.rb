@@ -28,5 +28,7 @@ module R1
     #2016/05/23 add
     #rake assets:precompileを失敗させない設定がある
     config.assets.initialize_on_precompile = false
+
+    config.assets.compile = false #セキュリティの脆弱性を無効にする
   end
 end
