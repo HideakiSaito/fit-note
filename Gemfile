@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 #ruby '2.2.3'
 #ruby '2.2.1'
 #ruby ' 2.2.6' #windows 対応  surface対応
-#ruby '~>2.2.6' #surface対応
-ruby '2.3.0' #2018/08
+ruby '~>2.2.6' #surface対応
+#ruby '2.3.0' #2018/08rail
  
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
