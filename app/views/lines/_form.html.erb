@@ -55,9 +55,8 @@
     <% else %>
       <%= link_to " " , "#" , class: "" %>
     <% end %>
-    <%= link_to " " , "#notice" , class: "btn btn-default fa fa-eye" %>
     <span class="btn btn-primary btn-block" style="display:inline;" onclick="$('#sub').click();"> 
-    更新 
+    &nbsp; 更 &nbsp; 新 &nbsp;  
     </span>
     <% if @next_line %>
       <%= link_to " >" , "/lines/#{@next_line.id}/edit" , class: "btn btn-default fa fa-child" %>
