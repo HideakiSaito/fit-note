@@ -17,5 +17,6 @@
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
-//= require_tree .
 //= require serviceworker-companion
+//= require_tree .
+
