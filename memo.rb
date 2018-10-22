@@ -294,3 +294,8 @@ bundle exec rake db:migrate
 heroku run bundle exec rake db:migrate -a fit-note
 #Life
 rails g controller life
+
+################################################
+#　最新情報のビューのリンクが、直接URLになっているので、
+#  最新のびゅーを返すコントローラをつくる
+#
