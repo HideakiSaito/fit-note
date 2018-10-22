@@ -36,7 +36,6 @@
     <table style="width:100%;" ><tr><td>
           <div id="user_nav">
             <% if current_user %>
-            <%= image_tag current_user.icon , size: "24x24" %>
             <strong><%= current_user.name %></strong>!
             <i class="fa fa-user"></i>
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
