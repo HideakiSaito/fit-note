@@ -12,7 +12,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Fit Note" %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <link rel="manifest" href="/manifest.json" />
     <%= csrf_meta_tags %>
 <link type="text/css" rel="stylesheet"
   href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css" />
