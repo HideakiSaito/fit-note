@@ -13,6 +13,8 @@ gem 'rails', '4.2.4'
 ##gem 'sqlite3'
 ### H.saito Del <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+gem 'serviceworker-rails'
+
 ### H.saito Add >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Use postgresql as the database for Active Record
 #gem 'pg' #windows surface
