@@ -10,8 +10,7 @@
       </button>
       <a class="navbar-brand" href="/"><i class="fa fa-heartbeat fa-lg">Note</i></a>
       <% if current_user %>
-      <%# <a class="navbar-brand" href="/pages/<%= Page.where('user_id=?',current_user.id).maximum(:id) %>/"><i class="far fa-check-square fa-lg"></i></a> %>
-      <a class="navbar-brand" href="/pages/latest_page/"><i class="far fa-calendar fa-lg"></i></a>
+      <a class="navbar-brand" href="/pages/latest_page/"><i class="far fa-check-square fa-lg"></i></a>
       <a class="navbar-brand" href="/pages"><i class="far fa-calendar fa-lg"></i></a>
       <a class="navbar-brand" href="/analysis"><i class="fas fa-chart-bar fa-lg"></i></a>
     <% end %>
