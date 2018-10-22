@@ -106,6 +106,18 @@ class PagesController < InheritedResources::Base
     end
 #    @pages = PageDecorator.decorate_collection(@pages)
   end
+
+  #最新ページを表示
+  def latest_page
+    latest_date = Page.where('user_id=?',current_user.id).maximum(:date) #最新日
+    if latest_date
+      latest_page = Page.where('user_id=?',current_user.id).where(date: latest_date).first
+    else
+      latest_page = Page.new(date: Time.current,place: "none")
+    end
+    redirect_to latest_page
+  end
+
   def show
     @show = true
     @disp_mode = "show"
