@@ -41,10 +41,12 @@
      value="<%= '次へ' + @next_line.short_label %>"
      onclick="location.href='/lines/<%= @next_line.id %>/edit' "
   <% else %>
-     value="最後です。行を追加する。"
+     value="最後。行を追加。"
      onclick="location.href='<%=new_page_line_path(@line.page)  %>' "
   <% end %>
   />
+    <hr/>
+  <p> MAX POWER : <%= @line.this_max_reps %> </p>
 <%= form_for(@line , remote: true,:html => {class: "form-inline"}) do |f| %>
 
 <div class="footer-fixed" style="z-index:9999;display:inline; ">
@@ -281,8 +283,6 @@
   </div>
   <hr/>
     <%= f.submit class: "btn btn-primary btn-block" ,id: "sub" %>
-  <hr/>
-  <p> MAX POWER : <%= @line.this_max_reps %> </p>
 <% end %>
 <!--BUD DRY-->
   <input type="button" class="btn btn-default"
