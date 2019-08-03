@@ -58,7 +58,7 @@
       <%= link_to " " , "#" , class: "" %>
     <% end %>
     <span class="btn btn-primary btn-block" style="display:inline;" onclick="$('#sub').click();"> 
-		&nbsp; 更 &nbsp; 新 &nbsp;(<%= @line.item.name %>) 
+		&nbsp; 更 &nbsp; 新 &nbsp;(<%= @line.no.to_s + '.' + @line.item.name %>) 
     </span>
     <% if @next_line %>
       <%= link_to " > " , "/lines/#{@next_line.id}/edit#set#{@next_line.now_set}" , class: "btn btn-default fa fa-child" %>
