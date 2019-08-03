@@ -69,6 +69,20 @@ class Line < ActiveRecord::Base
     w ||= ""; r ||= "";  m ||= ""; #nil => ""
     page.date.strftime("%m/%d(%a)") + "＞" + w.to_s + "/" + r.to_s + " : " + m
   end
+  # 現在のセットを返す（スーパーセットなどで次にいれるセットだと楽）
+  def now_set
+	  now_set = 1
+	  now_set = 2 if reps_1 
+	  now_set = 3 if reps_2
+	  now_set = 4 if reps_3
+	  now_set = 5 if reps_4
+	  now_set = 6 if reps_5
+	  now_set = 7 if reps_6
+	  now_set = 8 if reps_7
+	  now_set = 9 if reps_8
+	  now_set = 9 if reps_9
+	  now_set
+  end
   #ラベル出力用
   def print_label
     page.page_label + '_' + item.name + '_' + no.to_s

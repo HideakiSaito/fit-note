@@ -53,7 +53,7 @@
   <div class="fixbar" style= "display:inline;" >
     <span> </span>
     <% if @prev_line %>
-           <%= link_to " < " , "/lines/#{@prev_line.id}/edit" , class: "btn btn-default fa fa-child" %>
+		<%= link_to " < " , "/lines/#{@prev_line.id}/edit#set#{@prev_line.now_set}" , class: "btn btn-default fa fa-child" %>
     <% else %>
       <%= link_to " " , "#" , class: "" %>
     <% end %>
@@ -61,7 +61,7 @@
     &nbsp; 更 &nbsp; 新 &nbsp;  
     </span>
     <% if @next_line %>
-      <%= link_to " > " , "/lines/#{@next_line.id}/edit" , class: "btn btn-default fa fa-child" %>
+      <%= link_to " > " , "/lines/#{@next_line.id}/edit#set#{@next_line.now_set}" , class: "btn btn-default fa fa-child" %>
     <% else %>
       <%= link_to " " , "#" , class: "" %>
     <% end %>
