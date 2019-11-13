@@ -74,7 +74,7 @@ end
 ##gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources' #これで書いたソースが動かないので入れる。上と一緒に入ってくるらしい。
 
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'font-awesome-sass'
 
  ## Add H.saito spaql###
