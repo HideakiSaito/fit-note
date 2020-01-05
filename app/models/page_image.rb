@@ -30,7 +30,8 @@ class PageImage < ActiveRecord::Base
   def check_image
     if @uploaded_image
       #if data.size > 4096.kilobytes
-      if data.size > 4.megabytes
+      #if data.size > 8192.kilobytes
+      if data.size > 8.megabytes
         errors.add(:uploaded_image, :too_big_image)
       end
       unless IMAGE_TYPES.has_key?(content_type)
