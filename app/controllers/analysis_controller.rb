@@ -8,7 +8,7 @@ class AnalysisController < ApplicationController
     render :dash_bord
   end
   def dash_bord
-    params[:start_day] ||= Date.current - 35
+    params[:start_day] ||= Date.current - 60
     params[:end_day] ||= Date.current
     @scop_day_label = ""
     @scop_week_label = ""
